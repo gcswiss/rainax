@@ -68,107 +68,60 @@
   }
 
   /* ------------------------------------------------------------------
-     Hintergrundvideos (YouTube, ohne Ton, Endlosschleife)
-     <div class="video-bg" data-youtube-id="…"> … </div>
+     Hintergrundvideos (selbst gehostet, ohne Ton, Endlosschleife)
+     <div class="video-bg"><video class="video-bg__media" data-video> <source data-src="…"> </video></div>
+     Die Quellen stehen in data-src und werden erst geladen, wenn das
+     Video in die Nähe des Bildschirms kommt.
      ------------------------------------------------------------------ */
-  var videoEls = document.querySelectorAll(".video-bg[data-youtube-id]");
-  var apiPromise = null;
+  var videos = document.querySelectorAll("video[data-video]");
 
-  function loadYouTubeApi() {
-    if (apiPromise) return apiPromise;
-    apiPromise = new Promise(function (resolve) {
-      if (window.YT && window.YT.Player) return resolve(window.YT);
-      var previous = window.onYouTubeIframeAPIReady;
-      window.onYouTubeIframeAPIReady = function () {
-        if (typeof previous === "function") previous();
-        resolve(window.YT);
-      };
-      var tag = document.createElement("script");
-      tag.src = "https://www.youtube.com/iframe_api";
-      tag.async = true;
-      document.head.appendChild(tag);
-    });
-    return apiPromise;
-  }
+  function mountVideo(video) {
+    if (video.dataset.mounted) return;
+    video.dataset.mounted = "true";
 
-  function mountVideo(stage) {
-    if (stage.dataset.mounted) return;
-    stage.dataset.mounted = "true";
-
-    var id = stage.dataset.youtubeId;
-    var frame = stage.querySelector(".video-bg__frame");
-    var target = document.createElement("div");
-    frame.appendChild(target);
-
+    var stage = video.closest(".video-bg");
     var section = stage.parentElement;
     var toggleBtn = section.querySelector(".video-toggle");
     var userPaused = false;
 
-    loadYouTubeApi().then(function (YT) {
-      var player = new YT.Player(target, {
-        host: "https://www.youtube-nocookie.com",
-        videoId: id,
-        playerVars: {
-          autoplay: 1,
-          mute: 1,
-          controls: 0,
-          loop: 1,
-          playlist: id,
-          playsinline: 1,
-          rel: 0,
-          modestbranding: 1,
-          disablekb: 1,
-          fs: 0,
-          iv_load_policy: 3,
-          cc_load_policy: 0,
-          origin: window.location.origin
-        },
-        events: {
-          onReady: function (e) {
-            var iframe = e.target.getIframe();
-            iframe.setAttribute("tabindex", "-1");
-            iframe.setAttribute("aria-hidden", "true");
-            iframe.setAttribute("title", "Hintergrundvideo");
-            e.target.mute();
-            e.target.playVideo();
-            section.classList.add("has-video");
-          },
-          onStateChange: function (e) {
-            if (e.data === YT.PlayerState.PLAYING) {
-              stage.classList.add("is-playing");
-            } else if (e.data === YT.PlayerState.ENDED) {
-              e.target.seekTo(0);
-              e.target.playVideo();
-            }
-          }
-        }
-      });
-
-      stage._player = player;
-
-      if (toggleBtn) {
-        toggleBtn.addEventListener("click", function () {
-          if (typeof player.getPlayerState !== "function") return;
-          userPaused = player.getPlayerState() === YT.PlayerState.PLAYING;
-          if (userPaused) player.pauseVideo(); else player.playVideo();
-          toggleBtn.classList.toggle("is-paused", userPaused);
-          toggleBtn.setAttribute("aria-label", userPaused ? "Video abspielen" : "Video pausieren");
-        });
-      }
-
-      // Video ausserhalb des Bildschirms anhalten (spart Akku und Daten)
-      if ("IntersectionObserver" in window) {
-        new IntersectionObserver(function (entries) {
-          entries.forEach(function (entry) {
-            if (typeof player.playVideo !== "function" || userPaused) return;
-            if (entry.isIntersecting) player.playVideo(); else player.pauseVideo();
-          });
-        }).observe(stage);
-      }
+    video.muted = true;
+    video.querySelectorAll("source[data-src]").forEach(function (source) {
+      source.src = source.dataset.src;
     });
+    video.load();
+
+    video.addEventListener("playing", function () {
+      stage.classList.add("is-playing");
+      section.classList.add("has-video");
+    });
+
+    var play = function () {
+      var p = video.play();
+      if (p && typeof p.catch === "function") p.catch(function () { /* Autoplay blockiert: Poster bleibt sichtbar */ });
+    };
+    play();
+
+    if (toggleBtn) {
+      toggleBtn.addEventListener("click", function () {
+        userPaused = !video.paused;
+        if (userPaused) video.pause(); else play();
+        toggleBtn.classList.toggle("is-paused", userPaused);
+        toggleBtn.setAttribute("aria-label", userPaused ? "Video abspielen" : "Video pausieren");
+      });
+    }
+
+    // Video ausserhalb des Bildschirms anhalten (spart Akku und Daten)
+    if ("IntersectionObserver" in window) {
+      new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (userPaused) return;
+          if (entry.isIntersecting) play(); else video.pause();
+        });
+      }).observe(stage);
+    }
   }
 
-  if (videoEls.length && !reduceMotion) {
+  if (videos.length && !reduceMotion) {
     if ("IntersectionObserver" in window) {
       var lazyObserver = new IntersectionObserver(function (entries) {
         entries.forEach(function (entry) {
@@ -178,9 +131,9 @@
           }
         });
       }, { rootMargin: "300px 0px" });
-      videoEls.forEach(function (el) { lazyObserver.observe(el); });
+      videos.forEach(function (el) { lazyObserver.observe(el); });
     } else {
-      videoEls.forEach(mountVideo);
+      videos.forEach(mountVideo);
     }
   }
 

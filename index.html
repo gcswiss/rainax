@@ -14,7 +14,6 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap">
-  <link rel="preconnect" href="https://www.youtube-nocookie.com">
   <link rel="stylesheet" href="/assets/css/style.css">
   <script src="/assets/js/main.js" defer></script>
 </head>
@@ -59,9 +58,12 @@
 
     <!-- 1 · Hero -->
     <section class="hero" aria-labelledby="hero-title">
-      <div class="video-bg" data-youtube-id="_Sl8diqCAFw" aria-hidden="true">
+      <div class="video-bg" aria-hidden="true">
         <div class="video-bg__poster"></div>
-        <div class="video-bg__frame"></div>
+        <video class="video-bg__media" data-video muted loop playsinline preload="none" poster="/assets/video/hero-poster.jpg">
+          <source data-src="/assets/video/hero.webm" type="video/webm">
+          <source data-src="/assets/video/hero.mp4" type="video/mp4">
+        </video>
       </div>
 
       <div class="container hero__content">
@@ -197,9 +199,12 @@
     <!-- 7 · Schlussbild -->
     <section class="finale" aria-label="Gegründet in Wil. Gebaut für mehr.">
       <!-- PLATZHALTER: eigenes Video (z. B. Erde aus dem All) – bis dahin dasselbe Video wie im Hero -->
-      <div class="video-bg video-bg--section" data-youtube-id="_Sl8diqCAFw" aria-hidden="true">
+      <div class="video-bg" aria-hidden="true">
         <div class="video-bg__poster"></div>
-        <div class="video-bg__frame"></div>
+        <video class="video-bg__media" data-video muted loop playsinline preload="none" poster="/assets/video/hero-poster.jpg">
+          <source data-src="/assets/video/hero.webm" type="video/webm">
+          <source data-src="/assets/video/hero.mp4" type="video/mp4">
+        </video>
       </div>
       <div class="container">
         <p class="display-xl reveal">Gegründet in Wil. Gebaut für mehr.</p>

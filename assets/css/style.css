@@ -474,7 +474,7 @@ h1, h2, h3, h4, p { margin: 0; }
 .page-hero--full .lead { color: var(--color-porcelain); }
 
 /* --------------------------------------------------------------------------
-   Hero mit Hintergrundvideo (YouTube)
+   Hero mit Hintergrundvideo (selbst gehostet)
    -------------------------------------------------------------------------- */
 
 .hero {
@@ -535,7 +535,7 @@ h1, h2, h3, h4, p { margin: 0; }
   50% { transform: translateY(6px); opacity: 1; }
 }
 
-/* Video-Bühne: wird von JS mit dem YouTube-Player gefüllt */
+/* Video-Bühne: JS lädt das Video erst, wenn es gebraucht wird */
 .video-bg {
   position: absolute;
   inset: 0;
@@ -546,40 +546,28 @@ h1, h2, h3, h4, p { margin: 0; }
 }
 
 .video-bg__poster,
-.video-bg__frame {
+.video-bg__media {
   position: absolute;
   inset: 0;
+  width: 100%;
+  height: 100%;
 }
 
 .video-bg__poster {
   background:
     radial-gradient(120% 70% at 50% 110%, rgba(47, 107, 255, 0.18), transparent 60%),
     var(--color-obsidian);
-  background-size: cover;
-  background-position: center;
   transition: opacity 1.2s var(--ease);
 }
 
-.video-bg__frame {
+.video-bg__media {
+  max-width: none;
+  object-fit: cover;
   opacity: 0;
   transition: opacity 1.6s var(--ease);
 }
-.video-bg.is-playing .video-bg__frame { opacity: 1; }
+.video-bg.is-playing .video-bg__media { opacity: 1; }
 .video-bg.is-playing .video-bg__poster { opacity: 0; }
-
-/* 16:9-Iframe so skalieren, dass es die Fläche immer ganz füllt ("cover").
-   Leicht vergrössert, damit YouTube-Ränder und Bedienelemente ausserhalb liegen. */
-.video-bg { container-type: size; }
-
-.video-bg__frame iframe {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: max(100cqw, 177.78cqh);
-  height: max(100cqh, 56.25cqw);
-  border: 0;
-  transform: translate(-50%, -50%) scale(1.18);
-}
 
 /* "Leicht dunkler Schleier" für gute Lesbarkeit */
 .video-bg::after {

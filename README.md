@@ -31,9 +31,29 @@ Die Pfade sind absolut (`/assets/...`), die Seite muss also über einen Webserve
 
 ## Hero-Video
 
-Das Video im Hero ist ein YouTube-Video (`_Sl8diqCAFw`), das ohne Ton, ohne Bedienelemente und in Endlosschleife
-als Hintergrund läuft (über `youtube-nocookie.com`). Video wechseln: `data-youtube-id` im Element `.video-bg` ändern.
-Bei «Bewegung reduzieren» im Betriebssystem wird kein Video geladen. Unten rechts gibt es einen Pause-Knopf.
+Das Hintergrundvideo wird selbst gehostet (kein YouTube): ohne Ton, ohne Bedienelemente, in Endlosschleife.
+Die Seite erwartet diese Dateien in `assets/video/`:
+
+| Datei | Zweck |
+|---|---|
+| `hero.webm` | VP9, kleiner (Chrome, Firefox, Edge) |
+| `hero.mp4` | H.264 (Safari, iPhone, alle übrigen) |
+| `hero-poster.jpg` | Standbild, bis das Video läuft |
+
+Erstellen aus der Originaldatei (benötigt [ffmpeg](https://ffmpeg.org)):
+
+```bash
+tools/encode-video.sh original.mp4          # → assets/video/hero.*
+tools/encode-video.sh code.mp4 was-wir-tun  # weiteres Video unter eigenem Namen
+```
+
+Das Skript verkleinert auf höchstens 1920 px Breite, entfernt die Tonspur und optimiert für schnelles Laden.
+Ziel: zusammen unter ca. 8 MB; ein kurzer Ausschnitt von 10–20 Sekunden reicht für eine Schleife.
+
+Verhalten: Das Video wird erst geladen, wenn es in die Nähe des Bildschirms kommt, pausiert ausserhalb
+des Bildschirms und kann unten rechts angehalten werden. Bei «Bewegung reduzieren» im Betriebssystem
+wird kein Video geladen. Fehlen die Dateien, bleibt der dunkle Hintergrund stehen.
+Dasselbe Video läuft vorerst auch im Schlussbild der Startseite.
 
 ## Noch offen (Platzhalter)
 
@@ -42,6 +62,7 @@ Alle offenen Stellen sind im HTML mit `PLATZHALTER` kommentiert bzw. gelb markie
 - Originallogo (weiss/dunkel) statt der Text-Wortmarke in Kopfzeile und Footer
 - E-Mail, Telefonnummer, UID-Nummer
 - Formular-Empfänger: `data-endpoint` im Kontaktformular (z. B. Formspree, Web3Forms)
+- Hero-Video als Datei (siehe oben)
 - Bilder/Videos: Säulen, MoodUp-Screens, «KI für Immobilien», Team-Porträts, Seitenanfänge
 - Links zu LinkedIn, Instagram und MoodUp / App Store
-- Datenschutzerklärung (muss YouTube, OpenStreetMap und Google Fonts erwähnen)
+- Datenschutzerklärung (muss OpenStreetMap und Google Fonts erwähnen)
