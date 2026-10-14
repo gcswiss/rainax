@@ -53,7 +53,25 @@ Ziel: zusammen unter ca. 8 MB; ein kurzer Ausschnitt von 10–20 Sekunden reicht
 Verhalten: Das Video wird erst geladen, wenn es in die Nähe des Bildschirms kommt, pausiert ausserhalb
 des Bildschirms und kann unten rechts angehalten werden. Bei «Bewegung reduzieren» im Betriebssystem
 wird kein Video geladen. Fehlen die Dateien, bleibt der dunkle Hintergrund stehen.
-Dasselbe Video läuft vorerst auch im Schlussbild der Startseite.
+Dasselbe Video läuft auch im Schlussbild der Startseite.
+
+Das aktuelle Video («Planet Earth Spinning in Space») wurde vor dem Aufbereiten zu einer nahtlosen
+Schleife geschnitten: Die letzten 1,5 Sekunden blenden weich in den Anfang über, damit beim Neustart
+kein Sprung sichtbar ist.
+
+## Bewegung
+
+Ruhig und präzise, nichts blinkt oder springt. Alles ist abgeschaltet, wenn «Bewegung reduzieren» eingestellt ist;
+Hover-Effekte gibt es nur mit Maus.
+
+- Hero: Titel erscheint Wort für Wort aus der Unschärfe; die Erde reagiert mit Tiefe auf die Maus;
+  beim Scrollen fliegt man in die Erde hinein, der Text tritt zurück
+- Einleitung: Die Wörter leuchten beim Lesen nacheinander auf
+- Kacheln: Lichtkegel folgt der Maus, leichtes 3D-Kippen
+- Buttons: ziehen sich leicht zur Maus hin (magnetisch)
+- MoodUp: Handy kippt Richtung Maus, Punkte auf der Live-Map pulsieren wie Echtzeit-Signale
+- Prozess und Zeitleiste: Die Verbindungslinie zeichnet sich selbst, Punkte leuchten nacheinander auf
+- Schlussbild: Die Erde zoomt beim Scrollen langsam heraus
 
 ## Noch offen (Platzhalter)
 
@@ -62,7 +80,6 @@ Alle offenen Stellen sind im HTML mit `PLATZHALTER` kommentiert bzw. gelb markie
 - Originallogo (weiss/dunkel) statt der Text-Wortmarke in Kopfzeile und Footer
 - E-Mail, Telefonnummer, UID-Nummer
 - Formular-Empfänger: `data-endpoint` im Kontaktformular (z. B. Formspree, Web3Forms)
-- Hero-Video als Datei (siehe oben)
 - Bilder/Videos: Säulen, MoodUp-Screens, «KI für Immobilien», Team-Porträts, Seitenanfänge
 - Links zu LinkedIn, Instagram und MoodUp / App Store
 - Datenschutzerklärung (muss OpenStreetMap und Google Fonts erwähnen)
