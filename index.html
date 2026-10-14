@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>RAINAX AG | Apps und künstliche Intelligenz aus der Schweiz</title>
   <meta name="description" content="RAINAX entwickelt Apps und KI-Lösungen in Wil, St. Gallen. Von der Idee bis zum Produkt.">
-  <meta name="theme-color" content="#000000">
+  <meta name="theme-color" content="#060a17">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="RAINAX AG">
   <meta property="og:title" content="RAINAX AG | Apps und künstliche Intelligenz aus der Schweiz">
@@ -13,7 +13,7 @@
   <meta property="og:locale" content="de_CH">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500&family=Geist+Mono:wght@400;500&display=swap">
   <link rel="stylesheet" href="/assets/css/style.css">
   <script src="/assets/js/main.js" defer></script>
 </head>
@@ -35,7 +35,7 @@
             <li><a href="/team/">Team</a></li>
             <li><a href="/kontakt/">Kontakt</a></li>
         </ul>
-        <a class="btn btn--primary btn--compact" href="/kontakt/">Mit uns bauen</a>
+        <a class="btn btn--primary btn--compact" href="/kontakt/">Mit uns bauen <span class="arrow" aria-hidden="true">&#8599;</span></a>
       </nav>
       <button class="nav-toggle" type="button" aria-controls="mobile-menu" aria-expanded="false" aria-label="Menü öffnen">
         <span></span><span></span><span></span>
@@ -51,7 +51,7 @@
             <li><a href="/team/">Team</a></li>
             <li><a href="/kontakt/">Kontakt</a></li>
     </ul>
-    <a class="btn btn--primary" href="/kontakt/">Mit uns bauen</a>
+    <a class="btn btn--primary" href="/kontakt/">Mit uns bauen <span class="arrow" aria-hidden="true">&#8599;</span></a>
   </div>
 
   <main id="main">
@@ -66,18 +66,35 @@
         </video>
       </div>
 
-      <div class="container hero__content">
-        <h1 class="display-xl hero__title" id="hero-title">Ideen werden Zukunft.</h1>
-        <p class="lead hero__lead">RAINAX entwickelt Apps und künstliche Intelligenz. Aus der Schweiz, für die Welt.</p>
-        <div class="btn-row">
-          <a class="btn btn--primary" href="/kontakt/">Mit uns bauen</a>
-          <a class="btn btn--outline" href="/projekte/">Unsere Arbeit</a>
+      <!-- HUD-Rahmen (Dekoration) -->
+      <div class="hud" aria-hidden="true">
+        <span class="hud__corner hud__corner--tl"></span>
+        <span class="hud__corner hud__corner--tr"></span>
+        <span class="hud__corner hud__corner--bl"></span>
+        <span class="hud__corner hud__corner--br"></span>
+        <div class="hud__row hud__row--top">
+          <span class="hud__item">RAINAX AG / Wil SG</span>
+          <span class="hud__item">47.46° N · 9.04° E</span>
+        </div>
+        <div class="hud__row hud__row--bottom">
+          <span class="hud__item"><i class="pulse pulse--ok"></i>Apps · KI · Ideen</span>
+          <span class="hud__item">Wil <span data-clock>--:--:--</span></span>
         </div>
       </div>
 
-      <a class="hero__scroll" href="#einleitung" aria-label="Nach unten scrollen">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 9l7 7 7-7"/></svg>
-      </a>
+      <div class="container hero__content">
+        <span class="eyebrow">Technology, Apps and AI</span>
+        <h1 class="hero__title display-xl" id="hero-title">Ideen werden Zukunft.</h1>
+        <div class="hero__bottom">
+          <p class="lead hero__lead">RAINAX entwickelt Apps und künstliche Intelligenz. Aus der Schweiz, für die Welt.</p>
+          <div class="btn-row">
+            <a class="btn btn--primary" href="/kontakt/">Mit uns bauen <span class="arrow" aria-hidden="true">&#8599;</span></a>
+            <a class="btn btn--outline" href="/projekte/">Unsere Arbeit</a>
+          </div>
+        </div>
+      </div>
+
+      <a class="hero__scroll" href="#einleitung" aria-label="Nach unten scrollen">Scroll</a>
 
       <button class="video-toggle" type="button" aria-label="Video pausieren">
         <svg class="icon-pause" viewBox="0 0 14 14" fill="currentColor" aria-hidden="true"><rect x="2.5" y="1.5" width="3" height="11" rx="1"/><rect x="8.5" y="1.5" width="3" height="11" rx="1"/></svg>
@@ -85,82 +102,116 @@
       </button>
     </section>
 
+    <!-- Laufband -->
+    <div class="marquee" aria-hidden="true">
+      <div class="marquee__track">
+        <div class="marquee__group">
+          <span>Apps für iOS und Android</span><i>&#10022;</i>
+          <span>Künstliche Intelligenz</span><i>&#10022;</i>
+          <span>Ideen begleiten</span><i>&#10022;</i>
+          <span>Aus der Schweiz, für die Welt</span><i>&#10022;</i>
+          <span>Von der Idee zum Produkt</span><i>&#10022;</i>
+          <span>Wil SG</span><i>&#10022;</i>
+        </div>
+        <div class="marquee__group">
+          <span>Apps für iOS und Android</span><i>&#10022;</i>
+          <span>Künstliche Intelligenz</span><i>&#10022;</i>
+          <span>Ideen begleiten</span><i>&#10022;</i>
+          <span>Aus der Schweiz, für die Welt</span><i>&#10022;</i>
+          <span>Von der Idee zum Produkt</span><i>&#10022;</i>
+          <span>Wil SG</span><i>&#10022;</i>
+        </div>
+      </div>
+    </div>
+
     <!-- 2 · Einleitung -->
     <section class="section" id="einleitung">
       <div class="container">
-        <h2 class="display intro__statement reveal">Gute Ideen gibt es viele. Wir sorgen dafür, dass daraus Produkte werden.</h2>
-        <p class="lead intro__text reveal" style="--delay: .1s">RAINAX ist ein Technologieunternehmen aus Wil, St. Gallen. Wir entwickeln Apps und KI-Lösungen, für eigene Produkte und für alle, die mit einer Idee zu uns kommen. In unserem Team treffen Technologie, Unternehmertum und Kreativität zusammen. So decken wir den ganzen Weg ab: von der ersten Skizze bis zum Produkt auf dem Markt.</p>
+        <h2 class="headline intro__statement">Gute Ideen gibt es viele. Wir sorgen dafür, dass daraus Produkte werden.</h2>
+        <div class="intro__grid reveal">
+          <span class="eyebrow">RAINAX AG · Wil, St. Gallen</span>
+          <p class="lead intro__text">RAINAX ist ein Technologieunternehmen aus Wil, St. Gallen. Wir entwickeln Apps und KI-Lösungen, für eigene Produkte und für alle, die mit einer Idee zu uns kommen. In unserem Team treffen Technologie, Unternehmertum und Kreativität zusammen. So decken wir den ganzen Weg ab: von der ersten Skizze bis zum Produkt auf dem Markt.</p>
+        </div>
       </div>
     </section>
 
     <!-- 3 · Drei Säulen -->
-    <section class="section section--carbon" aria-label="Was wir tun">
+    <section class="section section--deep" aria-labelledby="saeulen-title">
       <div class="container">
-        <div class="grid grid--3">
-          <article class="tile reveal">
-            <div class="tile__media">
-              <!-- PLATZHALTER: kurzes Video oder Bild «Apps» -->
-              <div class="visual visual--glow">
-                <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="18" y="6" width="28" height="52" rx="6"/><path d="M28 11h8"/><rect x="23" y="18" width="8" height="8" rx="2"/><rect x="33" y="18" width="8" height="8" rx="2"/><rect x="23" y="28" width="8" height="8" rx="2"/><rect x="33" y="28" width="8" height="8" rx="2"/></svg>
+        <span class="eyebrow reveal" id="saeulen-title">Was wir tun</span>
+        <div class="explore">
+          <div class="explore__list">
+            <a class="feature reveal" href="/was-wir-tun/#apps">
+              <span class="feature__num">01</span>
+              <div>
+                <h3 class="title feature__title">Apps.</h3>
+                <p>Wir entwerfen und entwickeln Apps für iOS und Android. Durchdacht gestaltet, sauber gebaut und bereit für den Alltag.</p>
               </div>
-            </div>
-            <div class="tile__body">
-              <h3 class="title">Apps.</h3>
-              <p>Wir entwerfen und entwickeln Apps für iOS und Android. Durchdacht gestaltet, sauber gebaut und bereit für den Alltag.</p>
-              <a class="link-arrow" href="/was-wir-tun/#apps">Mehr erfahren</a>
-            </div>
-          </article>
-
-          <article class="tile reveal" style="--delay: .08s">
-            <div class="tile__media">
-              <!-- PLATZHALTER: kurzes Video oder Bild «Künstliche Intelligenz» -->
-              <div class="visual visual--glow">
-                <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="16" y="16" width="32" height="32" rx="6"/><rect x="25" y="25" width="14" height="14" rx="2"/><path d="M24 8v8M32 8v8M40 8v8M24 48v8M32 48v8M40 48v8M8 24h8M8 32h8M8 40h8M48 24h8M48 32h8M48 40h8"/></svg>
+              <span class="feature__go" aria-hidden="true">&#8599;</span>
+              <span class="visually-hidden">Mehr erfahren</span>
+            </a>
+            <a class="feature reveal" href="/was-wir-tun/#ki" style="--delay: .08s">
+              <span class="feature__num">02</span>
+              <div>
+                <h3 class="title feature__title">Künstliche Intelligenz.</h3>
+                <p>Wir bauen KI-Lösungen, die Arbeit einfacher und schneller machen. Dort, wo sie wirklich einen Unterschied macht.</p>
               </div>
-            </div>
-            <div class="tile__body">
-              <h3 class="title">Künstliche Intelligenz.</h3>
-              <p>Wir bauen KI-Lösungen, die Arbeit einfacher und schneller machen. Dort, wo sie wirklich einen Unterschied macht.</p>
-              <a class="link-arrow" href="/was-wir-tun/#ki">Mehr erfahren</a>
-            </div>
-          </article>
-
-          <article class="tile reveal" style="--delay: .16s">
-            <div class="tile__media">
-              <!-- PLATZHALTER: kurzes Video oder Bild «Ideen» -->
-              <div class="visual visual--glow">
-                <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M32 8a16 16 0 0 0-9 29.2c1.8 1.3 3 3.3 3 5.5V46h12v-3.3c0-2.2 1.2-4.2 3-5.5A16 16 0 0 0 32 8z"/><path d="M26 52h12M28 57h8"/></svg>
+              <span class="feature__go" aria-hidden="true">&#8599;</span>
+              <span class="visually-hidden">Mehr erfahren</span>
+            </a>
+            <a class="feature reveal" href="/was-wir-tun/#ideen" style="--delay: .16s">
+              <span class="feature__num">03</span>
+              <div>
+                <h3 class="title feature__title">Ideen.</h3>
+                <p>Wir begleiten Menschen mit einer Idee bis zum fertigen Produkt. Mit Erfahrung, Technik und einem Team, das mitdenkt.</p>
               </div>
+              <span class="feature__go" aria-hidden="true">&#8599;</span>
+              <span class="visually-hidden">Mehr erfahren</span>
+            </a>
+          </div>
+          <div class="explore__visual reveal" style="--delay: .1s">
+            <div class="orb" data-orb aria-hidden="true">
+              <div class="orb__label"><span>Apps</span><span>KI</span><span>Ideen</span></div>
             </div>
-            <div class="tile__body">
-              <h3 class="title">Ideen.</h3>
-              <p>Wir begleiten Menschen mit einer Idee bis zum fertigen Produkt. Mit Erfahrung, Technik und einem Team, das mitdenkt.</p>
-              <a class="link-arrow" href="/was-wir-tun/#ideen">Mehr erfahren</a>
-            </div>
-          </article>
+          </div>
         </div>
       </div>
     </section>
 
     <!-- 4 · Projekt im Fokus: MoodUp -->
     <section class="section">
-      <div class="container split">
-        <div class="split__text reveal">
-          <span class="eyebrow">Projekt im Fokus</span>
-          <h2 class="headline">MoodUp. Das Nachtleben, neu verbunden.</h2>
-          <p class="lead muted">Unsere eigene App zeigt Bars, Clubs und Events in Echtzeit und verbindet Gäste mit Betrieben. Entwickelt von der ersten Idee bis zum Marktstart bei RAINAX.</p>
-          <div class="btn-row">
-            <a class="btn btn--primary" href="/projekte/moodup/">Projekt ansehen</a>
+      <div class="container">
+        <div class="section__head-split">
+          <div class="reveal">
+            <span class="eyebrow">Projekt im Fokus</span>
+            <h2 class="headline">MoodUp. Das Nachtleben, neu verbunden.</h2>
+          </div>
+          <div class="reveal" style="--delay: .1s">
+            <p class="lead">Unsere eigene App zeigt Bars, Clubs und Events in Echtzeit und verbindet Gäste mit Betrieben. Entwickelt von der ersten Idee bis zum Marktstart bei RAINAX.</p>
+            <div class="btn-row" style="margin-top: 28px">
+              <a class="btn btn--primary" href="/projekte/moodup/">Projekt ansehen <span class="arrow" aria-hidden="true">&#8599;</span></a>
+            </div>
           </div>
         </div>
-        <div class="reveal" style="--delay: .1s">
-          <div class="phone">
-            <div class="phone__island"></div>
-            <div class="phone__screen">
+
+        <div class="dash reveal">
+          <div class="dash__bar" aria-hidden="true">
+            <span class="dash__dots"><i></i><i></i><i></i></span>
+            <span class="dash__title">MoodUp — Live-Map</span>
+            <span class="dash__status"><i class="pulse"></i>Live</span>
+          </div>
+          <div class="dash__body">
+            <div class="dash__map">
               <!-- PLATZHALTER: Video oder Bildschirmaufnahme der MoodUp Live-Map -->
-              <div class="livemap" role="img" aria-label="MoodUp Live-Map">
-                <div class="livemap__label"><strong>Live in deiner Nähe</strong>Bars, Clubs und Events in Echtzeit</div>
+              <div class="livemap" role="img" aria-label="MoodUp Live-Map mit Bars, Clubs und Events">
+                <div class="livemap__label"><strong><i class="pulse"></i>Bars, Clubs, Events</strong>in Echtzeit</div>
               </div>
+            </div>
+            <div class="dash__side">
+              <div class="metric"><span class="metric__label">Status</span><span class="metric__value"><i class="pulse"></i>Live</span></div>
+              <div class="metric"><span class="metric__label">Plattform</span><span class="metric__value">iOS · Android</span></div>
+              <div class="metric"><span class="metric__label">Gestartet in</span><span class="metric__value metric__value--lav">Wil SG</span></div>
+              <div class="metric"><span class="metric__label">Gebaut bei</span><span class="metric__value">RAINAX</span></div>
             </div>
           </div>
         </div>
@@ -168,10 +219,13 @@
     </section>
 
     <!-- 5 · So arbeiten wir -->
-    <section class="section section--carbon">
+    <section class="section section--deep">
       <div class="container">
-        <div class="section__header reveal">
-          <h2 class="headline">Von der Idee zur Realität.</h2>
+        <div class="section__head-split">
+          <div class="reveal">
+            <span class="eyebrow">So arbeiten wir</span>
+            <h2 class="headline">Von der Idee zur Realität.</h2>
+          </div>
         </div>
         <ol class="steps">
           <li class="step reveal"><span class="step__num">01</span><span class="step__word">Verstehen.</span><p>Wir klären, was die Idee wirklich braucht.</p></li>
@@ -187,18 +241,22 @@
     <section class="section">
       <div class="container">
         <div class="cta-panel reveal">
-          <h2 class="headline">Sie haben eine Idee?</h2>
-          <p class="lead">Erzählen Sie uns davon. Wir hören zu, prüfen sie ehrlich und zeigen Ihnen, wie daraus ein Produkt werden kann.</p>
-          <div class="btn-row">
-            <a class="btn btn--primary" href="/kontakt/?thema=idee">Idee vorstellen</a>
+          <div>
+            <span class="eyebrow">Idee vorstellen</span>
+            <h2 class="headline">Sie haben eine Idee?</h2>
+          </div>
+          <div>
+            <p class="lead">Erzählen Sie uns davon. Wir hören zu, prüfen sie ehrlich und zeigen Ihnen, wie daraus ein Produkt werden kann.</p>
+            <div class="btn-row">
+              <a class="btn btn--dark" href="/kontakt/?thema=idee">Idee vorstellen <span class="arrow" aria-hidden="true">&#8599;</span></a>
+            </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- 7 · Schlussbild -->
+    <!-- 7 · Schlussbild: Erde aus dem All, Zoom beim Scrollen -->
     <section class="finale" aria-label="Gegründet in Wil. Gebaut für mehr.">
-      <!-- Erde aus dem All: dasselbe Video wie im Hero, hier mit Zoom beim Scrollen -->
       <div class="video-bg" aria-hidden="true">
         <div class="video-bg__poster"></div>
         <video class="video-bg__media" data-video muted loop playsinline preload="none" poster="/assets/video/hero-poster.jpg">
@@ -207,13 +265,15 @@
         </video>
       </div>
       <div class="container">
-        <p class="display-xl reveal">Gegründet in Wil. Gebaut für mehr.</p>
+        <span class="eyebrow reveal">47.46° N · 9.04° E</span>
+        <p class="display-xl finale__text reveal">Gegründet in Wil. Gebaut für mehr.</p>
       </div>
     </section>
   </main>
 
   <footer class="site-footer">
     <div class="container">
+      <p class="site-footer__claim reveal" aria-hidden="true">Ideen werden <span>Zukunft.</span></p>
       <div class="site-footer__grid">
         <div class="site-footer__brand">
           <a class="logo" href="/" aria-label="RAINAX – zur Startseite">

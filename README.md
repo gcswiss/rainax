@@ -1,7 +1,10 @@
 # Webseite RAINAX AG
 
 Statische Webseite (HTML, CSS, JavaScript, ohne Build-Schritt), gebaut nach dem «Bauplan Webseite RAINAX AG» (13.10.2026).
-Gestaltung: dunkle «Apple»-Stilreferenz mit RAINAX-Blau (`#2F6BFF`) als Akzent.
+Gestaltung: «Mission Control über der Erde». Instrument-Sprache nach der Factory-Referenz (Geist Mono-Labels,
+Haarlinien, Dashboard-Fenster, helle Karte auf dunklem Grund), Tiefe und Aurora-Verlauf nach der Auros-Referenz
+(Nachtblau-Flächen statt Schatten, Partikel-Kugel, grosse Zahlen in Lavendel). Schriften: Geist und Geist Mono.
+Farben: Nachtblau `#0E1530` als Kartenfläche, RAINAX-Blau `#2F6BFF` für Linien und Punkte, Orange nur für «live».
 
 ## Lokal ansehen
 
@@ -61,16 +64,17 @@ kein Sprung sichtbar ist.
 
 ## Bewegung
 
-Ruhig und präzise, nichts blinkt oder springt. Alles ist abgeschaltet, wenn «Bewegung reduzieren» eingestellt ist;
-Hover-Effekte gibt es nur mit Maus.
+Alles ist abgeschaltet, wenn «Bewegung reduzieren» eingestellt ist; Hover-Effekte gibt es nur mit Maus.
 
-- Hero: Titel erscheint Wort für Wort aus der Unschärfe; die Erde reagiert mit Tiefe auf die Maus;
-  beim Scrollen fliegt man in die Erde hinein, der Text tritt zurück
+- Hero: Titel erscheint Wort für Wort aus der Unschärfe; HUD-Rahmen mit Koordinaten und Ortszeit Wil;
+  die Erde reagiert mit Tiefe auf die Maus; beim Scrollen fliegt man in die Erde hinein
+- Laufband mit den Leistungen unter dem Hero (hält bei Hover an)
+- Mono-Labels «dekodieren» sich beim Erscheinen wie in einem Terminal
 - Einleitung: Die Wörter leuchten beim Lesen nacheinander auf
-- Kacheln: Lichtkegel folgt der Maus, leichtes 3D-Kippen
-- Buttons: ziehen sich leicht zur Maus hin (magnetisch)
-- MoodUp: Handy kippt Richtung Maus, Punkte auf der Live-Map pulsieren wie Echtzeit-Signale
-- Prozess und Zeitleiste: Die Verbindungslinie zeichnet sich selbst, Punkte leuchten nacheinander auf
+- Partikel-Kugel (Startseite, «Was wir tun»): rotiert, kippt zur Maus, Punkte weichen dem Mauszeiger aus
+- MoodUp-Dashboard: Radar-Sweep und pulsierende Live-Signale
+- Karten: Lichtkegel folgt der Maus; Buttons ziehen sich leicht zur Maus hin (magnetisch)
+- Prozess und Zeitleiste: Die Linie zeichnet sich selbst, Punkte leuchten nacheinander auf
 - Schlussbild: Die Erde zoomt beim Scrollen langsam heraus
 
 ## Noch offen (Platzhalter)

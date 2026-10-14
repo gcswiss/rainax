@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>Apps, KI und Ideen begleiten | RAINAX AG</title>
   <meta name="description" content="Wir entwickeln Apps für iOS und Android, bauen KI-Lösungen und begleiten Ideen bis zum Markt.">
-  <meta name="theme-color" content="#000000">
+  <meta name="theme-color" content="#060a17">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="RAINAX AG">
   <meta property="og:title" content="Apps, KI und Ideen begleiten | RAINAX AG">
@@ -13,7 +13,7 @@
   <meta property="og:locale" content="de_CH">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500&family=Geist+Mono:wght@400;500&display=swap">
   <link rel="stylesheet" href="/assets/css/style.css">
   <script src="/assets/js/main.js" defer></script>
 </head>
@@ -35,7 +35,7 @@
             <li><a href="/team/">Team</a></li>
             <li><a href="/kontakt/">Kontakt</a></li>
         </ul>
-        <a class="btn btn--primary btn--compact" href="/kontakt/">Mit uns bauen</a>
+        <a class="btn btn--primary btn--compact" href="/kontakt/">Mit uns bauen <span class="arrow" aria-hidden="true">&#8599;</span></a>
       </nav>
       <button class="nav-toggle" type="button" aria-controls="mobile-menu" aria-expanded="false" aria-label="Menü öffnen">
         <span></span><span></span><span></span>
@@ -51,13 +51,14 @@
             <li><a href="/team/">Team</a></li>
             <li><a href="/kontakt/">Kontakt</a></li>
     </ul>
-    <a class="btn btn--primary" href="/kontakt/">Mit uns bauen</a>
+    <a class="btn btn--primary" href="/kontakt/">Mit uns bauen <span class="arrow" aria-hidden="true">&#8599;</span></a>
   </div>
 
   <main id="main">
 
     <!-- 1 · Seitenanfang -->
     <section class="page-hero">
+      <div class="grid-bg" aria-hidden="true"></div>
       <!-- PLATZHALTER: ruhiges Video (z. B. Code auf einem Bildschirm, Lichter) – wie im Hero der Startseite als .video-bg einfügen (Dateien in /assets/video/) -->
       <div class="container">
         <span class="eyebrow reveal">Was wir tun</span>
@@ -67,7 +68,7 @@
     </section>
 
     <!-- 2 · Apps -->
-    <section class="section section--carbon" id="apps">
+    <section class="section section--deep" id="apps">
       <div class="container split">
         <div class="split__text reveal">
           <span class="eyebrow">Apps</span>
@@ -101,18 +102,15 @@
           <p>Künstliche Intelligenz verändert, wie Unternehmen arbeiten. Wir entwickeln KI-Lösungen, die Abläufe vereinfachen und Entscheidungen erleichtern. Dabei zählt für uns nicht, was technisch möglich ist, sondern was im Alltag wirklich weiterhilft. Unsere nächste KI ist bereits in Arbeit.</p>
         </div>
         <div class="reveal" style="--delay: .1s">
-          <div class="media-frame" style="aspect-ratio: 1 / 1">
-            <!-- PLATZHALTER: grosses abstraktes, technologisches Bild -->
-            <div class="visual visual--glow">
-              <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" aria-hidden="true"><circle cx="32" cy="32" r="4"/><circle cx="12" cy="14" r="2.5"/><circle cx="52" cy="14" r="2.5"/><circle cx="12" cy="50" r="2.5"/><circle cx="52" cy="50" r="2.5"/><circle cx="32" cy="6" r="2"/><circle cx="32" cy="58" r="2"/><circle cx="6" cy="32" r="2"/><circle cx="58" cy="32" r="2"/><path d="M14 16l15 13M50 16L35 29M14 48l15-13M50 48L35 35M32 8v20M32 36v20M8 32h20M36 32h20M12 16.5V48M52 16.5V48M14.5 14h35M14.5 50h35"/></svg>
+          <div class="orb" data-orb aria-hidden="true" style="aspect-ratio: 1 / 1">
+              <div class="orb__label"><span>Daten</span><span>Modell</span><span>Alltag</span></div>
             </div>
-          </div>
         </div>
       </div>
     </section>
 
     <!-- 4 · Ideen begleiten -->
-    <section class="section section--carbon" id="ideen">
+    <section class="section section--deep" id="ideen">
       <div class="container">
         <div class="section__header reveal">
           <span class="eyebrow">Ideen begleiten</span>
@@ -125,7 +123,7 @@
           <div class="tile tile--text reveal" style="--delay: .16s"><span class="tile__num">3</span><h3 class="tile__word">Umsetzung.</h3><p>Wir bauen das Produkt und bringen es auf den Markt.</p></div>
         </div>
         <div class="btn-row reveal" style="margin-top: 48px">
-          <a class="btn btn--primary" href="/kontakt/?thema=idee">Idee vorstellen</a>
+          <a class="btn btn--primary" href="/kontakt/?thema=idee">Idee vorstellen <span class="arrow" aria-hidden="true">&#8599;</span></a>
         </div>
       </div>
     </section>
@@ -133,6 +131,7 @@
 
   <footer class="site-footer">
     <div class="container">
+      <p class="site-footer__claim reveal" aria-hidden="true">Ideen werden <span>Zukunft.</span></p>
       <div class="site-footer__grid">
         <div class="site-footer__brand">
           <a class="logo" href="/" aria-label="RAINAX – zur Startseite">

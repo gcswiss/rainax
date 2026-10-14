@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>Team | RAINAX AG</title>
   <meta name="description" content="Die Menschen hinter RAINAX: Unternehmer, Entwickler und Kreative aus der Schweiz.">
-  <meta name="theme-color" content="#000000">
+  <meta name="theme-color" content="#060a17">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="RAINAX AG">
   <meta property="og:title" content="Team | RAINAX AG">
@@ -13,7 +13,7 @@
   <meta property="og:locale" content="de_CH">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500&family=Geist+Mono:wght@400;500&display=swap">
   <link rel="stylesheet" href="/assets/css/style.css">
   <script src="/assets/js/main.js" defer></script>
 </head>
@@ -35,7 +35,7 @@
             <li><a href="/team/" aria-current="page">Team</a></li>
             <li><a href="/kontakt/">Kontakt</a></li>
         </ul>
-        <a class="btn btn--primary btn--compact" href="/kontakt/">Mit uns bauen</a>
+        <a class="btn btn--primary btn--compact" href="/kontakt/">Mit uns bauen <span class="arrow" aria-hidden="true">&#8599;</span></a>
       </nav>
       <button class="nav-toggle" type="button" aria-controls="mobile-menu" aria-expanded="false" aria-label="Menü öffnen">
         <span></span><span></span><span></span>
@@ -51,13 +51,14 @@
             <li><a href="/team/" aria-current="page">Team</a></li>
             <li><a href="/kontakt/">Kontakt</a></li>
     </ul>
-    <a class="btn btn--primary" href="/kontakt/">Mit uns bauen</a>
+    <a class="btn btn--primary" href="/kontakt/">Mit uns bauen <span class="arrow" aria-hidden="true">&#8599;</span></a>
   </div>
 
   <main id="main">
 
     <!-- 1 · Seitenanfang -->
     <section class="page-hero">
+      <div class="grid-bg" aria-hidden="true"></div>
       <div class="container">
         <span class="eyebrow reveal">Team</span>
         <h1 class="display reveal">Die Menschen hinter RAINAX.</h1>
@@ -66,11 +67,12 @@
     </section>
 
     <!-- 2 · Die vier Porträts -->
-    <section class="section" style="padding-top: 0">
+    <section class="section section--tight-top">
       <div class="container">
         <div class="grid grid--2 team-grid">
           <article class="person reveal">
             <div class="person__photo">
+              <span class="person__index" aria-hidden="true">01 / 04</span>
               <!-- PLATZHALTER: Porträtfoto Schwarz-Weiss, z. B. <img src="/assets/img/team/massimo-nardone.jpg" alt="Massimo Nardone"> -->
               <span class="person__initials" aria-hidden="true">MN</span>
             </div>
@@ -80,6 +82,7 @@
           </article>
           <article class="person reveal" style="--delay: .08s">
             <div class="person__photo">
+              <span class="person__index" aria-hidden="true">02 / 04</span>
               <!-- PLATZHALTER: Porträtfoto Schwarz-Weiss -->
               <span class="person__initials" aria-hidden="true">GC</span>
             </div>
@@ -89,6 +92,7 @@
           </article>
           <article class="person reveal">
             <div class="person__photo">
+              <span class="person__index" aria-hidden="true">03 / 04</span>
               <!-- PLATZHALTER: Porträtfoto Schwarz-Weiss -->
               <span class="person__initials" aria-hidden="true">ML</span>
             </div>
@@ -98,6 +102,7 @@
           </article>
           <article class="person reveal" style="--delay: .08s">
             <div class="person__photo">
+              <span class="person__index" aria-hidden="true">04 / 04</span>
               <!-- PLATZHALTER: Porträtfoto Schwarz-Weiss -->
               <span class="person__initials" aria-hidden="true">KA</span>
             </div>
@@ -112,6 +117,7 @@
 
   <footer class="site-footer">
     <div class="container">
+      <p class="site-footer__claim reveal" aria-hidden="true">Ideen werden <span>Zukunft.</span></p>
       <div class="site-footer__grid">
         <div class="site-footer__brand">
           <a class="logo" href="/" aria-label="RAINAX – zur Startseite">

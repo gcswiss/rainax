@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>MoodUp | RAINAX AG</title>
   <meta name="description" content="MoodUp zeigt Bars, Clubs und Events in Echtzeit auf einer Live-Map. Entwickelt von RAINAX in Wil.">
-  <meta name="theme-color" content="#000000">
+  <meta name="theme-color" content="#060a17">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="RAINAX AG">
   <meta property="og:title" content="MoodUp | RAINAX AG">
@@ -13,7 +13,7 @@
   <meta property="og:locale" content="de_CH">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500&family=Geist+Mono:wght@400;500&display=swap">
   <link rel="stylesheet" href="/assets/css/style.css">
   <script src="/assets/js/main.js" defer></script>
 </head>
@@ -35,7 +35,7 @@
             <li><a href="/team/">Team</a></li>
             <li><a href="/kontakt/">Kontakt</a></li>
         </ul>
-        <a class="btn btn--primary btn--compact" href="/kontakt/">Mit uns bauen</a>
+        <a class="btn btn--primary btn--compact" href="/kontakt/">Mit uns bauen <span class="arrow" aria-hidden="true">&#8599;</span></a>
       </nav>
       <button class="nav-toggle" type="button" aria-controls="mobile-menu" aria-expanded="false" aria-label="Menü öffnen">
         <span></span><span></span><span></span>
@@ -51,12 +51,13 @@
             <li><a href="/team/">Team</a></li>
             <li><a href="/kontakt/">Kontakt</a></li>
     </ul>
-    <a class="btn btn--primary" href="/kontakt/">Mit uns bauen</a>
+    <a class="btn btn--primary" href="/kontakt/">Mit uns bauen <span class="arrow" aria-hidden="true">&#8599;</span></a>
   </div>
 
   <main id="main">
 
     <section class="page-hero">
+      <div class="grid-bg" aria-hidden="true"></div>
       <div class="container">
         <span class="eyebrow reveal">Projekt</span>
         <h1 class="display-xl reveal">MoodUp.</h1>
@@ -64,7 +65,7 @@
       </div>
     </section>
 
-    <section class="section" style="padding-top: 0">
+    <section class="section section--tight-top">
       <div class="container">
         <div class="media-frame reveal" style="aspect-ratio: 16 / 8">
           <!-- PLATZHALTER: grosses Bild oder Video der App -->
@@ -73,7 +74,7 @@
       </div>
     </section>
 
-    <section class="section section--carbon">
+    <section class="section section--deep">
       <div class="container container--narrow">
         <div class="case-block reveal">
           <span class="eyebrow">Ausgangslage</span>
@@ -101,7 +102,7 @@
       </div>
     </section>
 
-    <section class="section section--carbon">
+    <section class="section section--deep">
       <div class="container container--narrow">
         <div class="case-block reveal">
           <span class="eyebrow">Lösung</span>
@@ -112,7 +113,7 @@
           <p class="title">Eine Plattform, die von der ersten Idee über Design und Entwicklung bis zum Marktstart vollständig bei RAINAX entstanden ist. Gestartet in Wil, gebaut für die ganze Schweiz.</p>
           <div class="btn-row" style="margin-top: 48px">
             <!-- PLATZHALTER: Link zur MoodUp-Webseite oder zum App Store -->
-            <a class="btn btn--primary" href="#" rel="noopener">MoodUp entdecken</a>
+            <a class="btn btn--primary" href="#" rel="noopener">MoodUp entdecken <span class="arrow" aria-hidden="true">&#8599;</span></a>
           </div>
         </div>
       </div>
@@ -121,6 +122,7 @@
 
   <footer class="site-footer">
     <div class="container">
+      <p class="site-footer__claim reveal" aria-hidden="true">Ideen werden <span>Zukunft.</span></p>
       <div class="site-footer__grid">
         <div class="site-footer__brand">
           <a class="logo" href="/" aria-label="RAINAX – zur Startseite">

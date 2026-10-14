@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>Projekte | RAINAX AG</title>
   <meta name="description" content="Unsere Arbeit, darunter MoodUp, die App für das Nachtleben in der Schweiz.">
-  <meta name="theme-color" content="#000000">
+  <meta name="theme-color" content="#060a17">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="RAINAX AG">
   <meta property="og:title" content="Projekte | RAINAX AG">
@@ -13,7 +13,7 @@
   <meta property="og:locale" content="de_CH">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500&family=Geist+Mono:wght@400;500&display=swap">
   <link rel="stylesheet" href="/assets/css/style.css">
   <script src="/assets/js/main.js" defer></script>
 </head>
@@ -35,7 +35,7 @@
             <li><a href="/team/">Team</a></li>
             <li><a href="/kontakt/">Kontakt</a></li>
         </ul>
-        <a class="btn btn--primary btn--compact" href="/kontakt/">Mit uns bauen</a>
+        <a class="btn btn--primary btn--compact" href="/kontakt/">Mit uns bauen <span class="arrow" aria-hidden="true">&#8599;</span></a>
       </nav>
       <button class="nav-toggle" type="button" aria-controls="mobile-menu" aria-expanded="false" aria-label="Menü öffnen">
         <span></span><span></span><span></span>
@@ -51,13 +51,14 @@
             <li><a href="/team/">Team</a></li>
             <li><a href="/kontakt/">Kontakt</a></li>
     </ul>
-    <a class="btn btn--primary" href="/kontakt/">Mit uns bauen</a>
+    <a class="btn btn--primary" href="/kontakt/">Mit uns bauen <span class="arrow" aria-hidden="true">&#8599;</span></a>
   </div>
 
   <main id="main">
 
     <!-- 1 · Seitenanfang -->
     <section class="page-hero">
+      <div class="grid-bg" aria-hidden="true"></div>
       <div class="container">
         <span class="eyebrow reveal">Projekte</span>
         <h1 class="display reveal">Unsere Arbeit.</h1>
@@ -66,19 +67,20 @@
     </section>
 
     <!-- 2 · Projektliste -->
-    <section class="section" style="padding-top: 0">
+    <section class="section section--tight-top">
       <div class="container">
         <article class="project reveal">
           <div class="project__bg">
             <!-- PLATZHALTER: Bild oder Video von MoodUp -->
             <div class="livemap"></div>
           </div>
+          <div class="project__tag" aria-hidden="true"><span>01 / App</span><span><i class="pulse"></i> Live</span></div>
           <div class="project__body">
             <span class="eyebrow">Projekt 1</span>
             <h2 class="headline">MoodUp. Das Nachtleben, neu verbunden.</h2>
             <p class="lead">Die App, die Gäste und Bars, Clubs und Events in Echtzeit zusammenbringt.</p>
             <div class="btn-row">
-              <a class="btn btn--primary" href="/projekte/moodup/">Projekt ansehen</a>
+              <a class="btn btn--primary" href="/projekte/moodup/">Projekt ansehen <span class="arrow" aria-hidden="true">&#8599;</span></a>
             </div>
           </div>
         </article>
@@ -88,8 +90,9 @@
             <!-- PLATZHALTER: Bild für «KI für Immobilien» (darf leicht unscharf sein) -->
             <div class="visual visual--glow"></div>
           </div>
+          <div class="project__tag" aria-hidden="true"><span>02 / KI</span><span>Wil SG</span></div>
           <div class="project__body">
-            <span class="status-new">In Entwicklung</span>
+            <span class="status-new"><i class="pulse"></i>In Entwicklung</span>
             <h2 class="headline">KI für Immobilien.</h2>
             <p class="lead">Eine künstliche Intelligenz für die Immobilienbranche. Mehr dazu bald.</p>
           </div>
@@ -100,6 +103,7 @@
 
   <footer class="site-footer">
     <div class="container">
+      <p class="site-footer__claim reveal" aria-hidden="true">Ideen werden <span>Zukunft.</span></p>
       <div class="site-footer__grid">
         <div class="site-footer__brand">
           <a class="logo" href="/" aria-label="RAINAX – zur Startseite">
