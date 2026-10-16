@@ -29,6 +29,7 @@ Die Pfade sind absolut (`/assets/...`), die Seite muss also über einen Webserve
 | Impressum | `impressum/index.html` |
 | Datenschutz | `datenschutz/index.html` |
 | Fehlerseite | `404.html` |
+| MoodUp-Webseite (eigene Domain mood-up.ch) | `mood-up/` – siehe `mood-up/README.md` |
 
 `assets/css/style.css` enthält alle Design-Tokens, `assets/js/main.js` Menü, Scroll-Effekte, Videos und Formular.
 
@@ -85,5 +86,5 @@ Alle offenen Stellen sind im HTML mit `PLATZHALTER` kommentiert bzw. gelb markie
 - E-Mail, Telefonnummer, UID-Nummer
 - Formular-Empfänger: `data-endpoint` im Kontaktformular (z. B. Formspree, Web3Forms)
 - Bilder/Videos: Säulen, MoodUp-Screens, «KI für Immobilien», Team-Porträts, Seitenanfänge
-- Links zu LinkedIn, Instagram und MoodUp / App Store
+- Links zu LinkedIn und Instagram
 - Datenschutzerklärung (muss OpenStreetMap und Google Fonts erwähnen)

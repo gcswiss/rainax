@@ -1,0 +1,423 @@
+<!doctype html>
+<html lang="de-CH">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>MoodUp | Wo ist heute was los?</title>
+  <meta name="description" content="MoodUp zeigt dir Bars, Clubs und Events in Echtzeit auf einer Live-Map. Filtere nach Musikstil, Alter und Stimmung und finde den Abend, der zu dir passt.">
+  <meta name="theme-color" content="#07060d">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="MoodUp">
+  <meta property="og:title" content="MoodUp | Wo ist heute was los?">
+  <meta property="og:description" content="Bars, Clubs und Events in Echtzeit auf einer Live-Map. Gestartet in Wil, gebaut für die ganze Schweiz.">
+  <meta property="og:locale" content="de_CH">
+  <!-- PLATZHALTER: og:image (1200 × 630) mit App-Screenshot ergänzen -->
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Inter:wght@400;500;600&display=swap">
+  <link rel="stylesheet" href="style.css">
+  <script src="main.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Zum Inhalt springen</a>
+
+  <header class="header" data-header>
+    <div class="header__inner">
+      <a class="brand" href="#top" aria-label="MoodUp – nach oben">
+        <!-- PLATZHALTER: durch Originallogo ersetzen, z. B. <img src="logo.svg" alt="MoodUp"> -->
+        <span class="brand__mark" aria-hidden="true"></span>
+        <span class="brand__word">MoodUp</span>
+      </a>
+      <nav class="nav" aria-label="Hauptmenü">
+        <a href="#so-gehts">So geht's</a>
+        <a href="#funktionen">Funktionen</a>
+        <a href="#betriebe">Für Betriebe</a>
+        <a href="#fragen">Fragen</a>
+      </nav>
+      <a class="btn btn--glow btn--small" href="#download">App laden</a>
+      <button class="menu-toggle" type="button" aria-controls="menu" aria-expanded="false" aria-label="Menü öffnen">
+        <span></span><span></span>
+      </button>
+    </div>
+    <div class="menu" id="menu" hidden>
+      <a href="#so-gehts">So geht's</a>
+      <a href="#funktionen">Funktionen</a>
+      <a href="#betriebe">Für Betriebe</a>
+      <a href="#fragen">Fragen</a>
+      <a class="btn btn--glow" href="#download">App laden</a>
+    </div>
+  </header>
+
+  <main id="main">
+
+    <!-- 1 · Hero -->
+    <section class="hero" id="top">
+      <div class="hero__aurora" aria-hidden="true"><i></i><i></i><i></i></div>
+      <div class="hero__grain" aria-hidden="true"></div>
+
+      <div class="container hero__grid">
+        <div class="hero__copy">
+          <p class="kicker reveal"><i class="live-dot"></i>Live in Wil SG</p>
+          <h1 class="hero__title reveal">
+            Wo ist heute<br>
+            <span class="gradient-text">was los?</span>
+          </h1>
+          <p class="hero__lead reveal" style="--d:.1s">
+            MoodUp zeigt dir Bars, Clubs und Events in Echtzeit auf einer Live-Map.
+            Finde die Stimmung, die zu dir passt, bevor du losgehst.
+          </p>
+          <div class="store-row reveal" style="--d:.2s">
+            <!-- PLATZHALTER: Link zum App Store -->
+            <a class="store" href="#" rel="noopener">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16.37 12.6c-.02-2.2 1.8-3.26 1.88-3.31-1.02-1.5-2.62-1.7-3.19-1.72-1.36-.14-2.65.8-3.34.8-.69 0-1.75-.78-2.88-.76-1.48.02-2.85.86-3.61 2.19-1.54 2.67-.39 6.62 1.11 8.79.73 1.06 1.6 2.25 2.75 2.2 1.1-.04 1.52-.71 2.85-.71 1.33 0 1.7.71 2.87.69 1.19-.02 1.94-1.08 2.66-2.14.84-1.23 1.19-2.42 1.21-2.48-.03-.01-2.32-.89-2.34-3.53zM14.2 6.14c.61-.74 1.02-1.76.9-2.78-.88.04-1.94.58-2.57 1.32-.56.65-1.06 1.69-.93 2.69.98.08 1.98-.5 2.6-1.23z"/></svg>
+              <span><small>Laden im</small>App Store</span>
+            </a>
+            <!-- PLATZHALTER: Link zu Google Play -->
+            <a class="store" href="#" rel="noopener">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3.6 2.2c-.2.2-.3.6-.3 1v17.6c0 .4.1.8.3 1l9.9-9.8-9.9-9.8zm10.6 10.5 2.8 2.8-11.9 6.8 9.1-9.6zm0-1.4L5.1 1.7 17 8.5l-2.8 2.8zm3.6-2.4 3.2 1.8c.9.5.9 1.4 0 1.9l-3.2 1.8-3-3 3-2.5z"/></svg>
+              <span><small>Jetzt bei</small>Google Play</span>
+            </a>
+          </div>
+          <p class="hero__note reveal" style="--d:.3s">Gratis für iOS und Android</p>
+        </div>
+
+        <!-- Phone mit Live-Map (Beispielansicht) -->
+        <div class="hero__phone reveal" style="--d:.15s">
+          <div class="phone" data-tilt>
+            <div class="phone__island" aria-hidden="true"></div>
+            <div class="phone__screen">
+              <!-- PLATZHALTER: optional durch echten Screenshot oder Bildschirmaufnahme der App ersetzen -->
+              <div class="app">
+                <div class="app__top">
+                  <div class="app__search"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>Wil SG</div>
+                  <div class="app__chips" aria-hidden="true">
+                    <span class="chip chip--on">Alle</span><span class="chip">Bars</span><span class="chip">Clubs</span><span class="chip">Events</span>
+                  </div>
+                </div>
+                <div class="map" data-map="hero" role="img" aria-label="Beispielansicht der MoodUp Live-Map mit Bars, Clubs und Events"></div>
+                <div class="sheet" data-sheet aria-live="polite">
+                  <div class="sheet__handle" aria-hidden="true"></div>
+                  <div class="sheet__row">
+                    <span class="sheet__icon" data-sheet-icon></span>
+                    <div>
+                      <p class="sheet__name" data-sheet-name>Rooftop-Bar</p>
+                      <p class="sheet__meta" data-sheet-meta>Bar · House · 25+</p>
+                    </div>
+                    <span class="sheet__mood" data-sheet-mood>Chillig</span>
+                  </div>
+                  <div class="sheet__actions" aria-hidden="true">
+                    <span class="sheet__btn sheet__btn--main">Einchecken</span>
+                    <span class="sheet__btn">Folgen</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="float-card float-card--push reveal" style="--d:.5s" aria-hidden="true">
+            <span class="float-card__app"></span>
+            <div><strong>Heute Abend</strong>Neue Story von deinem Lieblingsclub</div>
+          </div>
+          <div class="float-card float-card--live reveal" style="--d:.65s" aria-hidden="true">
+            <i class="live-dot"></i>Live-Map · Echtzeit
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2 · Laufband -->
+    <div class="ticker" aria-hidden="true">
+      <div class="ticker__track">
+        <span>Techno</span><span>Hip-Hop</span><span>House</span><span>Afterwork</span><span>Latin</span><span>Live-Musik</span><span>Rooftop</span><span>Party</span><span>Chillig</span><span>Charts</span><span>Rock</span><span>Cocktails</span>
+        <span>Techno</span><span>Hip-Hop</span><span>House</span><span>Afterwork</span><span>Latin</span><span>Live-Musik</span><span>Rooftop</span><span>Party</span><span>Chillig</span><span>Charts</span><span>Rock</span><span>Cocktails</span>
+      </div>
+    </div>
+
+    <!-- 3 · Problem -->
+    <section class="section">
+      <div class="container container--narrow">
+        <p class="statement reveal" data-words>
+          Kennst du das? Du willst raus, aber weisst nicht wohin. Die Bar ist leer, der Club spielt nicht deine Musik, und das gute Event hast du erst am nächsten Tag gesehen.
+          <strong>Mit MoodUp siehst du vorher, wo die Stimmung stimmt.</strong>
+        </p>
+      </div>
+    </section>
+
+    <!-- 4 · So geht's -->
+    <section class="section" id="so-gehts">
+      <div class="container">
+        <header class="section__head reveal">
+          <p class="kicker">So geht's</p>
+          <h2 class="title">In drei Schritten<br>zum richtigen Abend.</h2>
+        </header>
+        <ol class="steps">
+          <li class="step reveal">
+            <span class="step__num">01</span>
+            <h3>Karte öffnen</h3>
+            <p>Die Live-Map zeigt dir alle Bars, Clubs und Events in deiner Nähe, in Echtzeit.</p>
+          </li>
+          <li class="step reveal" style="--d:.1s">
+            <span class="step__num">02</span>
+            <h3>Filtern</h3>
+            <p>Nach Musikstil, Alter und Stimmung. So bleibt nur, was wirklich zu dir passt.</p>
+          </li>
+          <li class="step reveal" style="--d:.2s">
+            <span class="step__num">03</span>
+            <h3>Hingehen &amp; einchecken</h3>
+            <p>Vor Ort checkst du direkt in der App ein. Gefällt's dir, folgst du dem Lokal.</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- 5 · Funktionen (Bento) -->
+    <section class="section section--alt" id="funktionen">
+      <div class="container">
+        <header class="section__head reveal">
+          <p class="kicker">Funktionen</p>
+          <h2 class="title">Alles, was dein<br>Ausgang braucht.</h2>
+        </header>
+
+        <div class="bento">
+          <!-- Filter-Demo -->
+          <article class="tile tile--wide tile--demo reveal">
+            <div class="tile__text">
+              <h3>Filter nach deiner Stimmung</h3>
+              <p>Probier's aus: Wähle eine Stimmung und sieh, wie sich die Karte verändert.</p>
+              <div class="mood-filter" role="group" aria-label="Stimmung filtern">
+                <button type="button" class="mood-btn is-on" data-mood="alle" aria-pressed="true">Alle</button>
+                <button type="button" class="mood-btn" data-mood="chillig" aria-pressed="false"><i style="--c:var(--teal)"></i>Chillig</button>
+                <button type="button" class="mood-btn" data-mood="gesellig" aria-pressed="false"><i style="--c:var(--amber)"></i>Gesellig</button>
+                <button type="button" class="mood-btn" data-mood="party" aria-pressed="false"><i style="--c:var(--pink)"></i>Party</button>
+              </div>
+              <p class="tile__hint">Beispielansicht</p>
+            </div>
+            <div class="map map--demo" data-map="demo" role="img" aria-label="Beispielkarte, die nach Stimmung gefiltert wird"></div>
+          </article>
+
+          <article class="tile reveal" style="--d:.05s">
+            <div class="tile__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M12 21s-7-6.1-7-11.5A7 7 0 0 1 19 9.5C19 14.9 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg>
+            </div>
+            <h3>Live-Map</h3>
+            <p>Bars, Clubs und Events auf einen Blick. Du siehst sofort, wo gerade etwas läuft.</p>
+          </article>
+
+          <article class="tile reveal" style="--d:.1s">
+            <div class="tile__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>
+            </div>
+            <h3>Check-in</h3>
+            <p>Bist du vor Ort, checkst du mit einem Tipp ein.</p>
+          </article>
+
+          <article class="tile reveal" style="--d:.15s">
+            <div class="tile__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M12 20.5s-8-4.6-8-10.4A4.5 4.5 0 0 1 12 7a4.5 4.5 0 0 1 8 3.1c0 5.8-8 10.4-8 10.4z"/></svg>
+            </div>
+            <h3>Lieblingslokale folgen</h3>
+            <p>Folge den Orten, die du magst, und verpasse nichts mehr.</p>
+          </article>
+
+          <article class="tile tile--stories reveal" style="--d:.2s">
+            <div class="stories" aria-hidden="true">
+              <span style="--g: linear-gradient(135deg,#ff3d8b,#8b5cff)"></span>
+              <span style="--g: linear-gradient(135deg,#ffb23d,#ff3d8b)"></span>
+              <span style="--g: linear-gradient(135deg,#3de0c8,#8b5cff)"></span>
+              <span style="--g: linear-gradient(135deg,#8b5cff,#3de0c8)"></span>
+            </div>
+            <h3>Stories</h3>
+            <p>Bars und Clubs zeigen dir, wie es gerade bei ihnen aussieht.</p>
+          </article>
+
+          <article class="tile tile--push reveal" style="--d:.25s">
+            <div class="push" aria-hidden="true">
+              <span class="push__app"></span>
+              <div><strong>MoodUp</strong><span>Heute Abend: Live-Musik ab 21 Uhr</span></div>
+            </div>
+            <h3>Push-Nachrichten</h3>
+            <p>Deine Lieblingslokale melden sich direkt bei dir, wenn etwas los ist.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6 · Für Gäste / Für Betriebe -->
+    <section class="section" id="betriebe">
+      <div class="container">
+        <header class="section__head reveal">
+          <p class="kicker">Zwei Seiten, eine App</p>
+          <h2 class="title">Gäste finden Lokale.<br><span class="gradient-text">Lokale finden Gäste.</span></h2>
+        </header>
+
+        <div class="tabs reveal">
+          <div class="tabs__list" role="tablist" aria-label="Zielgruppe">
+            <button type="button" role="tab" id="tab-gaeste" aria-controls="panel-gaeste" aria-selected="true">Für Gäste</button>
+            <button type="button" role="tab" id="tab-betriebe" aria-controls="panel-betriebe" aria-selected="false" tabindex="-1">Für Betriebe</button>
+            <span class="tabs__pill" aria-hidden="true"></span>
+          </div>
+
+          <div class="tabs__panel" role="tabpanel" id="panel-gaeste" aria-labelledby="tab-gaeste">
+            <div class="split">
+              <div>
+                <h3 class="split__title">Dein Abend, nach deinem Geschmack.</h3>
+                <p class="split__lead">Schluss mit Rätselraten. MoodUp zeigt dir, was in deiner Stadt gerade läuft, und hilft dir, den Ort zu finden, der heute zu dir passt.</p>
+              </div>
+              <ul class="checks">
+                <li>Bars, Clubs und Events in Echtzeit auf der Live-Map</li>
+                <li>Filter nach Musikstil, Alter und Stimmung</li>
+                <li>Lieblingslokale folgen und ihre Stories sehen</li>
+                <li>Vor Ort einchecken</li>
+                <li>Gratis für iOS und Android</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="tabs__panel" role="tabpanel" id="panel-betriebe" aria-labelledby="tab-betriebe" hidden>
+            <div class="split">
+              <div>
+                <h3 class="split__title">Mehr Sichtbarkeit für dein Lokal.</h3>
+                <p class="split__lead">Ob Bar, Club oder Veranstalter: Mit MoodUp wirst du genau dann gefunden, wenn Gäste entscheiden, wohin es geht.</p>
+                <!-- PLATZHALTER: E-Mail-Adresse für Betriebe eintragen -->
+                <a class="btn btn--glow" href="mailto:[E-MAIL-ADRESSE]?subject=MoodUp%20f%C3%BCr%20meinen%20Betrieb">Betrieb anmelden</a>
+              </div>
+              <ul class="checks">
+                <li>Eigenes Profil mit allem, was dein Lokal ausmacht</li>
+                <li>Stories teilen und zeigen, wie die Stimmung ist</li>
+                <li>Gäste direkt per Push-Nachricht erreichen</li>
+                <li>Sichtbar auf der Live-Map, genau im richtigen Moment</li>
+                <li>Eine Community, die dir folgt und wiederkommt</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 7 · Herkunft -->
+    <section class="section section--alt">
+      <div class="container origin">
+        <div class="origin__badge reveal" aria-hidden="true">
+          <span>Made in</span>
+          <strong>Wil SG</strong>
+        </div>
+        <div class="reveal" style="--d:.1s">
+          <p class="kicker">Unsere Geschichte</p>
+          <h2 class="title title--sm">Aus Gesprächen mit der Gastronomie entstanden.</h2>
+          <p class="origin__text">
+            Die Idee zu MoodUp kam 2023 im direkten Austausch mit Bars und Clubs. Gäste suchen Erlebnisse, die zu ihnen passen,
+            Betriebe kämpfen um Sichtbarkeit. MoodUp bringt beide Seiten zusammen. Von der ersten Idee über Design und Entwicklung
+            bis zum Marktstart ist die App vollständig bei der RAINAX AG in Wil entstanden.
+          </p>
+          <p class="origin__claim">Gestartet in Wil. <span class="gradient-text">Gebaut für die ganze Schweiz.</span></p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 8 · Fragen -->
+    <section class="section" id="fragen">
+      <div class="container container--narrow">
+        <header class="section__head section__head--center reveal">
+          <p class="kicker">Fragen</p>
+          <h2 class="title">Gut zu wissen.</h2>
+        </header>
+        <div class="faq">
+          <details class="reveal">
+            <summary>Was ist MoodUp?</summary>
+            <p>MoodUp ist eine App für das Nachtleben. Sie zeigt Bars, Clubs und Events in Echtzeit auf einer Live-Map, damit du schneller findest, wo heute die Stimmung stimmt.</p>
+          </details>
+          <details class="reveal">
+            <summary>Auf welchen Geräten läuft MoodUp?</summary>
+            <p>MoodUp gibt es für iPhone (iOS) und für Android.</p>
+          </details>
+          <details class="reveal">
+            <summary>Wo gibt es MoodUp?</summary>
+            <p>MoodUp ist in Wil SG gestartet und wird Schritt für Schritt in der ganzen Schweiz ausgebaut.</p>
+          </details>
+          <details class="reveal">
+            <summary>Wonach kann ich filtern?</summary>
+            <p>Nach Musikstil, Alter und Stimmung. So siehst du nur die Orte und Events, die zu deinem Abend passen.</p>
+          </details>
+          <details class="reveal">
+            <summary>Wie kommt mein Lokal auf MoodUp?</summary>
+            <p>Schreib uns über «Betrieb anmelden». Wir richten dir ein eigenes Profil ein, mit dem du Stories teilen und deine Gäste per Push-Nachricht erreichen kannst.</p>
+          </details>
+          <details class="reveal">
+            <summary>Wer steckt hinter MoodUp?</summary>
+            <p>MoodUp wurde von der RAINAX AG in Wil entwickelt, einem Schweizer Unternehmen für Apps, künstliche Intelligenz und Technologie.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- 9 · Download -->
+    <section class="cta" id="download">
+      <div class="container">
+        <div class="cta__box reveal">
+          <div class="cta__glow" aria-hidden="true"></div>
+          <h2 class="cta__title">Dein nächster Abend<br>beginnt hier.</h2>
+          <p class="cta__lead">Lade MoodUp gratis herunter und finde heraus, wo heute was los ist.</p>
+          <div class="store-row store-row--center">
+            <!-- PLATZHALTER: Link zum App Store -->
+            <a class="store store--light" href="#" rel="noopener">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16.37 12.6c-.02-2.2 1.8-3.26 1.88-3.31-1.02-1.5-2.62-1.7-3.19-1.72-1.36-.14-2.65.8-3.34.8-.69 0-1.75-.78-2.88-.76-1.48.02-2.85.86-3.61 2.19-1.54 2.67-.39 6.62 1.11 8.79.73 1.06 1.6 2.25 2.75 2.2 1.1-.04 1.52-.71 2.85-.71 1.33 0 1.7.71 2.87.69 1.19-.02 1.94-1.08 2.66-2.14.84-1.23 1.19-2.42 1.21-2.48-.03-.01-2.32-.89-2.34-3.53zM14.2 6.14c.61-.74 1.02-1.76.9-2.78-.88.04-1.94.58-2.57 1.32-.56.65-1.06 1.69-.93 2.69.98.08 1.98-.5 2.6-1.23z"/></svg>
+              <span><small>Laden im</small>App Store</span>
+            </a>
+            <!-- PLATZHALTER: Link zu Google Play -->
+            <a class="store store--light" href="#" rel="noopener">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3.6 2.2c-.2.2-.3.6-.3 1v17.6c0 .4.1.8.3 1l9.9-9.8-9.9-9.8zm10.6 10.5 2.8 2.8-11.9 6.8 9.1-9.6zm0-1.4L5.1 1.7 17 8.5l-2.8 2.8zm3.6-2.4 3.2 1.8c.9.5.9 1.4 0 1.9l-3.2 1.8-3-3 3-2.5z"/></svg>
+              <span><small>Jetzt bei</small>Google Play</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer__grid">
+      <div>
+        <a class="brand" href="#top" aria-label="MoodUp – nach oben">
+          <span class="brand__mark" aria-hidden="true"></span>
+          <span class="brand__word">MoodUp</span>
+        </a>
+        <p class="footer__claim">Das Nachtleben, neu verbunden.</p>
+      </div>
+      <div>
+        <h2>App</h2>
+        <ul>
+          <li><a href="#so-gehts">So geht's</a></li>
+          <li><a href="#funktionen">Funktionen</a></li>
+          <li><a href="#betriebe">Für Betriebe</a></li>
+          <li><a href="#fragen">Fragen</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>Folgen</h2>
+        <ul>
+          <!-- PLATZHALTER: Links zu den MoodUp-Kanälen -->
+          <li><a href="#" rel="noopener">Instagram</a></li>
+          <li><a href="#" rel="noopener">TikTok</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>Kontakt</h2>
+        <address>
+          RAINAX AG<br>
+          Sirnacherstrasse 5<br>
+          9500 Wil SG<br>
+          <span class="placeholder">[E-MAIL-ADRESSE]</span>
+        </address>
+      </div>
+    </div>
+    <div class="container footer__bottom">
+      <p>© <span data-year>2026</span> MoodUp · Eine App der RAINAX AG</p>
+      <p class="footer__legal">
+        <!-- PLATZHALTER: Links zu Impressum und Datenschutz (z. B. auf der RAINAX-Webseite oder eigene Seiten) -->
+        <a href="#">Impressum</a>
+        <a href="#">Datenschutz</a>
+      </p>
+    </div>
+  </footer>
+</body>
+</html>
