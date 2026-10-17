@@ -4,201 +4,245 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Mood Up | Dein Party-Radar</title>
-<meta name="description" content="Mood Up ist dein Party-Radar: Die interaktive Karte zeigt dir live die beliebtesten Partys in deiner Nähe. Gratis, Swiss made.">
-<meta name="theme-color" content="#08070b">
+<meta name="description" content="Mood Up ist dein Party-Radar: Die interaktive Karte zeigt dir live die beliebtesten Partys, Bars und Clubs in deiner Nähe. Gratis, Swiss made.">
+<meta name="theme-color" content="#0a0a0c">
 <meta name="robots" content="noindex">
-<!-- ENTWURF / MOCKUP: nicht online. Platzhalter sind mit PLATZHALTER markiert. Bilder in img/ (echte App-Screenshots). -->
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='9' fill='%23F7295C'/%3E%3Ccircle cx='16' cy='16' r='6' fill='none' stroke='%23fff' stroke-width='2.5'/%3E%3Ccircle cx='16' cy='16' r='2' fill='%23fff'/%3E%3C/svg%3E">
+<!-- ENTWURF / MOCKUP: nicht online. Offene Stellen sind mit PLATZHALTER markiert. App-Screenshots liegen in img/. -->
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='9' fill='%23f7295c'/%3E%3Ccircle cx='16' cy='16' r='6.5' fill='none' stroke='%230a0a0c' stroke-width='2.6'/%3E%3Ccircle cx='16' cy='16' r='2.2' fill='%230a0a0c'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<!-- Schrift an die App angenähert; durch die Original-App-Schrift ersetzen -->
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@500;600;700;800;900&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@600;700;800&family=Inter:wght@400;500;600&display=swap">
 <style>
+/* ==========================================================================
+   Mood Up – «seriös, aber kreativ»
+   Uber: Ruhe, Grotesk, Linien, heller Abschnitt · Cash App: riesige Typo, Markenfläche
+   ========================================================================== */
 :root{
-  --bg:#08070b; --bg-2:#0f0d13; --surface:#17141d; --surface-2:#201b27;
-  --line:rgba(255,255,255,.08); --line-2:rgba(255,255,255,.14);
-  --text:#ffffff; --body:#b8b2c2; --muted:#7d7688;
-  --pink:#f7295c; --pink-2:#ff5a82; --pink-deep:#5c1430;
-  --glow:0 0 32px rgba(247,41,92,.55);
-  --font:"Nunito", ui-rounded, "SF Pro Rounded", system-ui, -apple-system, "Segoe UI", sans-serif;
-  --max:1180px; --gutter:clamp(16px,4vw,40px);
-  --ease:cubic-bezier(.2,.7,.2,1);
+  /* Flächen */
+  --ink:#0a0a0c; --ink-2:#121216; --ink-3:#1b1b21;
+  --paper:#f5f3ef; --paper-2:#ffffff;
+  /* Linien */
+  --line:rgba(255,255,255,.10); --line-dark:rgba(10,10,12,.12);
+  /* Text */
+  --on-ink:#ffffff; --on-ink-2:#a9a7b0; --on-paper:#0a0a0c; --on-paper-2:#55535c;
+  /* Marke */
+  --pink:#f7295c;          /* Flächen, Akzente, Text auf Schwarz (5.8:1) */
+  --pink-btn:#e0174d;      /* Buttons mit weisser Schrift (4.6:1) */
+  /* Schrift */
+  --display:"Inter Tight","Inter",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --body:"Inter",system-ui,-apple-system,"Segoe UI",sans-serif;
+  /* Raster */
+  --max:1200px; --gutter:clamp(16px,4vw,40px); --section:clamp(96px,12vw,168px);
+  --r-lg:32px; --r-md:20px; --r-sm:12px;
+  /* Bewegung */
+  --ease-out:cubic-bezier(.22,1,.36,1); --t-fast:200ms; --t-med:380ms;
   color-scheme:dark;
 }
 *,*::before,*::after{box-sizing:border-box}
 html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
-body{margin:0;background:var(--bg);color:var(--body);font:500 17px/1.6 var(--font);-webkit-font-smoothing:antialiased;overflow-x:clip}
-h1,h2,h3{margin:0;color:var(--text);font-weight:900;letter-spacing:-.02em;line-height:1.05}
+body{margin:0;background:var(--ink);color:var(--on-ink-2);font:400 17px/1.6 var(--body);-webkit-font-smoothing:antialiased;overflow-x:clip}
+h1,h2,h3,h4{margin:0;font-family:var(--display);font-weight:800;letter-spacing:-.035em;line-height:1;color:var(--on-ink)}
 p{margin:0}
 a{color:inherit}
-:focus-visible{outline:2px solid var(--pink);outline-offset:3px;border-radius:8px}
+img{display:block;max-width:100%;height:auto}
+:focus-visible{outline:3px solid var(--pink);outline-offset:3px;border-radius:8px}
+.skip{position:absolute;left:16px;top:-80px;z-index:100;background:#fff;color:#000;padding:12px 16px;border-radius:10px;text-decoration:none;font-weight:600}
+.skip:focus{top:16px}
 .container{max-width:var(--max);margin:0 auto;padding:0 var(--gutter)}
-.pink{color:var(--pink)}
-.placeholder{background:rgba(255,214,0,.16);color:#ffe27a;padding:0 4px;border-radius:4px}
+.eyebrow{display:inline-flex;align-items:center;gap:10px;font:600 13px/1 var(--body);letter-spacing:.12em;text-transform:uppercase;color:var(--on-ink-2)}
+.eyebrow::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--pink)}
 
 /* Buttons */
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;height:52px;padding:0 26px;border-radius:999px;border:0;cursor:pointer;font:800 16px/1 var(--font);text-decoration:none;color:#fff;background:var(--pink);box-shadow:0 10px 30px -10px rgba(247,41,92,.8);transition:transform .25s var(--ease),box-shadow .25s}
-.btn:hover{transform:translateY(-2px);box-shadow:0 16px 40px -10px rgba(247,41,92,.9)}
-.btn--sm{height:42px;padding:0 20px;font-size:15px}
-.btn--ghost{background:transparent;border:1.5px solid var(--line-2);box-shadow:none}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:52px;padding:0 26px;border-radius:999px;border:0;cursor:pointer;font:700 16px/1 var(--display);letter-spacing:-.01em;text-decoration:none;transition:transform var(--t-fast) var(--ease-out),background var(--t-fast)}
+.btn:active{transform:scale(.97)}
+.btn--pink{background:var(--pink-btn);color:#fff}
+.btn--pink:hover{background:#c9103f}
+.btn--ink{background:var(--ink);color:#fff}
+.btn--ink:hover{background:#26262c}
+.btn--sm{min-height:44px;padding:0 20px;font-size:15px}
+.btn svg{width:18px;height:18px}
 .stores{display:flex;flex-wrap:wrap;gap:12px}
-.store{display:inline-flex;align-items:center;gap:12px;height:58px;padding:0 22px 0 18px;border-radius:16px;background:#fff;color:#0b0a10;text-decoration:none;transition:transform .25s var(--ease)}
-.store:hover{transform:translateY(-3px)}
-.store svg{width:26px;height:26px;fill:currentColor}
-.store span{display:flex;flex-direction:column;font:800 18px/1.1 var(--font)}
-.store small{font:600 11px/1.2 var(--font);opacity:.65}
+.store{display:inline-flex;align-items:center;gap:12px;min-height:56px;padding:0 22px 0 18px;border-radius:14px;background:#fff;color:#0a0a0c;text-decoration:none;transition:transform var(--t-fast) var(--ease-out)}
+.store:hover{transform:translateY(-2px)}
+.store:active{transform:scale(.97)}
+.store svg{width:24px;height:24px;fill:currentColor;flex:none}
+.store span{display:flex;flex-direction:column;font:700 17px/1.1 var(--display)}
+.store small{font:500 11px/1.3 var(--body);color:#55535c}
+.store--ink{background:var(--ink);color:#fff}
+.store--ink small{color:#a9a7b0}
 
-/* Header */
-.header{position:fixed;inset:0 0 auto;z-index:50;transition:background .3s,border-color .3s;border-bottom:1px solid transparent}
-.header.is-solid{background:rgba(8,7,11,.78);-webkit-backdrop-filter:blur(16px);backdrop-filter:blur(16px);border-color:var(--line)}
-.header__in{max-width:var(--max);margin:0 auto;padding:0 var(--gutter);height:72px;display:flex;align-items:center;gap:28px}
-.logo{display:inline-flex;align-items:center;gap:10px;text-decoration:none;color:var(--text);font-weight:900;font-size:22px;letter-spacing:-.02em}
-.logo__icon{width:32px;height:32px;border-radius:10px;background:var(--pink);display:grid;place-items:center;box-shadow:var(--glow)}
-.logo__icon svg{width:18px;height:18px}
-.nav{display:flex;gap:26px;margin-left:auto}
-.nav a{text-decoration:none;font-weight:700;font-size:15px;color:var(--body);transition:color .2s}
-.nav a:hover{color:#fff}
+/* Kopfzeile */
+.header{position:fixed;inset:0 0 auto;z-index:50;transition:background var(--t-med),border-color var(--t-med);border-bottom:1px solid transparent}
+.header.is-solid{background:rgba(10,10,12,.82);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);border-color:var(--line)}
+.header__in{max-width:var(--max);margin:0 auto;padding:0 var(--gutter);height:72px;display:flex;align-items:center;gap:32px}
+.logo{display:inline-flex;align-items:center;gap:10px;text-decoration:none;color:#fff;font:800 21px/1 var(--display);letter-spacing:-.03em;min-height:44px}
+.logo__mark{width:30px;height:30px;border-radius:9px;background:var(--pink);display:grid;place-items:center}
+.logo__mark svg{width:18px;height:18px}
+.nav{display:flex;gap:4px;margin-left:auto}
+.nav a{display:inline-flex;align-items:center;min-height:44px;padding:0 14px;border-radius:999px;text-decoration:none;font:500 15px/1 var(--body);color:#d8d6de;transition:background var(--t-fast),color var(--t-fast)}
+.nav a:hover{background:rgba(255,255,255,.08);color:#fff}
 @media (max-width:820px){.nav{display:none}.header__in .btn{margin-left:auto}}
-@media (max-width:640px){.radar{width:170vw;top:62%;opacity:.55}}
 
-/* Hero mit Party-Radar */
-.hero{position:relative;min-height:100svh;display:grid;place-items:center;text-align:center;overflow:hidden;padding:110px 0 70px;
-  background:radial-gradient(120% 70% at 50% 0%,rgba(92,20,48,.75),transparent 60%),var(--bg)}
-.radar{position:absolute;left:50%;top:54%;width:min(130vw,1100px);aspect-ratio:1;transform:translate(-50%,-50%);pointer-events:none}
-.radar__ring{position:absolute;inset:0;margin:auto;border-radius:50%;border:1px solid rgba(247,41,92,.16)}
-.radar__ring:nth-child(1){width:25%;height:25%}
-.radar__ring:nth-child(2){width:50%;height:50%}
-.radar__ring:nth-child(3){width:75%;height:75%}
-.radar__ring:nth-child(4){width:100%;height:100%}
-.radar__sweep{position:absolute;inset:0;border-radius:50%;background:conic-gradient(from 0deg,rgba(247,41,92,.32),rgba(247,41,92,0) 22%,transparent 100%);
-  -webkit-mask:radial-gradient(circle,#000 0,#000 69%,transparent 70%);mask:radial-gradient(circle,#000 0,#000 69%,transparent 70%);animation:sweep 6s linear infinite}
+/* Hero */
+.hero{position:relative;overflow:hidden;padding:clamp(120px,14vw,170px) 0 clamp(64px,8vw,110px)}
+.hero__grid{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(32px,5vw,72px);align-items:center}
+.hero h1{margin-top:28px;font-size:clamp(52px,8vw,116px);line-height:.94;letter-spacing:-.042em}
+.hero h1 em{font-style:normal;color:var(--pink)}
+.hero__lead{margin-top:28px;max-width:500px;font-size:clamp(18px,1.6vw,21px);line-height:1.55;color:#cfcdd6}
+.hero .stores{margin-top:40px}
+.hero__meta{margin-top:20px;display:flex;flex-wrap:wrap;gap:8px 20px;font-size:14px;color:var(--on-ink-2)}
+.hero__meta span{display:inline-flex;align-items:center;gap:8px}
+.hero__meta svg{width:16px;height:16px;stroke:var(--pink);fill:none;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
+
+.hero__visual{position:relative;height:clamp(520px,52vw,680px)}
+.rings{position:absolute;left:50%;top:50%;width:150%;aspect-ratio:1;transform:translate(-50%,-50%);pointer-events:none}
+.rings i{position:absolute;inset:0;margin:auto;border-radius:50%;border:1px solid var(--line)}
+.rings i:nth-child(1){width:34%;height:34%}.rings i:nth-child(2){width:56%;height:56%}.rings i:nth-child(3){width:78%;height:78%}.rings i:nth-child(4){width:100%;height:100%}
+.rings b{position:absolute;inset:0;border-radius:50%;background:conic-gradient(from 0deg,rgba(247,41,92,.16),transparent 18%);animation:sweep 9s linear infinite;-webkit-mask:radial-gradient(circle,#000 49%,transparent 50%);mask:radial-gradient(circle,#000 49%,transparent 50%)}
 @keyframes sweep{to{transform:rotate(360deg)}}
-.blip{position:absolute;left:var(--x);top:var(--y);width:14px;height:14px;margin:-7px;border-radius:50%;background:var(--pink);box-shadow:0 0 18px var(--pink);opacity:0;animation:blip 6s ease-out infinite;animation-delay:var(--d)}
-.blip::after{content:"";position:absolute;inset:-6px;border-radius:50%;border:2px solid var(--pink);opacity:.6}
-@keyframes blip{0%{opacity:0;transform:scale(.4)}6%{opacity:1;transform:scale(1.15)}12%{transform:scale(1)}55%{opacity:.85}80%,100%{opacity:0}}
-.hero__in{position:relative;z-index:1}
-.badge{display:inline-flex;align-items:center;gap:10px;padding:9px 16px;border-radius:999px;border:1px solid var(--line-2);background:rgba(23,20,29,.7);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);font-weight:800;font-size:14px;color:#fff}
-.live{width:8px;height:8px;border-radius:50%;background:var(--pink);animation:live 1.8s infinite}
-@keyframes live{0%{box-shadow:0 0 0 0 rgba(247,41,92,.7)}70%{box-shadow:0 0 0 10px rgba(247,41,92,0)}100%{box-shadow:0 0 0 0 rgba(247,41,92,0)}}
-.hero h1{margin-top:28px;font-size:clamp(46px,8vw,104px);letter-spacing:-.035em;line-height:.98}
-.hero__lead{margin:26px auto 0;max-width:560px;font-size:clamp(18px,1.7vw,21px);color:#d9d3e2}
-.hero .stores{justify-content:center;margin-top:40px}
-.hero__note{margin-top:16px;font-size:14px;color:var(--muted)}
-.scroll-hint{position:absolute;bottom:26px;left:50%;transform:translateX(-50%);width:26px;height:42px;border:2px solid var(--line-2);border-radius:14px;z-index:1}
-.scroll-hint::after{content:"";position:absolute;left:50%;top:8px;width:4px;height:8px;margin-left:-2px;border-radius:2px;background:var(--pink);animation:wheel 1.8s infinite}
-@keyframes wheel{0%{opacity:0;transform:translateY(0)}30%{opacity:1}100%{opacity:0;transform:translateY(12px)}}
+.phone-img{position:absolute;width:auto;filter:drop-shadow(0 40px 50px rgba(0,0,0,.55))}
+.hero .phone-a{height:100%;left:50%;top:0;transform:translateX(-36%);z-index:2}
+.hero .phone-b{height:84%;left:50%;top:9%;transform:translateX(-104%) rotate(-7deg);opacity:.9;z-index:1}
+.chip{position:absolute;z-index:3;display:inline-flex;align-items:center;gap:10px;padding:12px 16px;border-radius:16px;background:#fff;color:#0a0a0c;font:700 14px/1.2 var(--display);box-shadow:0 18px 40px -16px rgba(0,0,0,.6)}
+.chip small{display:block;font:500 12px/1.3 var(--body);color:#55535c}
+.chip__dot{width:10px;height:10px;border-radius:50%;background:var(--pink);flex:none;animation:pulse 2s infinite}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(247,41,92,.6)}70%{box-shadow:0 0 0 10px rgba(247,41,92,0)}100%{box-shadow:0 0 0 0 rgba(247,41,92,0)}}
+.chip--a{right:2%;top:22%}
+.chip--b{left:0;bottom:14%}
+@media (max-width:900px){
+  .hero__grid{grid-template-columns:1fr}
+  .hero__visual{height:520px;margin-top:8px}
+  .chip--a{right:0}.chip--b{left:0}
+}
+@media (max-width:480px){.hero__visual{height:440px}.store{flex:1 1 150px;justify-content:center}}
+
+/* Markenfläche (Cash-App-Moment) */
+.brand-band{background:var(--pink);color:var(--ink)}
+.brand-band .container{padding-top:var(--section);padding-bottom:var(--section)}
+.brand-band h2{color:var(--ink);font-size:clamp(46px,8vw,118px);line-height:.94;letter-spacing:-.042em;max-width:12ch}
+.brand-band__row{margin-top:clamp(48px,6vw,80px);display:grid;grid-template-columns:1.1fr 2fr;gap:40px;align-items:start}
+.brand-band__row > p{font-size:20px;line-height:1.5;color:#1a0a10;max-width:420px}
+.pillars{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border-top:2px solid var(--ink)}
+.pillars div{padding:22px 20px 0 0}
+.pillars b{display:block;font:800 22px/1.15 var(--display);letter-spacing:-.02em;color:var(--ink)}
+.pillars span{display:block;margin-top:8px;font-size:15.5px;line-height:1.5;color:#2a0f18}
+@media (max-width:860px){.brand-band__row{grid-template-columns:1fr}.pillars{grid-template-columns:1fr}.pillars div{padding:20px 0;border-bottom:1px solid rgba(10,10,12,.25)}}
 
 /* Scrollytelling */
-.story{position:relative;padding:40px 0 60px}
-.story__grid{display:grid;grid-template-columns:1fr 1fr;gap:40px}
-.story__steps{grid-column:1;grid-row:1}
-.story__stage{grid-column:2;grid-row:1;position:sticky;top:calc(50vh - 330px);height:660px;display:flex;align-items:center;justify-content:center}
-.step{min-height:100vh;display:flex;flex-direction:column;justify-content:center;max-width:470px;opacity:.25;transition:opacity .5s}
-.step.is-active{opacity:1}
-.step__num{font-weight:900;font-size:14px;letter-spacing:.14em;color:var(--pink);text-transform:uppercase}
-.step h2{margin-top:16px;font-size:clamp(36px,4.6vw,58px);letter-spacing:-.03em}
-.step p{margin-top:18px;font-size:19px;max-width:420px}
-.step ul{list-style:none;padding:0;margin:22px 0 0;display:grid;gap:10px}
-.step li{display:flex;gap:12px;align-items:center;font-weight:700;color:#fff}
-.step li::before{content:"";width:22px;height:22px;flex:none;border-radius:50%;background:var(--pink) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 12.5l4 4 8-9'/%3E%3C/svg%3E") center/14px no-repeat}
-.dots{position:absolute;right:-6px;top:50%;transform:translateY(-50%);display:grid;gap:10px}
-.dots i{width:8px;height:8px;border-radius:50%;background:var(--line-2);transition:background .3s,transform .3s}
-.dots i.is-on{background:var(--pink);transform:scale(1.4)}
-.stage-glow{position:absolute;width:420px;height:420px;border-radius:50%;background:radial-gradient(circle,rgba(247,41,92,.35),transparent 65%);filter:blur(20px)}
-
-/* Echte App-Screenshots (bereits mit Handy-Rahmen) */
-.shots{position:relative;width:330px;aspect-ratio:640/1270}
-.shot{position:absolute;inset:0;width:100%;height:100%;opacity:0;transform:translateY(26px) scale(.96);transition:opacity .7s var(--ease),transform .7s var(--ease);filter:drop-shadow(0 40px 60px rgba(0,0,0,.6)) drop-shadow(0 0 50px rgba(247,41,92,.25))}
+.story{padding:var(--section) 0 calc(var(--section) * .5)}
+.story__head{max-width:760px;margin-bottom:clamp(24px,4vw,48px)}
+.story__head h2{margin-top:22px;font-size:clamp(40px,5.6vw,76px)}
+.story__grid{display:grid;grid-template-columns:1fr 1fr;gap:48px}
+.story__steps{grid-column:1;grid-row:1;position:relative}
+.story__stage{grid-column:2;grid-row:1;position:sticky;top:calc(50vh - 340px);height:680px;display:flex;align-items:center;justify-content:center}
+.progress{position:absolute;left:0;top:0;bottom:0;width:2px;background:var(--line)}
+.progress i{position:absolute;left:0;top:0;width:100%;height:0;background:var(--pink);transition:height var(--t-med) var(--ease-out)}
+.step{min-height:92vh;display:flex;flex-direction:column;justify-content:center;padding-left:40px;max-width:520px}
+.step__num{font:800 15px/1 var(--display);letter-spacing:.02em;color:var(--on-ink-2);transition:color var(--t-med)}
+.step h3{margin-top:18px;font-size:clamp(34px,4.2vw,56px);color:#55535c;transition:color var(--t-med)}
+.step p{margin-top:18px;font-size:19px;line-height:1.55;max-width:430px;color:#6c6a74;transition:color var(--t-med)}
+.step.is-active .step__num{color:var(--pink)}
+.step.is-active h3{color:#fff}
+.step.is-active p{color:#cfcdd6}
+.tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:22px}
+.tags span{padding:8px 14px;border-radius:999px;border:1px solid var(--line);font:600 14px/1 var(--body);color:#d8d6de}
+.shots{position:relative;height:100%;aspect-ratio:640/1270}
+.shot{position:absolute;inset:0;width:100%;height:100%;opacity:0;transform:translateY(18px) scale(.98);transition:opacity var(--t-med) var(--ease-out),transform var(--t-med) var(--ease-out);filter:drop-shadow(0 40px 50px rgba(0,0,0,.55))}
 .shot.is-on{opacity:1;transform:none}
-
-/* Mobile: Phone klebt oben, Text läuft darunter */
+.stage-rings{position:absolute;width:560px;aspect-ratio:1;border-radius:50%;border:1px solid var(--line);pointer-events:none}
+.stage-rings::after{content:"";position:absolute;inset:16%;border-radius:50%;border:1px solid var(--line)}
 @media (max-width:900px){
   .story__grid{grid-template-columns:1fr;gap:0}
-  .story__stage{grid-column:1;grid-row:1;top:64px;height:430px;z-index:2;background:linear-gradient(180deg,var(--bg) 82%,transparent)}
-  .story__steps{grid-column:1;grid-row:2;margin-top:-10px}
-  .shots{width:206px}
-  .dots{right:4px}
-  .step{min-height:78svh;justify-content:flex-start;padding-top:24px;opacity:.15}
-  .step h2{font-size:32px}
+  .story__stage{grid-column:1;grid-row:1;top:72px;height:420px;z-index:2;background:linear-gradient(180deg,var(--ink) 86%,rgba(10,10,12,0))}
+  .story__steps{grid-column:1;grid-row:2}
+  .stage-rings{width:380px}
+  .progress{display:none}
+  .step{min-height:72svh;justify-content:flex-start;padding:28px 0 0}
+  .step h3{font-size:32px}
   .step p{font-size:17px}
-  .stage-glow{width:300px;height:300px}
 }
 
-/* Clubs */
-.section{padding:clamp(80px,10vw,140px) 0}
-.kicker{font-weight:900;font-size:14px;letter-spacing:.14em;color:var(--pink);text-transform:uppercase}
-.title{margin-top:16px;font-size:clamp(36px,5vw,64px);letter-spacing:-.03em}
-.clubs{border-radius:36px;padding:clamp(32px,5vw,64px);background:radial-gradient(80% 80% at 100% 0%,rgba(92,20,48,.8),transparent 60%),var(--surface);border:1px solid var(--line)}
-.clubs__grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(32px,5vw,80px);align-items:start}
-.clubs__lead{margin-top:20px;font-size:19px;max-width:460px}
-.clubs .btn{margin-top:30px}
-.feat{display:grid;gap:12px}
-.feat div{display:flex;gap:14px;align-items:flex-start;padding:18px;border-radius:20px;background:rgba(255,255,255,.03);border:1px solid var(--line)}
-.feat i{width:42px;height:42px;flex:none;border-radius:14px;background:rgba(247,41,92,.14);display:grid;place-items:center}
-.feat svg{width:20px;height:20px;stroke:var(--pink);fill:none;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
-.feat b{display:block;color:#fff;font-size:17px}
-.feat span{font-size:15px}
-@media (max-width:820px){.clubs__grid{grid-template-columns:1fr}}
+/* Für Clubs – heller, ruhiger Abschnitt (Uber-Moment) */
+.clubs{background:var(--paper);color:var(--on-paper-2)}
+.clubs .container{padding-top:var(--section);padding-bottom:var(--section)}
+.clubs .eyebrow{color:var(--on-paper-2)}
+.clubs h2{color:var(--on-paper);margin-top:22px;font-size:clamp(38px,4.6vw,64px);max-width:16ch}
+.clubs__grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:clamp(40px,6vw,96px);align-items:end}
+.clubs__lead{margin-top:24px;font-size:19px;line-height:1.55;max-width:440px;color:var(--on-paper-2)}
+.clubs .btn{margin-top:32px}
+.cards{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.card{background:var(--paper-2);border-radius:var(--r-md);padding:26px;border:1px solid var(--line-dark)}
+.card__icon{width:48px;height:48px;border-radius:14px;background:var(--ink);display:grid;place-items:center}
+.card__icon svg{width:22px;height:22px;stroke:#fff;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.card h3{margin-top:22px;font-size:21px;letter-spacing:-.02em;color:var(--on-paper)}
+.card p{margin-top:8px;font-size:15.5px;line-height:1.5}
+@media (max-width:900px){.clubs__grid{grid-template-columns:1fr;align-items:start}}
+@media (max-width:520px){.cards{grid-template-columns:1fr}}
 
-/* Vertrauen */
-.trust{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-.trust div{padding:28px;border-radius:26px;background:var(--surface);border:1px solid var(--line)}
-.trust strong{display:block;color:#fff;font-size:24px;font-weight:900;margin-bottom:6px}
-@media (max-width:820px){.trust{grid-template-columns:1fr}}
+/* Werte */
+.values{padding:var(--section) 0 0}
+.values__grid{display:grid;grid-template-columns:repeat(3,1fr);gap:40px}
+.values__grid div{border-top:1px solid var(--line);padding-top:24px}
+.values__grid b{display:block;font:800 clamp(28px,3vw,40px)/1 var(--display);letter-spacing:-.035em;color:#fff}
+.values__grid span{display:block;margin-top:12px;font-size:16px;max-width:300px}
+@media (max-width:760px){.values__grid{grid-template-columns:1fr;gap:28px}}
 
-/* FAQ */
-.faq{max-width:820px;margin:40px auto 0;display:grid;gap:12px}
-.faq details{border-radius:22px;background:var(--surface);border:1px solid var(--line)}
-.faq details[open]{border-color:rgba(247,41,92,.35)}
-.faq summary{list-style:none;cursor:pointer;padding:22px 64px 22px 26px;position:relative;color:#fff;font-weight:800;font-size:18px}
+/* Fragen */
+.faq{padding:var(--section) 0}
+.faq__grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:clamp(40px,6vw,96px)}
+.faq h2{margin-top:22px;font-size:clamp(40px,5vw,64px)}
+.faq__list{border-top:1px solid var(--line)}
+.faq details{border-bottom:1px solid var(--line)}
+.faq summary{list-style:none;cursor:pointer;min-height:72px;display:flex;align-items:center;justify-content:space-between;gap:24px;padding:18px 0;font:700 clamp(18px,1.6vw,21px)/1.3 var(--display);letter-spacing:-.015em;color:#fff}
 .faq summary::-webkit-details-marker{display:none}
-.faq summary::after{content:"+";position:absolute;right:22px;top:50%;width:30px;height:30px;margin-top:-15px;border-radius:50%;display:grid;place-items:center;background:rgba(255,255,255,.07);font-size:20px;transition:transform .3s,background .3s}
-.faq details[open] summary::after{transform:rotate(45deg);background:var(--pink)}
-.faq details p{padding:0 26px 24px}
-.center{text-align:center}
+.faq summary i{position:relative;width:36px;height:36px;flex:none;border-radius:50%;border:1px solid var(--line);transition:background var(--t-fast),border-color var(--t-fast),transform var(--t-med) var(--ease-out)}
+.faq summary i::before,.faq summary i::after{content:"";position:absolute;left:50%;top:50%;width:14px;height:2px;margin:-1px 0 0 -7px;background:#fff;border-radius:2px}
+.faq summary i::after{transform:rotate(90deg)}
+.faq details[open] summary i{transform:rotate(45deg);background:var(--pink);border-color:var(--pink)}
+.faq summary:hover i{border-color:rgba(255,255,255,.35)}
+.faq details p{padding:0 56px 24px 0;font-size:17px}
+.faq a{color:var(--pink)}
+@media (max-width:860px){.faq__grid{grid-template-columns:1fr}}
 
 /* Download */
-.cta{position:relative;overflow:hidden;text-align:center;border-radius:40px;padding:clamp(60px,9vw,110px) var(--gutter);background:radial-gradient(70% 90% at 50% 0%,rgba(247,41,92,.55),transparent 70%),#140b11;border:1px solid rgba(247,41,92,.25)}
-.cta h2{font-size:clamp(38px,6vw,80px);letter-spacing:-.035em}
-.cta p{margin:20px auto 36px;max-width:500px;font-size:19px;color:#e6dfe9}
-.cta .stores{justify-content:center}
+.cta .container{padding-bottom:var(--section)}
+.cta__box{position:relative;overflow:hidden;border-radius:var(--r-lg);background:var(--pink);color:var(--ink);display:grid;grid-template-columns:1.2fr .8fr;align-items:end;min-height:520px}
+.cta__text{padding:clamp(40px,6vw,80px)}
+.cta h2{color:var(--ink);font-size:clamp(44px,6.6vw,96px);line-height:.94;letter-spacing:-.042em}
+.cta p{margin:22px 0 34px;font-size:20px;color:#1a0a10;max-width:420px}
+.cta__phone{position:relative;align-self:end;height:100%;min-height:440px}
+.cta__phone img{position:absolute;bottom:-28%;left:50%;transform:translateX(-50%) rotate(6deg);height:118%;width:auto;filter:drop-shadow(0 30px 40px rgba(10,10,12,.35))}
+@media (max-width:860px){.cta__box{grid-template-columns:1fr}.cta__phone{min-height:380px}.cta__phone img{height:150%;bottom:-70%}}
 
 /* Footer */
-.footer{border-top:1px solid var(--line);padding:56px 0 32px;font-size:15px;margin-top:clamp(80px,10vw,140px)}
-.footer__grid{display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:32px}
-.footer h3{font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:14px;font-weight:900}
-.footer ul{list-style:none;margin:0;padding:0;display:grid;gap:8px}
-.footer a{text-decoration:none;color:var(--body)}
+.footer{border-top:1px solid var(--line);padding:56px 0 32px;font-size:15px}
+.footer__grid{display:grid;grid-template-columns:1.6fr 1fr 1fr;gap:32px}
+.footer h3{font:600 13px/1 var(--body);letter-spacing:.12em;text-transform:uppercase;color:#77757e;margin-bottom:16px}
+.footer ul{list-style:none;margin:0;padding:0;display:grid;gap:4px}
+.footer li a,.footer address a{display:inline-flex;align-items:center;min-height:36px;text-decoration:none;color:#d8d6de}
 .footer a:hover{color:#fff}
 .footer address{font-style:normal;line-height:1.8}
-.footer__bottom{margin-top:48px;padding-top:22px;border-top:1px solid var(--line);display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;font-size:14px;color:var(--muted)}
-.draft{display:inline-flex;align-items:center;gap:8px;padding:4px 12px;border-radius:999px;border:1px dashed rgba(255,214,0,.5);color:#ffe27a;font-weight:800;font-size:12px}
+.footer__bottom{margin-top:48px;padding-top:24px;border-top:1px solid var(--line);display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;font-size:14px;color:#77757e}
+.draft{display:inline-flex;align-items:center;padding:6px 12px;border-radius:999px;border:1px dashed rgba(255,214,0,.55);color:#ffe27a;font-weight:600;font-size:12px}
 @media (max-width:720px){.footer__grid{grid-template-columns:1fr}}
 
 /* Erscheinen */
-.js .reveal{opacity:0;transform:translateY(24px);transition:opacity .8s var(--ease),transform .8s var(--ease)}
+.js .reveal{opacity:0;transform:translateY(20px);transition:opacity 400ms var(--ease-out),transform 400ms var(--ease-out);transition-delay:var(--d,0ms)}
 .js .reveal.in{opacity:1;transform:none}
 
 @media (prefers-reduced-motion:reduce){
   *,*::before,*::after{animation:none!important;transition:none!important}
   html{scroll-behavior:auto}
   .js .reveal{opacity:1;transform:none}
-  .blip{opacity:.8}
 }
 </style>
 </head>
 <body>
+<a class="skip" href="#main">Zum Inhalt springen</a>
 
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
   <defs>
-    <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 22s-7-6.2-7-12a7 7 0 0 1 14 0c0 5.8-7 12-7 12z" fill="#fff"/><circle cx="12" cy="10" r="2.6" fill="#f7295c"/></symbol>
-    <symbol id="i-radar" viewBox="0 0 24 24"><circle cx="12" cy="12" r="7.5" fill="none" stroke="#fff" stroke-width="2.4"/><circle cx="12" cy="12" r="2.6" fill="#fff"/></symbol>
-    <symbol id="i-music" viewBox="0 0 24 24"><path d="M9 18V6l11-2v12" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/><circle cx="6.5" cy="18" r="2.5" fill="#fff"/><circle cx="17.5" cy="16" r="2.5" fill="#fff"/></symbol>
-    <symbol id="i-bolt" viewBox="0 0 24 24"><path d="M13 2 4 14h7l-1 8 9-12h-7z" fill="currentColor"/></symbol>
-    <symbol id="i-user" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4" fill="none" stroke="currentColor" stroke-width="2.2"/><path d="M4 21a8 8 0 0 1 16 0" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></symbol>
-    <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7" fill="none" stroke="#fff" stroke-width="2.4"/><path d="m20 20-3.5-3.5" stroke="#fff" stroke-width="2.4" stroke-linecap="round"/></symbol>
-    <symbol id="i-send" viewBox="0 0 24 24"><path d="M4 12 20 4l-6 16-3-7z" fill="#fff"/></symbol>
-    <symbol id="i-heart" viewBox="0 0 24 24"><path d="M12 20.5s-8-4.6-8-10.4A4.5 4.5 0 0 1 12 7a4.5 4.5 0 0 1 8 3.1c0 5.8-8 10.4-8 10.4z" fill="#fff"/></symbol>
+    <symbol id="i-radar" viewBox="0 0 24 24"><circle cx="12" cy="12" r="7.2" fill="none" stroke="#0a0a0c" stroke-width="2.6"/><circle cx="12" cy="12" r="2.6" fill="#0a0a0c"/></symbol>
     <symbol id="i-apple" viewBox="0 0 24 24"><path d="M16.37 12.6c-.02-2.2 1.8-3.26 1.88-3.31-1.02-1.5-2.62-1.7-3.19-1.72-1.36-.14-2.65.8-3.34.8-.69 0-1.75-.78-2.88-.76-1.48.02-2.85.86-3.61 2.19-1.54 2.67-.39 6.62 1.11 8.79.73 1.06 1.6 2.25 2.75 2.2 1.1-.04 1.52-.71 2.85-.71 1.33 0 1.7.71 2.87.69 1.19-.02 1.94-1.08 2.66-2.14.84-1.23 1.19-2.42 1.21-2.48-.03-.01-2.32-.89-2.34-3.53zM14.2 6.14c.61-.74 1.02-1.76.9-2.78-.88.04-1.94.58-2.57 1.32-.56.65-1.06 1.69-.93 2.69.98.08 1.98-.5 2.6-1.23z"/></symbol>
     <symbol id="i-play" viewBox="0 0 24 24"><path d="M3.6 2.2c-.2.2-.3.6-.3 1v17.6c0 .4.1.8.3 1l9.9-9.8-9.9-9.8zm10.6 10.5 2.8 2.8-11.9 6.8 9.1-9.6zm0-1.4L5.1 1.7 17 8.5l-2.8 2.8zm3.6-2.4 3.2 1.8c.9.5.9 1.4 0 1.9l-3.2 1.8-3-3 3-2.5z"/></symbol>
   </defs>
@@ -208,146 +252,175 @@ a{color:inherit}
   <div class="header__in">
     <a class="logo" href="#top" aria-label="Mood Up – nach oben">
       <!-- PLATZHALTER: Originallogo -->
-      <span class="logo__icon"><svg><use href="#i-radar"/></svg></span>Mood Up
+      <span class="logo__mark" aria-hidden="true"><svg><use href="#i-radar"/></svg></span>Mood Up
     </a>
     <nav class="nav" aria-label="Hauptmenü">
-      <a href="#app">Die App</a>
+      <a href="#app">So funktioniert's</a>
       <a href="#clubs">Für Clubs</a>
       <a href="#fragen">Fragen</a>
     </nav>
-    <a class="btn btn--sm" href="#download">App laden</a>
+    <a class="btn btn--pink btn--sm" href="#download">App laden</a>
   </div>
 </header>
 
-<main id="top">
+<main id="main">
 
-  <!-- 1 · Hero: Party-Radar -->
-  <section class="hero">
-    <div class="radar" aria-hidden="true">
-      <span class="radar__ring"></span><span class="radar__ring"></span><span class="radar__ring"></span><span class="radar__ring"></span>
-      <span class="radar__sweep"></span>
-      <i class="blip" style="--x:64%;--y:30%;--d:.5s"></i>
-      <i class="blip" style="--x:78%;--y:55%;--d:1.4s"></i>
-      <i class="blip" style="--x:60%;--y:74%;--d:2.4s"></i>
-      <i class="blip" style="--x:34%;--y:70%;--d:3.4s"></i>
-      <i class="blip" style="--x:24%;--y:42%;--d:4.3s"></i>
-      <i class="blip" style="--x:42%;--y:22%;--d:5.2s"></i>
-    </div>
-    <div class="container hero__in">
-      <span class="badge reveal"><i class="live"></i>Partys live in deiner Nähe</span>
-      <h1 class="reveal">Dein Radar für<br><span class="pink">die besten Partys.</span></h1>
-      <p class="hero__lead reveal">Die interaktive Karte zeigt dir live, wo heute am meisten los ist. Ohne endloses Suchen.</p>
-      <div class="stores reveal">
-        <!-- PLATZHALTER: App-Store-Link «Mood Up - Party Radar» -->
-        <a class="store" href="#" rel="noopener"><svg><use href="#i-apple"/></svg><span><small>Laden im</small>App Store</span></a>
-        <!-- PLATZHALTER: Google-Play-Link -->
-        <a class="store" href="#" rel="noopener"><svg><use href="#i-play"/></svg><span><small>Jetzt bei</small>Google Play</span></a>
-      </div>
-      <p class="hero__note reveal">Gratis · Swiss made</p>
-    </div>
-    <span class="scroll-hint" aria-hidden="true"></span>
-  </section>
-
-  <!-- 2 · Scrollytelling: Screens wechseln beim Scrollen -->
-  <section class="story" id="app" aria-label="So funktioniert Mood Up">
-    <div class="container story__grid">
-
-      <div class="story__stage">
-        <div class="stage-glow" aria-hidden="true"></div>
-        <div class="shots">
-          <img class="shot is-on" src="img/screen-1.webp" width="640" height="1270" alt="Mood Up Live-Karte von Wil mit Bars und Clubs, Auswahl Heute oder Morgen">
-          <img class="shot" src="img/screen-2.webp" width="640" height="1270" alt="Mood Up Karte der ganzen Region mit Anzahl Partys pro Ort" loading="lazy">
-          <img class="shot" src="img/screen-3.webp" width="640" height="1270" alt="Mood Up Mood-Ansicht mit Specials und Bars &amp; Clubs" loading="lazy">
-          <img class="shot" src="img/screen-4.webp" width="640" height="1270" alt="Mood Up Liste der Clubs in der Nähe mit Musik, Öffnungszeit und Alter" loading="lazy">
-          <img class="shot" src="img/screen-5.webp" width="640" height="1270" alt="Mood Up Profil einer Location mit Folgen, Bar-Chat, Alter und Musik" loading="lazy">
+  <!-- 1 · Hero -->
+  <section class="hero" id="top">
+    <div class="container hero__grid">
+      <div>
+        <span class="eyebrow reveal">Party-Radar · Swiss made</span>
+        <h1 class="reveal" style="--d:60ms">Wo heute<br>die Party <em>ist.</em></h1>
+        <p class="hero__lead reveal" style="--d:120ms">Mood Up zeigt dir live auf der Karte, wo am meisten los ist. Bars, Clubs und Specials in deiner Nähe, ohne endloses Suchen.</p>
+        <div class="stores reveal" style="--d:180ms">
+          <!-- PLATZHALTER: App-Store-Link «Mood Up - Party Radar» -->
+          <a class="store" href="#" rel="noopener" aria-label="Mood Up im App Store laden"><svg aria-hidden="true"><use href="#i-apple"/></svg><span><small>Laden im</small>App Store</span></a>
+          <!-- PLATZHALTER: Google-Play-Link -->
+          <a class="store" href="#" rel="noopener" aria-label="Mood Up bei Google Play laden"><svg aria-hidden="true"><use href="#i-play"/></svg><span><small>Jetzt bei</small>Google Play</span></a>
         </div>
-        <div class="dots" aria-hidden="true"><i class="is-on"></i><i></i><i></i><i></i><i></i></div>
+        <p class="hero__meta reveal" style="--d:240ms">
+          <span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Gratis</span>
+          <span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>iPhone &amp; Android</span>
+          <span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Schweizer Datenschutz</span>
+        </p>
       </div>
 
-      <div class="story__steps">
-        <article class="step is-active" data-step="0">
-          <span class="step__num">01 · Live-Karte</span>
-          <h2>Sieh live, wo die Party ist.</h2>
-          <p>Die interaktive Karte zeigt dir die Bars, Clubs und Specials in deiner Nähe, heute, morgen oder an deinem Wunschdatum.</p>
-          <ul><li>Bars &amp; Clubs</li><li>Specials</li><li>Heute, morgen oder Kalender</li></ul>
-        </article>
-        <article class="step" data-step="1">
-          <span class="step__num">02 · Ganze Region</span>
-          <h2>Zoom raus.<br>Mehr Party.</h2>
-          <p>Auf einen Blick siehst du, wo in der ganzen Region am meisten los ist, ohne endloses Suchen.</p>
-        </article>
-        <article class="step" data-step="2">
-          <span class="step__num">03 · Mood</span>
-          <h2>Finde deinen Vibe.</h2>
-          <p>Specials mit Datum, Musikstil, Uhrzeit, Alter und Distanz. So weisst du sofort, ob es zu dir passt.</p>
-        </article>
-        <article class="step" data-step="3">
-          <span class="step__num">04 · In deiner Nähe</span>
-          <h2>Alle Bars &amp; Clubs<br>in deiner Nähe.</h2>
-          <p>Mit Musik, Öffnungszeit und Alter. Und mit der gefilterten Suche findest du genau, was du suchst.</p>
-        </article>
-        <article class="step" data-step="4">
-          <span class="step__num">05 · Location</span>
-          <h2>Alles über<br>die Location.</h2>
-          <p>Fotos, Distanz, Musik und Alter. Folge deinen Lieblings-Locations und chatte im Bar-Chat, sobald du eingecheckt bist.</p>
-        </article>
+      <div class="hero__visual reveal" style="--d:120ms">
+        <div class="rings" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+        <img class="phone-img phone-b" src="img/screen-1.webp" width="640" height="1270" alt="">
+        <img class="phone-img phone-a" src="img/screen-3.webp" width="640" height="1270" alt="Mood Up App: Specials und Bars & Clubs in deiner Nähe">
+        <div class="chip chip--a" aria-hidden="true"><span class="chip__dot"></span><span>Jetzt offen<small>225 m von dir</small></span></div>
+        <div class="chip chip--b" aria-hidden="true"><span>Special heute<small>21:00 – 03:00 · ab 18</small></span></div>
       </div>
     </div>
   </section>
 
-  <!-- 3 · Für Clubs -->
-  <section class="section" id="clubs">
+  <!-- 2 · Markenfläche -->
+  <section class="brand-band" aria-labelledby="band-title">
     <div class="container">
-      <div class="clubs reveal">
-        <div class="clubs__grid">
-          <div>
-            <span class="kicker">Für Clubs &amp; Veranstalter</span>
-            <h2 class="title">Volle Tanzfläche statt leerer Bar.</h2>
-            <p class="clubs__lead">Mit Mood Up erscheint deine Party auf der Live-Party-Map und erreicht genau die Leute, die heute ausgehen wollen.</p>
-            <a class="btn" href="mailto:info@mood-up.ch?subject=Mood%20Up%20f%C3%BCr%20unseren%20Club">Club anmelden</a>
-          </div>
-          <div class="feat">
-            <div><i><svg viewBox="0 0 24 24"><path d="M12 21s-7-6.1-7-11.5A7 7 0 0 1 19 9.5C19 14.9 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg></i><p><b>Auf der Live-Party-Map</b><span>Deine Partys sind dort sichtbar, wo Gäste entscheiden.</span></p></div>
-            <div><i><svg viewBox="0 0 24 24"><path d="M3 11l18-8-8 18-2-8z"/></svg></i><p><b>Marketing, das ankommt</b><span>Erreiche Leute, die heute Abend ausgehen wollen.</span></p></div>
-            <div><i><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4"/></svg></i><p><b>Stories</b><span>Zeig, wie die Stimmung gerade ist.</span></p></div>
-            <div><i><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></i><p><b>Chat mit Gästen</b><span>Beantworte Fragen direkt in der App.</span></p></div>
-          </div>
+      <h2 id="band-title" class="reveal">Schluss mit endlosem Suchen.</h2>
+      <div class="brand-band__row">
+        <p class="reveal">Ein Blick auf die Karte, und du weisst, wohin es heute geht.</p>
+        <div class="pillars">
+          <div class="reveal"><b>Live-Karte</b><span>Die beliebtesten Partys in deiner Nähe, in Echtzeit.</span></div>
+          <div class="reveal" style="--d:60ms"><b>Specials</b><span>Events mit Datum, Musik, Uhrzeit und Alter auf einen Blick.</span></div>
+          <div class="reveal" style="--d:120ms"><b>Bar-Chat</b><span>Direkt mit der Location schreiben, sobald du eingecheckt bist.</span></div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- 4 · Vertrauen -->
-  <section class="container">
-    <div class="trust">
-      <div class="reveal"><strong>Gratis</strong>Mood Up ist für Nutzerinnen und Nutzer kostenlos.</div>
-      <div class="reveal"><strong>Swiss made</strong>Entwickelt in Wil SG.</div>
-      <div class="reveal"><strong>Sicher</strong>Wir halten uns an das strenge Schweizer Datenschutzgesetz.</div>
-    </div>
-  </section>
-
-  <!-- 5 · Fragen -->
-  <section class="section" id="fragen">
+  <!-- 3 · Scrollytelling -->
+  <section class="story" id="app" aria-labelledby="story-title">
     <div class="container">
-      <div class="center reveal"><span class="kicker">Fragen</span><h2 class="title">Gut zu wissen.</h2></div>
-      <div class="faq">
-        <details class="reveal"><summary>Was ist Mood Up?</summary><p>Mood Up ist dein Party-Radar. Die interaktive Karte zeigt dir live die beliebtesten Partys in deiner Nähe, ohne endloses Suchen.</p></details>
-        <details class="reveal"><summary>Kostet Mood Up etwas?</summary><p>Nein, für Nutzerinnen und Nutzer ist Mood Up gratis.</p></details>
-        <details class="reveal"><summary>Gibt es Mood Up für iPhone und Android?</summary><p>Ja, Mood Up gibt es im App Store («Mood Up - Party Radar») und für Android.</p></details>
-        <details class="reveal"><summary>Wie kommt mein Club auf Mood Up?</summary><p>Schreib uns an <a href="mailto:info@mood-up.ch">info@mood-up.ch</a>, wir melden uns bei dir.</p></details>
-        <details class="reveal"><summary>Was passiert mit meinen Daten?</summary><p>Mood Up hält sich an das strenge Schweizer Datenschutzgesetz.</p></details>
+      <header class="story__head reveal">
+        <span class="eyebrow">So funktioniert's</span>
+        <h2 id="story-title">Dein Abend in fünf Schritten.</h2>
+      </header>
+      <div class="story__grid">
+        <div class="story__stage">
+          <div class="stage-rings" aria-hidden="true"></div>
+          <div class="shots">
+            <img class="shot is-on" src="img/screen-1.webp" width="640" height="1270" alt="Live-Karte von Wil mit Bars und Clubs, Auswahl Heute oder Morgen">
+            <img class="shot" src="img/screen-2.webp" width="640" height="1270" alt="Karte der ganzen Region mit Anzahl Partys pro Ort" loading="lazy">
+            <img class="shot" src="img/screen-3.webp" width="640" height="1270" alt="Mood-Ansicht mit Specials und Bars & Clubs" loading="lazy">
+            <img class="shot" src="img/screen-4.webp" width="640" height="1270" alt="Liste der Clubs in der Nähe mit Musik, Öffnungszeit und Alter" loading="lazy">
+            <img class="shot" src="img/screen-5.webp" width="640" height="1270" alt="Profil einer Location mit Folgen, Bar-Chat, Alter und Musik" loading="lazy">
+          </div>
+        </div>
+
+        <div class="story__steps">
+          <div class="progress" aria-hidden="true"><i></i></div>
+          <article class="step is-active" data-step="0">
+            <span class="step__num">01 — Live-Karte</span>
+            <h3>Sieh live, wo die Party ist.</h3>
+            <p>Die interaktive Karte zeigt dir Bars, Clubs und Specials in deiner Nähe. Für heute, morgen oder dein Wunschdatum.</p>
+            <div class="tags"><span>Bars &amp; Clubs</span><span>Specials</span><span>Heute · Morgen · Kalender</span></div>
+          </article>
+          <article class="step" data-step="1">
+            <span class="step__num">02 — Ganze Region</span>
+            <h3>Zoom raus. Mehr Party.</h3>
+            <p>Auf einen Blick siehst du, wo in der ganzen Region am meisten los ist.</p>
+          </article>
+          <article class="step" data-step="2">
+            <span class="step__num">03 — Mood</span>
+            <h3>Finde deinen Vibe.</h3>
+            <p>Specials mit Datum, Musikstil, Uhrzeit, Alter und Distanz. Du siehst sofort, ob es zu dir passt.</p>
+          </article>
+          <article class="step" data-step="3">
+            <span class="step__num">04 — In deiner Nähe</span>
+            <h3>Alle Bars &amp; Clubs um dich herum.</h3>
+            <p>Mit Musik, Öffnungszeit und Alter. Die gefilterte Suche bringt dich direkt zum Richtigen.</p>
+          </article>
+          <article class="step" data-step="4">
+            <span class="step__num">05 — Location</span>
+            <h3>Alles über die Location.</h3>
+            <p>Fotos, Distanz, Musik und Alter. Folge deinen Lieblings-Locations und chatte im Bar-Chat, sobald du eingecheckt bist.</p>
+          </article>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- 6 · Download -->
-  <section class="container" id="download">
-    <div class="cta reveal">
-      <h2>Wo geht's heute ab?</h2>
-      <p>Lade Mood Up gratis und finde es heraus.</p>
-      <div class="stores">
-        <a class="store" href="#" rel="noopener"><svg><use href="#i-apple"/></svg><span><small>Laden im</small>App Store</span></a>
-        <a class="store" href="#" rel="noopener"><svg><use href="#i-play"/></svg><span><small>Jetzt bei</small>Google Play</span></a>
+  <!-- 4 · Für Clubs -->
+  <section class="clubs" id="clubs" aria-labelledby="clubs-title">
+    <div class="container clubs__grid">
+      <div class="reveal">
+        <span class="eyebrow">Für Clubs &amp; Veranstalter</span>
+        <h2 id="clubs-title">Gefunden werden, wenn Gäste entscheiden.</h2>
+        <p class="clubs__lead">Mit Mood Up erscheinen deine Location und deine Partys auf der Live-Party-Map, genau dann, wenn die Leute planen, wohin es heute geht.</p>
+        <a class="btn btn--ink" href="mailto:info@mood-up.ch?subject=Mood%20Up%20f%C3%BCr%20unsere%20Location">Location anmelden
+          <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      </div>
+      <div class="cards">
+        <article class="card reveal"><div class="card__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 21s-7-6.1-7-11.5A7 7 0 0 1 19 9.5C19 14.9 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg></div><h3>Auf der Live-Party-Map</h3><p>Sichtbar für alle, die in deiner Nähe ausgehen wollen.</p></article>
+        <article class="card reveal" style="--d:60ms"><div class="card__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3l2.6 5.6 6 .7-4.5 4.1 1.2 6L12 16.4 6.7 19.4l1.2-6L3.4 9.3l6-.7z"/></svg></div><h3>Specials &amp; Events</h3><p>Präsentiere deine Partys mit Datum, Musik und Uhrzeit.</p></article>
+        <article class="card reveal" style="--d:120ms"><div class="card__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div><h3>Bar-Chat</h3><p>Sprich direkt mit deinen Gästen vor Ort.</p></article>
+        <article class="card reveal" style="--d:180ms"><div class="card__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M19 8v6M22 11h-6"/></svg></div><h3>Follower</h3><p>Gäste folgen deiner Location und bleiben dran.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5 · Werte -->
+  <section class="values" aria-label="Was Mood Up ausmacht">
+    <div class="container values__grid">
+      <div class="reveal"><b>Gratis.</b><span>Für Nutzerinnen und Nutzer kostet Mood Up nichts.</span></div>
+      <div class="reveal" style="--d:60ms"><b>Swiss made.</b><span>Entwickelt in Wil SG.</span></div>
+      <div class="reveal" style="--d:120ms"><b>Sicher.</b><span>Wir halten uns an das strenge Schweizer Datenschutzgesetz.</span></div>
+    </div>
+  </section>
+
+  <!-- 6 · Fragen -->
+  <section class="faq" id="fragen" aria-labelledby="faq-title">
+    <div class="container faq__grid">
+      <div class="reveal">
+        <span class="eyebrow">Fragen</span>
+        <h2 id="faq-title">Gut zu wissen.</h2>
+      </div>
+      <div class="faq__list">
+        <details class="reveal"><summary>Was ist Mood Up?<i aria-hidden="true"></i></summary><p>Mood Up ist dein Party-Radar. Die interaktive Karte zeigt dir live die beliebtesten Partys, Bars und Clubs in deiner Nähe.</p></details>
+        <details class="reveal"><summary>Kostet Mood Up etwas?<i aria-hidden="true"></i></summary><p>Nein, für Nutzerinnen und Nutzer ist Mood Up gratis.</p></details>
+        <details class="reveal"><summary>Gibt es Mood Up für iPhone und Android?<i aria-hidden="true"></i></summary><p>Ja. Im App Store findest du die App als «Mood Up - Party Radar», ausserdem gibt es sie für Android.</p></details>
+        <details class="reveal"><summary>Wie funktioniert der Bar-Chat?<i aria-hidden="true"></i></summary><p>Bist du in einer Location eingecheckt, kannst du im Bar-Chat direkt mit ihr schreiben.</p></details>
+        <details class="reveal"><summary>Wie kommt meine Location auf Mood Up?<i aria-hidden="true"></i></summary><p>Schreib uns an <a href="mailto:info@mood-up.ch">info@mood-up.ch</a>, wir melden uns bei dir.</p></details>
+        <details class="reveal"><summary>Was passiert mit meinen Daten?<i aria-hidden="true"></i></summary><p>Mood Up hält sich an das strenge Schweizer Datenschutzgesetz.</p></details>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7 · Download -->
+  <section class="cta" id="download" aria-labelledby="cta-title">
+    <div class="container">
+      <div class="cta__box reveal">
+        <div class="cta__text">
+          <h2 id="cta-title">Wo geht's heute ab?</h2>
+          <p>Lade Mood Up gratis und finde es in Sekunden heraus.</p>
+          <div class="stores">
+            <a class="store store--ink" href="#" rel="noopener" aria-label="Mood Up im App Store laden"><svg aria-hidden="true"><use href="#i-apple"/></svg><span><small>Laden im</small>App Store</span></a>
+            <a class="store store--ink" href="#" rel="noopener" aria-label="Mood Up bei Google Play laden"><svg aria-hidden="true"><use href="#i-play"/></svg><span><small>Jetzt bei</small>Google Play</span></a>
+          </div>
+        </div>
+        <div class="cta__phone"><img src="img/screen-5.webp" width="640" height="1270" alt="" loading="lazy"></div>
       </div>
     </div>
   </section>
@@ -357,12 +430,12 @@ a{color:inherit}
   <div class="container">
     <div class="footer__grid">
       <div>
-        <a class="logo" href="#top"><span class="logo__icon"><svg><use href="#i-radar"/></svg></span>Mood Up</a>
+        <a class="logo" href="#top"><span class="logo__mark" aria-hidden="true"><svg><use href="#i-radar"/></svg></span>Mood Up</a>
         <p style="margin-top:14px">Dein Party-Radar. Swiss made.</p>
       </div>
       <div>
         <h3>App</h3>
-        <ul><li><a href="#app">Die App</a></li><li><a href="#clubs">Für Clubs</a></li><li><a href="#fragen">Fragen</a></li></ul>
+        <ul><li><a href="#app">So funktioniert's</a></li><li><a href="#clubs">Für Clubs</a></li><li><a href="#fragen">Fragen</a></li></ul>
       </div>
       <div>
         <h3>Kontakt</h3>
@@ -386,22 +459,23 @@ a{color:inherit}
   var solid = function(){ header.classList.toggle("is-solid", scrollY > 10); };
   solid(); addEventListener("scroll", solid, {passive:true});
 
-  /* Screens wechseln je nach aktivem Abschnitt */
+  /* Scrollytelling: aktiver Schritt wechselt den Screen */
   var steps = document.querySelectorAll(".step");
-  var screens = document.querySelectorAll(".shot");
-  var dots = document.querySelectorAll(".dots i");
+  var shots = document.querySelectorAll(".shot");
+  var bar = document.querySelector(".progress i");
   var current = 0;
   function activate(i){
     if (i === current) return;
     current = i;
     steps.forEach(function(s,j){ s.classList.toggle("is-active", j === i); });
-    screens.forEach(function(s,j){ s.classList.toggle("is-on", j === i); });
-    dots.forEach(function(d,j){ d.classList.toggle("is-on", j === i); });
+    shots.forEach(function(s,j){ s.classList.toggle("is-on", j === i); });
+    if (bar) bar.style.height = ((i + 1) / steps.length * 100) + "%";
   }
+  if (bar) bar.style.height = (100 / steps.length) + "%";
   var mobile = matchMedia("(max-width: 900px)").matches;
   var io = new IntersectionObserver(function(entries){
     entries.forEach(function(e){ if (e.isIntersecting) activate(+e.target.dataset.step); });
-  }, { rootMargin: mobile ? "-62% 0px -30% 0px" : "-48% 0px -48% 0px" });
+  }, { rootMargin: mobile ? "-60% 0px -32% 0px" : "-48% 0px -48% 0px" });
   steps.forEach(function(s){ io.observe(s); });
 
   /* Erscheinen beim Scrollen */
