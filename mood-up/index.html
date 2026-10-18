@@ -85,8 +85,8 @@ img{display:block;max-width:100%;height:auto}
 
 /* Hero */
 .hero{position:relative;overflow:hidden;padding:clamp(120px,14vw,170px) 0 clamp(64px,8vw,110px)}
-.hero__grid{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(32px,5vw,72px);align-items:center}
-.hero h1{margin-top:28px;font-size:clamp(52px,8vw,116px);line-height:.94;letter-spacing:-.042em}
+.hero__grid{display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(32px,5vw,72px);align-items:center}
+.hero h1{margin-top:26px;font-size:clamp(50px,6.6vw,98px);line-height:.98;letter-spacing:-.042em}
 .hero h1 em{font-style:normal;color:var(--pink)}
 .hero__lead{margin-top:28px;max-width:500px;font-size:clamp(18px,1.6vw,21px);line-height:1.55;color:#cfcdd6}
 .hero .stores{margin-top:40px}
@@ -100,15 +100,12 @@ img{display:block;max-width:100%;height:auto}
 .rings i:nth-child(1){width:34%;height:34%}.rings i:nth-child(2){width:56%;height:56%}.rings i:nth-child(3){width:78%;height:78%}.rings i:nth-child(4){width:100%;height:100%}
 .rings b{position:absolute;inset:0;border-radius:50%;background:conic-gradient(from 0deg,rgba(247,41,92,.16),transparent 18%);animation:sweep 9s linear infinite;-webkit-mask:radial-gradient(circle,#000 49%,transparent 50%);mask:radial-gradient(circle,#000 49%,transparent 50%)}
 @keyframes sweep{to{transform:rotate(360deg)}}
-.phone-img{position:absolute;width:auto;filter:drop-shadow(0 40px 50px rgba(0,0,0,.55))}
-.hero .phone-a{height:100%;left:50%;top:0;transform:translateX(-36%);z-index:2}
-.hero .phone-b{height:84%;left:50%;top:9%;transform:translateX(-104%) rotate(-7deg);opacity:.9;z-index:1}
 .chip{position:absolute;z-index:3;display:inline-flex;align-items:center;gap:10px;padding:12px 16px;border-radius:16px;background:#fff;color:#0a0a0c;font:700 14px/1.2 var(--display);box-shadow:0 18px 40px -16px rgba(0,0,0,.6)}
 .chip small{display:block;font:500 12px/1.3 var(--body);color:#55535c}
 .chip__dot{width:10px;height:10px;border-radius:50%;background:var(--pink);flex:none;animation:pulse 2s infinite}
 @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(247,41,92,.6)}70%{box-shadow:0 0 0 10px rgba(247,41,92,0)}100%{box-shadow:0 0 0 0 rgba(247,41,92,0)}}
-.chip--a{right:2%;top:22%}
-.chip--b{left:0;bottom:14%}
+.chip--a{right:0;top:12%;z-index:4}
+.chip--b{left:2%;bottom:8%;z-index:4}
 @media (max-width:900px){
   .hero__grid{grid-template-columns:1fr}
   .hero__visual{height:520px;margin-top:8px}
@@ -119,7 +116,7 @@ img{display:block;max-width:100%;height:auto}
 /* Markenfläche (Cash-App-Moment) */
 .brand-band{background:var(--pink);color:var(--ink)}
 .brand-band .container{padding-top:var(--section);padding-bottom:var(--section)}
-.brand-band h2{color:var(--ink);font-size:clamp(46px,8vw,118px);line-height:.94;letter-spacing:-.042em;max-width:12ch}
+.brand-band h2{color:var(--ink);font-size:clamp(46px,7.4vw,112px);line-height:.98;letter-spacing:-.042em;max-width:14ch}
 .brand-band__row{margin-top:clamp(48px,6vw,80px);display:grid;grid-template-columns:1.1fr 2fr;gap:40px;align-items:start}
 .brand-band__row > p{font-size:20px;line-height:1.5;color:#1a0a10;max-width:420px}
 .pillars{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border-top:2px solid var(--ink)}
@@ -129,7 +126,7 @@ img{display:block;max-width:100%;height:auto}
 @media (max-width:860px){.brand-band__row{grid-template-columns:1fr}.pillars{grid-template-columns:1fr}.pillars div{padding:20px 0;border-bottom:1px solid rgba(10,10,12,.25)}}
 
 /* Scrollytelling */
-.story{padding:var(--section) 0 calc(var(--section) * .5)}
+.story{padding:var(--section) 0 calc(var(--section) * .5);overflow-x:clip}
 .story__head{max-width:760px;margin-bottom:clamp(24px,4vw,48px)}
 .story__head h2{margin-top:22px;font-size:clamp(40px,5.6vw,76px)}
 .story__grid{display:grid;grid-template-columns:1fr 1fr;gap:48px}
@@ -155,7 +152,7 @@ img{display:block;max-width:100%;height:auto}
   .story__grid{grid-template-columns:1fr;gap:0}
   .story__stage{grid-column:1;grid-row:1;top:72px;height:420px;z-index:2;background:linear-gradient(180deg,var(--ink) 86%,rgba(10,10,12,0))}
   .story__steps{grid-column:1;grid-row:2}
-  .stage-rings{width:380px}
+  .stage-rings{width:min(380px,90vw)}
   .progress{display:none}
   .step{min-height:72svh;justify-content:flex-start;padding:28px 0 0}
   .step h3{font-size:32px}
@@ -215,7 +212,7 @@ img{display:block;max-width:100%;height:auto}
 @media (max-width:860px){.cta__box{grid-template-columns:1fr}.cta__phone{min-height:380px}.cta__phone img{height:150%;bottom:-70%}}
 
 /* Footer */
-.footer{border-top:1px solid var(--line);padding:56px 0 32px;font-size:15px}
+.footer{border-top:1px solid var(--line);padding:56px 0 0;font-size:15px;overflow:hidden}
 .footer__grid{display:grid;grid-template-columns:1.6fr 1fr 1fr;gap:32px}
 .footer h3{font:600 13px/1 var(--body);letter-spacing:.12em;text-transform:uppercase;color:#77757e;margin-bottom:16px}
 .footer ul{list-style:none;margin:0;padding:0;display:grid;gap:4px}
@@ -226,11 +223,62 @@ img{display:block;max-width:100%;height:auto}
 .draft{display:inline-flex;align-items:center;padding:6px 12px;border-radius:999px;border:1px dashed rgba(255,214,0,.55);color:#ffe27a;font-weight:600;font-size:12px}
 @media (max-width:720px){.footer__grid{grid-template-columns:1fr}}
 
+/* ===== Kreative Momente ===== */
+/* Wort-Wechsel im Hero */
+.rotator{display:block;position:relative;height:1.06em;margin-top:-.14em;overflow:hidden;color:var(--pink)}
+.rotator span{position:absolute;left:0;top:0;line-height:1.06;white-space:nowrap;transform:translateY(140%);opacity:0;transition:transform 520ms var(--ease-out),opacity 520ms var(--ease-out)}
+.rotator span.is-on{transform:none;opacity:1}
+.rotator span.is-out{transform:translateY(-140%);opacity:0}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+
+/* Handy-Fächer mit Maus-Tiefe */
+.fan{position:absolute;inset:0;perspective:1400px}
+.fan__in{position:absolute;inset:0;transform-style:preserve-3d;transition:transform 600ms var(--ease-out)}
+.fan img{position:absolute;top:50%;left:50%;height:92%;width:auto;filter:drop-shadow(0 40px 50px rgba(0,0,0,.55));transition:transform 900ms var(--ease-out)}
+.fan .f1{transform:translate(-118%,-48%) rotate(-11deg) scale(.82)}
+.fan .f2{transform:translate(-50%,-50%);z-index:2}
+.fan .f3{transform:translate(18%,-48%) rotate(11deg) scale(.82)}
+.js .hero__visual:not(.in) .f1,.js .hero__visual:not(.in) .f3{transform:translate(-50%,-50%) scale(.9)}
+
+/* Laufband, bewegt sich mit dem Scrollen */
+.marquee{overflow:hidden;padding:clamp(28px,4vw,48px) 0;border-block:1px solid var(--line)}
+.marquee__row{display:flex;width:max-content;gap:40px;will-change:transform}
+.marquee__row span{display:inline-flex;align-items:center;gap:40px;font:800 clamp(48px,8vw,120px)/1 var(--display);letter-spacing:-.04em;color:#fff;white-space:nowrap}
+.marquee__row span:nth-child(even){color:transparent;-webkit-text-stroke:1.5px rgba(255,255,255,.45)}
+.marquee__row span::after{content:"";width:.28em;height:.28em;border-radius:50%;background:var(--pink);flex:none}
+.marquee__row--b span{color:transparent;-webkit-text-stroke:1.5px rgba(255,255,255,.3)}
+.marquee__row--b span:nth-child(even){color:var(--pink);-webkit-text-stroke:0}
+.marquee__row + .marquee__row{margin-top:12px}
+
+/* Durchstreichen in der Markenfläche */
+.strike{position:relative;white-space:nowrap}
+.strike::after{content:"";position:absolute;left:-2%;right:-2%;top:54%;height:.11em;background:var(--ink);border-radius:.06em;transform:scaleX(0) rotate(-2deg);transform-origin:left center;transition:transform 900ms var(--ease-out) 300ms}
+.in .strike::after,.no-js .strike::after{transform:scaleX(1) rotate(-2deg)}
+.brand-band__kick{display:block;margin-top:.12em;color:#fff}
+
+/* Grosse Schritt-Nummer hinter dem Handy */
+.bignum{position:absolute;left:-6%;top:6%;font:800 clamp(200px,20vw,300px)/.8 var(--display);letter-spacing:-.06em;color:transparent;-webkit-text-stroke:1.5px rgba(247,41,92,.5);pointer-events:none;user-select:none;transition:opacity 300ms}
+.bignum.swap{opacity:0}
+.shot{rotate:var(--rot,0deg)}
+.shot:nth-child(odd){--rot:-2.5deg}.shot:nth-child(even){--rot:2.5deg}
+
+/* Riesiger Schriftzug im Footer */
+.wordmark{display:block;margin-top:56px;padding-bottom:.22em;font:800 clamp(72px,19vw,300px)/.9 var(--display);letter-spacing:-.06em;color:var(--pink);white-space:nowrap;text-align:center;user-select:none}
+.wordmark span{display:inline-block;transition:transform 500ms var(--ease-out)}
+
+@media (max-width:900px){
+  .bignum{display:none}
+  .fan .f1{transform:translate(-112%,-46%) rotate(-10deg) scale(.78)}
+  .fan .f3{transform:translate(12%,-46%) rotate(10deg) scale(.78)}
+}
+
 /* Erscheinen */
 .js .reveal{opacity:0;transform:translateY(20px);transition:opacity 400ms var(--ease-out),transform 400ms var(--ease-out);transition-delay:var(--d,0ms)}
 .js .reveal.in{opacity:1;transform:none}
 
 @media (prefers-reduced-motion:reduce){
+  .rotator span{transform:none!important;opacity:0!important}.rotator span:first-child{opacity:1!important}
+  .strike::after{transform:scaleX(1) rotate(-2deg)!important}
   *,*::before,*::after{animation:none!important;transition:none!important}
   html{scroll-behavior:auto}
   .js .reveal{opacity:1;transform:none}
@@ -270,8 +318,11 @@ img{display:block;max-width:100%;height:auto}
     <div class="container hero__grid">
       <div>
         <span class="eyebrow reveal">Party-Radar · Swiss made</span>
-        <h1 class="reveal" style="--d:60ms">Wo heute<br>die Party <em>ist.</em></h1>
-        <p class="hero__lead reveal" style="--d:120ms">Mood Up zeigt dir live auf der Karte, wo am meisten los ist. Bars, Clubs und Specials in deiner Nähe, ohne endloses Suchen.</p>
+        <h1 class="reveal" style="--d:60ms">Heute Nacht<br>läuft
+          <span class="rotator" aria-hidden="true"><span class="is-on">Techno.</span><span>Rock.</span><span>80s Hits.</span><span>Hip-Hop.</span><span>House.</span></span>
+          <span class="sr-only">deine Musik.</span>
+        </h1>
+        <p class="hero__lead reveal" style="--d:120ms">Mood Up ist dein Party-Radar: Die Karte zeigt dir live, wo am meisten los ist. Bars, Clubs und Specials in deiner Nähe, ohne endloses Suchen.</p>
         <div class="stores reveal" style="--d:180ms">
           <!-- PLATZHALTER: App-Store-Link «Mood Up - Party Radar» -->
           <a class="store" href="#" rel="noopener" aria-label="Mood Up im App Store laden"><svg aria-hidden="true"><use href="#i-apple"/></svg><span><small>Laden im</small>App Store</span></a>
@@ -287,20 +338,29 @@ img{display:block;max-width:100%;height:auto}
 
       <div class="hero__visual reveal" style="--d:120ms">
         <div class="rings" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
-        <img class="phone-img phone-b" src="img/screen-1.webp" width="640" height="1270" alt="">
-        <img class="phone-img phone-a" src="img/screen-3.webp" width="640" height="1270" alt="Mood Up App: Specials und Bars & Clubs in deiner Nähe">
+        <div class="fan" data-fan><div class="fan__in">
+          <img class="f1" src="img/screen-1.webp" width="640" height="1270" alt="">
+          <img class="f3" src="img/screen-5.webp" width="640" height="1270" alt="">
+          <img class="f2" src="img/screen-3.webp" width="640" height="1270" alt="Mood Up App: Specials und Bars &amp; Clubs in deiner Nähe">
+        </div></div>
         <div class="chip chip--a" aria-hidden="true"><span class="chip__dot"></span><span>Jetzt offen<small>225 m von dir</small></span></div>
         <div class="chip chip--b" aria-hidden="true"><span>Special heute<small>21:00 – 03:00 · ab 18</small></span></div>
       </div>
     </div>
   </section>
 
+  <!-- Laufband -->
+  <div class="marquee" aria-hidden="true">
+    <div class="marquee__row" data-speed="-0.35"><span>Techno</span><span>Rock</span><span>80s Hits</span><span>Melodic Techno</span><span>Hip-Hop</span><span>House</span><span>Techno</span><span>Rock</span><span>80s Hits</span><span>Melodic Techno</span></div>
+    <div class="marquee__row marquee__row--b" data-speed="0.25"><span>Bars</span><span>Clubs</span><span>Specials</span><span>Bar-Chat</span><span>Live-Karte</span><span>Bars</span><span>Clubs</span><span>Specials</span><span>Bar-Chat</span><span>Live-Karte</span></div>
+  </div>
+
   <!-- 2 · Markenfläche -->
   <section class="brand-band" aria-labelledby="band-title">
     <div class="container">
-      <h2 id="band-title" class="reveal">Schluss mit endlosem Suchen.</h2>
+      <h2 id="band-title" class="reveal">Schluss mit <span class="strike">endlosem Suchen.</span><span class="brand-band__kick">Ein Blick genügt.</span></h2>
       <div class="brand-band__row">
-        <p class="reveal">Ein Blick auf die Karte, und du weisst, wohin es heute geht.</p>
+        <p class="reveal">Öffne die Karte, und du weisst, wohin es heute geht.</p>
         <div class="pillars">
           <div class="reveal"><b>Live-Karte</b><span>Die beliebtesten Partys in deiner Nähe, in Echtzeit.</span></div>
           <div class="reveal" style="--d:60ms"><b>Specials</b><span>Events mit Datum, Musik, Uhrzeit und Alter auf einen Blick.</span></div>
@@ -320,6 +380,7 @@ img{display:block;max-width:100%;height:auto}
       <div class="story__grid">
         <div class="story__stage">
           <div class="stage-rings" aria-hidden="true"></div>
+          <div class="bignum" aria-hidden="true" data-bignum>01</div>
           <div class="shots">
             <img class="shot is-on" src="img/screen-1.webp" width="640" height="1270" alt="Live-Karte von Wil mit Bars und Clubs, Auswahl Heute oder Morgen">
             <img class="shot" src="img/screen-2.webp" width="640" height="1270" alt="Karte der ganzen Region mit Anzahl Partys pro Ort" loading="lazy">
@@ -447,6 +508,7 @@ img{display:block;max-width:100%;height:auto}
       <!-- PLATZHALTER: Impressum, Datenschutz, Social Links -->
       <span class="draft">Entwurf · nicht online</span>
     </div>
+    <span class="wordmark" aria-hidden="true" data-wordmark><span>M</span><span>o</span><span>o</span><span>d</span>&nbsp;<span>U</span><span>p</span></span>
   </div>
 </footer>
 
@@ -464,12 +526,14 @@ img{display:block;max-width:100%;height:auto}
   var shots = document.querySelectorAll(".shot");
   var bar = document.querySelector(".progress i");
   var current = 0;
+  var bignum = document.querySelector("[data-bignum]");
   function activate(i){
     if (i === current) return;
     current = i;
     steps.forEach(function(s,j){ s.classList.toggle("is-active", j === i); });
     shots.forEach(function(s,j){ s.classList.toggle("is-on", j === i); });
     if (bar) bar.style.height = ((i + 1) / steps.length * 100) + "%";
+    if (bignum) { bignum.classList.add("swap"); setTimeout(function(){ bignum.textContent = "0" + (i + 1); bignum.classList.remove("swap"); }, 200); }
   }
   if (bar) bar.style.height = (100 / steps.length) + "%";
   var mobile = matchMedia("(max-width: 900px)").matches;
@@ -486,6 +550,59 @@ img{display:block;max-width:100%;height:auto}
       entries.forEach(function(e){ if (e.isIntersecting){ e.target.classList.add("in"); ro.unobserve(e.target); } });
     }, { rootMargin: "0px 0px -8% 0px" });
     els.forEach(function(e){ ro.observe(e); });
+  }
+
+  /* Wort-Wechsel */
+  var words = document.querySelectorAll(".rotator span");
+  if (!reduce && words.length) {
+    var w = 0;
+    setInterval(function(){
+      var cur = words[w]; w = (w + 1) % words.length; var nxt = words[w];
+      cur.classList.remove("is-on"); cur.classList.add("is-out");
+      nxt.classList.remove("is-out"); nxt.classList.add("is-on");
+      setTimeout(function(){ cur.classList.remove("is-out"); }, 560);
+    }, 2200);
+  }
+
+  /* Handy-Fächer folgt der Maus */
+  var fan = document.querySelector("[data-fan] .fan__in");
+  if (fan && !reduce && matchMedia("(hover:hover) and (pointer:fine)").matches) {
+    var hero = document.querySelector(".hero");
+    hero.addEventListener("mousemove", function(e){
+      var x = e.clientX / innerWidth - .5, y = e.clientY / innerHeight - .5;
+      fan.style.transform = "rotateY(" + (x*10).toFixed(2) + "deg) rotateX(" + (-y*8).toFixed(2) + "deg)";
+    });
+    hero.addEventListener("mouseleave", function(){ fan.style.transform = ""; });
+  }
+
+  /* Laufband mit Scroll-Bewegung */
+  var rows = document.querySelectorAll("[data-speed]");
+  var ticking = false;
+  function moveRows(){
+    rows.forEach(function(r){
+      var rect = r.getBoundingClientRect();
+      var off = (rect.top - innerHeight) * parseFloat(r.dataset.speed);
+      r.style.transform = "translate3d(" + (off - (parseFloat(r.dataset.speed) > 0 ? r.scrollWidth*.25 : 0)).toFixed(1) + "px,0,0)";
+    });
+    ticking = false;
+  }
+  if (rows.length && !reduce) {
+    moveRows();
+    addEventListener("scroll", function(){ if (!ticking){ ticking = true; requestAnimationFrame(moveRows); } }, {passive:true});
+  }
+
+  /* Wortmarke: Buchstaben weichen der Maus aus */
+  var wm = document.querySelector("[data-wordmark]");
+  if (wm && !reduce && matchMedia("(hover:hover) and (pointer:fine)").matches) {
+    var letters = wm.querySelectorAll("span");
+    wm.addEventListener("mousemove", function(e){
+      letters.forEach(function(l){
+        var r = l.getBoundingClientRect(), cx = r.left + r.width/2;
+        var d = Math.max(0, 1 - Math.abs(e.clientX - cx) / 260);
+        l.style.transform = "translateY(" + (-d*28).toFixed(1) + "px)";
+      });
+    });
+    wm.addEventListener("mouseleave", function(){ letters.forEach(function(l){ l.style.transform = ""; }); });
   }
 
   document.querySelectorAll("[data-year]").forEach(function(e){ e.textContent = new Date().getFullYear(); });
