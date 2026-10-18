@@ -129,34 +129,36 @@ img{display:block;max-width:100%;height:auto}
 .story{padding:var(--section) 0 calc(var(--section) * .5);overflow-x:clip}
 .story__head{max-width:760px;margin-bottom:clamp(24px,4vw,48px)}
 .story__head h2{margin-top:22px;font-size:clamp(40px,5.6vw,76px)}
-.story__grid{display:grid;grid-template-columns:1fr 1fr;gap:48px}
-.story__steps{grid-column:1;grid-row:1;position:relative}
-.story__stage{grid-column:2;grid-row:1;position:sticky;top:calc(50vh - 340px);height:680px;display:flex;align-items:center;justify-content:center}
+.story__grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(24px,4vw,64px)}
+.story__steps{grid-column:1;grid-row:1;position:relative;min-width:0}
+.story__stage{grid-column:2;grid-row:1;position:sticky;top:72px;height:calc(100vh - 72px);max-height:860px;min-width:0;display:flex;align-items:center;justify-content:center}
 .progress{position:absolute;left:0;top:0;bottom:0;width:2px;background:var(--line)}
 .progress i{position:absolute;left:0;top:0;width:100%;height:0;background:var(--pink);transition:height var(--t-med) var(--ease-out)}
-.step{min-height:92vh;display:flex;flex-direction:column;justify-content:center;padding-left:40px;max-width:520px}
-.step__num{font:800 15px/1 var(--display);letter-spacing:.02em;color:var(--on-ink-2);transition:color var(--t-med)}
-.step h3{margin-top:18px;font-size:clamp(34px,4.2vw,56px);color:#55535c;transition:color var(--t-med)}
-.step p{margin-top:18px;font-size:19px;line-height:1.55;max-width:430px;color:#6c6a74;transition:color var(--t-med)}
+.step{min-height:78vh;display:flex;flex-direction:column;justify-content:center;padding-left:clamp(20px,2.6vw,36px);max-width:460px}
+.step__num{font:800 14px/1 var(--display);letter-spacing:.02em;color:var(--on-ink-2);transition:color var(--t-med)}
+.step h3{margin-top:14px;font-size:clamp(30px,3.3vw,46px);line-height:1.02;color:#55535c;transition:color var(--t-med)}
+.step p{margin-top:14px;font-size:17.5px;line-height:1.55;max-width:400px;color:#6c6a74;transition:color var(--t-med)}
 .step.is-active .step__num{color:var(--pink)}
 .step.is-active h3{color:#fff}
 .step.is-active p{color:#cfcdd6}
-.tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:22px}
-.tags span{padding:8px 14px;border-radius:999px;border:1px solid var(--line);font:600 14px/1 var(--body);color:#d8d6de}
-.shots{position:relative;height:100%;aspect-ratio:640/1270}
+.tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:18px}
+.tags span{padding:7px 12px;border-radius:999px;border:1px solid var(--line);font:600 13px/1 var(--body);color:#d8d6de}
+/* Handy richtet sich nach Breite UND Höhe, wird nie abgeschnitten */
+.shots{position:relative;z-index:1;width:min(320px,100%,calc((100vh - 160px) * .504));aspect-ratio:640/1270}
 .shot{position:absolute;inset:0;width:100%;height:100%;opacity:0;transform:translateY(18px) scale(.98);transition:opacity var(--t-med) var(--ease-out),transform var(--t-med) var(--ease-out);filter:drop-shadow(0 40px 50px rgba(0,0,0,.55))}
 .shot.is-on{opacity:1;transform:none}
-.stage-rings{position:absolute;width:560px;aspect-ratio:1;border-radius:50%;border:1px solid var(--line);pointer-events:none}
+.stage-rings{position:absolute;width:min(520px,112%);aspect-ratio:1;border-radius:50%;border:1px solid var(--line);pointer-events:none}
 .stage-rings::after{content:"";position:absolute;inset:16%;border-radius:50%;border:1px solid var(--line)}
 @media (max-width:900px){
-  .story__grid{grid-template-columns:1fr;gap:0}
-  .story__stage{grid-column:1;grid-row:1;top:72px;height:420px;z-index:2;background:linear-gradient(180deg,var(--ink) 86%,rgba(10,10,12,0))}
+  .story__grid{grid-template-columns:minmax(0,1fr);gap:0}
+  .story__stage{grid-column:1;grid-row:1;top:64px;height:min(54svh,460px);z-index:2;padding:12px 0;background:linear-gradient(180deg,var(--ink) 88%,rgba(10,10,12,0))}
   .story__steps{grid-column:1;grid-row:2}
-  .stage-rings{width:min(380px,90vw)}
+  .shots{width:auto;height:100%}
+  .stage-rings{width:min(360px,88vw)}
   .progress{display:none}
-  .step{min-height:72svh;justify-content:flex-start;padding:28px 0 0}
-  .step h3{font-size:32px}
-  .step p{font-size:17px}
+  .step{min-height:62svh;justify-content:flex-start;padding:20px 0 0;max-width:560px}
+  .step h3{font-size:clamp(26px,7vw,34px)}
+  .step p{font-size:16.5px;max-width:none}
 }
 
 /* Für Clubs – heller, ruhiger Abschnitt (Uber-Moment) */
@@ -257,7 +259,7 @@ img{display:block;max-width:100%;height:auto}
 .brand-band__kick{display:block;margin-top:.12em;color:#fff}
 
 /* Grosse Schritt-Nummer hinter dem Handy */
-.bignum{position:absolute;left:-6%;top:6%;font:800 clamp(200px,20vw,300px)/.8 var(--display);letter-spacing:-.06em;color:transparent;-webkit-text-stroke:1.5px rgba(247,41,92,.5);pointer-events:none;user-select:none;transition:opacity 300ms}
+.bignum{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);z-index:0;font:800 clamp(180px,21vw,320px)/.8 var(--display);letter-spacing:-.06em;color:transparent;-webkit-text-stroke:1.5px rgba(247,41,92,.3);pointer-events:none;user-select:none;transition:opacity 300ms}
 .bignum.swap{opacity:0}
 .shot{rotate:var(--rot,0deg)}
 .shot:nth-child(odd){--rot:-2.5deg}.shot:nth-child(even){--rot:2.5deg}
