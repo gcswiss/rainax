@@ -272,6 +272,39 @@ img{display:block;max-width:100%;height:auto}
   .fan .f3{transform:translate(12%,-46%) rotate(10deg) scale(.78)}
 }
 
+/* Bisher vs. Mood Up */
+.before{display:grid;gap:14px;align-content:start}
+.before__label{font:600 13px/1 var(--body);letter-spacing:.12em;text-transform:uppercase;color:#3a0f1c}
+.before ul{list-style:none;margin:0 0 18px;padding:0;display:flex;flex-wrap:wrap;gap:8px 18px}
+.before li{position:relative;font:700 clamp(20px,2vw,26px)/1.2 var(--display);letter-spacing:-.02em;color:#3a0f1c}
+.before li::after{content:"";position:absolute;left:-3%;right:-3%;top:55%;height:3px;border-radius:3px;background:var(--ink);transform:scaleX(0);transform-origin:left;transition:transform 420ms var(--ease-out);transition-delay:calc(500ms + var(--i) * 160ms)}
+.before.in li::after{transform:scaleX(1)}
+.before b{font:800 clamp(26px,2.6vw,34px)/1.1 var(--display);letter-spacing:-.03em;color:var(--ink)}
+
+/* Smart Filter */
+.filter{padding:var(--section) 0 0}
+.filter__grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(40px,6vw,96px);align-items:center}
+.filter h2{margin-top:22px;font-size:clamp(40px,5.2vw,70px)}
+.filter__lead{margin-top:20px;font-size:19px;max-width:440px}
+.groups{margin-top:36px;display:grid;gap:22px}
+.group__label{display:block;font:600 13px/1 var(--body);letter-spacing:.12em;text-transform:uppercase;color:#8d8b95;margin-bottom:12px}
+.opts{display:flex;flex-wrap:wrap;gap:8px}
+.opt{min-height:44px;padding:0 18px;border-radius:999px;border:1px solid var(--line);background:transparent;color:#e6e4ea;font:600 15px/1 var(--body);cursor:pointer;transition:background var(--t-fast),border-color var(--t-fast),color var(--t-fast),transform var(--t-fast) var(--ease-out)}
+.opt:hover{border-color:rgba(255,255,255,.35)}
+.opt:active{transform:scale(.96)}
+.opt[aria-checked="true"]{background:#fff;border-color:#fff;color:var(--ink)}
+.result{position:relative;border-radius:var(--r-lg);background:var(--ink-2);border:1px solid var(--line);padding:clamp(32px,4vw,56px);overflow:hidden}
+.result::before{content:"";position:absolute;right:-30%;top:-40%;width:80%;aspect-ratio:1;border-radius:50%;background:radial-gradient(circle,rgba(247,41,92,.22),transparent 65%);pointer-events:none}
+.result__label{position:relative;display:inline-flex;align-items:center;gap:10px;font:600 13px/1 var(--body);letter-spacing:.12em;text-transform:uppercase;color:#8d8b95}
+.result__label i{width:8px;height:8px;border-radius:50%;background:var(--pink);animation:pulse 2s infinite}
+.sentence{position:relative;margin-top:24px;font:800 clamp(34px,3.8vw,56px)/1.08 var(--display);letter-spacing:-.035em;color:#fff}
+.sentence b{color:var(--pink);font-weight:800;display:inline-block;transition:transform 300ms var(--ease-out),opacity 300ms}
+.sentence .nw{white-space:nowrap}
+.sentence b.flip{transform:translateY(-.25em);opacity:0}
+.result .btn{position:relative;margin-top:36px}
+.result__note{position:relative;margin-top:18px;font-size:14px;color:#77757e}
+@media (max-width:900px){.filter__grid{grid-template-columns:1fr}}
+
 /* Erscheinen */
 .js .reveal{opacity:0;transform:translateY(20px);transition:opacity 400ms var(--ease-out),transform 400ms var(--ease-out);transition-delay:var(--d,0ms)}
 .js .reveal.in{opacity:1;transform:none}
@@ -303,6 +336,7 @@ img{display:block;max-width:100%;height:auto}
       <span class="logo__mark" aria-hidden="true"><svg><use href="#i-radar"/></svg></span>Mood Up
     </a>
     <nav class="nav" aria-label="Hauptmenü">
+      <a href="#filter">Smart Filter</a>
       <a href="#app">So funktioniert's</a>
       <a href="#clubs">Für Clubs</a>
       <a href="#fragen">Fragen</a>
@@ -322,7 +356,7 @@ img{display:block;max-width:100%;height:auto}
           <span class="rotator" aria-hidden="true"><span class="is-on">Techno.</span><span>Rock.</span><span>80s Hits.</span><span>Hip-Hop.</span><span>House.</span></span>
           <span class="sr-only">deine Musik.</span>
         </h1>
-        <p class="hero__lead reveal" style="--d:120ms">Mood Up ist dein Party-Radar: Die Karte zeigt dir live, wo am meisten los ist. Bars, Clubs und Specials in deiner Nähe, ohne endloses Suchen.</p>
+        <p class="hero__lead reveal" style="--d:120ms">Mood Up ist dein Radar für Partys in der Nähe. Die Karte zeigt dir live, wo am meisten los ist, und du checkst Stimmung und Musik, bevor du losgehst.</p>
         <div class="stores reveal" style="--d:180ms">
           <!-- PLATZHALTER: App-Store-Link «Mood Up - Party Radar» -->
           <a class="store" href="#" rel="noopener" aria-label="Mood Up im App Store laden"><svg aria-hidden="true"><use href="#i-apple"/></svg><span><small>Laden im</small>App Store</span></a>
@@ -360,12 +394,53 @@ img{display:block;max-width:100%;height:auto}
     <div class="container">
       <h2 id="band-title" class="reveal">Schluss mit <span class="strike">endlosem Suchen.</span><span class="brand-band__kick">Ein Blick genügt.</span></h2>
       <div class="brand-band__row">
-        <p class="reveal">Öffne die Karte, und du weisst, wohin es heute geht.</p>
-        <div class="pillars">
-          <div class="reveal"><b>Live-Karte</b><span>Die beliebtesten Partys in deiner Nähe, in Echtzeit.</span></div>
-          <div class="reveal" style="--d:60ms"><b>Specials</b><span>Events mit Datum, Musik, Uhrzeit und Alter auf einen Blick.</span></div>
-          <div class="reveal" style="--d:120ms"><b>Bar-Chat</b><span>Direkt mit der Location schreiben, sobald du eingecheckt bist.</span></div>
+        <div class="before reveal">
+          <span class="before__label">Bisher</span>
+          <ul><li style="--i:0">Google</li><li style="--i:1">Maps</li><li style="--i:2">Instagram</li><li style="--i:3">Freunde fragen</li></ul>
+          <span class="before__label">Mit Mood Up</span>
+          <b>Ein Blick auf die Karte.</b>
         </div>
+        <div class="pillars">
+          <div class="reveal"><b>Live-Karte</b><span>Die beliebtesten Partys in deiner Nähe in Echtzeit. Offene Bars und Clubs siehst du sofort.</span></div>
+          <div class="reveal" style="--d:60ms"><b>Stimmung checken</b><span>Sieh dir Stimmung und Musikstil an, bevor du losgehst.</span></div>
+          <div class="reveal" style="--d:120ms"><b>Im Voraus planen</b><span>Heute, morgen oder am Wochenende: Plane deinen Abend schon jetzt.</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Smart Filter -->
+  <section class="filter" id="filter" aria-labelledby="filter-title">
+    <div class="container filter__grid">
+      <div class="reveal">
+        <span class="eyebrow">Smart Filter</span>
+        <h2 id="filter-title">Sag uns, worauf du Lust hast.</h2>
+        <p class="filter__lead">Wähle aus vielen Kategorien: Art der Location, Musik, Alter und Datum. Mood Up zeigt dir nur, was passt. Probier's aus:</p>
+        <div class="groups" data-filter>
+          <div class="group" role="radiogroup" aria-label="Art der Location" data-key="type">
+            <span class="group__label">Location</span>
+            <div class="opts"><button class="opt" role="radio" aria-checked="false" data-v="Bars">Bar</button><button class="opt" role="radio" aria-checked="true" data-v="Clubs">Club</button><button class="opt" role="radio" aria-checked="false" data-v="Specials">Special</button></div>
+          </div>
+          <div class="group" role="radiogroup" aria-label="Musik" data-key="music">
+            <span class="group__label">Musik</span>
+            <div class="opts"><button class="opt" role="radio" aria-checked="true" data-v="Techno">Techno</button><button class="opt" role="radio" aria-checked="false" data-v="Rock">Rock</button><button class="opt" role="radio" aria-checked="false" data-v="80s Hits">80s Hits</button><button class="opt" role="radio" aria-checked="false" data-v="Hip-Hop">Hip-Hop</button></div>
+          </div>
+          <div class="group" role="radiogroup" aria-label="Alter" data-key="age">
+            <span class="group__label">Alter</span>
+            <div class="opts"><button class="opt" role="radio" aria-checked="false" data-v="ab 16">16+</button><button class="opt" role="radio" aria-checked="true" data-v="ab 18">18+</button><button class="opt" role="radio" aria-checked="false" data-v="ab 21">21+</button></div>
+          </div>
+          <div class="group" role="radiogroup" aria-label="Datum" data-key="date">
+            <span class="group__label">Wann</span>
+            <div class="opts"><button class="opt" role="radio" aria-checked="true" data-v="heute">Heute</button><button class="opt" role="radio" aria-checked="false" data-v="morgen">Morgen</button><button class="opt" role="radio" aria-checked="false" data-v="am Wochenende">Wochenende</button></div>
+          </div>
+        </div>
+      </div>
+      <div class="result reveal" style="--d:120ms">
+        <span class="result__label"><i></i>Dein Abend</span>
+        <p class="sentence" aria-live="polite">Zeig mir <b data-out="type">Clubs</b> mit <b data-out="music">Techno</b>, <b data-out="age">ab 18</b>, <span class="nw"><b data-out="date">heute</b>.</span></p>
+        <a class="btn btn--pink" href="#download">In der App anzeigen
+          <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        <p class="result__note">Beispiel. In der App kombinierst du die Filter frei.</p>
       </div>
     </div>
   </section>
@@ -395,8 +470,8 @@ img{display:block;max-width:100%;height:auto}
           <article class="step is-active" data-step="0">
             <span class="step__num">01 — Live-Karte</span>
             <h3>Sieh live, wo die Party ist.</h3>
-            <p>Die interaktive Karte zeigt dir Bars, Clubs und Specials in deiner Nähe. Für heute, morgen oder dein Wunschdatum.</p>
-            <div class="tags"><span>Bars &amp; Clubs</span><span>Specials</span><span>Heute · Morgen · Kalender</span></div>
+            <p>Die interaktive Karte zeigt dir in Echtzeit, wo die angesagtesten Partys in deiner Nähe laufen. Offene Bars und Clubs siehst du sofort.</p>
+            <div class="tags"><span>Bars &amp; Clubs</span><span>Specials</span><span>Jetzt offen</span><span>Heute · Morgen · Kalender</span></div>
           </article>
           <article class="step" data-step="1">
             <span class="step__num">02 — Ganze Region</span>
@@ -429,15 +504,15 @@ img{display:block;max-width:100%;height:auto}
       <div class="reveal">
         <span class="eyebrow">Für Clubs &amp; Veranstalter</span>
         <h2 id="clubs-title">Gefunden werden, wenn Gäste entscheiden.</h2>
-        <p class="clubs__lead">Mit Mood Up erscheinen deine Location und deine Partys auf der Live-Party-Map, genau dann, wenn die Leute planen, wohin es heute geht.</p>
+        <p class="clubs__lead">Deine Location erscheint auf der Live-Party-Map. Events erfasst und aktualisierst du schnell und unkompliziert, und Mood Up bringt sie zu den Partygängern in deiner Nähe.</p>
         <a class="btn btn--ink" href="mailto:info@mood-up.ch?subject=Mood%20Up%20f%C3%BCr%20unsere%20Location">Location anmelden
           <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
       </div>
       <div class="cards">
         <article class="card reveal"><div class="card__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 21s-7-6.1-7-11.5A7 7 0 0 1 19 9.5C19 14.9 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg></div><h3>Auf der Live-Party-Map</h3><p>Sichtbar für alle, die in deiner Nähe ausgehen wollen.</p></article>
-        <article class="card reveal" style="--d:60ms"><div class="card__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3l2.6 5.6 6 .7-4.5 4.1 1.2 6L12 16.4 6.7 19.4l1.2-6L3.4 9.3l6-.7z"/></svg></div><h3>Specials &amp; Events</h3><p>Präsentiere deine Partys mit Datum, Musik und Uhrzeit.</p></article>
-        <article class="card reveal" style="--d:120ms"><div class="card__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div><h3>Bar-Chat</h3><p>Sprich direkt mit deinen Gästen vor Ort.</p></article>
-        <article class="card reveal" style="--d:180ms"><div class="card__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M19 8v6M22 11h-6"/></svg></div><h3>Follower</h3><p>Gäste folgen deiner Location und bleiben dran.</p></article>
+        <article class="card reveal" style="--d:60ms"><div class="card__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3l2.6 5.6 6 .7-4.5 4.1 1.2 6L12 16.4 6.7 19.4l1.2-6L3.4 9.3l6-.7z"/></svg></div><h3>Events in Sekunden</h3><p>Partys und Specials schnell erfassen und jederzeit aktualisieren.</p></article>
+        <article class="card reveal" style="--d:120ms"><div class="card__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 11l18-8-8 18-2-8z"/></svg></div><h3>Marketing in der Nähe</h3><p>Deine Events werden Partygängern in der Umgebung gezeigt.</p></article>
+        <article class="card reveal" style="--d:180ms"><div class="card__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div><h3>Chat &amp; Follower</h3><p>Gäste folgen dir und schreiben dir direkt im Bar-Chat.</p></article>
       </div>
     </div>
   </section>
@@ -462,8 +537,10 @@ img{display:block;max-width:100%;height:auto}
         <details class="reveal"><summary>Was ist Mood Up?<i aria-hidden="true"></i></summary><p>Mood Up ist dein Party-Radar. Die interaktive Karte zeigt dir live die beliebtesten Partys, Bars und Clubs in deiner Nähe.</p></details>
         <details class="reveal"><summary>Kostet Mood Up etwas?<i aria-hidden="true"></i></summary><p>Nein, für Nutzerinnen und Nutzer ist Mood Up gratis.</p></details>
         <details class="reveal"><summary>Gibt es Mood Up für iPhone und Android?<i aria-hidden="true"></i></summary><p>Ja. Im App Store findest du die App als «Mood Up - Party Radar», ausserdem gibt es sie für Android.</p></details>
+        <details class="reveal"><summary>Wonach kann ich filtern?<i aria-hidden="true"></i></summary><p>Mit dem Smart Filter wählst du aus vielen Kategorien, zum Beispiel Art der Location, Musik, Alter und Datum.</p></details>
+        <details class="reveal"><summary>Kann ich im Voraus planen?<i aria-hidden="true"></i></summary><p>Ja. Wähle heute, morgen oder ein Datum im Kalender und plane deinen Abend schon jetzt.</p></details>
         <details class="reveal"><summary>Wie funktioniert der Bar-Chat?<i aria-hidden="true"></i></summary><p>Bist du in einer Location eingecheckt, kannst du im Bar-Chat direkt mit ihr schreiben.</p></details>
-        <details class="reveal"><summary>Wie kommt meine Location auf Mood Up?<i aria-hidden="true"></i></summary><p>Schreib uns an <a href="mailto:info@mood-up.ch">info@mood-up.ch</a>, wir melden uns bei dir.</p></details>
+        <details class="reveal"><summary>Wie kommt meine Location auf Mood Up?<i aria-hidden="true"></i></summary><p>Schreib uns an <a href="mailto:info@mood-up.ch">info@mood-up.ch</a>. Danach erfasst du deine Events schnell und unkompliziert selbst.</p></details>
         <details class="reveal"><summary>Was passiert mit meinen Daten?<i aria-hidden="true"></i></summary><p>Mood Up hält sich an das strenge Schweizer Datenschutzgesetz.</p></details>
       </div>
     </div>
@@ -604,6 +681,28 @@ img{display:block;max-width:100%;height:auto}
     });
     wm.addEventListener("mouseleave", function(){ letters.forEach(function(l){ l.style.transform = ""; }); });
   }
+
+  /* Smart Filter: Satz baut sich aus der Auswahl */
+  document.querySelectorAll("[data-filter] .group").forEach(function(g){
+    var key = g.dataset.key, out = document.querySelector('[data-out="' + key + '"]');
+    var opts = Array.prototype.slice.call(g.querySelectorAll(".opt"));
+    function pick(o){
+      opts.forEach(function(x){ x.setAttribute("aria-checked", x === o ? "true" : "false"); x.tabIndex = x === o ? 0 : -1; });
+      if (reduce) { out.textContent = o.dataset.v; return; }
+      out.classList.add("flip");
+      setTimeout(function(){ out.textContent = o.dataset.v; out.classList.remove("flip"); }, 160);
+    }
+    opts.forEach(function(o, i){
+      o.tabIndex = o.getAttribute("aria-checked") === "true" ? 0 : -1;
+      o.addEventListener("click", function(){ pick(o); });
+      o.addEventListener("keydown", function(e){
+        if (e.key !== "ArrowRight" && e.key !== "ArrowLeft") return;
+        e.preventDefault();
+        var n = opts[(i + (e.key === "ArrowRight" ? 1 : opts.length - 1)) % opts.length];
+        pick(n); n.focus();
+      });
+    });
+  });
 
   document.querySelectorAll("[data-year]").forEach(function(e){ e.textContent = new Date().getFullYear(); });
 })();

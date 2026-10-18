@@ -16,7 +16,9 @@ ein heller Abschnitt für Clubs, grosse Grotesk-Schrift (Inter Tight / Inter), e
 6. Fragen
 7. Download (pinke Fläche)
 
-Inhalte nur aus bestätigten Angaben (mood-up.ch-Suchindex und App-Screenshots).
+Inhalte nur aus bestätigten Angaben: Texte der bestehenden mood-up.ch (über den Suchindex, die Seite selbst ist aus der
+Arbeitsumgebung gesperrt), LinkedIn-Ankündigung der App (Smart Filter: Art der Location, Musik, Alter, Datum) und App-Screenshots.
+Der Smart-Filter-Abschnitt ist ein interaktives Beispiel, keine echten Daten.
 
 ## Noch offen (im HTML mit `PLATZHALTER` markiert)
 
