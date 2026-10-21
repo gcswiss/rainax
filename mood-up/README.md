@@ -48,8 +48,7 @@ Der Smart-Filter-Abschnitt ist ein interaktives Beispiel, keine echten Daten.
 - Weitere Fragen der bestehenden FAQ-Seite
 - Text «Über uns» abgleichen (Team bewusst weggelassen)
 - Letzter Punkt bei Bars/Clubs: «Höhere Auslastung un…» war abgeschnitten, Rest des Satzes ergänzen
-- AGB: **nicht erfinden, von der bestehenden Seite übernehmen** (Impressum und Datenschutzerklärung sind eingesetzt)
-- Telefonnummer ist vorerst überall ausgeblendet
+- Impressum, Datenschutzerklärung und AGB sind eingesetzt (Texte der Rainax AG). Offen: Widerspruch Preise AGB (CHF 149/399) vs. Preisseite (Gratis/CHF 49.90), «keine Registrierung», E-Mail info@rainax.ch vs. info@mood-up.ch, Link moodup.app
 - Kontaktformular sendet über das E-Mail-Programm; für direktes Absenden einen Formular-Dienst anbinden
 
 - Einverständnis der gezeigten Lokale (Santos Bar, Cinewil, Ralph's Bar) für Namen und Fotos
