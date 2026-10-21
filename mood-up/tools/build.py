@@ -112,7 +112,6 @@ def footer(depth: int) -> str:
     </div>
     <div class="footer__bottom">
       <p>© <span data-year>2026</span> Rainax AG. Alle Rechte vorbehalten. · Mood Up folgt den strengen Schweizer Datenschutzgesetzen.</p>
-      <span class="draft">Entwurf · nicht online</span>
     </div>
     <img class="wordmark" src="{b}assets/logo-pink.webp" width="900" height="209" alt="" aria-hidden="true">
   </div>
@@ -129,8 +128,12 @@ def head(depth: int, title: str, desc: str) -> str:
 <title>{title}</title>
 <meta name="description" content="{desc}">
 <meta name="theme-color" content="#0a0a0c">
-<meta name="robots" content="noindex">
-<!-- ENTWURF / MOCKUP: nicht online. Offene Stellen sind mit PLATZHALTER markiert. -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Mood Up">
+<meta property="og:title" content="{title}">
+<meta property="og:description" content="{desc}">
+<meta property="og:locale" content="de_CH">
+<meta property="og:image" content="https://www.mood-up.ch/assets/og-image.png">
 <link rel="icon" href="{b}assets/favicon.png" type="image/png">
 <link rel="apple-touch-icon" href="{b}assets/apple-touch-icon.png">
 <link rel="stylesheet" href="{b}assets/fonts.css">
@@ -251,7 +254,6 @@ def build_pages() -> None:
   <div class="container faq-page">
     <div class="faq__list">
         {faq_list(FAQ_ITEMS, "../")}
-        <!-- PLATZHALTER: weitere Fragen von der bestehenden Seite mood-up.ch/FAQ übernehmen -->
     </div>
     <aside class="ask reveal">
       <h2>Fragen?<br>Schreibe uns.</h2>
@@ -270,7 +272,6 @@ def build_pages() -> None:
       <h2>Unsere Geschichte</h2>
       <p>Die Idee zu Mood Up kam 2023 im direkten Austausch mit Bars und Clubs. Statt auf Google, Maps und Instagram zu suchen, sollte ein Blick genügen: Wo ist heute was los, und passt es zu mir?</p>
       <p>Von der ersten Idee über Design und Entwicklung bis zum Marktstart ist die App in Wil SG entstanden. Gestartet in Wil, gebaut für die ganze Schweiz.</p>
-      <!-- PLATZHALTER: Text der bestehenden Seite mood-up.ch/Über uns abgleichen bzw. übernehmen -->
     </div>
     <ol class="timeline reveal" style="--d:80ms">
       <li><b>2023</b><span>Aus Gesprächen mit der Gastronomie entsteht die Idee zu Mood Up.</span></li>
@@ -321,8 +322,7 @@ def build_pages() -> None:
       <div class="field"><label for="f-mail">E-Mail</label><input id="f-mail" name="email" type="email" autocomplete="email" required><p class="err" id="e-mail" hidden>Bitte gib eine gültige E-Mail-Adresse ein.</p></div>
       <div class="field"><label for="f-msg">Nachricht</label><textarea id="f-msg" name="message" rows="5" required></textarea><p class="err" id="e-msg" hidden>Bitte schreib uns eine Nachricht.</p></div>
       <button class="btn btn--pink" type="submit">Nachricht senden <svg aria-hidden="true"><use href="#i-arrow"/></svg></button>
-      <p class="form__note">Öffnet dein E-Mail-Programm mit der fertigen Nachricht.
-        <!-- PLATZHALTER: für echtes Absenden ohne E-Mail-Programm einen Formular-Dienst anbinden --></p>
+      <p class="form__note">Öffnet dein E-Mail-Programm mit der fertigen Nachricht.</p>
     </form>
   </div>
 </section>""")

@@ -1,10 +1,15 @@
-# Mood Up – Webseite (Mockup)
+# Mood Up – Webseite (mood-up.ch)
 
-**Entwurf, nicht online.** Statische Seiten ohne Build-Schritt, alle Pfade relativ: Der Ordner kann direkt als
+Statische Seiten ohne Build-Schritt, alle Pfade relativ: Der Ordner kann direkt als
 Wurzel von mood-up.ch hochgeladen oder lokal per Doppelklick auf `index.html` angesehen werden.
 
 Stil «seriös, aber kreativ» (Richtung Uber und Cash App): Schwarz, eine Fläche in Mood-Up-Pink `#f7295c` mit schwarzer Schrift,
 ein heller Abschnitt für Clubs, grosse Grotesk-Schrift (Inter Tight / Inter), echte App-Screenshots statt Effekte.
+
+## Hochladen
+
+Den **Inhalt** dieses Ordners (ohne `tools/` und `README.md`) in das Wurzelverzeichnis des Webspaces von mood-up.ch kopieren,
+so dass `index.html` direkt unter https://www.mood-up.ch/ liegt. `robots.txt` und `sitemap.xml` sind dabei.
 
 ## Offline ansehen
 
