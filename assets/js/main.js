@@ -170,7 +170,7 @@
       // Formular-Empfänger (z. B. Formspree, Web3Forms o. ä.) im Attribut data-endpoint eintragen.
       var endpoint = form.dataset.endpoint;
       if (!endpoint) {
-        showMessage("Das Formular ist noch nicht mit einem Empfänger verbunden. Bitte schreiben Sie uns vorerst per E-Mail.", "error");
+        showMessage("Das Formular ist noch nicht mit einem Empfänger verbunden. Bitte schreiben Sie uns vorerst an info@rainax.ch.", "error");
         return;
       }
 

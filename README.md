@@ -27,7 +27,6 @@ Die Pfade sind absolut (`/assets/...`), die Seite muss also über einen Webserve
 | Team | `team/index.html` |
 | Kontakt | `kontakt/index.html` |
 | Impressum | `impressum/index.html` |
-| Datenschutz | `datenschutz/index.html` |
 | Fehlerseite | `404.html` |
 
 `assets/css/style.css` enthält alle Design-Tokens, `assets/js/main.js` Menü, Scroll-Effekte, Videos und Formular.
@@ -82,8 +81,8 @@ Alles ist abgeschaltet, wenn «Bewegung reduzieren» eingestellt ist; Hover-Effe
 Alle offenen Stellen sind im HTML mit `PLATZHALTER` kommentiert bzw. gelb markiert:
 
 - Originallogo (weiss/dunkel) statt der Text-Wortmarke in Kopfzeile und Footer
-- E-Mail, Telefonnummer, UID-Nummer
-- Formular-Empfänger: `data-endpoint` im Kontaktformular (z. B. Formspree, Web3Forms)
+- Formular-Empfänger: `data-endpoint` im Kontaktformular (z. B. Formspree, Web3Forms), Ziel info@rainax.ch
 - Bilder/Videos: Säulen, MoodUp-Screens, «KI für Immobilien», Team-Porträts, Seitenanfänge
 - Links zu LinkedIn, Instagram und MoodUp / App Store
-- Datenschutzerklärung (muss OpenStreetMap und Google Fonts erwähnen)
+- Datenschutzerklärung: auf Wunsch vorerst entfernt (Seite, Footer-Link und Einwilligungs-Häkchen im Formular).
+  Vor dem Livegang klären, ob sie wieder nötig ist (Kontaktformular, Google Fonts, OpenStreetMap-Karte).
