@@ -3,12 +3,13 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Mood Up | Dein Party-Radar</title>
+<title>Mood Up – find your vibe!</title>
 <meta name="description" content="Mood Up ist dein Party-Radar: Die interaktive Karte zeigt dir live die beliebtesten Partys, Bars und Clubs in deiner Nähe. Gratis, Swiss made.">
 <meta name="theme-color" content="#0a0a0c">
 <meta name="robots" content="noindex">
 <!-- ENTWURF / MOCKUP: nicht online. Offene Stellen sind mit PLATZHALTER markiert. App-Screenshots liegen in img/. -->
-<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="assets/favicon.png" type="image/png">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
 <link rel="stylesheet" href="assets/fonts.css">
 <link rel="stylesheet" href="assets/site.css">
 <script src="assets/site.js" defer></script>
@@ -26,10 +27,7 @@
 
 <header class="header" data-header>
   <div class="header__in">
-    <a class="logo" href="index.html" aria-label="Mood Up – Startseite">
-      <!-- PLATZHALTER: Originallogo -->
-      <span class="logo__mark" aria-hidden="true"><svg><use href="#i-radar"/></svg></span>Mood Up
-    </a>
+    <a class="logo" href="index.html" aria-label="Mood Up – Startseite"><img class="logo__img" src="assets/logo.webp" width="900" height="209" alt="Mood Up"></a>
     <nav class="nav" aria-label="Hauptmenü">
       <a href="#app">Die App</a>
       <a href="#clubs">Für Clubs</a>
@@ -58,7 +56,7 @@
   <section class="hero" id="top">
     <div class="container hero__grid">
       <div>
-        <span class="eyebrow reveal">Party-Radar · Swiss made</span>
+        <span class="eyebrow reveal">Find your vibe · Swiss made</span>
         <h1 class="reveal" style="--d:60ms">Heute Nacht<br>läuft
           <span class="rotator" aria-hidden="true"><span class="is-on">Techno.</span><span>Rock.</span><span>80s Hits.</span><span>Hip-Hop.</span><span>House.</span></span>
           <span class="sr-only">deine Musik.</span>
@@ -116,13 +114,31 @@
     </div>
   </section>
 
+  <!-- Für Users -->
+  <section class="users" id="users" aria-labelledby="users-title">
+    <div class="container users__grid">
+      <div class="users__head reveal">
+        <span class="eyebrow">Für Users</span>
+        <h2 id="users-title">Die richtigen Orte. Zur richtigen <em>Zeit.</em></h2>
+      </div>
+      <ol class="users__list">
+        <li class="reveal"><i>01</i><span>Live-Map mit personalisierten Empfehlungen</span></li>
+        <li class="reveal"><i>02</i><span>Filter nach Musikstil, Alter &amp; Stimmung</span></li>
+        <li class="reveal"><i>03</i><span>Events in der Nähe entdecken</span></li>
+        <li class="reveal"><i>04</i><span>Lieblingslocations folgen</span></li>
+        <li class="reveal"><i>05</i><span>Exklusive Inhalte erhalten</span></li>
+      </ol>
+      <p class="users__claim reveal">Echte Begegnungen.<br><span>Reale Erlebnisse.</span></p>
+    </div>
+  </section>
+
   <!-- Smart Filter -->
   <section class="filter" id="filter" aria-labelledby="filter-title">
     <div class="container filter__grid">
       <div class="reveal">
         <span class="eyebrow">Smart Filter</span>
         <h2 id="filter-title">Sag uns, worauf du Lust hast.</h2>
-        <p class="filter__lead">Wähle aus vielen Kategorien: Art der Location, Musik, Alter und Datum. Mood Up zeigt dir nur, was passt. Probier's aus:</p>
+        <p class="filter__lead">Filter nach Musikstil, Alter &amp; Stimmung, dazu Art der Location und Datum. Mood Up zeigt dir nur, was passt. Probier's aus:</p>
         <div class="groups" data-filter>
           <div class="group" role="radiogroup" aria-label="Art der Location" data-key="type">
             <span class="group__label">Location</span>
@@ -205,21 +221,37 @@
     </div>
   </section>
 
-  <!-- 4 · Für Clubs -->
+  <!-- 4 · Für Bars, Clubs & Veranstalter -->
   <section class="clubs" id="clubs" aria-labelledby="clubs-title">
     <div class="container clubs__grid">
       <div class="reveal">
-        <span class="eyebrow">Für Clubs &amp; Veranstalter</span>
-        <h2 id="clubs-title">Gefunden werden, wenn Gäste entscheiden.</h2>
+        <span class="eyebrow">Für Bars, Clubs &amp; Veranstalter</span>
+        <h2 id="clubs-title">Starke Präsenz. Direkte Kommunikation.</h2>
         <p class="clubs__lead">Deine Location erscheint auf der Live-Party-Map. Events erfasst und aktualisierst du schnell und unkompliziert, und Mood Up bringt sie zu den Partygängern in deiner Nähe.</p>
-        <a class="btn btn--ink" href="mailto:info@mood-up.ch?subject=Mood%20Up%20f%C3%BCr%20unsere%20Location">Location anmelden
+        <a class="btn btn--ink" href="kontakt/index.html">Location anmelden
           <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
       </div>
       <div class="cards">
-        <article class="card reveal"><div class="card__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 21s-7-6.1-7-11.5A7 7 0 0 1 19 9.5C19 14.9 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg></div><h3>Auf der Live-Party-Map</h3><p>Sichtbar für alle, die in deiner Nähe ausgehen wollen.</p></article>
-        <article class="card reveal" style="--d:60ms"><div class="card__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3l2.6 5.6 6 .7-4.5 4.1 1.2 6L12 16.4 6.7 19.4l1.2-6L3.4 9.3l6-.7z"/></svg></div><h3>Events in Sekunden</h3><p>Partys und Specials schnell erfassen und jederzeit aktualisieren.</p></article>
-        <article class="card reveal" style="--d:120ms"><div class="card__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 11l18-8-8 18-2-8z"/></svg></div><h3>Marketing in der Nähe</h3><p>Deine Events werden Partygängern in der Umgebung gezeigt.</p></article>
-        <article class="card reveal" style="--d:180ms"><div class="card__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div><h3>Chat &amp; Follower</h3><p>Gäste folgen dir und schreiben dir direkt im Bar-Chat.</p></article>
+        <article class="card card--sm reveal" style="--d:0ms"><div class="card__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 5h16v14H4z"/><path d="m4 15 4-4 4 4 3-3 5 5"/><circle cx="15.5" cy="9" r="1.5"/></svg></div><h3>Eigene Profilseite mit Bildern, Videos &amp; Infos</h3></article>
+        <article class="card card--sm reveal" style="--d:50ms"><div class="card__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M19 8v6M22 11h-6"/></svg></div><h3>Follower aufbauen und langfristig binden</h3></article>
+        <article class="card card--sm reveal" style="--d:100ms"><div class="card__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/></svg></div><h3>Direkte Push-Nachrichten an Follower</h3></article>
+        <article class="card card--sm reveal" style="--d:150ms"><div class="card__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="2"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="10"/></svg></div><h3>Radius-Push für lokale Zielgruppen</h3></article>
+        <article class="card card--sm reveal" style="--d:200ms"><div class="card__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></div><h3>Gezielte Ansprache nach Musikstil, Eventtyp &amp; Alter</h3></article>
+        <article class="card card--sm reveal" style="--d:250ms"><div class="card__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 3v18h18"/><path d="m7 15 4-4 3 3 6-6"/></svg></div><h3>Höhere Auslastung</h3></article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Für die Zukunft -->
+  <section class="section" aria-labelledby="future-title">
+    <div class="container">
+      <span class="eyebrow reveal">Für die Zukunft</span>
+      <h2 id="future-title" class="future__title reveal">Ein vernetztes Nachtleben.</h2>
+      <div class="future">
+        <div class="reveal"><i>01</i><p>Digitale Infrastruktur für Menschen, Betriebe und Veranstalter</p></div>
+        <div class="reveal" style="--d:60ms"><i>02</i><p>Skalierbares Potenzial in der Schweiz und darüber hinaus</p></div>
+        <div class="reveal" style="--d:120ms"><i>03</i><p>Innovation, die reale Begegnungen fördert</p></div>
+        <div class="reveal" style="--d:180ms"><i>04</i><p>Ein wachsender Markt mit internationalen Möglichkeiten</p></div>
       </div>
     </div>
   </section>
@@ -272,16 +304,20 @@
   <div class="container">
     <div class="footer__grid">
       <div>
-        <a class="logo" href="index.html"><span class="logo__mark" aria-hidden="true"><svg><use href="#i-radar"/></svg></span>Mood Up</a>
-        <p style="margin-top:14px">Dein Radar für Partys in der Nähe. Swiss made.</p>
+        <a class="logo logo--footer" href="index.html" aria-label="Mood Up – Startseite"><img class="logo__img" src="assets/logo.webp" width="900" height="209" alt="Mood Up"></a>
+        <p style="margin-top:16px">Find your vibe! Dein Radar für Partys in deiner Nähe. Swiss made.</p>
       </div>
       <div>
         <h3>App</h3>
-        <ul><li><a href="#app">So funktioniert's</a></li><li><a href="#filter">Smart Filter</a></li><li><a href="#clubs">Für Clubs</a></li></ul>
+        <ul><li><a href="#download">App Download</a></li><li><a href="#app">So funktioniert's</a></li><li><a href="#filter">Smart Filter</a></li><li><a href="#clubs">Für Clubs</a></li></ul>
       </div>
       <div>
         <h3>Mood Up</h3>
-        <ul><li><a href="preise/index.html">Preise</a></li><li><a href="faq/index.html">FAQ</a></li><li><a href="ueber-uns/index.html">Über uns</a></li><li><a href="kontakt/index.html">Kontakt</a></li><li><a href="links/index.html">Links</a></li></ul>
+        <ul><li><a href="index.html">Home</a></li><li><a href="preise/index.html">Preise</a></li><li><a href="faq/index.html">FAQ</a></li><li><a href="ueber-uns/index.html">Über uns</a></li><li><a href="kontakt/index.html">Kontakt</a></li></ul>
+      </div>
+      <div>
+        <h3>Links</h3>
+        <ul><li><a href="agb/index.html">AGB's</a></li><li><a href="impressum/index.html">Impressum</a></li><li><a href="datenschutz/index.html">Datenschutzerklärung</a></li></ul>
       </div>
       <div>
         <h3>Kontakt</h3>
@@ -289,11 +325,10 @@
       </div>
     </div>
     <div class="footer__bottom">
-      <p>© <span data-year>2026</span> Mood Up</p>
-      <p class="footer__legal"><a href="agb/index.html">AGB</a><a href="impressum/index.html">Impressum</a><a href="datenschutz/index.html">Datenschutz</a></p>
+      <p>© <span data-year>2026</span> Mood Up · Mood Up folgt den strengen Schweizer Datenschutzgesetzen.</p>
       <span class="draft">Entwurf · nicht online</span>
     </div>
-    <span class="wordmark" aria-hidden="true" data-wordmark><span>M</span><span>o</span><span>o</span><span>d</span>&nbsp;<span>U</span><span>p</span></span>
+    <img class="wordmark" src="assets/logo-pink.webp" width="900" height="209" alt="" aria-hidden="true">
   </div>
 </footer>
 

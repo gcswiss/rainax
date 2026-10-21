@@ -37,6 +37,7 @@ def rel(depth: int, target: str, is_home_anchor: bool) -> str:
 
 def header(depth: int, current: str | None) -> str:
     home = ("../" * depth) or "./"
+    base = "../" * depth
     items = []
     for label, target, anchor in NAV:
         href = rel(depth, target, anchor)
@@ -47,10 +48,7 @@ def header(depth: int, current: str | None) -> str:
     dl = rel(depth, "#download", True)
     return f"""<header class="header" data-header>
   <div class="header__in">
-    <a class="logo" href="{home}" aria-label="Mood Up – Startseite">
-      <!-- PLATZHALTER: Originallogo -->
-      <span class="logo__mark" aria-hidden="true"><svg><use href="#i-radar"/></svg></span>Mood Up
-    </a>
+    <a class="logo" href="{home}" aria-label="Mood Up – Startseite"><img class="logo__img" src="{base}assets/logo.webp" width="900" height="209" alt="Mood Up"></a>
     <nav class="nav" aria-label="Hauptmenü">
       {nav}
     </nav>
@@ -72,16 +70,20 @@ def footer(depth: int) -> str:
   <div class="container">
     <div class="footer__grid">
       <div>
-        <a class="logo" href="{home}"><span class="logo__mark" aria-hidden="true"><svg><use href="#i-radar"/></svg></span>Mood Up</a>
-        <p style="margin-top:14px">Dein Radar für Partys in der Nähe. Swiss made.</p>
+        <a class="logo logo--footer" href="{home}" aria-label="Mood Up – Startseite"><img class="logo__img" src="{b}assets/logo.webp" width="900" height="209" alt="Mood Up"></a>
+        <p style="margin-top:16px">Find your vibe! Dein Radar für Partys in deiner Nähe. Swiss made.</p>
       </div>
       <div>
         <h3>App</h3>
-        <ul><li><a href="{a('#app')}">So funktioniert's</a></li><li><a href="{a('#filter')}">Smart Filter</a></li><li><a href="{a('#clubs')}">Für Clubs</a></li></ul>
+        <ul><li><a href="{a('#download')}">App Download</a></li><li><a href="{a('#app')}">So funktioniert's</a></li><li><a href="{a('#filter')}">Smart Filter</a></li><li><a href="{a('#clubs')}">Für Clubs</a></li></ul>
       </div>
       <div>
         <h3>Mood Up</h3>
-        <ul><li><a href="{b}preise/">Preise</a></li><li><a href="{b}faq/">FAQ</a></li><li><a href="{b}ueber-uns/">Über uns</a></li><li><a href="{b}kontakt/">Kontakt</a></li><li><a href="{b}links/">Links</a></li></ul>
+        <ul><li><a href="{home}">Home</a></li><li><a href="{b}preise/">Preise</a></li><li><a href="{b}faq/">FAQ</a></li><li><a href="{b}ueber-uns/">Über uns</a></li><li><a href="{b}kontakt/">Kontakt</a></li></ul>
+      </div>
+      <div>
+        <h3>Links</h3>
+        <ul><li><a href="{b}agb/">AGB's</a></li><li><a href="{b}impressum/">Impressum</a></li><li><a href="{b}datenschutz/">Datenschutzerklärung</a></li></ul>
       </div>
       <div>
         <h3>Kontakt</h3>
@@ -89,11 +91,10 @@ def footer(depth: int) -> str:
       </div>
     </div>
     <div class="footer__bottom">
-      <p>© <span data-year>2026</span> Mood Up</p>
-      <p class="footer__legal"><a href="{b}agb/">AGB</a><a href="{b}impressum/">Impressum</a><a href="{b}datenschutz/">Datenschutz</a></p>
+      <p>© <span data-year>2026</span> Mood Up · Mood Up folgt den strengen Schweizer Datenschutzgesetzen.</p>
       <span class="draft">Entwurf · nicht online</span>
     </div>
-    <span class="wordmark" aria-hidden="true" data-wordmark><span>M</span><span>o</span><span>o</span><span>d</span>&nbsp;<span>U</span><span>p</span></span>
+    <img class="wordmark" src="{b}assets/logo-pink.webp" width="900" height="209" alt="" aria-hidden="true">
   </div>
 </footer>"""
 
@@ -110,7 +111,8 @@ def head(depth: int, title: str, desc: str) -> str:
 <meta name="theme-color" content="#0a0a0c">
 <meta name="robots" content="noindex">
 <!-- ENTWURF / MOCKUP: nicht online. Offene Stellen sind mit PLATZHALTER markiert. -->
-<link rel="icon" href="{b}assets/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="{b}assets/favicon.png" type="image/png">
+<link rel="apple-touch-icon" href="{b}assets/apple-touch-icon.png">
 <link rel="stylesheet" href="{b}assets/fonts.css">
 <link rel="stylesheet" href="{b}assets/site.css">
 <script src="{b}assets/site.js" defer></script>
@@ -193,22 +195,22 @@ def faq_list(items, prefix="") -> str:
 def build_pages() -> None:
     # Preise
     page("preise", "Preise | Mood Up", "Mood Up ist für Nutzerinnen und Nutzer gratis. Angebote für Clubs und Veranstalter.",
-         hero("Preise", "Für Gäste gratis.<br>Für Clubs <em>sichtbar.</em>", "Ausgehen mit Mood Up kostet nichts. Für Clubs und Veranstalter gibt es Angebote, mit denen ihr auf der Live-Party-Map gefunden werdet.") + f"""
+         hero("Preise", "Für Users gratis.<br>Für Clubs <em>sichtbar.</em>", "Ausgehen mit Mood Up kostet nichts. Für Clubs und Veranstalter gibt es Angebote, mit denen ihr auf der Live-Party-Map gefunden werdet.") + f"""
 <section class="section">
   <div class="container plans">
     <article class="plan reveal">
-      <span class="plan__tag">Für Gäste</span>
+      <span class="plan__tag">Für Users</span>
       <h2 class="plan__price">Gratis</h2>
-      <p class="plan__sub">Für alle, die ausgehen wollen.</p>
-      <ul class="ticks"><li>Live-Karte mit den beliebtesten Partys</li><li>Smart Filter: Location, Musik, Alter, Datum</li><li>Stimmung und Musikstil vorab checken</li><li>Im Voraus planen</li><li>Chat und Lieblings-Locations folgen</li></ul>
+      <p class="plan__sub">Die richtigen Orte. Zur richtigen Zeit.</p>
+      <ul class="ticks"><li>Live-Map mit personalisierten Empfehlungen</li><li>Filter nach Musikstil, Alter &amp; Stimmung</li><li>Events in der Nähe entdecken</li><li>Lieblingslocations folgen</li><li>Exklusive Inhalte erhalten</li></ul>
       <a class="btn btn--pink" href="../#download">App laden <svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
     </article>
     <article class="plan plan--pink reveal" style="--d:80ms">
-      <span class="plan__tag">Für Clubs &amp; Veranstalter</span>
+      <span class="plan__tag">Für Bars, Clubs &amp; Veranstalter</span>
       <h2 class="plan__price">{ph("[PREIS]")}</h2>
       <!-- PLATZHALTER: Preise und Pakete von der bestehenden Seite mood-up.ch/Preise übernehmen -->
       <p class="plan__sub">{ph("[Paketname / Laufzeit von der bestehenden Seite]")}</p>
-      <ul class="ticks"><li>Eintrag auf der Live-Party-Map</li><li>Events schnell und unkompliziert erfassen und aktualisieren</li><li>Gezieltes Marketing bei Partygängern in der Nähe</li><li>Direkte Reichweite</li><li>Chat mit deinen Gästen</li></ul>
+      <ul class="ticks"><li>Eigene Profilseite mit Bildern, Videos &amp; Infos</li><li>Follower aufbauen und langfristig binden</li><li>Direkte Push-Nachrichten an Follower</li><li>Radius-Push für lokale Zielgruppen</li><li>Gezielte Ansprache nach Musikstil, Eventtyp &amp; Alter</li><li>Höhere Auslastung</li></ul>
       <a class="btn btn--ink" href="../kontakt/">Location anmelden <svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
     </article>
   </div>
@@ -259,10 +261,13 @@ def build_pages() -> None:
 </section>
 <section class="section">
   <div class="container">
-    <div class="team-ph reveal">
-      <span class="eyebrow">Team</span>
-      <h2>Die Köpfe hinter Mood Up</h2>
-      <p>{ph("[Team, Fotos und Rollen von der bestehenden Seite übernehmen]")}</p>
+    <span class="eyebrow reveal">Für die Zukunft</span>
+    <h2 class="future__title reveal">Ein vernetztes Nachtleben.</h2>
+    <div class="future">
+      <div class="reveal"><i>01</i><p>Digitale Infrastruktur für Menschen, Betriebe und Veranstalter</p></div>
+      <div class="reveal" style="--d:60ms"><i>02</i><p>Skalierbares Potenzial in der Schweiz und darüber hinaus</p></div>
+      <div class="reveal" style="--d:120ms"><i>03</i><p>Innovation, die reale Begegnungen fördert</p></div>
+      <div class="reveal" style="--d:180ms"><i>04</i><p>Ein wachsender Markt mit internationalen Möglichkeiten</p></div>
     </div>
   </div>
 </section>""")
@@ -291,20 +296,6 @@ def build_pages() -> None:
       <p class="form__note">Öffnet dein E-Mail-Programm mit der fertigen Nachricht.
         <!-- PLATZHALTER: für echtes Absenden ohne E-Mail-Programm einen Formular-Dienst anbinden --></p>
     </form>
-  </div>
-</section>""")
-
-    # Links
-    page("links", "Links | Mood Up", "Alle Links zu Mood Up: App, Social Media und Kontakt.",
-         hero("Links", "Alles an <em>einem</em> Ort.", "App laden, folgen, Kontakt aufnehmen.") + f"""
-<section class="section section--tight">
-  <div class="container linklist">
-    <!-- PLATZHALTER: Links von der bestehenden Seite mood-up.ch/Links übernehmen -->
-    <a class="lrow reveal" href="#"><span>App Store</span><b>Mood Up - Party Radar</b><svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
-    <a class="lrow reveal" href="#"><span>Google Play</span><b>Mood Up für Android</b><svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
-    <a class="lrow reveal" href="#"><span>Instagram</span><b>{ph("[@handle]")}</b><svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
-    <a class="lrow reveal" href="#"><span>TikTok</span><b>{ph("[@handle]")}</b><svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
-    <a class="lrow reveal" href="mailto:info@mood-up.ch"><span>E-Mail</span><b>info@mood-up.ch</b><svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
   </div>
 </section>""")
 

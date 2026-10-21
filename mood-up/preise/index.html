@@ -8,7 +8,8 @@
 <meta name="theme-color" content="#0a0a0c">
 <meta name="robots" content="noindex">
 <!-- ENTWURF / MOCKUP: nicht online. Offene Stellen sind mit PLATZHALTER markiert. -->
-<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="../assets/favicon.png" type="image/png">
+<link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
 <link rel="stylesheet" href="../assets/fonts.css">
 <link rel="stylesheet" href="../assets/site.css">
 <script src="../assets/site.js" defer></script>
@@ -25,10 +26,7 @@
 </svg>
 <header class="header" data-header>
   <div class="header__in">
-    <a class="logo" href="../index.html" aria-label="Mood Up – Startseite">
-      <!-- PLATZHALTER: Originallogo -->
-      <span class="logo__mark" aria-hidden="true"><svg><use href="#i-radar"/></svg></span>Mood Up
-    </a>
+    <a class="logo" href="../index.html" aria-label="Mood Up – Startseite"><img class="logo__img" src="../assets/logo.webp" width="900" height="209" alt="Mood Up"></a>
     <nav class="nav" aria-label="Hauptmenü">
       <a href="../index.html#app">Die App</a>
       <a href="../index.html#clubs">Für Clubs</a>
@@ -54,25 +52,25 @@
 <section class="page-hero">
   <div class="container">
     <span class="eyebrow reveal">Preise</span>
-    <h1 class="reveal" style="--d:60ms">Für Gäste gratis.<br>Für Clubs <em>sichtbar.</em></h1>
+    <h1 class="reveal" style="--d:60ms">Für Users gratis.<br>Für Clubs <em>sichtbar.</em></h1>
     <p class="page-hero__lead reveal" style="--d:120ms">Ausgehen mit Mood Up kostet nichts. Für Clubs und Veranstalter gibt es Angebote, mit denen ihr auf der Live-Party-Map gefunden werdet.</p>
   </div>
 </section>
 <section class="section">
   <div class="container plans">
     <article class="plan reveal">
-      <span class="plan__tag">Für Gäste</span>
+      <span class="plan__tag">Für Users</span>
       <h2 class="plan__price">Gratis</h2>
-      <p class="plan__sub">Für alle, die ausgehen wollen.</p>
-      <ul class="ticks"><li>Live-Karte mit den beliebtesten Partys</li><li>Smart Filter: Location, Musik, Alter, Datum</li><li>Stimmung und Musikstil vorab checken</li><li>Im Voraus planen</li><li>Chat und Lieblings-Locations folgen</li></ul>
+      <p class="plan__sub">Die richtigen Orte. Zur richtigen Zeit.</p>
+      <ul class="ticks"><li>Live-Map mit personalisierten Empfehlungen</li><li>Filter nach Musikstil, Alter &amp; Stimmung</li><li>Events in der Nähe entdecken</li><li>Lieblingslocations folgen</li><li>Exklusive Inhalte erhalten</li></ul>
       <a class="btn btn--pink" href="../index.html#download">App laden <svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
     </article>
     <article class="plan plan--pink reveal" style="--d:80ms">
-      <span class="plan__tag">Für Clubs &amp; Veranstalter</span>
+      <span class="plan__tag">Für Bars, Clubs &amp; Veranstalter</span>
       <h2 class="plan__price"><span class="placeholder">[PREIS]</span></h2>
       <!-- PLATZHALTER: Preise und Pakete von der bestehenden Seite mood-up.ch/Preise übernehmen -->
       <p class="plan__sub"><span class="placeholder">[Paketname / Laufzeit von der bestehenden Seite]</span></p>
-      <ul class="ticks"><li>Eintrag auf der Live-Party-Map</li><li>Events schnell und unkompliziert erfassen und aktualisieren</li><li>Gezieltes Marketing bei Partygängern in der Nähe</li><li>Direkte Reichweite</li><li>Chat mit deinen Gästen</li></ul>
+      <ul class="ticks"><li>Eigene Profilseite mit Bildern, Videos &amp; Infos</li><li>Follower aufbauen und langfristig binden</li><li>Direkte Push-Nachrichten an Follower</li><li>Radius-Push für lokale Zielgruppen</li><li>Gezielte Ansprache nach Musikstil, Eventtyp &amp; Alter</li><li>Höhere Auslastung</li></ul>
       <a class="btn btn--ink" href="../kontakt/index.html">Location anmelden <svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
     </article>
   </div>
@@ -83,16 +81,20 @@
   <div class="container">
     <div class="footer__grid">
       <div>
-        <a class="logo" href="../index.html"><span class="logo__mark" aria-hidden="true"><svg><use href="#i-radar"/></svg></span>Mood Up</a>
-        <p style="margin-top:14px">Dein Radar für Partys in der Nähe. Swiss made.</p>
+        <a class="logo logo--footer" href="../index.html" aria-label="Mood Up – Startseite"><img class="logo__img" src="../assets/logo.webp" width="900" height="209" alt="Mood Up"></a>
+        <p style="margin-top:16px">Find your vibe! Dein Radar für Partys in deiner Nähe. Swiss made.</p>
       </div>
       <div>
         <h3>App</h3>
-        <ul><li><a href="../index.html#app">So funktioniert's</a></li><li><a href="../index.html#filter">Smart Filter</a></li><li><a href="../index.html#clubs">Für Clubs</a></li></ul>
+        <ul><li><a href="../index.html#download">App Download</a></li><li><a href="../index.html#app">So funktioniert's</a></li><li><a href="../index.html#filter">Smart Filter</a></li><li><a href="../index.html#clubs">Für Clubs</a></li></ul>
       </div>
       <div>
         <h3>Mood Up</h3>
-        <ul><li><a href="../preise/index.html">Preise</a></li><li><a href="../faq/index.html">FAQ</a></li><li><a href="../ueber-uns/index.html">Über uns</a></li><li><a href="../kontakt/index.html">Kontakt</a></li><li><a href="../links/index.html">Links</a></li></ul>
+        <ul><li><a href="../index.html">Home</a></li><li><a href="../preise/index.html">Preise</a></li><li><a href="../faq/index.html">FAQ</a></li><li><a href="../ueber-uns/index.html">Über uns</a></li><li><a href="../kontakt/index.html">Kontakt</a></li></ul>
+      </div>
+      <div>
+        <h3>Links</h3>
+        <ul><li><a href="../agb/index.html">AGB's</a></li><li><a href="../impressum/index.html">Impressum</a></li><li><a href="../datenschutz/index.html">Datenschutzerklärung</a></li></ul>
       </div>
       <div>
         <h3>Kontakt</h3>
@@ -100,11 +102,10 @@
       </div>
     </div>
     <div class="footer__bottom">
-      <p>© <span data-year>2026</span> Mood Up</p>
-      <p class="footer__legal"><a href="../agb/index.html">AGB</a><a href="../impressum/index.html">Impressum</a><a href="../datenschutz/index.html">Datenschutz</a></p>
+      <p>© <span data-year>2026</span> Mood Up · Mood Up folgt den strengen Schweizer Datenschutzgesetzen.</p>
       <span class="draft">Entwurf · nicht online</span>
     </div>
-    <span class="wordmark" aria-hidden="true" data-wordmark><span>M</span><span>o</span><span>o</span><span>d</span>&nbsp;<span>U</span><span>p</span></span>
+    <img class="wordmark" src="../assets/logo-pink.webp" width="900" height="209" alt="" aria-hidden="true">
   </div>
 </footer>
 </body>

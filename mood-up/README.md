@@ -13,7 +13,8 @@ Ordner öffnen und `index.html` doppelklicken. Alles läuft ohne Internet und oh
 
 ## Seiten
 
-Gleiche Struktur wie die bestehende mood-up.ch (Navigation Home, Preise, FAQ, Über uns, Kontakt, Links; Footer AGB, Impressum, Datenschutz).
+Gleiche Struktur wie die bestehende mood-up.ch: Navigation Home, Preise, FAQ, Über uns, Kontakt; im Footer «Links» mit AGB's, Impressum und Datenschutzerklärung.
+Logo: `assets/logo.webp` (weiss) und `assets/logo-pink.webp` (Footer), Favicon aus dem Logo-Zeichen.
 
 | Seite | Datei |
 |---|---|
@@ -22,7 +23,6 @@ Gleiche Struktur wie die bestehende mood-up.ch (Navigation Home, Preise, FAQ, Ü
 | FAQ | `faq/index.html` |
 | Über uns | `ueber-uns/index.html` |
 | Kontakt (mit Formular) | `kontakt/index.html` |
-| Links | `links/index.html` |
 | AGB, Impressum, Datenschutz | `agb/`, `impressum/`, `datenschutz/` |
 
 Gemeinsames Design und Verhalten: `assets/site.css`, `assets/site.js`. Kopfzeile, Footer und Unterseiten
@@ -46,8 +46,8 @@ Der Smart-Filter-Abschnitt ist ein interaktives Beispiel, keine echten Daten.
 
 - Preise und Pakete für Clubs (Seite Preise)
 - Weitere Fragen der bestehenden FAQ-Seite
-- Text «Über uns» abgleichen, Team mit Fotos
-- Links zu Instagram/TikTok (Seite Links)
+- Text «Über uns» abgleichen (Team bewusst weggelassen)
+- Letzter Punkt bei Bars/Clubs: «Höhere Auslastung un…» war abgeschnitten, Rest des Satzes ergänzen
 - Impressum (Betreiber, UID, vertretungsberechtigte Personen), Datenschutzerklärung und AGB: **nicht erfinden, von der bestehenden Seite übernehmen**
 - Kontaktformular sendet über das E-Mail-Programm; für direktes Absenden einen Formular-Dienst anbinden
 
