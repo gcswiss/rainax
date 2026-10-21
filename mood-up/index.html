@@ -132,38 +132,47 @@
     </div>
   </section>
 
-  <!-- Smart Filter -->
+  <!-- Smart Filter (Information) -->
   <section class="filter" id="filter" aria-labelledby="filter-title">
-    <div class="container filter__grid">
-      <div class="reveal">
-        <span class="eyebrow">Smart Filter</span>
-        <h2 id="filter-title">Sag uns, worauf du Lust hast.</h2>
-        <p class="filter__lead">Filter nach Musikstil, Alter &amp; Stimmung, dazu Art der Location und Datum. Mood Up zeigt dir nur, was passt. Probier's aus:</p>
-        <div class="groups" data-filter>
-          <div class="group" role="radiogroup" aria-label="Art der Location" data-key="type">
-            <span class="group__label">Location</span>
-            <div class="opts"><button class="opt" role="radio" aria-checked="false" data-v="Bars">Bar</button><button class="opt" role="radio" aria-checked="true" data-v="Clubs">Club</button><button class="opt" role="radio" aria-checked="false" data-v="Specials">Special</button></div>
-          </div>
-          <div class="group" role="radiogroup" aria-label="Musik" data-key="music">
-            <span class="group__label">Musik</span>
-            <div class="opts"><button class="opt" role="radio" aria-checked="true" data-v="Techno">Techno</button><button class="opt" role="radio" aria-checked="false" data-v="Rock">Rock</button><button class="opt" role="radio" aria-checked="false" data-v="80s Hits">80s Hits</button><button class="opt" role="radio" aria-checked="false" data-v="Hip-Hop">Hip-Hop</button></div>
-          </div>
-          <div class="group" role="radiogroup" aria-label="Alter" data-key="age">
-            <span class="group__label">Alter</span>
-            <div class="opts"><button class="opt" role="radio" aria-checked="false" data-v="ab 16">16+</button><button class="opt" role="radio" aria-checked="true" data-v="ab 18">18+</button><button class="opt" role="radio" aria-checked="false" data-v="ab 21">21+</button></div>
-          </div>
-          <div class="group" role="radiogroup" aria-label="Datum" data-key="date">
-            <span class="group__label">Wann</span>
-            <div class="opts"><button class="opt" role="radio" aria-checked="true" data-v="heute">Heute</button><button class="opt" role="radio" aria-checked="false" data-v="morgen">Morgen</button><button class="opt" role="radio" aria-checked="false" data-v="am Wochenende">Wochenende</button></div>
-          </div>
+    <div class="container">
+      <div class="filter__grid">
+        <div class="reveal">
+          <span class="eyebrow">Smart Filter</span>
+          <h2 id="filter-title">Dein Abend, genau nach deinem <em>Geschmack.</em></h2>
+          <p class="filter__lead">Mit dem Smart Filter kombinierst du viele Kategorien: Art der Location, Musikstil, Alter, Stimmung und Datum. Mood Up zeigt dir nur, was wirklich zu dir passt.</p>
+        </div>
+        <div class="result reveal" style="--d:120ms" aria-hidden="true">
+          <span class="result__label"><i></i>So filtert Mood Up für dich</span>
+          <p class="sentence" data-sentence>Zeig mir <b>Clubs</b> mit <b>Techno</b>, <b>ab 18</b>, <span class="nw"><b>heute</b>.</span></p>
+          <div class="result__dots"><i class="is-on"></i><i></i><i></i></div>
         </div>
       </div>
-      <div class="result reveal" style="--d:120ms">
-        <span class="result__label"><i></i>Dein Abend</span>
-        <p class="sentence" aria-live="polite">Zeig mir <b data-out="type">Clubs</b> mit <b data-out="music">Techno</b>, <b data-out="age">ab 18</b>, <span class="nw"><b data-out="date">heute</b>.</span></p>
-        <a class="btn btn--pink" href="#download">In der App anzeigen
-          <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-        <p class="result__note">Beispiel. In der App kombinierst du die Filter frei.</p>
+      <div class="ftiles">
+        <article class="ftile reveal" style="--d:0ms">
+          <span class="ftile__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 21s-7-6.1-7-11.5A7 7 0 0 1 19 9.5C19 14.9 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg></span>
+          <h3>Art der Location</h3>
+          <p>Bar, Club oder Special: Du wählst, wohin es geht.</p><div class="ftile__tags"><span>Bar</span><span>Club</span><span>Special</span></div>
+        </article>
+        <article class="ftile reveal" style="--d:60ms">
+          <span class="ftile__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M9 18V6l11-2v12"/><circle cx="6.5" cy="18" r="2.5"/><circle cx="17.5" cy="16" r="2.5"/></svg></span>
+          <h3>Musikstil</h3>
+          <p>Von Techno bis 80s Hits, ganz nach deinem Geschmack.</p><div class="ftile__tags"><span>Techno</span><span>Rock</span><span>80s Hits</span></div>
+        </article>
+        <article class="ftile reveal" style="--d:120ms">
+          <span class="ftile__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg></span>
+          <h3>Alter</h3>
+          <p>Partys, die zu dir und deinem Alter passen.</p><div class="ftile__tags"><span>ab 18</span></div>
+        </article>
+        <article class="ftile reveal" style="--d:180ms">
+          <span class="ftile__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M13 2 4 14h7l-1 8 9-12h-7z"/></svg></span>
+          <h3>Stimmung</h3>
+          <p>Finde die Stimmung, auf die du heute Lust hast.</p>
+        </article>
+        <article class="ftile reveal" style="--d:240ms">
+          <span class="ftile__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="3"/><path d="M3 10h18M8 3v4M16 3v4"/></svg></span>
+          <h3>Datum</h3>
+          <p>Heute, morgen oder im Kalender vorausplanen.</p><div class="ftile__tags"><span>Heute</span><span>Morgen</span><span>Kalender</span></div>
+        </article>
       </div>
     </div>
   </section>
@@ -321,11 +330,11 @@
       </div>
       <div>
         <h3>Kontakt</h3>
-        <address>Sirnacherstrasse 5<br>9500 Wil SG<br><a href="tel:+41715236505">+41 71 523 65 05</a><br><a href="mailto:info@mood-up.ch">info@mood-up.ch</a></address>
+        <address>Sirnacherstrasse 5<br>9500 Wil SG<br><a href="mailto:info@mood-up.ch">info@mood-up.ch</a></address>
       </div>
     </div>
     <div class="footer__bottom">
-      <p>© <span data-year>2026</span> Mood Up · Mood Up folgt den strengen Schweizer Datenschutzgesetzen.</p>
+      <p>© <span data-year>2026</span> Rainax AG. Alle Rechte vorbehalten. · Mood Up folgt den strengen Schweizer Datenschutzgesetzen.</p>
       <span class="draft">Entwurf · nicht online</span>
     </div>
     <img class="wordmark" src="assets/logo-pink.webp" width="900" height="209" alt="" aria-hidden="true">

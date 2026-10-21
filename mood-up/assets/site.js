@@ -90,27 +90,26 @@
     wm.addEventListener("mouseleave", function(){ letters.forEach(function(l){ l.style.transform = ""; }); });
   }
 
-  /* Smart Filter: Satz baut sich aus der Auswahl */
-  document.querySelectorAll("[data-filter] .group").forEach(function(g){
-    var key = g.dataset.key, out = document.querySelector('[data-out="' + key + '"]');
-    var opts = Array.prototype.slice.call(g.querySelectorAll(".opt"));
-    function pick(o){
-      opts.forEach(function(x){ x.setAttribute("aria-checked", x === o ? "true" : "false"); x.tabIndex = x === o ? 0 : -1; });
-      if (reduce) { out.textContent = o.dataset.v; return; }
-      out.classList.add("flip");
-      setTimeout(function(){ out.textContent = o.dataset.v; out.classList.remove("flip"); }, 160);
-    }
-    opts.forEach(function(o, i){
-      o.tabIndex = o.getAttribute("aria-checked") === "true" ? 0 : -1;
-      o.addEventListener("click", function(){ pick(o); });
-      o.addEventListener("keydown", function(e){
-        if (e.key !== "ArrowRight" && e.key !== "ArrowLeft") return;
-        e.preventDefault();
-        var n = opts[(i + (e.key === "ArrowRight" ? 1 : opts.length - 1)) % opts.length];
-        pick(n); n.focus();
-      });
-    });
-  });
+  /* Smart Filter: Beispiele wechseln automatisch (nur zur Information) */
+  var sentence = document.querySelector("[data-sentence]");
+  if (sentence && !reduce) {
+    var examples = [
+      ["Clubs", "Techno", "ab 18", "heute"],
+      ["Bars", "Rock", "ab 18", "am Wochenende"],
+      ["Specials", "80s Hits", "ab 18", "morgen"]
+    ];
+    var dotsEl = document.querySelectorAll(".result__dots i"), ex = 0;
+    setInterval(function(){
+      ex = (ex + 1) % examples.length;
+      sentence.classList.add("swap");
+      setTimeout(function(){
+        var e = examples[ex];
+        sentence.innerHTML = "Zeig mir <b>" + e[0] + "</b> mit <b>" + e[1] + "</b>, <b>" + e[2] + "</b>, <span class=\"nw\"><b>" + e[3] + "</b>.</span>";
+        sentence.classList.remove("swap");
+        dotsEl.forEach(function(d, i){ d.classList.toggle("is-on", i === ex); });
+      }, 350);
+    }, 3200);
+  }
 
   /* Mobiles Menü */
   var burger = document.querySelector(".burger"), menu = document.getElementById("menu");

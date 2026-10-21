@@ -48,7 +48,8 @@ Der Smart-Filter-Abschnitt ist ein interaktives Beispiel, keine echten Daten.
 - Weitere Fragen der bestehenden FAQ-Seite
 - Text «Über uns» abgleichen (Team bewusst weggelassen)
 - Letzter Punkt bei Bars/Clubs: «Höhere Auslastung un…» war abgeschnitten, Rest des Satzes ergänzen
-- Impressum (Betreiber, UID, vertretungsberechtigte Personen), Datenschutzerklärung und AGB: **nicht erfinden, von der bestehenden Seite übernehmen**
+- AGB: **nicht erfinden, von der bestehenden Seite übernehmen** (Impressum und Datenschutzerklärung sind eingesetzt)
+- Telefonnummer ist vorerst überall ausgeblendet
 - Kontaktformular sendet über das E-Mail-Programm; für direktes Absenden einen Formular-Dienst anbinden
 
 - Einverständnis der gezeigten Lokale (Santos Bar, Cinewil, Ralph's Bar) für Namen und Fotos

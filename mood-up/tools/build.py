@@ -87,11 +87,11 @@ def footer(depth: int) -> str:
       </div>
       <div>
         <h3>Kontakt</h3>
-        <address>Sirnacherstrasse 5<br>9500 Wil SG<br><a href="tel:+41715236505">+41 71 523 65 05</a><br><a href="mailto:info@mood-up.ch">info@mood-up.ch</a></address>
+        <address>Sirnacherstrasse 5<br>9500 Wil SG<br><a href="mailto:info@mood-up.ch">info@mood-up.ch</a></address>
       </div>
     </div>
     <div class="footer__bottom">
-      <p>© <span data-year>2026</span> Mood Up · Mood Up folgt den strengen Schweizer Datenschutzgesetzen.</p>
+      <p>© <span data-year>2026</span> Rainax AG. Alle Rechte vorbehalten. · Mood Up folgt den strengen Schweizer Datenschutzgesetzen.</p>
       <span class="draft">Entwurf · nicht online</span>
     </div>
     <img class="wordmark" src="{b}assets/logo-pink.webp" width="900" height="209" alt="" aria-hidden="true">
@@ -176,6 +176,7 @@ FAQ_ITEMS = [
     ("Kostet Mood Up etwas?", "Nein, für Nutzerinnen und Nutzer ist Mood Up gratis."),
     ("Gibt es Mood Up für iPhone und Android?", "Ja. Im App Store findest du die App als «Mood Up - Party Radar», ausserdem gibt es sie für Android."),
     ("Wonach kann ich filtern?", "Mit dem Smart Filter wählst du aus vielen Kategorien, zum Beispiel Art der Location, Musik, Alter und Datum."),
+    ("Was kostet Mood Up für Bars und Clubs?", "Der Einstieg ist gratis: Location auf der Karte, Party-Erstellung, Chat-Funktion für Users und Followers sammeln. Mit Pro für CHF 49.90 pro Monat kommen Statistik (Views und Klicks), Followers anschreiben und Storys posten dazu."),
     ("Kann ich im Voraus planen?", "Ja. Wähle heute, morgen oder ein Datum im Kalender und plane deinen Abend schon jetzt."),
     ("Kann ich die Stimmung vorher sehen?", "Ja. Du checkst Stimmung und Musikstil, bevor du losgehst."),
     ("Wie funktioniert der Bar-Chat?", "Bist du in einer Location eingecheckt, kannst du im Bar-Chat direkt mit ihr schreiben."),
@@ -194,27 +195,34 @@ def faq_list(items, prefix="") -> str:
 
 def build_pages() -> None:
     # Preise
-    page("preise", "Preise | Mood Up", "Mood Up ist für Nutzerinnen und Nutzer gratis. Angebote für Clubs und Veranstalter.",
-         hero("Preise", "Für Users gratis.<br>Für Clubs <em>sichtbar.</em>", "Ausgehen mit Mood Up kostet nichts. Für Clubs und Veranstalter gibt es Angebote, mit denen ihr auf der Live-Party-Map gefunden werdet.") + f"""
-<section class="section">
-  <div class="container plans">
-    <article class="plan reveal">
+    page("preise", "Preise | Mood Up", "Für Users immer gratis. Für Bars und Clubs: Gratis-Eintrag oder Pro für CHF 49.90.",
+         hero("Preise", "Einfach starten.<br>Mehr mit <em>Pro.</em>", "Für Users ist Mood Up immer gratis. Bars und Clubs starten kostenlos auf der Karte und holen mit Pro noch mehr aus ihrer Location heraus.") + """
+<section class="section section--tight">
+  <div class="container">
+    <div class="free-users reveal">
       <span class="plan__tag">Für Users</span>
-      <h2 class="plan__price">Gratis</h2>
-      <p class="plan__sub">Die richtigen Orte. Zur richtigen Zeit.</p>
-      <ul class="ticks"><li>Live-Map mit personalisierten Empfehlungen</li><li>Filter nach Musikstil, Alter &amp; Stimmung</li><li>Events in der Nähe entdecken</li><li>Lieblingslocations folgen</li><li>Exklusive Inhalte erhalten</li></ul>
-      <a class="btn btn--pink" href="../#download">App laden <svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
-    </article>
-    <article class="plan plan--pink reveal" style="--d:80ms">
-      <span class="plan__tag">Für Bars, Clubs &amp; Veranstalter</span>
-      <h2 class="plan__price">{ph("[PREIS]")}</h2>
-      <!-- PLATZHALTER: Preise und Pakete von der bestehenden Seite mood-up.ch/Preise übernehmen -->
-      <p class="plan__sub">{ph("[Paketname / Laufzeit von der bestehenden Seite]")}</p>
-      <ul class="ticks"><li>Eigene Profilseite mit Bildern, Videos &amp; Infos</li><li>Follower aufbauen und langfristig binden</li><li>Direkte Push-Nachrichten an Follower</li><li>Radius-Push für lokale Zielgruppen</li><li>Gezielte Ansprache nach Musikstil, Eventtyp &amp; Alter</li><li>Höhere Auslastung</li></ul>
-      <a class="btn btn--ink" href="../kontakt/">Location anmelden <svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
-    </article>
+      <p><b>Immer gratis.</b> Live-Map, Smart Filter, Chat und Lieblingslocations folgen kosten nichts.</p>
+      <a class="btn btn--pink btn--sm" href="../#download">App laden <svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
+    </div>
+    <h2 class="plans__title reveal">Für Bars &amp; Clubs</h2>
+    <div class="plans">
+      <article class="plan reveal">
+        <span class="plan__tag">Gratis</span>
+        <h3 class="plan__price">CHF 0</h3>
+        <p class="plan__sub">Alles, um gefunden zu werden.</p>
+        <ul class="ticks"><li>Location auf der Karte</li><li>Party-Erstellung</li><li>Chat-Funktion für Users</li><li>Followers sammeln</li></ul>
+        <a class="btn btn--pink" href="../kontakt/">Gratis starten <svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
+      </article>
+      <article class="plan plan--pink reveal" style="--d:80ms">
+        <span class="plan__tag">Pro</span>
+        <h3 class="plan__price">CHF 49.90<small> / Monat</small></h3>
+        <p class="plan__sub">Alles aus Gratis, dazu:</p>
+        <ul class="ticks"><li>Statistik: Views und Klicks</li><li>Followers anschreiben</li><li>Storys posten</li></ul>
+        <a class="btn btn--ink" href="../kontakt/">Pro anfragen <svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
+      </article>
+    </div>
+    <p class="note reveal">Fragen zu den Angeboten? <a href="../kontakt/">Schreib uns</a>.</p>
   </div>
-  <p class="container note reveal">Fragen zu den Angeboten? <a href="../kontakt/">Schreib uns</a>.</p>
 </section>""")
 
     # FAQ
@@ -273,14 +281,13 @@ def build_pages() -> None:
 </section>""")
 
     # Kontakt
-    page("kontakt", "Kontakt | Mood Up", "Kontakt zu Mood Up: Sirnacherstrasse 5, 9500 Wil SG, +41 71 523 65 05, info@mood-up.ch.",
+    page("kontakt", "Kontakt | Mood Up", "Kontakt zu Mood Up: Sirnacherstrasse 5, 9500 Wil SG, info@mood-up.ch.",
          hero("Kontakt", "Fragen?<br>Schreibe <em>uns.</em>", "Ob Gast, Club oder Veranstalter: Wir freuen uns auf deine Nachricht.") + """
 <section class="section section--tight">
   <div class="container contact">
     <div class="contact__cards">
       <a class="ccard reveal" href="mailto:info@mood-up.ch"><span>E-Mail</span><b>info@mood-up.ch</b></a>
-      <a class="ccard reveal" style="--d:60ms" href="tel:+41715236505"><span>Telefon</span><b>+41 71 523 65 05</b></a>
-      <div class="ccard reveal" style="--d:120ms"><span>Adresse</span><b>Sirnacherstrasse 5<br>9500 Wil SG</b></div>
+      <div class="ccard reveal" style="--d:60ms"><span>Adresse</span><b>Sirnacherstrasse 5<br>9500 Wil SG</b></div>
     </div>
     <form class="form reveal" data-mailto="info@mood-up.ch" novalidate>
       <fieldset class="seg">
@@ -301,22 +308,87 @@ def build_pages() -> None:
 
     # Rechtliches – Texte müssen von der bestehenden Seite übernommen werden
     legal = {
-        "impressum": ("Impressum", f"""<h2>Kontaktadresse</h2>
-<p>{ph("[Firmenname / Betreiber]")}<br>Sirnacherstrasse 5<br>9500 Wil SG<br>Schweiz</p>
-<p>Telefon: <a href="tel:+41715236505">+41 71 523 65 05</a><br>E-Mail: <a href="mailto:info@mood-up.ch">info@mood-up.ch</a></p>
-<h2>Vertretungsberechtigte Personen</h2><p>{ph("[Namen]")}</p>
-<h2>Handelsregister</h2><p>{ph("[UID / Handelsregister-Nummer]")}</p>
-<h2>Haftungsausschluss, Urheberrechte</h2><p>{ph("[Text von der bestehenden Seite mood-up.ch/Impressum übernehmen]")}</p>"""),
-        "datenschutz": ("Datenschutzerklärung", f"""<p>Mood Up hält sich an das strenge Schweizer Datenschutzgesetz.</p>
-<p>{ph("[Vollständige Datenschutzerklärung von der bestehenden Seite mood-up.ch übernehmen. ]")}</p>"""),
+        "impressum": ("Impressum", """<h2>Kontaktadresse</h2>
+<p>Rainax AG<br>Sirnacherstrasse 5<br>9500 Wil SG<br>Schweiz</p>
+<p>E-Mail: <a href="mailto:info@mood-up.ch">info@mood-up.ch</a></p>
+<h2>Verantwortliche Personen</h2>
+<p>Massimo Nardone<br>George Chamoun</p>
+<h2>Unternehmens-Identifikationsnummer (UID)</h2>
+<p>CHE-442.927.494</p>
+<h2>Haftungsausschluss</h2>
+<p>Die Rainax AG übernimmt keine Gewähr für die Richtigkeit, Vollständigkeit und Aktualität der bereitgestellten Informationen.</p>
+<p>Für Inhalte externer Links sind ausschliesslich deren Betreiber verantwortlich.</p>
+<h2>Urheberrecht</h2>
+<p>Alle Texte, Bilder, Grafiken und das Design dieser Website und App unterliegen dem Urheberrecht der Rainax AG oder Dritter.</p>
+<p>Die Vervielfältigung oder Verwendung dieser Inhalte ist ohne ausdrückliche schriftliche Genehmigung nicht gestattet.</p>
+<h2>Anwendbares Recht</h2>
+<p>Es gilt ausschliesslich schweizerisches Recht.</p>
+<p>Gerichtsstand ist St. Gallen (Schweiz).</p>
+<p class="prose__copy">© 2026 Rainax AG. Alle Rechte vorbehalten.</p>"""),
+        "datenschutz": ("Datenschutzerklärung", """<h2>1. Verantwortliche Stelle</h2>
+<p>Rainax AG<br>Sirnacherstrasse 5<br>9500 Wil, Schweiz<br>E-Mail: <a href="mailto:info@rainax.ch">info@rainax.ch</a></p>
+<p>Die Rainax AG ist Betreiberin der App Mood Up und verantwortlich für die Verarbeitung personenbezogener Daten gemäss dem schweizerischen Datenschutzgesetz (DSG) und der EU-Datenschutz-Grundverordnung (DSGVO).</p>
+<h2>2. Allgemeines zur Datenverarbeitung</h2>
+<p>Der Schutz Ihrer persönlichen Daten ist uns wichtig. Wir verarbeiten personenbezogene Daten nur, soweit dies für den Betrieb unserer App, der Website und der angebotenen Dienstleistungen erforderlich ist.</p>
+<p>Wir erheben und speichern personenbezogene Daten grundsätzlich nur, soweit dies gesetzlich erlaubt oder Sie ausdrücklich eingewilligt haben.</p>
+<h2>3. Nutzung der App „Mood Up“</h2>
+<h3>3.1 Keine Registrierung</h3>
+<p>Die Nutzung der App ist ohne Anmeldung möglich. Es werden keine Konten erstellt und keine personenbezogenen Daten zentral gespeichert.</p>
+<h3>3.2 Standortdaten</h3>
+<p>Für die Hauptfunktion der App (Anzeige von Partys und Events in der Nähe) wird Ihr aktueller Standort verwendet.</p>
+<p>Diese Standortdaten werden ausschliesslich lokal auf Ihrem Gerät verarbeitet und nicht an unsere Server übermittelt oder dort gespeichert.</p>
+<h3>3.3 Nutzungsdaten</h3>
+<p>Beim Zugriff auf die App können automatisch technische Informationen übermittelt werden (z. B. Gerätetyp, Betriebssystem, App-Version).</p>
+<p>Diese Daten werden anonymisiert ausgewertet, um Stabilität, Sicherheit und Performance der App zu gewährleisten.</p>
+<h2>4. Datenverarbeitung bei Club-Abonnements</h2>
+<h3>4.1 Registrierung und Vertrag</h3>
+<p>Clubinhaber schliessen über die Website oder innerhalb der App ein monatliches Abo ab. Dabei werden zur Vertragsabwicklung folgende Daten erhoben:</p>
+<ul><li>Name oder Firmenname</li><li>E-Mail-Adresse</li><li>Rechnungs- und Zahlungsdaten (über Stripe)</li></ul>
+<h3>4.2 Zahlungsabwicklung über Stripe</h3>
+<p>Die Bezahlung erfolgt über den Zahlungsdienstleister Stripe Payments Europe Ltd., Irland.</p>
+<p>Stripe verarbeitet personenbezogene Daten gemäss den geltenden Datenschutzvorschriften.</p>
+<p>Weitere Informationen: <a href="https://stripe.com/privacy" rel="noopener">https://stripe.com/privacy</a></p>
+<p>Die Rainax AG erhält keinen Zugriff auf Kreditkarten- oder Kontoinformationen.</p>
+<h2>5. Zweck der Datenverarbeitung</h2>
+<p>Die Verarbeitung erfolgt zu folgenden Zwecken:</p>
+<ul><li>Bereitstellung und Verbesserung der App</li><li>Anzeige von Events und Standorten</li><li>Verwaltung und Abrechnung von Club-Abonnements</li><li>Kommunikation mit Kunden und Support</li></ul>
+<h2>6. Weitergabe von Daten</h2>
+<p>Wir geben personenbezogene Daten grundsätzlich nicht an Dritte weiter, ausser:</p>
+<ul><li>wenn dies zur Vertragserfüllung notwendig ist (z. B. Stripe-Zahlungsabwicklung),</li><li>wenn eine gesetzliche Verpflichtung besteht,</li><li>oder Sie ausdrücklich eingewilligt haben.</li></ul>
+<h2>7. Datensicherheit</h2>
+<p>Wir treffen angemessene technische und organisatorische Massnahmen, um Ihre Daten gegen Verlust, Missbrauch, unbefugten Zugriff oder Offenlegung zu schützen.</p>
+<p>Unsere Server und Datenverarbeitungssysteme befinden sich ausschliesslich in der Schweiz oder der EU.</p>
+<h2>8. Speicherdauer</h2>
+<p>Personenbezogene Daten werden nur so lange gespeichert, wie es für die jeweiligen Zwecke notwendig ist oder gesetzliche Aufbewahrungspflichten bestehen.</p>
+<p>Daten aus Club-Abos werden nach Kündigung und Ablauf gesetzlicher Fristen gelöscht.</p>
+<h2>9. Rechte der betroffenen Personen</h2>
+<p>Sie haben gemäss DSG und DSGVO folgende Rechte:</p>
+<ul><li>Auskunft: Welche Daten über Sie gespeichert sind</li><li>Berichtigung: Falsche oder unvollständige Daten korrigieren lassen</li><li>Löschung: Daten löschen lassen, sofern keine gesetzliche Pflicht besteht</li><li>Einschränkung der Verarbeitung</li><li>Datenübertragbarkeit</li><li>Widerspruch gegen bestimmte Verarbeitungen</li></ul>
+<p>Anfragen richten Sie bitte an: <a href="mailto:info@rainax.ch">info@rainax.ch</a></p>
+<h2>10. Nutzung von Cookies und Analyse (Website)</h2>
+<p>Unsere Website kann Cookies oder ähnliche Technologien verwenden, um die Benutzerfreundlichkeit zu verbessern.</p>
+<p>Sie können die Verwendung von Cookies in den Einstellungen Ihres Browsers deaktivieren.</p>
+<p>Wir verzichten auf Tracking-Tools wie Google Analytics innerhalb der App.</p>
+<h2>11. Internationale Datenübermittlung</h2>
+<p>Da die Rainax AG ihren Sitz in der Schweiz hat, kann es bei internationalen Nutzern zu grenzüberschreitenden Datenübermittlungen kommen.</p>
+<p>Diese erfolgen ausschliesslich in Länder mit angemessenem Datenschutzniveau gemäss DSG und DSGVO (z. B. EU/EWR).</p>
+<h2>12. Änderungen dieser Datenschutzerklärung</h2>
+<p>Die Rainax AG kann diese Datenschutzerklärung bei Bedarf anpassen.</p>
+<p>Die jeweils aktuelle Version ist in der App oder auf der Website abrufbar unter:<br><a href="https://www.moodup.app/datenschutz" rel="noopener">https://www.moodup.app/datenschutz</a></p>
+<h2>13. Kontakt</h2>
+<p>Bei Fragen oder Anliegen zum Datenschutz wenden Sie sich bitte an:</p>
+<p>Rainax AG<br>Sirnacherstrasse 5<br>9500 Wil, Schweiz<br>E-Mail: <a href="mailto:info@rainax.ch">info@rainax.ch</a></p>
+<p class="prose__copy">© 2026 Rainax AG. Alle Rechte vorbehalten.</p>"""),
         "agb": ("AGB", f"""<p>{ph("[Allgemeine Geschäftsbedingungen von der bestehenden Seite mood-up.ch übernehmen]")}</p>"""),
     }
     for slug, (title, body) in legal.items():
+        lead = {"impressum": "Angaben gemäss Schweizer Recht.",
+                "datenschutz": "für die App „Mood Up“ und die Website mood-up.ch · Stand: Oktober 2026"}.get(slug, "Stand: " + ph("[Datum]"))
+        marker = "" if slug in ("impressum", "datenschutz") else "\n    <!-- PLATZHALTER: Rechtstext nicht erfinden, sondern von der bestehenden Seite übernehmen -->"
         page(slug, f"{title} | Mood Up", f"{title} von Mood Up.",
-             hero("Rechtliches", title, "Stand: " + ph("[Datum]")) + f"""
+             hero("Rechtliches", title, lead) + f"""
 <section class="section section--tight">
-  <div class="container prose">
-    <!-- PLATZHALTER: Rechtstext nicht erfinden, sondern von der bestehenden Seite übernehmen -->
+  <div class="container prose">{marker}
     {body}
   </div>
 </section>""")
