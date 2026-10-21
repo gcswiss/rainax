@@ -23,9 +23,7 @@
   <header class="site-header">
     <div class="site-header__inner">
       <a class="logo" href="/" aria-label="RAINAX – zur Startseite">
-        <!-- PLATZHALTER: durch Originallogo ersetzen, z. B. <img src="/assets/img/logo-weiss.svg" alt="RAINAX"> -->
-        <span class="logo__word">RAINAX</span>
-        <span class="logo__claim">Technology, Apps and AI</span>
+        <img src="/assets/img/logo-weiss.webp" width="640" height="126" alt="RAINAX – Technology, Apps and AI">
       </a>
       <nav class="site-nav" aria-label="Hauptmenü">
         <ul class="site-nav__list">
@@ -56,37 +54,49 @@
 
   <main id="main">
 
-    <section class="page-hero">
-      <div class="grid-bg" aria-hidden="true"></div>
+    <header class="page-head">
       <div class="container">
-        <span class="eyebrow reveal">Projekt</span>
-        <h1 class="display-xl reveal">MoodUp.</h1>
-        <p class="lead reveal" style="--delay: .1s">Das Nachtleben, neu verbunden.</p>
+        <p class="breadcrumb reveal"><a href="/projekte/">Projekte</a><span aria-hidden="true">/</span>MoodUp</p>
+        <h1 class="page-head__title reveal">MoodUp.</h1>
+        <div class="page-head__grid reveal" style="--delay: .1s">
+          <p class="page-head__label"><span class="idx">01</span>Projekt</p>
+          <p class="lead page-head__lead">Das Nachtleben, neu verbunden.</p>
+        </div>
+        <dl class="facts reveal" style="--delay: .15s">
+          <div class="fact"><dt>Plattform</dt><dd>iOS · Android</dd></div>
+          <div class="fact"><dt>Gestartet in</dt><dd>Wil SG</dd></div>
+          <div class="fact"><dt>Entwickelt bei</dt><dd>RAINAX</dd></div>
+          <div class="fact"><dt>Status</dt><dd><i class="pulse"></i> Live</dd></div>
+        </dl>
+      </div>
+    </header>
+
+    <section class="section section--tight-top">
+      <div class="container">
+        <div class="stage reveal">
+          <div class="showcase showcase--five">
+            <div class="showcase__item showcase__item--l2"><img class="device" src="/assets/img/moodup/karte-region.webp" width="720" height="1420" alt="MoodUp: Karte der Ostschweiz mit Bars und Clubs" decoding="async"></div>
+            <div class="showcase__item showcase__item--l1"><img class="device" src="/assets/img/moodup/clubs-in-der-naehe.webp" width="720" height="1420" alt="MoodUp: Liste «Clubs in Ihrer Nähe» mit geöffneten Lokalen" decoding="async"></div>
+            <div class="showcase__item showcase__item--center"><img class="device" src="/assets/img/moodup/startseite.webp" width="720" height="1429" alt="MoodUp: Startseite mit Specials, Bars und Clubs" decoding="async"></div>
+            <div class="showcase__item showcase__item--r1"><img class="device" src="/assets/img/moodup/location-profil.webp" width="720" height="1420" alt="MoodUp: Profil der Sein Lounge mit Öffnungszeit, Musikstilen und Gäste-Chat" decoding="async"></div>
+            <div class="showcase__item showcase__item--r2"><img class="device" src="/assets/img/moodup/karte-wil.webp" width="720" height="1420" alt="MoodUp: Live-Map von Wil mit Bars und Clubs" decoding="async"></div>
+          </div>
+        </div>
       </div>
     </section>
 
     <section class="section section--tight-top">
       <div class="container">
-        <div class="showcase showcase--five reveal">
-          <div class="showcase__item showcase__item--l2"><img class="device" src="/assets/img/moodup/karte-region.webp" width="720" height="1420" alt="MoodUp: Karte der Ostschweiz mit Bars und Clubs" decoding="async"></div>
-          <div class="showcase__item showcase__item--l1"><img class="device" src="/assets/img/moodup/clubs-in-der-naehe.webp" width="720" height="1420" alt="MoodUp: Liste «Clubs in Ihrer Nähe» mit geöffneten Lokalen" decoding="async"></div>
-          <div class="showcase__item showcase__item--center"><img class="device" src="/assets/img/moodup/startseite.webp" width="720" height="1429" alt="MoodUp: Startseite mit Specials, Bars und Clubs" decoding="async"></div>
-          <div class="showcase__item showcase__item--r1"><img class="device" src="/assets/img/moodup/location-profil.webp" width="720" height="1420" alt="MoodUp: Profil der Sein Lounge mit Öffnungszeit, Musikstilen und Gäste-Chat" decoding="async"></div>
-          <div class="showcase__item showcase__item--r2"><img class="device" src="/assets/img/moodup/karte-wil.webp" width="720" height="1420" alt="MoodUp: Live-Map von Wil mit Bars und Clubs" decoding="async"></div>
+        <div class="rows">
+          <div class="row reveal">
+            <p class="row__label"><span class="idx">01</span>Ausgangslage</p>
+            <p class="row__statement">Menschen suchen Erlebnisse, die zu ihnen passen. Bars und Clubs kämpfen um Sichtbarkeit. Beide Seiten finden nur schwer zueinander.</p>
+          </div>
         </div>
       </div>
     </section>
 
     <section class="section section--deep">
-      <div class="container container--narrow">
-        <div class="case-block reveal">
-          <span class="eyebrow">Ausgangslage</span>
-          <p class="title">Menschen suchen Erlebnisse, die zu ihnen passen. Bars und Clubs kämpfen um Sichtbarkeit. Beide Seiten finden nur schwer zueinander.</p>
-        </div>
-      </div>
-    </section>
-
-    <section class="section">
       <div class="container">
         <div class="screens">
           <figure class="reveal">
@@ -105,18 +115,22 @@
       </div>
     </section>
 
-    <section class="section section--deep">
-      <div class="container container--narrow">
-        <div class="case-block reveal">
-          <span class="eyebrow">Lösung</span>
-          <p class="title">MoodUp zeigt Bars, Clubs und Events in Echtzeit auf einer Live-Map. Gäste filtern nach Musikstil, Alter und Stimmung, folgen ihren Lieblingslokalen und können vor Ort einchecken. Betriebe erhalten ein eigenes Profil, teilen Stories und erreichen ihre Gäste direkt per Push-Nachricht.</p>
-        </div>
-        <div class="case-block reveal">
-          <span class="eyebrow">Ergebnis</span>
-          <p class="title">Eine Plattform, die von der ersten Idee über Design und Entwicklung bis zum Marktstart vollständig bei RAINAX entstanden ist. Gestartet in Wil, gebaut für die ganze Schweiz.</p>
-          <div class="btn-row" style="margin-top: 48px">
-            <!-- PLATZHALTER: Link zur MoodUp-Webseite oder zum App Store -->
-            <a class="btn btn--primary" href="#" rel="noopener">MoodUp entdecken <span class="arrow" aria-hidden="true">&#8599;</span></a>
+    <section class="section">
+      <div class="container">
+        <div class="rows">
+          <div class="row reveal">
+            <p class="row__label"><span class="idx">02</span>Lösung</p>
+            <p class="row__statement">MoodUp zeigt Bars, Clubs und Events in Echtzeit auf einer Live-Map. Gäste filtern nach Musikstil, Alter und Stimmung, folgen ihren Lieblingslokalen und können vor Ort einchecken. Betriebe erhalten ein eigenes Profil, teilen Stories und erreichen ihre Gäste direkt per Push-Nachricht.</p>
+          </div>
+          <div class="row reveal">
+            <p class="row__label"><span class="idx">03</span>Ergebnis</p>
+            <div class="row__statement">
+              <p>Eine Plattform, die von der ersten Idee über Design und Entwicklung bis zum Marktstart vollständig bei RAINAX entstanden ist. Gestartet in Wil, gebaut für die ganze Schweiz.</p>
+              <div class="btn-row" style="margin-top: 40px">
+                <!-- PLATZHALTER: Link zur MoodUp-Webseite oder zum App Store -->
+                <a class="btn btn--primary" href="#" rel="noopener">MoodUp entdecken <span class="arrow" aria-hidden="true">&#8599;</span></a>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -129,9 +143,7 @@
       <div class="site-footer__grid">
         <div class="site-footer__brand">
           <a class="logo" href="/" aria-label="RAINAX – zur Startseite">
-          <!-- PLATZHALTER: durch Originallogo ersetzen, z. B. <img src="/assets/img/logo-weiss.svg" alt="RAINAX"> -->
-          <span class="logo__word">RAINAX</span>
-          <span class="logo__claim">Technology, Apps and AI</span>
+          <img src="/assets/img/logo-weiss.webp" width="640" height="126" alt="RAINAX – Technology, Apps and AI">
       </a>
           <p class="site-footer__slogan">Ideen werden Zukunft.</p>
         </div>
@@ -158,8 +170,7 @@
         <div>
           <h2>Folgen Sie uns</h2>
           <ul>
-            <li><a href="#" rel="noopener">LinkedIn</a></li>
-            <li><a href="#" rel="noopener">Instagram</a></li>
+            <li><a href="https://www.linkedin.com/company/rainax-ag/" target="_blank" rel="noopener">LinkedIn <span aria-hidden="true">&#8599;</span><span class="visually-hidden"> (öffnet in neuem Fenster)</span></a></li>
           </ul>
         </div>
       </div>

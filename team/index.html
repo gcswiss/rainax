@@ -23,9 +23,7 @@
   <header class="site-header">
     <div class="site-header__inner">
       <a class="logo" href="/" aria-label="RAINAX – zur Startseite">
-        <!-- PLATZHALTER: durch Originallogo ersetzen, z. B. <img src="/assets/img/logo-weiss.svg" alt="RAINAX"> -->
-        <span class="logo__word">RAINAX</span>
-        <span class="logo__claim">Technology, Apps and AI</span>
+        <img src="/assets/img/logo-weiss.webp" width="640" height="126" alt="RAINAX – Technology, Apps and AI">
       </a>
       <nav class="site-nav" aria-label="Hauptmenü">
         <ul class="site-nav__list">
@@ -57,58 +55,75 @@
   <main id="main">
 
     <!-- 1 · Seitenanfang -->
-    <section class="page-hero">
-      <div class="grid-bg" aria-hidden="true"></div>
+    <header class="page-head">
       <div class="container">
-        <span class="eyebrow reveal">Team</span>
-        <h1 class="display reveal">Die Menschen hinter RAINAX.</h1>
-        <p class="lead reveal" style="--delay: .1s">Ein Team aus Unternehmern, Entwicklern und Kreativen. Jeder hat seinen eigenen Weg gemacht. Gemeinsam haben wir ein Ziel: Technologie zu bauen, die bleibt.</p>
+        <h1 class="page-head__title reveal">Die Menschen hinter RAINAX.</h1>
+        <div class="page-head__grid reveal" style="--delay: .1s">
+          <p class="page-head__label"><span class="idx">04</span>Team</p>
+          <p class="lead page-head__lead">Ein Team aus Unternehmern, Entwicklern und Kreativen. Jeder hat seinen eigenen Weg gemacht. Gemeinsam haben wir ein Ziel: Technologie zu bauen, die bleibt.</p>
+        </div>
       </div>
-    </section>
+    </header>
 
     <!-- 2 · Die vier Porträts -->
     <section class="section section--tight-top">
       <div class="container">
-        <div class="grid grid--2 team-grid">
+        <div class="team-grid">
           <article class="person reveal">
             <div class="person__photo">
-              <span class="person__index" aria-hidden="true">01 / 04</span>
               <!-- PLATZHALTER: Porträtfoto Schwarz-Weiss, z. B. <img src="/assets/img/team/massimo-nardone.jpg" alt="Massimo Nardone"> -->
               <span class="person__initials" aria-hidden="true">MN</span>
             </div>
-            <h2 class="person__name">Massimo Nardone</h2>
-            <p class="person__role">Gründer · Präsident des Verwaltungsrats · Managing Director</p>
-            <p class="person__text">Massimo führt RAINAX. Er verantwortet die Unternehmensführung, die Geschäftsentwicklung und die Partnerschaften. Seine Stärke: Chancen erkennen, Entscheidungen treffen und Projekte konsequent ans Ziel bringen.</p>
+            <div class="person__body">
+              <span class="person__index" aria-hidden="true">01</span>
+              <div>
+                <h2 class="person__name">Massimo Nardone</h2>
+                <p class="person__role">Gründer · Präsident des Verwaltungsrats · Managing Director</p>
+                <p class="person__text">Massimo führt RAINAX. Er verantwortet die Unternehmensführung, die Geschäftsentwicklung und die Partnerschaften. Seine Stärke: Chancen erkennen, Entscheidungen treffen und Projekte konsequent ans Ziel bringen.</p>
+              </div>
+            </div>
           </article>
           <article class="person reveal" style="--delay: .08s">
             <div class="person__photo">
-              <span class="person__index" aria-hidden="true">02 / 04</span>
               <!-- PLATZHALTER: Porträtfoto Schwarz-Weiss -->
               <span class="person__initials" aria-hidden="true">GC</span>
             </div>
-            <h2 class="person__name">George Chamoun</h2>
-            <p class="person__role">Mitgründer · Chief Technology Officer</p>
-            <p class="person__text">George verantwortet die Technologie. Mit einem Studium der Wirtschaftsinformatik und langjähriger Erfahrung in IT und digitalen Lösungen macht er aus Ideen funktionierende Produkte. Er ist Mitinitiator von MoodUp und hat die Plattform massgeblich entwickelt.</p>
+            <div class="person__body">
+              <span class="person__index" aria-hidden="true">02</span>
+              <div>
+                <h2 class="person__name">George Chamoun</h2>
+                <p class="person__role">Mitgründer · Chief Technology Officer</p>
+                <p class="person__text">George verantwortet die Technologie. Mit einem Studium der Wirtschaftsinformatik und langjähriger Erfahrung in IT und digitalen Lösungen macht er aus Ideen funktionierende Produkte. Er ist Mitinitiator von MoodUp und hat die Plattform massgeblich entwickelt.</p>
+              </div>
+            </div>
           </article>
           <article class="person reveal">
             <div class="person__photo">
-              <span class="person__index" aria-hidden="true">03 / 04</span>
               <!-- PLATZHALTER: Porträtfoto Schwarz-Weiss -->
               <span class="person__initials" aria-hidden="true">ML</span>
             </div>
-            <h2 class="person__name">Martin Locher</h2>
-            <p class="person__role">Mitgründer · Vizepräsident des Verwaltungsrats</p>
-            <p class="person__text">Martin sorgt für Struktur, Planung und eine verlässliche Betreuung unserer Kundschaft. Er bringt über 25 Jahre Berufserfahrung und ein langjährig gewachsenes Netzwerk mit.</p>
+            <div class="person__body">
+              <span class="person__index" aria-hidden="true">03</span>
+              <div>
+                <h2 class="person__name">Martin Locher</h2>
+                <p class="person__role">Mitgründer · Vizepräsident des Verwaltungsrats</p>
+                <p class="person__text">Martin sorgt für Struktur, Planung und eine verlässliche Betreuung unserer Kundschaft. Er bringt über 25 Jahre Berufserfahrung und ein langjährig gewachsenes Netzwerk mit.</p>
+              </div>
+            </div>
           </article>
           <article class="person reveal" style="--delay: .08s">
             <div class="person__photo">
-              <span class="person__index" aria-hidden="true">04 / 04</span>
               <!-- PLATZHALTER: Porträtfoto Schwarz-Weiss -->
               <span class="person__initials" aria-hidden="true">KA</span>
             </div>
-            <h2 class="person__name">Krenar Ajrulai</h2>
-            <p class="person__role">Creative Director</p>
-            <p class="person__text">Krenar macht unsere Produkte sichtbar. Er bringt mehrjährige Erfahrung in Videografie, Content und digitalem Marketing mit und hat mit bekannten Persönlichkeiten und Influencern in der Schweiz zusammengearbeitet.</p>
+            <div class="person__body">
+              <span class="person__index" aria-hidden="true">04</span>
+              <div>
+                <h2 class="person__name">Krenar Ajrulai</h2>
+                <p class="person__role">Creative Director</p>
+                <p class="person__text">Krenar macht unsere Produkte sichtbar. Er bringt mehrjährige Erfahrung in Videografie, Content und digitalem Marketing mit und hat mit bekannten Persönlichkeiten und Influencern in der Schweiz zusammengearbeitet.</p>
+              </div>
+            </div>
           </article>
         </div>
       </div>
@@ -121,9 +136,7 @@
       <div class="site-footer__grid">
         <div class="site-footer__brand">
           <a class="logo" href="/" aria-label="RAINAX – zur Startseite">
-          <!-- PLATZHALTER: durch Originallogo ersetzen, z. B. <img src="/assets/img/logo-weiss.svg" alt="RAINAX"> -->
-          <span class="logo__word">RAINAX</span>
-          <span class="logo__claim">Technology, Apps and AI</span>
+          <img src="/assets/img/logo-weiss.webp" width="640" height="126" alt="RAINAX – Technology, Apps and AI">
       </a>
           <p class="site-footer__slogan">Ideen werden Zukunft.</p>
         </div>
@@ -150,8 +163,7 @@
         <div>
           <h2>Folgen Sie uns</h2>
           <ul>
-            <li><a href="#" rel="noopener">LinkedIn</a></li>
-            <li><a href="#" rel="noopener">Instagram</a></li>
+            <li><a href="https://www.linkedin.com/company/rainax-ag/" target="_blank" rel="noopener">LinkedIn <span aria-hidden="true">&#8599;</span><span class="visually-hidden"> (öffnet in neuem Fenster)</span></a></li>
           </ul>
         </div>
       </div>

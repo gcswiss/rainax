@@ -23,9 +23,7 @@
   <header class="site-header">
     <div class="site-header__inner">
       <a class="logo" href="/" aria-label="RAINAX – zur Startseite">
-        <!-- PLATZHALTER: durch Originallogo ersetzen, z. B. <img src="/assets/img/logo-weiss.svg" alt="RAINAX"> -->
-        <span class="logo__word">RAINAX</span>
-        <span class="logo__claim">Technology, Apps and AI</span>
+        <img src="/assets/img/logo-weiss.webp" width="640" height="126" alt="RAINAX – Technology, Apps and AI">
       </a>
       <nav class="site-nav" aria-label="Hauptmenü">
         <ul class="site-nav__list">
@@ -56,24 +54,38 @@
 
   <main id="main">
 
-    <section class="section" style="padding-top: calc(var(--nav-height) + 90px)">
-      <div class="container contact">
-        <div class="reveal">
-          <span class="eyebrow">Kontakt</span>
-          <h1 class="display">Bauen Sie mit uns.</h1>
-          <p class="lead muted" style="margin-top: 24px">Ob fertiges Konzept oder erste Idee: Wir hören zu. Schreiben Sie uns, wir melden uns persönlich bei Ihnen.</p>
-          <address class="address">
-            <strong>RAINAX AG</strong><br>
-            Sirnacherstrasse 5<br>
-            9500 Wil SG<br>
-            <a href="mailto:info@rainax.ch">info@rainax.ch</a><br>
-            <a href="tel:+41715236880">+41 71 523 68 80</a>
-          </address>
+    <header class="page-head">
+      <div class="container">
+        <h1 class="page-head__title reveal">Bauen Sie mit uns.</h1>
+        <div class="page-head__grid reveal" style="--delay: .1s">
+          <p class="page-head__label"><span class="idx">05</span>Kontakt</p>
+          <p class="lead page-head__lead">Ob fertiges Konzept oder erste Idee: Wir hören zu. Schreiben Sie uns, wir melden uns persönlich bei Ihnen.</p>
         </div>
+      </div>
+    </header>
+
+    <section class="section section--tight-top">
+      <div class="container contact">
+        <aside class="contact__info reveal">
+          <dl class="facts facts--stack">
+            <div class="fact"><dt>Adresse</dt><dd>RAINAX AG<br>Sirnacherstrasse 5<br>9500 Wil SG</dd></div>
+            <div class="fact"><dt>E-Mail</dt><dd><a href="mailto:info@rainax.ch">info@rainax.ch</a></dd></div>
+            <div class="fact"><dt>Telefon</dt><dd><a href="tel:+41715236880">+41 71 523 68 80</a></dd></div>
+          </dl>
+        </aside>
 
         <div class="form-panel reveal" style="--delay: .1s">
           <!-- Formular-Empfänger in data-endpoint eintragen (Nachrichten gehen an info@rainax.ch) -->
           <form id="contact-form" data-endpoint="" novalidate>
+            <fieldset class="choices">
+              <legend>Worum geht es? <span class="req" aria-hidden="true">*</span></legend>
+              <div class="choices__list">
+                <label class="choice"><input type="radio" name="topic" value="Ich habe eine Idee" data-key="idee" required><span>Ich habe eine Idee</span></label>
+                <label class="choice"><input type="radio" name="topic" value="Ich brauche eine App" data-key="app"><span>Ich brauche eine App</span></label>
+                <label class="choice"><input type="radio" name="topic" value="Ich interessiere mich für KI" data-key="ki"><span>Ich interessiere mich für KI</span></label>
+                <label class="choice"><input type="radio" name="topic" value="Etwas anderes" data-key="anderes"><span>Etwas anderes</span></label>
+              </div>
+            </fieldset>
             <div class="form-grid">
               <div class="field">
                 <label for="name">Name <span class="req" aria-hidden="true">*</span></label>
@@ -83,27 +95,17 @@
                 <label for="email">E-Mail <span class="req" aria-hidden="true">*</span></label>
                 <input class="input" id="email" name="email" type="email" autocomplete="email" required>
               </div>
-              <div class="field">
+              <div class="field full">
                 <label for="phone">Telefon</label>
                 <input class="input" id="phone" name="phone" type="tel" autocomplete="tel">
               </div>
-              <div class="field">
-                <label for="topic">Worum geht es? <span class="req" aria-hidden="true">*</span></label>
-                <select class="input" id="topic" name="topic" required>
-                  <option value="" disabled selected>Bitte wählen</option>
-                  <option data-key="idee">Ich habe eine Idee</option>
-                  <option data-key="app">Ich brauche eine App</option>
-                  <option data-key="ki">Ich interessiere mich für KI</option>
-                  <option data-key="anderes">Etwas anderes</option>
-                </select>
-              </div>
               <div class="field full">
                 <label for="message">Ihre Nachricht <span class="req" aria-hidden="true">*</span></label>
-                <textarea class="input" id="message" name="message" required></textarea>
+                <textarea class="input" id="message" name="message" rows="5" required></textarea>
               </div>
             </div>
             <div class="form-actions">
-              <button class="btn btn--primary" type="submit">Nachricht senden</button>
+              <button class="btn btn--primary" type="submit">Nachricht senden <span class="arrow" aria-hidden="true">&#8599;</span></button>
             </div>
             <p class="form-message" role="status" aria-live="polite" hidden></p>
           </form>
@@ -126,9 +128,7 @@
       <div class="site-footer__grid">
         <div class="site-footer__brand">
           <a class="logo" href="/" aria-label="RAINAX – zur Startseite">
-          <!-- PLATZHALTER: durch Originallogo ersetzen, z. B. <img src="/assets/img/logo-weiss.svg" alt="RAINAX"> -->
-          <span class="logo__word">RAINAX</span>
-          <span class="logo__claim">Technology, Apps and AI</span>
+          <img src="/assets/img/logo-weiss.webp" width="640" height="126" alt="RAINAX – Technology, Apps and AI">
       </a>
           <p class="site-footer__slogan">Ideen werden Zukunft.</p>
         </div>
@@ -155,8 +155,7 @@
         <div>
           <h2>Folgen Sie uns</h2>
           <ul>
-            <li><a href="#" rel="noopener">LinkedIn</a></li>
-            <li><a href="#" rel="noopener">Instagram</a></li>
+            <li><a href="https://www.linkedin.com/company/rainax-ag/" target="_blank" rel="noopener">LinkedIn <span aria-hidden="true">&#8599;</span><span class="visually-hidden"> (öffnet in neuem Fenster)</span></a></li>
           </ul>
         </div>
       </div>

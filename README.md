@@ -31,6 +31,14 @@ Die Pfade sind absolut (`/assets/...`), die Seite muss also über einen Webserve
 
 `assets/css/style.css` enthält alle Design-Tokens, `assets/js/main.js` Menü, Scroll-Effekte, Videos und Formular.
 
+## Unterseiten
+
+Redaktionelles 12-Spalten-Raster: kleines Label mit Index links («(02) Projekte»), Inhalt rechts,
+Haarlinien statt Karten. Jede Unterseite hat ein eigenes Muster: Kapitel mit mitlaufendem Inhaltsverzeichnis
+(Was wir tun), Projektzeilen mit Faktentabelle (Projekte), Ausgangslage/Lösung/Ergebnis als Zeilen (MoodUp),
+Vollbild-Kopf mit Video und Werte als Spalten (Über uns), Themenwahl als Auswahl-Buttons (Kontakt).
+Logo: `assets/img/logo-weiss.webp`.
+
 ## Hero-Video
 
 Das Hintergrundvideo wird selbst gehostet (kein YouTube): ohne Ton, ohne Bedienelemente, in Endlosschleife.
@@ -75,7 +83,6 @@ Alles ist abgeschaltet, wenn «Bewegung reduzieren» eingestellt ist; Hover-Effe
 - Hero: Titel erscheint Wort für Wort aus der Unschärfe; HUD-Rahmen mit Koordinaten und Ortszeit Wil;
   die Erde reagiert mit Tiefe auf die Maus; beim Scrollen fliegt man in die Erde hinein
 - Laufband mit den Leistungen unter dem Hero (hält bei Hover an)
-- Mono-Labels «dekodieren» sich beim Erscheinen wie in einem Terminal
 - Einleitung: Die Wörter leuchten beim Lesen nacheinander auf
 - Partikel-Kugel (Startseite, «Was wir tun»): rotiert, kippt zur Maus, Punkte weichen dem Mauszeiger aus
 - MoodUp-Dashboard: Radar-Sweep und pulsierende Live-Signale
@@ -87,9 +94,9 @@ Alles ist abgeschaltet, wenn «Bewegung reduzieren» eingestellt ist; Hover-Effe
 
 Alle offenen Stellen sind im HTML mit `PLATZHALTER` kommentiert bzw. gelb markiert:
 
-- Originallogo (weiss/dunkel) statt der Text-Wortmarke in Kopfzeile und Footer
+- Dunkle Logo-Version (für helle Flächen), falls später benötigt
 - Formular-Empfänger: `data-endpoint` im Kontaktformular (z. B. Formspree, Web3Forms), Ziel info@rainax.ch
 - Bilder/Videos: «KI für Immobilien», Team-Porträts, Seitenanfänge der Unterseiten
-- Links zu LinkedIn, Instagram und MoodUp / App Store
+- Link zu MoodUp / App Store (LinkedIn ist verlinkt, Instagram vorerst entfernt)
 - Datenschutzerklärung: auf Wunsch vorerst entfernt (Seite, Footer-Link und Einwilligungs-Häkchen im Formular).
   Vor dem Livegang klären, ob sie wieder nötig ist (Kontaktformular, Google Fonts, OpenStreetMap-Karte).

@@ -23,9 +23,7 @@
   <header class="site-header">
     <div class="site-header__inner">
       <a class="logo" href="/" aria-label="RAINAX – zur Startseite">
-        <!-- PLATZHALTER: durch Originallogo ersetzen, z. B. <img src="/assets/img/logo-weiss.svg" alt="RAINAX"> -->
-        <span class="logo__word">RAINAX</span>
-        <span class="logo__claim">Technology, Apps and AI</span>
+        <img src="/assets/img/logo-weiss.webp" width="640" height="126" alt="RAINAX – Technology, Apps and AI">
       </a>
       <nav class="site-nav" aria-label="Hauptmenü">
         <ul class="site-nav__list">
@@ -57,69 +55,95 @@
   <main id="main">
 
     <!-- 1 · Seitenanfang -->
-    <section class="page-hero">
-      <div class="grid-bg" aria-hidden="true"></div>
-      <!-- PLATZHALTER: ruhiges Video (z. B. Code auf einem Bildschirm, Lichter) – wie im Hero der Startseite als .video-bg einfügen (Dateien in /assets/video/) -->
+    <header class="page-head">
       <div class="container">
-        <span class="eyebrow reveal">Was wir tun</span>
-        <h1 class="display reveal">Von der Idee zum Produkt.</h1>
-        <p class="lead reveal" style="--delay: .1s">Wir verbinden Technologie, Design und unternehmerisches Denken. Drei Bereiche, ein Anspruch: Produkte, die funktionieren und gebraucht werden.</p>
-      </div>
-    </section>
-
-    <!-- 2 · Apps -->
-    <section class="section section--deep" id="apps">
-      <div class="container split">
-        <div class="split__text reveal">
-          <span class="eyebrow">Apps</span>
-          <h2 class="headline">Apps, die man gerne benutzt.</h2>
-          <p>Wir entwerfen, entwickeln und betreiben Apps für iOS und Android. Von der ersten Skizze bis in den App Store, mit eigenem Team und ohne Umwege. Wir achten auf eine klare Bedienung, ein starkes Design und eine Technik, die zuverlässig läuft.</p>
-          <ul class="def-list">
-            <li><strong>Konzept.</strong> Wir klären Ziel, Zielgruppe und Funktionen.</li>
-            <li><strong>Design.</strong> Wir gestalten eine Oberfläche, die man sofort versteht.</li>
-            <li><strong>Entwicklung.</strong> Wir bauen die App für iOS und Android.</li>
-            <li><strong>Weiterentwicklung.</strong> Wir begleiten die App auch nach dem Start.</li>
+        <h1 class="page-head__title reveal">Von der Idee zum Produkt.</h1>
+        <div class="page-head__grid reveal" style="--delay: .1s">
+          <p class="page-head__label"><span class="idx">01</span>Was wir tun</p>
+          <p class="lead page-head__lead">Wir verbinden Technologie, Design und unternehmerisches Denken. Drei Bereiche, ein Anspruch: Produkte, die funktionieren und gebraucht werden.</p>
+          <ul class="page-head__meta" aria-label="Bereiche">
+            <li><a href="#apps">Apps</a></li>
+            <li><a href="#ki">Künstliche Intelligenz</a></li>
+            <li><a href="#ideen">Ideen begleiten</a></li>
           </ul>
         </div>
-        <div class="reveal" style="--delay: .1s">
-          <div class="device-single">
-            <img class="device" src="/assets/img/moodup/startseite.webp" width="720" height="1429" alt="MoodUp: Startseite mit Specials, Bars und Clubs" loading="lazy" decoding="async">
+      </div>
+      <div class="container">
+        <!-- Ruhiges Video: bis ein eigenes geliefert wird, ein Ausschnitt des Erd-Videos -->
+        <div class="media-band media-band--wwt reveal">
+          <div class="video-bg" aria-hidden="true">
+            <div class="video-bg__poster"></div>
+            <video class="video-bg__media" data-video muted loop playsinline preload="none" poster="/assets/video/hero-poster.jpg">
+              <source data-src="/assets/video/hero.webm" type="video/webm">
+              <source data-src="/assets/video/hero.mp4" type="video/mp4">
+            </video>
           </div>
         </div>
       </div>
-    </section>
+    </header>
 
-    <!-- 3 · Künstliche Intelligenz -->
-    <section class="section" id="ki">
-      <div class="container split split--reverse">
-        <div class="split__text reveal">
-          <span class="eyebrow">Künstliche Intelligenz</span>
-          <h2 class="headline">KI, die im Alltag hilft.</h2>
-          <p>Künstliche Intelligenz verändert, wie Unternehmen arbeiten. Wir entwickeln KI-Lösungen, die Abläufe vereinfachen und Entscheidungen erleichtern. Dabei zählt für uns nicht, was technisch möglich ist, sondern was im Alltag wirklich weiterhilft. Unsere nächste KI ist bereits in Arbeit.</p>
-        </div>
-        <div class="reveal" style="--delay: .1s">
-          <div class="orb" data-orb aria-hidden="true" style="aspect-ratio: 1 / 1">
-              <div class="orb__label"><span>Daten</span><span>Modell</span><span>Alltag</span></div>
+    <!-- 2–4 · Drei Bereiche als Kapitel mit mitlaufendem Inhaltsverzeichnis -->
+    <section class="section">
+      <div class="container chapters">
+        <nav class="chapters__nav" aria-label="Bereiche auf dieser Seite">
+          <a href="#apps" data-chapter="apps"><span class="idx">01</span>Apps</a>
+          <a href="#ki" data-chapter="ki"><span class="idx">02</span>Künstliche Intelligenz</a>
+          <a href="#ideen" data-chapter="ideen"><span class="idx">03</span>Ideen begleiten</a>
+        </nav>
+
+        <div class="chapters__body">
+          <!-- 2 · Apps -->
+          <article class="chapter" id="apps">
+            <p class="chapter__label"><span class="idx">01</span>Apps</p>
+            <div class="chapter__grid">
+              <div class="reveal">
+                <h2 class="headline">Apps, die man gerne benutzt.</h2>
+                <p class="chapter__text">Wir entwerfen, entwickeln und betreiben Apps für iOS und Android. Von der ersten Skizze bis in den App Store, mit eigenem Team und ohne Umwege. Wir achten auf eine klare Bedienung, ein starkes Design und eine Technik, die zuverlässig läuft.</p>
+                <dl class="steps-list">
+                  <div><dt>Konzept.</dt><dd>Wir klären Ziel, Zielgruppe und Funktionen.</dd></div>
+                  <div><dt>Design.</dt><dd>Wir gestalten eine Oberfläche, die man sofort versteht.</dd></div>
+                  <div><dt>Entwicklung.</dt><dd>Wir bauen die App für iOS und Android.</dd></div>
+                  <div><dt>Weiterentwicklung.</dt><dd>Wir begleiten die App auch nach dem Start.</dd></div>
+                </dl>
+              </div>
+              <div class="chapter__visual reveal" style="--delay: .1s">
+                <div class="device-single">
+                  <img class="device" src="/assets/img/moodup/startseite.webp" width="720" height="1429" alt="MoodUp: Startseite mit Specials, Bars und Clubs" loading="lazy" decoding="async">
+                </div>
+              </div>
             </div>
-        </div>
-      </div>
-    </section>
+          </article>
 
-    <!-- 4 · Ideen begleiten -->
-    <section class="section section--deep" id="ideen">
-      <div class="container">
-        <div class="section__header reveal">
-          <span class="eyebrow">Ideen begleiten</span>
-          <h2 class="headline">Ihre Idee. Unser Team.</h2>
-          <p class="lead muted">Viele gute Ideen scheitern nicht an der Vision, sondern an der Umsetzung. Hier setzen wir an. Wer eine Idee hat, findet bei uns ein Team, das zuhört, die Idee schärft und daraus ein Produkt baut. Wir begleiten vom ersten Gespräch bis zum Markteintritt.</p>
-        </div>
-        <div class="grid grid--3">
-          <div class="tile tile--text reveal"><span class="tile__num">1</span><h3 class="tile__word">Gespräch.</h3><p>Sie stellen uns Ihre Idee vor. Wir hören zu und geben eine ehrliche Einschätzung.</p></div>
-          <div class="tile tile--text reveal" style="--delay: .08s"><span class="tile__num">2</span><h3 class="tile__word">Konzept.</h3><p>Gemeinsam machen wir aus der Idee einen klaren Plan.</p></div>
-          <div class="tile tile--text reveal" style="--delay: .16s"><span class="tile__num">3</span><h3 class="tile__word">Umsetzung.</h3><p>Wir bauen das Produkt und bringen es auf den Markt.</p></div>
-        </div>
-        <div class="btn-row reveal" style="margin-top: 48px">
-          <a class="btn btn--primary" href="/kontakt/?thema=idee">Idee vorstellen <span class="arrow" aria-hidden="true">&#8599;</span></a>
+          <!-- 3 · Künstliche Intelligenz -->
+          <article class="chapter" id="ki">
+            <p class="chapter__label"><span class="idx">02</span>Künstliche Intelligenz</p>
+            <div class="chapter__grid">
+              <div class="reveal">
+                <h2 class="headline">KI, die im Alltag hilft.</h2>
+                <p class="chapter__text">Künstliche Intelligenz verändert, wie Unternehmen arbeiten. Wir entwickeln KI-Lösungen, die Abläufe vereinfachen und Entscheidungen erleichtern. Dabei zählt für uns nicht, was technisch möglich ist, sondern was im Alltag wirklich weiterhilft. Unsere nächste KI ist bereits in Arbeit.</p>
+              </div>
+              <div class="chapter__visual reveal" style="--delay: .1s">
+                <div class="orb" data-orb aria-hidden="true" style="aspect-ratio: 1 / 1"></div>
+              </div>
+            </div>
+          </article>
+
+          <!-- 4 · Ideen begleiten -->
+          <article class="chapter" id="ideen">
+            <p class="chapter__label"><span class="idx">03</span>Ideen begleiten</p>
+            <div class="reveal">
+              <h2 class="headline">Ihre Idee. Unser Team.</h2>
+              <p class="chapter__text chapter__text--wide">Viele gute Ideen scheitern nicht an der Vision, sondern an der Umsetzung. Hier setzen wir an. Wer eine Idee hat, findet bei uns ein Team, das zuhört, die Idee schärft und daraus ein Produkt baut. Wir begleiten vom ersten Gespräch bis zum Markteintritt.</p>
+            </div>
+            <ol class="phases">
+              <li class="phase reveal"><span class="phase__num">1</span><h3 class="phase__title">Gespräch.</h3><p>Sie stellen uns Ihre Idee vor. Wir hören zu und geben eine ehrliche Einschätzung.</p></li>
+              <li class="phase reveal" style="--delay: .06s"><span class="phase__num">2</span><h3 class="phase__title">Konzept.</h3><p>Gemeinsam machen wir aus der Idee einen klaren Plan.</p></li>
+              <li class="phase reveal" style="--delay: .12s"><span class="phase__num">3</span><h3 class="phase__title">Umsetzung.</h3><p>Wir bauen das Produkt und bringen es auf den Markt.</p></li>
+            </ol>
+            <div class="btn-row reveal">
+              <a class="btn btn--primary" href="/kontakt/?thema=idee">Idee vorstellen <span class="arrow" aria-hidden="true">&#8599;</span></a>
+            </div>
+          </article>
         </div>
       </div>
     </section>
@@ -131,9 +155,7 @@
       <div class="site-footer__grid">
         <div class="site-footer__brand">
           <a class="logo" href="/" aria-label="RAINAX – zur Startseite">
-          <!-- PLATZHALTER: durch Originallogo ersetzen, z. B. <img src="/assets/img/logo-weiss.svg" alt="RAINAX"> -->
-          <span class="logo__word">RAINAX</span>
-          <span class="logo__claim">Technology, Apps and AI</span>
+          <img src="/assets/img/logo-weiss.webp" width="640" height="126" alt="RAINAX – Technology, Apps and AI">
       </a>
           <p class="site-footer__slogan">Ideen werden Zukunft.</p>
         </div>
@@ -160,8 +182,7 @@
         <div>
           <h2>Folgen Sie uns</h2>
           <ul>
-            <li><a href="#" rel="noopener">LinkedIn</a></li>
-            <li><a href="#" rel="noopener">Instagram</a></li>
+            <li><a href="https://www.linkedin.com/company/rainax-ag/" target="_blank" rel="noopener">LinkedIn <span aria-hidden="true">&#8599;</span><span class="visually-hidden"> (öffnet in neuem Fenster)</span></a></li>
           </ul>
         </div>
       </div>

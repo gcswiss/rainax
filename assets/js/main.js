@@ -145,10 +145,9 @@
     // ?thema=idee wählt «Ich habe eine Idee» vor
     var params = new URLSearchParams(window.location.search);
     var topic = params.get("thema");
-    var select = form.querySelector("#topic");
-    if (topic && select) {
-      var option = select.querySelector('option[data-key="' + topic + '"]');
-      if (option) select.value = option.value;
+    if (topic) {
+      var choice = form.querySelector('input[name="topic"][data-key="' + topic + '"]');
+      if (choice) choice.checked = true;
     }
 
     var message = form.querySelector(".form-message");
@@ -376,40 +375,27 @@
   }
 
   /* ------------------------------------------------------------------
-     Mono-Labels «dekodieren» sich beim Erscheinen (Terminal-Effekt)
+     Inhaltsverzeichnis der Kapitel: aktuellen Bereich markieren
      ------------------------------------------------------------------ */
-  if (!reduceMotion && "IntersectionObserver" in window) {
-    var glyphs = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789/·";
-    var scramble = function (el) {
-      var final = el.textContent;
-      var start = performance.now();
-      var dur = 260 + final.length * 22;
-      var step = function (now) {
-        var p = Math.min(1, (now - start) / dur);
-        var fixed = Math.floor(p * final.length);
-        var out = "";
-        for (var k = 0; k < final.length; k++) {
-          var ch = final.charAt(k);
-          out += (k < fixed || ch === " ") ? ch : glyphs.charAt((Math.random() * glyphs.length) | 0);
-        }
-        el.textContent = out;
-        if (p < 1) requestAnimationFrame(step); else el.textContent = final;
-      };
-      requestAnimationFrame(step);
-    };
-    var scrambleObserver = new IntersectionObserver(function (entries) {
-      entries.forEach(function (entry) {
-        if (!entry.isIntersecting) return;
-        scrambleObserver.unobserve(entry.target);
-        scramble(entry.target);
+  var chapterLinks = document.querySelectorAll("[data-chapter]");
+  if (chapterLinks.length && "IntersectionObserver" in window) {
+    var setActive = function (id) {
+      chapterLinks.forEach(function (link) {
+        var on = link.dataset.chapter === id;
+        link.classList.toggle("is-active", on);
+        if (on) link.setAttribute("aria-current", "true"); else link.removeAttribute("aria-current");
       });
-    }, { threshold: 0.6 });
-    document.querySelectorAll(".eyebrow").forEach(function (el) {
-      if (el.children.length === 0 && el.textContent.trim()) {
-        el.setAttribute("aria-label", el.textContent.trim());
-        scrambleObserver.observe(el);
-      }
+    };
+    var chapterObserver = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) setActive(entry.target.id);
+      });
+    }, { rootMargin: "-35% 0px -60% 0px" });
+    chapterLinks.forEach(function (link) {
+      var target = document.getElementById(link.dataset.chapter);
+      if (target) chapterObserver.observe(target);
     });
+    setActive(chapterLinks[0].dataset.chapter);
   }
 
   /* ------------------------------------------------------------------

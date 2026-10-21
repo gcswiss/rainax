@@ -23,9 +23,7 @@
   <header class="site-header site-header--overlay">
     <div class="site-header__inner">
       <a class="logo" href="/" aria-label="RAINAX – zur Startseite">
-        <!-- PLATZHALTER: durch Originallogo ersetzen, z. B. <img src="/assets/img/logo-weiss.svg" alt="RAINAX"> -->
-        <span class="logo__word">RAINAX</span>
-        <span class="logo__claim">Technology, Apps and AI</span>
+        <img src="/assets/img/logo-weiss.webp" width="640" height="126" alt="RAINAX – Technology, Apps and AI">
       </a>
       <nav class="site-nav" aria-label="Hauptmenü">
         <ul class="site-nav__list">
@@ -56,45 +54,54 @@
 
   <main id="main">
 
-    <!-- 1 · Seitenanfang -->
-    <section class="page-hero page-hero--full">
-      <div class="grid-bg" aria-hidden="true"></div>
-      <!-- PLATZHALTER: dunkles Video – wie im Hero der Startseite als .video-bg einfügen (Dateien in /assets/video/) -->
+    <!-- 1 · Seitenanfang: ganzer Bildschirm, dunkles Video, nur der Titel -->
+    <section class="cover">
+      <div class="video-bg video-bg--dark" aria-hidden="true">
+        <div class="video-bg__poster"></div>
+        <video class="video-bg__media" data-video muted loop playsinline preload="none" poster="/assets/video/hero-poster.jpg">
+          <source data-src="/assets/video/hero.webm" type="video/webm">
+          <source data-src="/assets/video/hero.mp4" type="video/mp4">
+        </video>
+      </div>
       <div class="container">
-        <span class="eyebrow reveal">Über uns</span>
-        <h1 class="display-xl reveal">Wir bauen, was bleibt.</h1>
+        <p class="page-head__label reveal"><span class="idx">03</span>Über uns</p>
+        <h1 class="page-head__title reveal">Wir bauen, was bleibt.</h1>
       </div>
     </section>
 
     <!-- 2 · Mission -->
-    <section class="section section--deep">
+    <section class="section">
       <div class="container">
-        <span class="eyebrow reveal">Unsere Mission</span>
-        <p class="mission reveal">RAINAX entwickelt Apps und künstliche Intelligenz. Wir wurden gegründet, um aus guten Ideen Technologie zu machen, die Menschen im Alltag wirklich nützt, und sie von der Schweiz aus international zu etablieren.</p>
-        <p class="lead reveal">Wir bauen Produkte, die echte Probleme lösen. Nicht, weil es technisch möglich ist, sondern weil jemand sie braucht. Das beginnt in Wil und hört dort nicht auf.</p>
+        <div class="split-12">
+          <p class="split-12__label reveal"><span class="idx">01</span>Unsere Mission</p>
+          <div class="split-12__main">
+            <p class="mission reveal">RAINAX entwickelt Apps und künstliche Intelligenz. Wir wurden gegründet, um aus guten Ideen Technologie zu machen, die Menschen im Alltag wirklich nützt, und sie von der Schweiz aus international zu etablieren.</p>
+            <p class="lead reveal">Wir bauen Produkte, die echte Probleme lösen. Nicht, weil es technisch möglich ist, sondern weil jemand sie braucht. Das beginnt in Wil und hört dort nicht auf.</p>
+          </div>
+        </div>
       </div>
     </section>
 
     <!-- 3 · Wofür wir stehen -->
-    <section class="section">
+    <section class="section section--deep">
       <div class="container">
-        <div class="section__header reveal">
-          <span class="eyebrow">Wofür wir stehen</span>
+        <div class="split-12 split-12--head">
+          <p class="split-12__label reveal"><span class="idx">02</span>Wofür wir stehen</p>
         </div>
-        <div class="grid grid--4">
-          <div class="tile tile--text reveal"><h3 class="tile__word">Echt.</h3><p>Wir lösen reale Probleme für reale Menschen. Jedes Produkt beginnt mit einem echten Bedürfnis.</p></div>
-          <div class="tile tile--text reveal" style="--delay: .08s"><h3 class="tile__word">Konsequent.</h3><p>Was wir anfangen, bringen wir zu Ende. Sorgfältig, verlässlich und mit vollem Einsatz.</p></div>
-          <div class="tile tile--text reveal" style="--delay: .16s"><h3 class="tile__word">Klar.</h3><p>Wir entscheiden schnell und sagen, was wir denken. Offen gegenüber Partnern, offen im Team.</p></div>
-          <div class="tile tile--text reveal" style="--delay: .24s"><h3 class="tile__word">Weitsichtig.</h3><p>Wir bauen Produkte, die wachsen können, technisch, inhaltlich und über Grenzen hinweg.</p></div>
+        <div class="values">
+          <div class="value reveal"><span class="value__num">01</span><h3 class="value__word">Echt.</h3><p>Wir lösen reale Probleme für reale Menschen. Jedes Produkt beginnt mit einem echten Bedürfnis.</p></div>
+          <div class="value reveal" style="--delay: .06s"><span class="value__num">02</span><h3 class="value__word">Konsequent.</h3><p>Was wir anfangen, bringen wir zu Ende. Sorgfältig, verlässlich und mit vollem Einsatz.</p></div>
+          <div class="value reveal" style="--delay: .12s"><span class="value__num">03</span><h3 class="value__word">Klar.</h3><p>Wir entscheiden schnell und sagen, was wir denken. Offen gegenüber Partnern, offen im Team.</p></div>
+          <div class="value reveal" style="--delay: .18s"><span class="value__num">04</span><h3 class="value__word">Weitsichtig.</h3><p>Wir bauen Produkte, die wachsen können, technisch, inhaltlich und über Grenzen hinweg.</p></div>
         </div>
       </div>
     </section>
 
     <!-- 4 · Unsere Geschichte -->
-    <section class="section section--deep">
+    <section class="section">
       <div class="container">
-        <div class="section__header reveal">
-          <span class="eyebrow">Unsere Geschichte</span>
+        <div class="split-12 split-12--head">
+          <p class="split-12__label reveal"><span class="idx">03</span>Unsere Geschichte</p>
         </div>
         <ol class="timeline">
           <li class="reveal"><span class="timeline__year">2018</span><p>George Chamoun gründet sein erstes Unternehmen und startet in die Selbstständigkeit.</p></li>
@@ -106,10 +113,12 @@
     </section>
 
     <!-- 5 · Abschluss -->
-    <section class="section">
-      <div class="container closing reveal">
-        <h2 class="title">Lernen Sie die Menschen hinter RAINAX kennen.</h2>
-        <a class="btn btn--primary" href="/team/">Zum Team <span class="arrow" aria-hidden="true">&#8599;</span></a>
+    <section class="section section--tight-top">
+      <div class="container">
+        <a class="big-link reveal" href="/team/">
+          <span class="big-link__text">Lernen Sie die Menschen hinter RAINAX kennen.</span>
+          <span class="big-link__cta">Zum Team <span class="big-link__arrow" aria-hidden="true">&#8599;</span></span>
+        </a>
       </div>
     </section>
   </main>
@@ -120,9 +129,7 @@
       <div class="site-footer__grid">
         <div class="site-footer__brand">
           <a class="logo" href="/" aria-label="RAINAX – zur Startseite">
-          <!-- PLATZHALTER: durch Originallogo ersetzen, z. B. <img src="/assets/img/logo-weiss.svg" alt="RAINAX"> -->
-          <span class="logo__word">RAINAX</span>
-          <span class="logo__claim">Technology, Apps and AI</span>
+          <img src="/assets/img/logo-weiss.webp" width="640" height="126" alt="RAINAX – Technology, Apps and AI">
       </a>
           <p class="site-footer__slogan">Ideen werden Zukunft.</p>
         </div>
@@ -149,8 +156,7 @@
         <div>
           <h2>Folgen Sie uns</h2>
           <ul>
-            <li><a href="#" rel="noopener">LinkedIn</a></li>
-            <li><a href="#" rel="noopener">Instagram</a></li>
+            <li><a href="https://www.linkedin.com/company/rainax-ag/" target="_blank" rel="noopener">LinkedIn <span aria-hidden="true">&#8599;</span><span class="visually-hidden"> (öffnet in neuem Fenster)</span></a></li>
           </ul>
         </div>
       </div>
