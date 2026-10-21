@@ -186,9 +186,8 @@ def hero(eyebrow: str, title: str, lead: str) -> str:
 
 
 STORES = """<div class="stores">
-  <!-- PLATZHALTER: Store-Links -->
-  <a class="store" href="#" rel="noopener" aria-label="Mood Up im App Store laden"><svg aria-hidden="true"><use href="#i-apple"/></svg><span><small>Laden im</small>App Store</span></a>
-  <a class="store" href="#" rel="noopener" aria-label="Mood Up bei Google Play laden"><svg aria-hidden="true"><use href="#i-play"/></svg><span><small>Jetzt bei</small>Google Play</span></a>
+  <a class="store" href="https://apps.apple.com/ch/app/mood-up-party-radar/id6748701886" target="_blank" rel="noopener" aria-label="Mood Up im App Store laden"><svg aria-hidden="true"><use href="#i-apple"/></svg><span><small>Laden im</small>App Store</span></a>
+  <a class="store" href="https://play.google.com/store/apps/details?id=com.mycompany.moodup" target="_blank" rel="noopener" aria-label="Mood Up bei Google Play laden"><svg aria-hidden="true"><use href="#i-play"/></svg><span><small>Jetzt bei</small>Google Play</span></a>
 </div>"""
 
 FAQ_ITEMS = [
