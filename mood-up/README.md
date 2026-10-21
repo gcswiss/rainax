@@ -6,6 +6,11 @@ Wurzel von mood-up.ch hochgeladen oder lokal per Doppelklick auf `index.html` an
 Stil «seriös, aber kreativ» (Richtung Uber und Cash App): Schwarz, eine Fläche in Mood-Up-Pink `#f7295c` mit schwarzer Schrift,
 ein heller Abschnitt für Clubs, grosse Grotesk-Schrift (Inter Tight / Inter), echte App-Screenshots statt Effekte.
 
+## Offline ansehen
+
+Ordner öffnen und `index.html` doppelklicken. Alles läuft ohne Internet und ohne Server: Schriften liegen in
+`assets/fonts/` (keine Verbindung zu Google), alle Links zeigen direkt auf `…/index.html`.
+
 ## Seiten
 
 Gleiche Struktur wie die bestehende mood-up.ch (Navigation Home, Preise, FAQ, Über uns, Kontakt, Links; Footer AGB, Impressum, Datenschutz).
