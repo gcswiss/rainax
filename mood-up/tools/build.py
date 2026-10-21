@@ -111,12 +111,24 @@ def head(depth: int, title: str, desc: str) -> str:
 <meta name="robots" content="noindex">
 <!-- ENTWURF / MOCKUP: nicht online. Offene Stellen sind mit PLATZHALTER markiert. -->
 <link rel="icon" href="{b}assets/favicon.svg" type="image/svg+xml">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@600;700;800&family=Inter:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="{b}assets/fonts.css">
 <link rel="stylesheet" href="{b}assets/site.css">
 <script src="{b}assets/site.js" defer></script>
 </head>"""
+
+
+LINK_RE = re.compile(r'href="((?:\.\./)*)([a-z-]+/)?(#[a-z-]*)?"')
+
+
+def offline_links(html: str) -> str:
+    """Macht Links explizit (…/index.html), damit die Seite auch per Doppelklick ohne Server funktioniert."""
+    def fix(m):
+        up, folder, anchor = m.group(1), m.group(2) or "", m.group(3) or ""
+        if not up and not folder:
+            return m.group(0)  # reiner Anker auf derselben Seite
+        return f'href="{up}{folder}index.html{anchor}"'
+    html = LINK_RE.sub(fix, html)
+    return html.replace('href="./"', 'href="index.html"')
 
 
 def page(slug: str, title: str, desc: str, body: str) -> None:
@@ -134,7 +146,7 @@ def page(slug: str, title: str, desc: str, body: str) -> None:
 """
     out = ROOT / slug / "index.html"
     out.parent.mkdir(exist_ok=True)
-    out.write_text(html, encoding="utf-8")
+    out.write_text(offline_links(html), encoding="utf-8")
 
 
 def ph(text: str) -> str:
@@ -305,7 +317,7 @@ def build_pages() -> None:
 <h2>Handelsregister</h2><p>{ph("[UID / Handelsregister-Nummer]")}</p>
 <h2>Haftungsausschluss, Urheberrechte</h2><p>{ph("[Text von der bestehenden Seite mood-up.ch/Impressum übernehmen]")}</p>"""),
         "datenschutz": ("Datenschutzerklärung", f"""<p>Mood Up hält sich an das strenge Schweizer Datenschutzgesetz.</p>
-<p>{ph("[Vollständige Datenschutzerklärung von der bestehenden Seite mood-up.ch übernehmen. Sie muss auch Google Fonts erwähnen, die diese Seite lädt.]")}</p>"""),
+<p>{ph("[Vollständige Datenschutzerklärung von der bestehenden Seite mood-up.ch übernehmen. ]")}</p>"""),
         "agb": ("AGB", f"""<p>{ph("[Allgemeine Geschäftsbedingungen von der bestehenden Seite mood-up.ch übernehmen]")}</p>"""),
     }
     for slug, (title, body) in legal.items():
@@ -324,7 +336,10 @@ def update_home() -> None:
     s = p.read_text(encoding="utf-8")
     s = re.sub(r"<header class=\"header\" data-header>.*?</header>", lambda m: header(0, None), s, count=1, flags=re.S)
     s = re.sub(r"<footer class=\"footer\">.*?</footer>", lambda m: footer(0), s, count=1, flags=re.S)
-    p.write_text(s, encoding="utf-8")
+    s = s.replace('<link rel="preconnect" href="https://fonts.googleapis.com">\n', "")
+    s = s.replace('<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>\n', "")
+    s = re.sub(r'<link rel="stylesheet" href="https://fonts.googleapis.com[^"]*">', '<link rel="stylesheet" href="assets/fonts.css">', s)
+    p.write_text(offline_links(s), encoding="utf-8")
 
 
 if __name__ == "__main__":
