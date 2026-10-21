@@ -306,7 +306,7 @@
       }
 
       // Handy kippt in Richtung Maus
-      document.querySelectorAll(".phone").forEach(function (phone) {
+      document.querySelectorAll(".phone, .device-single, .screens .device").forEach(function (phone) {
         var area = phone.closest("section") || phone.parentElement;
         area.addEventListener("pointermove", function (e) {
           var r = phone.getBoundingClientRect();

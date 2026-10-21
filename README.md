@@ -61,6 +61,13 @@ Das aktuelle Video («Planet Earth Spinning in Space») wurde vor dem Aufbereite
 Schleife geschnitten: Die letzten 1,5 Sekunden blenden weich in den Anfang über, damit beim Neustart
 kein Sprung sichtbar ist.
 
+## MoodUp-Screenshots
+
+Fünf App-Screenshots mit Geräterahmen liegen als transparente WebP (720 px breit) in `assets/img/moodup/`:
+`karte-wil`, `karte-region`, `clubs-in-der-naehe`, `location-profil`, `startseite`.
+Eingesetzt auf der Startseite (Dashboard), auf «Projekte», auf der MoodUp-Seite (Fächer und drei Einzelbilder)
+und auf «Was wir tun» (Apps). Fächer öffnen sich bei Hover.
+
 ## Bewegung
 
 Alles ist abgeschaltet, wenn «Bewegung reduzieren» eingestellt ist; Hover-Effekte gibt es nur mit Maus.
@@ -82,7 +89,7 @@ Alle offenen Stellen sind im HTML mit `PLATZHALTER` kommentiert bzw. gelb markie
 
 - Originallogo (weiss/dunkel) statt der Text-Wortmarke in Kopfzeile und Footer
 - Formular-Empfänger: `data-endpoint` im Kontaktformular (z. B. Formspree, Web3Forms), Ziel info@rainax.ch
-- Bilder/Videos: Säulen, MoodUp-Screens, «KI für Immobilien», Team-Porträts, Seitenanfänge
+- Bilder/Videos: «KI für Immobilien», Team-Porträts, Seitenanfänge der Unterseiten
 - Links zu LinkedIn, Instagram und MoodUp / App Store
 - Datenschutzerklärung: auf Wunsch vorerst entfernt (Seite, Footer-Link und Einwilligungs-Häkchen im Formular).
   Vor dem Livegang klären, ob sie wieder nötig ist (Kontaktformular, Google Fonts, OpenStreetMap-Karte).

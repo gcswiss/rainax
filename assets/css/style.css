@@ -2018,3 +2018,102 @@ textarea.input { min-height: 170px; resize: vertical; }
   clip: rect(0 0 0 0);
   white-space: nowrap;
 }
+
+/* --------------------------------------------------------------------------
+   MoodUp-Screenshots (Geräte mit Rahmen, transparente WebP-Bilder)
+   -------------------------------------------------------------------------- */
+
+.device {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-width: none;
+}
+
+/* Fächer aus mehreren Geräten */
+.showcase {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: clamp(32px, 5vw, 64px) 16px;
+  isolation: isolate;
+}
+.showcase::before {
+  content: "";
+  position: absolute;
+  inset: 10% 15%;
+  z-index: -1;
+  border-radius: 50%;
+  background: radial-gradient(closest-side, rgba(255, 45, 111, 0.22), rgba(47, 107, 255, 0.08) 60%, transparent);
+  filter: blur(40px);
+}
+.showcase__item {
+  flex: none;
+  width: var(--w, clamp(130px, 17vw, 240px));
+  margin: 0 calc(var(--w, clamp(130px, 17vw, 240px)) * -0.12);
+  transform: translateY(var(--y, 0)) rotate(var(--r, 0deg)) scale(var(--s, 1));
+  transition: transform 0.9s var(--ease), margin 0.9s var(--ease);
+}
+.showcase__item--center { z-index: 3; --s: 1.08; }
+.showcase__item--l1 { z-index: 2; --r: -6deg; --y: 24px; }
+.showcase__item--r1 { z-index: 2; --r: 6deg; --y: 24px; }
+.showcase__item--l2 { z-index: 1; --r: -11deg; --y: 64px; --s: 0.9; }
+.showcase__item--r2 { z-index: 1; --r: 11deg; --y: 64px; --s: 0.9; }
+.showcase--five .showcase__item { --w: clamp(110px, 14vw, 220px); }
+@media (max-width: 720px) {
+  .showcase--five .showcase__item--l2,
+  .showcase--five .showcase__item--r2 { display: none; }
+  .showcase__item { --w: 34vw; }
+  .showcase--five .showcase__item { --w: 34vw; }
+}
+
+/* In der Live-Map des Dashboards */
+.dash__map .showcase { position: absolute; inset: 0; }
+.dash__map .showcase__item { --w: clamp(120px, 15vw, 200px); }
+@media (max-width: 880px) {
+  .dash__map { min-height: 520px; }
+  .dash__map .showcase__item { --w: 30vw; }
+}
+
+/* Projektblock MoodUp: Geräte rechts */
+.project__devices {
+  position: absolute;
+  right: clamp(24px, 5vw, 72px);
+  bottom: -8%;
+  z-index: 0;
+  display: flex;
+  gap: 0;
+  pointer-events: none;
+}
+.project__devices .showcase__item { --w: clamp(150px, 16vw, 230px); }
+@media (max-width: 880px) {
+  .project__devices { display: none; }
+}
+
+/* Einzelnes Gerät (z. B. «Was wir tun» → Apps) */
+.device-single {
+  width: min(340px, 72vw);
+  margin: 0 auto;
+}
+
+.screens figure { margin: 0; }
+.screens .device { width: min(300px, 80vw); margin: 0 auto; }
+
+@media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+  /* Fächer öffnet sich bei Hover */
+  .showcase:hover .showcase__item--l1 { --r: -10deg; --y: 12px; margin-right: 0; }
+  .showcase:hover .showcase__item--r1 { --r: 10deg; --y: 12px; margin-left: 0; }
+  .showcase:hover .showcase__item--l2 { --r: -15deg; --y: 48px; }
+  .showcase:hover .showcase__item--r2 { --r: 15deg; --y: 48px; }
+  .showcase:hover .showcase__item--center { --y: -12px; }
+  .project:hover .project__devices .showcase__item--l1 { --r: -9deg; --y: -10px; }
+  .project:hover .project__devices .showcase__item--r1 { --r: 9deg; --y: -18px; }
+
+  .device-single,
+  .screens .device {
+    transform: perspective(1200px) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg));
+    transition: transform 0.6s var(--ease);
+  }
+}
