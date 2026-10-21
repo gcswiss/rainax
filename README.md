@@ -27,6 +27,7 @@ Die Pfade sind absolut (`/assets/...`), die Seite muss also über einen Webserve
 | Team | `team/index.html` |
 | Kontakt | `kontakt/index.html` |
 | Impressum | `impressum/index.html` |
+| Datenschutz | `datenschutz/index.html` |
 | Fehlerseite | `404.html` |
 
 `assets/css/style.css` enthält alle Design-Tokens, `assets/js/main.js` Menü, Scroll-Effekte, Videos und Formular.
@@ -90,13 +91,32 @@ Alles ist abgeschaltet, wenn «Bewegung reduzieren» eingestellt ist; Hover-Effe
 - Prozess und Zeitleiste: Die Linie zeichnet sich selbst, Punkte leuchten nacheinander auf
 - Schlussbild: Die Erde zoomt beim Scrollen langsam heraus
 
+## Kontaktformular (PHP)
+
+`kontakt/senden.php` prüft die Eingaben und sendet sie per `mail()` an info@rainax.ch.
+Einstellungen stehen oben in der Datei (Empfänger, Absender, Limits). Schutz vor Spam: verstecktes Feld,
+Zeitfalle (unter 3 Sekunden = Bot), höchstens 5 Nachrichten pro IP-Adresse und Stunde, Schutz vor
+Manipulation der E-Mail-Kopfzeilen. Funktioniert mit und ohne JavaScript.
+
+Voraussetzungen beim Hoster:
+- PHP 7.4 oder neuer mit funktionierender `mail()`-Funktion
+- Die Absenderadresse `webseite@rainax.ch` muss zur Domain gehören (SPF-Eintrag des Hosters),
+  sonst landen Nachrichten im Spam. Nach dem Upload eine Testnachricht senden.
+
+## Hochladen
+
+Alles hochladen ausser `README.md` und `tools/`. Die Seite muss im Hauptverzeichnis der Domain liegen.
+`.htaccess` (Apache) setzt Fehlerseite, HTTPS-Weiterleitung, Caching und Sicherheits-Header.
+Die HTTPS-Weiterleitung erst nutzen, wenn das SSL-Zertifikat beim Hoster aktiv ist.
+
+Weitere Dateien: `favicon.ico`, `favicon-32.png`, `apple-touch-icon.png` (das «R» aus dem Logo),
+`robots.txt`, `sitemap.xml`. Schriften liegen lokal in `assets/fonts/` (keine Verbindung zu Google).
+
 ## Noch offen (Platzhalter)
 
 Alle offenen Stellen sind im HTML mit `PLATZHALTER` kommentiert bzw. gelb markiert:
 
 - Dunkle Logo-Version (für helle Flächen), falls später benötigt
-- Formular-Empfänger: `data-endpoint` im Kontaktformular (z. B. Formspree, Web3Forms), Ziel info@rainax.ch
 - Bilder/Videos: «KI für Immobilien», Team-Porträts, Seitenanfänge der Unterseiten
-- Link zu MoodUp / App Store (LinkedIn ist verlinkt, Instagram vorerst entfernt)
-- Datenschutzerklärung: auf Wunsch vorerst entfernt (Seite, Footer-Link und Einwilligungs-Häkchen im Formular).
-  Vor dem Livegang klären, ob sie wieder nötig ist (Kontaktformular, Google Fonts, OpenStreetMap-Karte).
+- Datenschutzerklärung: vorläufige Fassung unter `/datenschutz/`, von einer Fachperson prüfen lassen
+  (Hosting-Anbieter ergänzen, sobald bekannt)

@@ -152,6 +152,12 @@
 
     var message = form.querySelector(".form-message");
     var submit = form.querySelector('button[type="submit"]');
+    var submitLabel = submit.innerHTML;
+    var ts = form.querySelector('input[name="ts"]');
+    if (ts) ts.value = String(Date.now());
+
+    var DANKE = "Danke für Ihre Nachricht. Wir melden uns in Kürze persönlich bei Ihnen.";
+    var FEHLER = "Ihre Nachricht konnte leider nicht gesendet werden. Bitte versuchen Sie es noch einmal oder schreiben Sie an info@rainax.ch.";
 
     var showMessage = function (text, type) {
       message.textContent = text;
@@ -159,39 +165,123 @@
       message.hidden = false;
     };
 
+    // Meldung unter einem Feld anzeigen oder entfernen
+    var fieldError = function (name, text) {
+      var input = form.querySelector('[name="' + name + '"]');
+      if (!input) return;
+      var wrap = input.closest(".field, .choices");
+      var id = "fehler-" + name;
+      var el = document.getElementById(id);
+      if (text) {
+        if (!el) {
+          el = document.createElement("p");
+          el.className = "field-error";
+          el.id = id;
+          wrap.appendChild(el);
+        }
+        el.textContent = text;
+        form.querySelectorAll('[name="' + name + '"]').forEach(function (i) {
+          i.setAttribute("aria-invalid", "true");
+          i.setAttribute("aria-describedby", id);
+        });
+      } else {
+        if (el) el.remove();
+        form.querySelectorAll('[name="' + name + '"]').forEach(function (i) {
+          i.removeAttribute("aria-invalid");
+          i.removeAttribute("aria-describedby");
+        });
+      }
+    };
+
+    var clientErrors = function () {
+      var errors = {};
+      var val = function (n) { var el = form.elements[n]; return el ? String(el.value || "").trim() : ""; };
+      if (!form.querySelector('input[name="topic"]:checked')) errors.topic = "Bitte wählen Sie, worum es geht.";
+      if (!val("name")) errors.name = "Bitte geben Sie Ihren Namen an.";
+      if (!val("email")) errors.email = "Bitte geben Sie Ihre E-Mail-Adresse an.";
+      else if (!form.elements.email.checkValidity()) errors.email = "Bitte prüfen Sie Ihre E-Mail-Adresse.";
+      if (!val("message")) errors.message = "Bitte schreiben Sie uns eine Nachricht.";
+      return errors;
+    };
+
+    var applyErrors = function (errors) {
+      ["topic", "name", "email", "phone", "message"].forEach(function (n) { fieldError(n, errors[n]); });
+      var first = Object.keys(errors)[0];
+      if (first) {
+        var el = form.querySelector('[name="' + first + '"]');
+        if (el) el.focus();
+      }
+    };
+
+    // Fehler beim Korrigieren wieder ausblenden
+    form.addEventListener("input", function (e) {
+      if (e.target.name && e.target.getAttribute("aria-invalid")) fieldError(e.target.name, "");
+    });
+    form.addEventListener("change", function (e) {
+      if (e.target.name === "topic") fieldError("topic", "");
+    });
+
+    // Rückmeldung nach Versand ohne JavaScript (?status=…)
+    var status = params.get("status");
+    if (status === "gesendet") showMessage(DANKE, "success");
+    if (status === "fehler") showMessage(FEHLER, "error");
+
     form.addEventListener("submit", function (e) {
       e.preventDefault();
-      if (!form.checkValidity()) {
-        form.reportValidity();
-        return;
-      }
+      message.hidden = true;
 
-      // Formular-Empfänger (z. B. Formspree, Web3Forms o. ä.) im Attribut data-endpoint eintragen.
-      var endpoint = form.dataset.endpoint;
-      if (!endpoint) {
-        showMessage("Das Formular ist noch nicht mit einem Empfänger verbunden. Bitte schreiben Sie uns vorerst an info@rainax.ch.", "error");
-        return;
-      }
+      var errors = clientErrors();
+      applyErrors(errors);
+      if (Object.keys(errors).length) return;
 
       submit.disabled = true;
-      fetch(endpoint, {
+      submit.setAttribute("aria-busy", "true");
+      submit.textContent = "Wird gesendet …";
+
+      fetch(form.dataset.endpoint || form.action, {
         method: "POST",
         body: new FormData(form),
         headers: { Accept: "application/json" }
       })
         .then(function (res) {
-          if (!res.ok) throw new Error(res.status);
-          form.reset();
-          showMessage("Danke für Ihre Nachricht. Wir melden uns in Kürze persönlich bei Ihnen.", "success");
+          return res.json().catch(function () { return {}; }).then(function (data) {
+            if (res.ok && data.ok) {
+              form.reset();
+              if (ts) ts.value = String(Date.now());
+              showMessage(data.message || DANKE, "success");
+              return;
+            }
+            if (data.errors) applyErrors(data.errors);
+            showMessage(data.message || FEHLER, "error");
+          });
         })
         .catch(function () {
-          showMessage("Leider ist etwas schiefgelaufen. Bitte versuchen Sie es später noch einmal.", "error");
+          showMessage(FEHLER, "error");
         })
         .then(function () {
           submit.disabled = false;
+          submit.removeAttribute("aria-busy");
+          submit.innerHTML = submitLabel;
         });
     });
   }
+
+  /* ------------------------------------------------------------------
+     Karte erst nach Klick laden (keine Daten an Dritte ohne Zustimmung)
+     ------------------------------------------------------------------ */
+  document.querySelectorAll("[data-map-src]").forEach(function (map) {
+    var btn = map.querySelector("[data-map-load]");
+    if (!btn) return;
+    btn.addEventListener("click", function () {
+      var frame = document.createElement("iframe");
+      frame.title = "Standort RAINAX AG in Wil";
+      frame.referrerPolicy = "no-referrer";
+      frame.src = map.dataset.mapSrc;
+      map.innerHTML = "";
+      map.appendChild(frame);
+      map.classList.add("is-loaded");
+    });
+  });
 
   /* ------------------------------------------------------------------
      Bewegung: Scroll-Effekte, Maus-Parallaxe, Hover

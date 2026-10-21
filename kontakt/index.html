@@ -11,9 +11,10 @@
   <meta property="og:title" content="Kontakt | RAINAX AG">
   <meta property="og:description" content="Bauen Sie mit uns. RAINAX AG, Sirnacherstrasse 5, 9500 Wil SG.">
   <meta property="og:locale" content="de_CH">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500&family=Geist+Mono:wght@400;500&display=swap">
+  <link rel="icon" href="/favicon.ico" sizes="48x48">
+  <link rel="icon" href="/favicon-32.png" type="image/png" sizes="32x32">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <link rel="preload" href="/assets/fonts/Geist-Variable.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="/assets/css/style.css">
   <script src="/assets/js/main.js" defer></script>
 </head>
@@ -74,9 +75,14 @@
           </dl>
         </aside>
 
-        <div class="form-panel reveal" style="--delay: .1s">
-          <!-- Formular-Empfänger in data-endpoint eintragen (Nachrichten gehen an info@rainax.ch) -->
-          <form id="contact-form" data-endpoint="" novalidate>
+        <div class="form-panel reveal" id="formular" style="--delay: .1s">
+          <!-- Versand über /kontakt/senden.php an info@rainax.ch (Einstellungen oben in der PHP-Datei) -->
+          <form id="contact-form" action="/kontakt/senden.php" method="post" data-endpoint="/kontakt/senden.php" novalidate>
+            <input type="hidden" name="ts" value="">
+            <div class="hp" aria-hidden="true">
+              <label for="website">Webseite (bitte leer lassen)</label>
+              <input id="website" name="website" type="text" tabindex="-1" autocomplete="off">
+            </div>
             <fieldset class="choices">
               <legend>Worum geht es? <span class="req" aria-hidden="true">*</span></legend>
               <div class="choices__list">
@@ -106,6 +112,7 @@
             </div>
             <div class="form-actions">
               <button class="btn btn--primary" type="submit">Nachricht senden <span class="arrow" aria-hidden="true">&#8599;</span></button>
+              <p class="form-note">Mit dem Absenden verarbeiten wir Ihre Angaben, um Ihre Anfrage zu beantworten. Mehr dazu in der <a href="/datenschutz/">Datenschutzerklärung</a>.</p>
             </div>
             <p class="form-message" role="status" aria-live="polite" hidden></p>
           </form>
@@ -114,9 +121,16 @@
 
       <!-- 2 · Karte -->
       <div class="container">
-        <div class="map reveal">
-          <iframe title="Standort RAINAX AG in Wil" loading="lazy" referrerpolicy="no-referrer"
-            src="https://www.openstreetmap.org/export/embed.html?bbox=9.0300%2C47.4560%2C9.0560%2C47.4680&amp;layer=mapnik"></iframe>
+        <!-- Karte wird erst nach Klick von OpenStreetMap geladen (Datenschutz) -->
+        <div class="map reveal" data-map-src="https://www.openstreetmap.org/export/embed.html?bbox=9.0300%2C47.4560%2C9.0560%2C47.4680&amp;layer=mapnik">
+          <div class="map__consent">
+            <p class="map__title">Standort RAINAX AG, Sirnacherstrasse 5, 9500 Wil SG</p>
+            <p class="map__text">Die Karte wird von OpenStreetMap geladen. Dabei wird Ihre IP-Adresse an OpenStreetMap übertragen.</p>
+            <div class="btn-row">
+              <button class="btn btn--outline" type="button" data-map-load>Karte anzeigen</button>
+              <a class="map__link" href="https://www.openstreetmap.org/search?query=Sirnacherstrasse%205%2C%209500%20Wil" target="_blank" rel="noopener">In OpenStreetMap öffnen <span aria-hidden="true">&#8599;</span></a>
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -161,7 +175,7 @@
       </div>
       <div class="site-footer__bottom">
         <p>© <span data-year>2026</span> RAINAX AG. Alle Rechte vorbehalten.</p>
-        <p class="site-footer__legal"><a href="/impressum/">Impressum</a></p>
+        <p class="site-footer__legal"><a href="/impressum/">Impressum</a> <a href="/datenschutz/">Datenschutz</a></p>
       </div>
     </div>
   </footer>
