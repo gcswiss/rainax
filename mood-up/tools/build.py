@@ -18,6 +18,25 @@ NAV = [
     ("Kontakt", "kontakt/", False),
 ]
 
+SOCIAL = [
+    ("Instagram", "https://www.instagram.com/moodup.ch",
+     '<rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/>'),
+    ("TikTok", "https://www.tiktok.com/@moodup.ch",
+     '<path d="M14 3v11.5a3.5 3.5 0 1 1-3.5-3.5"/><path d="M14 3c.4 2.6 2.2 4.4 5 4.7"/>'),
+    ("Facebook", "https://www.facebook.com/profile.php?id=61587538247145",
+     '<path d="M15 3h-2.5A3.5 3.5 0 0 0 9 6.5V10H6.5v3.5H9V21h3.5v-7.5H15l.5-3.5h-3V7a1 1 0 0 1 1-1H15z"/>'),
+    ("LinkedIn", "https://www.linkedin.com/company/moodup-ch",
+     '<rect x="3" y="3" width="18" height="18" rx="3"/><path d="M7.5 10.5V17M7.5 7.2v.1M11 17v-6.5M11 13.5c0-2 1.3-3 2.8-3s2.7 1 2.7 3V17"/>'),
+]
+
+
+def social_links(cls: str = "social") -> str:
+    items = "".join(
+        f'<a class="{cls}__a" href="{url}" target="_blank" rel="noopener" aria-label="Mood Up auf {name}"><svg viewBox="0 0 24 24" aria-hidden="true">{path}</svg><span>{name}</span></a>'
+        for name, url, path in SOCIAL)
+    return f'<div class="{cls}">{items}</div>'
+
+
 ICONS = """<svg width="0" height="0" style="position:absolute" aria-hidden="true">
   <defs>
     <symbol id="i-radar" viewBox="0 0 24 24"><circle cx="12" cy="12" r="7.2" fill="none" stroke="#0a0a0c" stroke-width="2.6"/><circle cx="12" cy="12" r="2.6" fill="#0a0a0c"/></symbol>
@@ -72,6 +91,7 @@ def footer(depth: int) -> str:
       <div>
         <a class="logo logo--footer" href="{home}" aria-label="Mood Up – Startseite"><img class="logo__img" src="{b}assets/logo.webp" width="900" height="209" alt="Mood Up"></a>
         <p style="margin-top:16px">Find your vibe! Dein Radar für Partys in deiner Nähe. Swiss made.</p>
+        {social_links()}
       </div>
       <div>
         <h3>App</h3>
@@ -289,6 +309,7 @@ def build_pages() -> None:
       <a class="ccard reveal" href="mailto:info@mood-up.ch"><span>E-Mail</span><b>info@mood-up.ch</b></a>
       <a class="ccard reveal" style="--d:60ms" href="tel:+41715236880"><span>Telefon</span><b>+41 71 523 68 80</b></a>
       <div class="ccard reveal" style="--d:120ms"><span>Adresse</span><b>Sirnacherstrasse 5<br>9500 Wil SG</b></div>
+      <div class="ccard ccard--social reveal" style="--d:180ms"><span>Folge uns</span>""" + social_links("social") + """</div>
     </div>
     <form class="form reveal" data-mailto="info@mood-up.ch" novalidate>
       <fieldset class="seg">

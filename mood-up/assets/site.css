@@ -460,6 +460,15 @@ a.ccard:hover{border-color:rgba(247,41,92,.6);transform:translateY(-2px)}
 @media (max-width:720px){.ftiles{grid-template-columns:1fr 1fr}}
 @media (max-width:460px){.ftiles{grid-template-columns:1fr}}
 
+/* Social Media */
+.social{display:flex;flex-wrap:wrap;gap:8px;margin-top:20px}
+.social__a{display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:0 14px 0 12px;border-radius:999px;border:1px solid var(--line);color:#e6e4ea;text-decoration:none;font:600 14px/1 var(--body);transition:border-color var(--t-fast),background var(--t-fast),transform var(--t-fast) var(--ease-out)}
+.social__a svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.social__a:hover{border-color:var(--pink);background:rgba(247,41,92,.12);color:#fff;transform:translateY(-2px)}
+.footer .social__a{color:#e6e4ea}
+.ccard--social .social{margin-top:14px}
+.ccard .social__a span{display:inline;font:600 14px/1 var(--body);letter-spacing:0;text-transform:none;color:inherit}
+
 /* Erscheinen */
 .js .reveal{opacity:0;transform:translateY(20px);transition:opacity 400ms var(--ease-out),transform 400ms var(--ease-out);transition-delay:var(--d,0ms)}
 .js .reveal.in{opacity:1;transform:none}
