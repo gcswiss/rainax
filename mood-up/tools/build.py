@@ -107,7 +107,7 @@ def footer(depth: int) -> str:
       </div>
       <div>
         <h3>Kontakt</h3>
-        <address>Sirnacherstrasse 5<br>9500 Wil SG<br><a href="tel:+41715236880">+41 71 523 68 80</a><br><a href="mailto:info@mood-up.ch">info@mood-up.ch</a></address>
+        <address>Sirnacherstrasse 5<br>9500 Wil SG<br><a href="tel:+41715236881">+41 71 523 68 81</a><br><a href="mailto:info@mood-up.ch">info@mood-up.ch</a></address>
       </div>
     </div>
     <div class="footer__bottom">
@@ -301,13 +301,13 @@ def build_pages() -> None:
 </section>""")
 
     # Kontakt
-    page("kontakt", "Kontakt | Mood Up", "Kontakt zu Mood Up: Sirnacherstrasse 5, 9500 Wil SG, +41 71 523 68 80, info@mood-up.ch.",
+    page("kontakt", "Kontakt | Mood Up", "Kontakt zu Mood Up: Sirnacherstrasse 5, 9500 Wil SG, +41 71 523 68 81, info@mood-up.ch.",
          hero("Kontakt", "Fragen?<br>Schreibe <em>uns.</em>", "Ob Gast, Club oder Veranstalter: Wir freuen uns auf deine Nachricht.") + """
 <section class="section section--tight">
   <div class="container contact">
     <div class="contact__cards">
       <a class="ccard reveal" href="mailto:info@mood-up.ch"><span>E-Mail</span><b>info@mood-up.ch</b></a>
-      <a class="ccard reveal" style="--d:60ms" href="tel:+41715236880"><span>Telefon</span><b>+41 71 523 68 80</b></a>
+      <a class="ccard reveal" style="--d:60ms" href="tel:+41715236881"><span>Telefon</span><b>+41 71 523 68 81</b></a>
       <div class="ccard reveal" style="--d:120ms"><span>Adresse</span><b>Sirnacherstrasse 5<br>9500 Wil SG</b></div>
       <div class="ccard ccard--social reveal" style="--d:180ms"><span>Folge uns</span>""" + social_links("social") + """</div>
     </div>
@@ -331,7 +331,7 @@ def build_pages() -> None:
     legal = {
         "impressum": ("Impressum", """<h2>Kontaktadresse</h2>
 <p>Rainax AG<br>Sirnacherstrasse 5<br>9500 Wil SG<br>Schweiz</p>
-<p>Telefon: <a href="tel:+41715236880">+41 71 523 68 80</a><br>E-Mail: <a href="mailto:info@mood-up.ch">info@mood-up.ch</a></p>
+<p>Telefon: <a href="tel:+41715236881">+41 71 523 68 81</a><br>E-Mail: <a href="mailto:info@mood-up.ch">info@mood-up.ch</a></p>
 <h2>Verantwortliche Personen</h2>
 <p>Massimo Nardone<br>George Chamoun</p>
 <h2>Unternehmens-Identifikationsnummer (UID)</h2>
@@ -409,15 +409,15 @@ def build_pages() -> None:
 <h2>3. Leistungsbeschreibung</h2>
 <p>Mood Up ist eine App, die in Echtzeit Partys, Events und Veranstaltungen in der Umgebung anzeigt.</p>
 <p>Für Nutzer: Die Nutzung der App ist kostenlos, es ist keine Registrierung erforderlich.</p>
-<p>Für Clubinhaber: Es besteht die Möglichkeit, gegen Entgelt Events in der App zu veröffentlichen und zu bewerben.</p>
+<p>Für Clubinhaber: Die Location kann kostenlos auf der Karte eingetragen werden, und Partys können kostenlos erstellt werden. Mit dem kostenpflichtigen Pro-Abo stehen zusätzliche Funktionen zur Verfügung.</p>
 <p>Der Anbieter behält sich das Recht vor, Funktionen oder Inhalte jederzeit zu erweitern, zu ändern oder einzuschränken.</p>
 <h2>4. Nutzung der App</h2>
 <p>Die Nutzung der App setzt eine aktive Internetverbindung und die Freigabe des Standortes voraus.</p>
 <p>Standortdaten werden ausschliesslich lokal auf dem Gerät verarbeitet und nicht an den Anbieter übermittelt.</p>
 <p>Nutzer dürfen die App nur für private Zwecke verwenden und keine automatisierten Systeme oder Bots einsetzen.</p>
-<h2>5. Abonnement für Clubinhaber</h2>
-<p>Clubinhaber können ein monatliches Abo abschliessen, um Veranstaltungen auf Mood Up sichtbar zu machen.</p>
-<ul><li>Monatlicher Preis: CHF 149.– (Early Bird), regulär CHF 399.–</li><li>Zahlungsart: Kreditkarte über Stripe (automatische monatliche Verlängerung)</li><li>Laufzeit: 1 Monat, kündbar bis zum Ende der laufenden Periode</li></ul>
+<h2>5. Angebote und Abonnement für Clubinhaber</h2>
+<p>Clubinhaber können Mood Up kostenlos nutzen oder ein monatliches Pro-Abo abschliessen.</p>
+<ul><li>Gratis: Location auf der Karte, Party-Erstellung, Chat-Funktion für Users, Followers sammeln</li><li>Pro: CHF 49.90 pro Monat, zusätzlich Statistik (Views und Klicks), Followers anschreiben, Storys posten</li><li>Zahlungsart Pro: Kreditkarte über Stripe (automatische monatliche Verlängerung)</li><li>Laufzeit Pro: 1 Monat, kündbar bis zum Ende der laufenden Periode</li></ul>
 <p>Der Anbieter behält sich vor, Preise oder Konditionen nach vorheriger Ankündigung anzupassen.</p>
 <h2>6. Inhalte von Clubs</h2>
 <p>Für alle von Clubinhabern veröffentlichten Inhalte (Texte, Bilder, Logos, Eventbeschreibungen etc.) sind ausschliesslich die jeweiligen Clubinhaber verantwortlich.</p>
