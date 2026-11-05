@@ -1,6 +1,7 @@
 # Jordan Coiffeur & Barbershop – neue Webseite mit Buchungssystem
 
-Ersatz für die WordPress-Seite jordancoiffeur.ch. Die Inhalte (Texte, Preise, Öffnungszeiten, beide Filialen, Jobs, Logo, Foto) wurden von der alten Seite übernommen.
+Ersatz für die WordPress-Seite jordancoiffeur.ch. Design, Inhalte und Medien wurden von der alten Seite übernommen: Schriften (Playfair Display, Montserrat, Pacifico), Farben (Navy `#1d2a3a`, Gold `#c29e75`), Hero-Video, Fotos, Instagram-Bilder, Service-Icons, Unterschrift, Texte, Preise, Öffnungszeiten und beide Filialen.
+Das Hero-Video ist neu komprimiert (`assets/video/hero.mp4` 2,9 MB, `hero-mobile.mp4` 1,9 MB statt 45 MB). Alle Schriften liegen auf dem eigenen Server, es wird nichts von Google geladen.
 Ohne WordPress und ohne Plugins: PHP 8.1+ mit SQLite. Das läuft auf jedem Schweizer Webhosting, auf dem heute WordPress läuft (Hostpoint, Infomaniak, cyon usw.).
 Es gibt keinen Build-Schritt, keine Datenbank-Einrichtung, keine Tracking-Cookies und keine externen Schriften oder Skripte.
 

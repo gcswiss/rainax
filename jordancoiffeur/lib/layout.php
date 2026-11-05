@@ -39,7 +39,8 @@ function icon(string $name, int $size = 22): string
 function page_head(string $title, string $description, string $current = '', array $opts = []): void
 {
     $GLOBALS['jc_fab'] = $opts['fab'] ?? true;
-    $nav = ['/#ueber-uns' => 'Über uns', '/#services' => 'Services', '/#preise' => 'Preise', '/#standorte' => 'Standorte', '/jobs/' => 'Jobs'];
+    $classes = array_filter([$GLOBALS['jc_fab'] ? 'has-fab' : '', !empty($opts['hero']) ? 'has-hero' : '']);
+    $nav = ['/#ueber-uns' => 'Über uns', '/#services' => 'Services', '/#preise' => 'Preise', '/#kontakt' => 'Kontakt', '/jobs/' => 'Jobs'];
     ?><!doctype html>
 <html lang="de-CH">
 <head>
@@ -47,31 +48,31 @@ function page_head(string $title, string $description, string $current = '', arr
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title><?= h($title) ?></title>
 <meta name="description" content="<?= h($description) ?>">
-<meta name="theme-color" content="#0c0d21">
+<meta name="theme-color" content="#1d2a3a">
 <meta property="og:title" content="<?= h($title) ?>">
 <meta property="og:description" content="<?= h($description) ?>">
-<meta property="og:image" content="<?= h(rtrim((string)cfg('site_url'), '/')) ?>/assets/img/barber.webp">
+<meta property="og:image" content="<?= h(rtrim((string)cfg('site_url'), '/')) ?>/assets/img/hero-poster.webp">
 <meta property="og:locale" content="de_CH">
 <link rel="icon" href="/assets/img/favicon-32.png" sizes="32x32">
 <link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png">
-<link rel="preload" href="/assets/fonts/oswald-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="/assets/css/site.css?v=1">
+<link rel="preload" href="/assets/fonts/playfair-display-latin-900-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/css/site.css?v=2">
 <?php foreach ($opts['css'] ?? [] as $css): ?><link rel="stylesheet" href="<?= h($css) ?>">
 <?php endforeach; ?></head>
-<body<?= $GLOBALS['jc_fab'] ? ' class="has-fab"' : '' ?>>
+<body<?= $classes ? ' class="' . implode(' ', $classes) . '"' : '' ?>>
 <a class="skip" href="#main">Zum Inhalt</a>
 <header class="site-head">
   <div class="wrap">
-    <a class="brand" href="/" aria-label="Jordan Coiffeur & Barbershop – Startseite">
-      <img src="/assets/img/logo.webp" alt="" width="52" height="52">
-      <span>Jordan<small>Coiffeur &amp; Barber</small></span>
+    <a class="brand" href="/" aria-label="Jordan Coiffeur Barber – Startseite">
+      <img class="dark" src="/assets/img/logo-dark.webp" alt="" width="64" height="65">
+      <img class="light" src="/assets/img/logo.webp" alt="" width="64" height="65">
     </a>
     <button class="menu-btn" aria-label="Menü" aria-expanded="false" aria-controls="nav"><?= icon('menu', 26) ?></button>
     <nav class="nav" id="nav" aria-label="Hauptnavigation">
       <?php foreach ($nav as $href => $label): ?>
         <a href="<?= $href ?>"<?= $current === $href ? ' aria-current="page"' : '' ?>><?= $label ?></a>
       <?php endforeach; ?>
-      <a class="btn" href="/buchen/">Termin buchen</a>
+      <a class="btn" href="/buchen/">Jetzt buchen</a>
     </nav>
   </div>
 </header>
@@ -79,49 +80,36 @@ function page_head(string $title, string $description, string $current = '', arr
 <?php
 }
 
+function tel_link(string $phone): string { return 'tel:+41' . preg_replace('/\D/', '', ltrim($phone, '0')); }
+
 function page_foot(): void
 {
     $branches = db()->query('SELECT * FROM branches WHERE active=1 ORDER BY sort,id')->fetchAll();
-    $hours = db()->query('SELECT * FROM hours')->fetchAll();
-    $h1 = array_filter($hours, fn($h) => (int)$h['branch_id'] === (int)($branches[0]['id'] ?? 0));
     ?>
 </main>
 <footer class="site-foot">
   <div class="wrap">
-    <div class="foot-grid">
-      <div>
-        <a class="brand" href="/"><img src="/assets/img/logo.webp" alt="" width="52" height="52"><span>Jordan<small>Coiffeur &amp; Barber</small></span></a>
-        <p style="margin-top:16px">Scharfer Schnitt. Starker Style.<br>Wir unterstützen den FC St. Gallen.</p>
-        <div class="social">
-          <a href="https://www.instagram.com/jordan_coiffeur/" aria-label="Instagram" rel="noopener" target="_blank"><?= icon('instagram', 20) ?></a>
-          <a href="https://www.facebook.com/profile.php?id=100042237135979" aria-label="Facebook" rel="noopener" target="_blank"><?= icon('facebook', 20) ?></a>
-        </div>
-      </div>
+    <img class="logo" src="/assets/img/logo.webp" alt="Jordan Coiffeur Barber" width="130" height="132" loading="lazy">
+    <div class="foot-cols">
       <?php foreach ($branches as $b): ?>
-      <div>
-        <h4><?= h($b['name']) ?></h4>
-        <ul>
-          <li><?= h($b['street']) ?><br><?= h($b['city']) ?></li>
-          <li><a href="tel:<?= h(preg_replace('/[^0-9+]/', '', '+41' . ltrim($b['phone'], '0'))) ?>"><?= h($b['phone']) ?></a></li>
-        </ul>
-      </div>
+      <p><?= h($b['street']) ?><br><?= h($b['city']) ?><br><a class="tel" href="<?= h(tel_link($b['phone'])) ?>"><?= h($b['phone']) ?></a></p>
       <?php endforeach; ?>
-      <div>
-        <h4>Öffnungszeiten</h4>
-        <ul>
-          <?php foreach (hours_lines($h1) as [$d, $t]): ?><li><?= $d ?>: <?= $t ?></li><?php endforeach; ?>
-          <li><a href="mailto:kontakt@jordancoiffeur.ch">kontakt@jordancoiffeur.ch</a></li>
-        </ul>
-      </div>
     </div>
+    <p class="follow">Follow us</p>
+    <div class="social">
+      <a href="https://www.facebook.com/profile.php?id=100042237135979" aria-label="Facebook" rel="noopener" target="_blank"><?= icon('facebook', 18) ?></a>
+      <a href="https://www.instagram.com/jordan_coiffeur/" aria-label="Instagram" rel="noopener" target="_blank"><?= icon('instagram', 18) ?></a>
+      <a href="https://www.google.com/maps/search/?api=1&amp;query=Jordan+Coiffeur+St.+Leonhardstrasse+22+St.+Gallen" aria-label="Google Maps" rel="noopener" target="_blank"><?= icon('pin', 18) ?></a>
+    </div>
+    <p class="support">Wir unterstützen den FC St. Gallen</p>
     <div class="foot-bottom">
       <span>© <?= date('Y') ?> Saad Jordan Barbershop GmbH</span>
-      <nav aria-label="Rechtliches"><a href="/impressum/">Impressum</a><a href="/datenschutz/">Datenschutz</a><a href="/admin/">Login</a></nav>
+      <a href="/impressum/">Impressum</a><a href="/datenschutz/">Datenschutz</a><a href="/admin/">Login</a>
     </div>
   </div>
 </footer>
-<?php if ($GLOBALS['jc_fab'] ?? true): ?><a class="btn book-fab" href="/buchen/"><?= icon('calendar', 20) ?> Termin buchen</a><?php endif; ?>
-<script src="/assets/js/site.js?v=1" defer></script>
+<?php if ($GLOBALS['jc_fab'] ?? true): ?><a class="btn gold book-fab" href="/buchen/"><?= icon('calendar', 20) ?> Jetzt buchen</a><?php endif; ?>
+<script src="/assets/js/site.js?v=2" defer></script>
 </body>
 </html>
 <?php

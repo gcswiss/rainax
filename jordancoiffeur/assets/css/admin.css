@@ -1,17 +1,16 @@
-/* Jordan Admin – Kalender */
-@font-face { font-family: "Inter"; src: url("../fonts/inter-latin-400-normal.woff2") format("woff2"); font-weight: 400; font-display: swap; }
-@font-face { font-family: "Inter"; src: url("../fonts/inter-latin-600-normal.woff2") format("woff2"); font-weight: 600; font-display: swap; }
-@font-face { font-family: "Oswald"; src: url("../fonts/oswald-latin-500-normal.woff2") format("woff2"); font-weight: 500; font-display: swap; }
+@font-face { font-family: "Montserrat"; src: url("../fonts/montserrat-latin-400-normal.woff2") format("woff2"); font-weight: 400; font-display: swap; }
+@font-face { font-family: "Montserrat"; src: url("../fonts/montserrat-latin-600-normal.woff2") format("woff2"); font-weight: 600; font-display: swap; }
+@font-face { font-family: "Playfair Display"; src: url("../fonts/playfair-display-latin-700-normal.woff2") format("woff2"); font-weight: 700; font-display: swap; }
 
 :root {
   --bg: #f4f3f0; --panel: #ffffff; --line: #e3e1dc; --line-2: #efede9; --text: #17182b; --muted: #6c6d80;
-  --navy: #0c0d21; --accent: #f2a541; --accent-ink: #1b1204; --danger: #d4483a; --ok: #2e9e6a;
+  --navy: #1d2a3a; --accent: #c29e75; --accent-ink: #ffffff; --danger: #d4483a; --ok: #2e9e6a;
   --ppm: 1.6px; /* Pixel pro Minute im Kalender */
 }
 * { box-sizing: border-box; }
 html, body { margin: 0; }
-body { background: var(--bg); color: var(--text); font: 400 15px/1.45 "Inter", system-ui, -apple-system, "Segoe UI", sans-serif; }
-h1, h2 { font-family: "Oswald", "Arial Narrow", sans-serif; font-weight: 500; text-transform: uppercase; letter-spacing: .04em; margin: 0; }
+body { background: var(--bg); color: var(--text); font: 400 15px/1.45 "Montserrat", system-ui, -apple-system, "Segoe UI", sans-serif; }
+h1, h2 { font-family: "Playfair Display", Georgia, serif; font-weight: 700; margin: 0; }
 h2 { font-size: 1.25rem; }
 button, input, select, textarea { font: inherit; color: inherit; }
 [hidden] { display: none !important; }
@@ -19,7 +18,7 @@ button, input, select, textarea { font: inherit; color: inherit; }
 .b { display: inline-flex; align-items: center; justify-content: center; gap: 6px; min-height: 40px; padding: 0 16px; border-radius: 10px; border: 1px solid var(--line); background: var(--panel); cursor: pointer; font-weight: 600; text-decoration: none; white-space: nowrap; }
 .b:hover { border-color: #c9c6bf; }
 .b.primary { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); }
-.b.primary:hover { background: #e8953a; border-color: #e8953a; }
+.b.primary:hover { background: #9c7a53; border-color: #9c7a53; }
 .b.dark { background: var(--navy); border-color: var(--navy); color: #fff; }
 .b.danger { color: var(--danger); }
 .b.danger:hover { border-color: var(--danger); }

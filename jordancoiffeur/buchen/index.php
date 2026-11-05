@@ -3,10 +3,10 @@ declare(strict_types=1);
 require __DIR__ . '/../lib/layout.php';
 page_head('Termin buchen | Jordan Coiffeur & Barbershop St. Gallen',
     'Online-Termin bei Jordan Coiffeur & Barbershop in St. Gallen buchen: Service, Barber und Zeit wählen.',
-    '', ['css' => ['/assets/css/booking.css?v=1'], 'fab' => false]);
+    '', ['css' => ['/assets/css/booking.css?v=2'], 'fab' => false]);
 ?>
 <div class="wrap page-head" style="padding-bottom:8px">
-  <p class="eyebrow">Online-Buchung</p>
+  <p class="label">Online-Buchung</p>
   <h1 style="font-size:clamp(2.4rem,6vw,4rem)">Termin buchen</h1>
 </div>
 <section style="padding-top:16px">
@@ -69,8 +69,8 @@ page_head('Termin buchen | Jordan Coiffeur & Barbershop St. Gallen',
         <p id="done-text"></p>
         <p class="muted" id="done-mail"></p>
         <div style="display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin-top:20px">
-          <a class="btn ghost" id="done-manage" href="#">Termin ansehen / absagen</a>
-          <a class="btn ghost" href="/">Zur Startseite</a>
+          <a class="btn outline" id="done-manage" href="#">Termin ansehen / absagen</a>
+          <a class="btn outline" href="/">Zur Startseite</a>
         </div>
       </div>
     </div>
@@ -83,7 +83,7 @@ page_head('Termin buchen | Jordan Coiffeur & Barbershop St. Gallen',
         <dt>Barber</dt><dd data-sum="staff">–</dd>
         <dt>Zeit</dt><dd data-sum="time">–</dd>
       </dl>
-      <button type="button" class="btn ghost back" id="bk-back" hidden>‹ Zurück</button>
+      <button type="button" class="btn back" id="bk-back" hidden>‹ Zurück</button>
     </aside>
   </div>
 </section>

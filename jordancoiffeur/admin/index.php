@@ -58,7 +58,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <link rel="icon" href="/assets/img/favicon-32.png" sizes="32x32">
 <link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png">
 <meta name="theme-color" content="#0c0d21">
-<link rel="stylesheet" href="/assets/css/admin.css?v=1">
+<link rel="stylesheet" href="/assets/css/admin.css?v=2">
 </head>
 <body>
 <?php if (!is_admin()): ?>
@@ -137,7 +137,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
   <dialog id="dlg"><form method="dialog" id="dlg-form"></form></dialog>
   <div id="toast" role="status" aria-live="polite"></div>
-  <script src="/assets/js/admin.js?v=1" defer></script>
+  <script src="/assets/js/admin.js?v=2" defer></script>
 <?php endif; ?>
 </body>
 </html>

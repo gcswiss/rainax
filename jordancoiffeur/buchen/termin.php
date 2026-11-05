@@ -18,9 +18,9 @@ if ($b && $_SERVER['REQUEST_METHOD'] === 'POST' && ($_POST['action'] ?? '') === 
     }
 }
 
-page_head('Dein Termin | Jordan Coiffeur & Barbershop', 'Termin ansehen oder absagen.', '', ['css' => ['/assets/css/booking.css?v=1']]);
+page_head('Dein Termin | Jordan Coiffeur & Barbershop', 'Termin ansehen oder absagen.', '', ['css' => ['/assets/css/booking.css?v=2']]);
 ?>
-<div class="wrap page-head" style="padding-bottom:8px"><p class="eyebrow">Dein Termin</p></div>
+<div class="wrap page-head" style="padding-bottom:8px"><p class="label">Dein Termin</p></div>
 <section style="padding-top:8px">
   <div class="wrap" style="max-width:640px">
     <div class="panel">
@@ -28,9 +28,9 @@ page_head('Dein Termin | Jordan Coiffeur & Barbershop', 'Termin ansehen oder abs
       <h2>Termin nicht gefunden</h2>
       <p>Der Link ist ungültig. Bitte ruf uns an: <a href="tel:+41712201000">071 220 10 00</a>.</p>
     <?php else: ?>
-      <?php if ($msg): ?><p class="form-error" style="background:rgba(242,165,65,.1);border-color:rgba(242,165,65,.4);color:var(--text)"><?= h($msg) ?></p><?php endif; ?>
+      <?php if ($msg): ?><p class="form-error" style="background:var(--paper);border-color:var(--gold);color:var(--ink)"><?= h($msg) ?></p><?php endif; ?>
       <h2><?= h($b['service_name']) ?></h2>
-      <dl class="summary" style="position:static;border:0;padding:0;background:none">
+      <dl class="tdetails">
         <dt>Wann</dt><dd><?= h(fmt_date_de($b['start'])) ?></dd>
         <dt>Barber</dt><dd><?= h($b['staff_name']) ?></dd>
         <dt>Filiale</dt><dd><?= h($b['street']) ?>, <?= h($b['city']) ?></dd>
@@ -41,7 +41,7 @@ page_head('Dein Termin | Jordan Coiffeur & Barbershop', 'Termin ansehen oder abs
       <?php if (can_customer_cancel($b)): ?>
         <form method="post" onsubmit="return confirm('Termin wirklich absagen?')">
           <input type="hidden" name="t" value="<?= h($token) ?>"><input type="hidden" name="action" value="cancel">
-          <button class="btn ghost" type="submit">Termin absagen</button>
+          <button class="btn outline" type="submit">Termin absagen</button>
         </form>
       <?php elseif ($b['status'] === 'confirmed'): ?>
         <p class="muted">Kurzfristige Absagen bitte telefonisch: <a href="tel:+41<?= h(preg_replace('/\D/', '', ltrim($b['branch_phone'], '0'))) ?>"><?= h($b['branch_phone']) ?></a></p>

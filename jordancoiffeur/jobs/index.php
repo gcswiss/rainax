@@ -5,7 +5,7 @@ page_head('Jobs – Herrenfriseur gesucht | Jordan Coiffeur & Barbershop St. Gal
     'Wir suchen einen Herrenfriseur (m/w/d) für unseren Barbershop in St. Gallen.', '/jobs/');
 ?>
 <div class="wrap page-head">
-  <p class="eyebrow">Jobs bei Jordan</p>
+  <p class="label">Jobs bei Jordan</p>
   <h1 style="font-size:clamp(2.4rem,6vw,4.2rem)">Herrenfriseur (m/w/d) gesucht</h1>
 </div>
 <section style="padding-top:16px">
@@ -36,7 +36,7 @@ page_head('Jobs – Herrenfriseur gesucht | Jordan Coiffeur & Barbershop St. Gal
       <p style="margin-top:28px">Wenn du denkst, dass du zu uns passt, freuen wir uns auf deine Bewerbung! Sende uns deine Unterlagen per E-Mail oder ruf uns direkt an. Wir freuen uns darauf, dich kennenzulernen!</p>
       <div style="display:flex;flex-wrap:wrap;gap:12px;margin-top:20px">
         <a class="btn" href="mailto:kontakt@jordancoiffeur.ch?subject=Bewerbung%20Herrenfriseur">Bewerbung senden</a>
-        <a class="btn ghost" href="tel:+41763690745"><?= icon('phone', 18) ?> 076 369 07 45</a>
+        <a class="btn outline" href="tel:+41763690745"><?= icon('phone', 18) ?> 076 369 07 45</a>
       </div>
     </div>
   </div>

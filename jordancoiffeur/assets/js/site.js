@@ -19,3 +19,15 @@ if ('IntersectionObserver' in window) {
 } else {
   items.forEach((el) => el.classList.add('in'));
 }
+
+// Hero-Video: Pause-Knopf und Rücksicht auf «Bewegung reduzieren»
+const vid = document.querySelector('.hero video');
+const tog = document.querySelector('.video-toggle');
+if (vid && tog) {
+  const play = '<svg width="14" height="14" viewBox="0 0 14 14" fill="currentColor" aria-hidden="true"><path d="M3 1l10 6-10 6z"/></svg>';
+  const pause = tog.innerHTML;
+  const sync = () => { tog.innerHTML = vid.paused ? play : pause; tog.setAttribute('aria-label', vid.paused ? 'Video abspielen' : 'Video anhalten'); };
+  if (matchMedia('(prefers-reduced-motion: reduce)').matches) vid.pause();
+  tog.addEventListener('click', () => { vid.paused ? vid.play() : vid.pause(); });
+  vid.addEventListener('play', sync); vid.addEventListener('pause', sync); sync();
+}
