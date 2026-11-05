@@ -1,0 +1,5 @@
+User-agent: *
+Disallow: /admin/
+Disallow: /api/
+Disallow: /buchen/termin.php
+Sitemap: https://jordancoiffeur.ch/sitemap.xml
