@@ -5,7 +5,10 @@ Aufruf (aus dem Ordner mood-up/):  python3 tools/build.py
 Erzeugt bzw. aktualisiert Kopfzeile und Footer in index.html sowie alle Unterseiten.
 Offene Inhalte sind mit PLATZHALTER markiert und gelb hervorgehoben.
 """
-import pathlib, re
+import html as htmllib
+import pathlib, posixpath, re
+
+from i18n import LANG_NAMES, LANGS, T, UI
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 
@@ -70,9 +73,9 @@ def header(depth: int, current: str | None, extra: str = "") -> str:
     <a class="logo" href="{home}" aria-label="Mood Up – Startseite"><img class="logo__img" src="{base}assets/logo.webp" width="900" height="209" alt="Mood Up"></a>
     <nav class="nav" aria-label="Hauptmenü">
       {nav}
-    </nav>{extra}
+    </nav>{extra or "<!--LANGSELECT-->"}
     <a class="btn btn--pink btn--sm header__cta" href="{dl}">App laden</a>
-    <button class="burger" type="button" aria-controls="menu" aria-expanded="false" aria-label="Menü öffnen"><span></span><span></span></button>
+    <button class="burger" type="button" aria-controls="menu" aria-expanded="false" aria-label="Menü öffnen" data-open="Menü öffnen" data-close="Menü schliessen"><span></span><span></span></button>
   </div>
   <nav class="menu" id="menu" aria-label="Menü" hidden>
     {menu}
@@ -311,7 +314,7 @@ def build_pages() -> None:
       <div class="ccard reveal" style="--d:120ms"><span>Adresse</span><b>Sirnacherstrasse 5<br>9500 Wil SG</b></div>
       <div class="ccard ccard--social reveal" style="--d:180ms"><span>Folge uns</span>""" + social_links("social") + """</div>
     </div>
-    <form class="form reveal" data-mailto="info@mood-up.ch" novalidate>
+    <form class="form reveal" data-mailto="info@mood-up.ch" data-subject="Anfrage über mood-up.ch" data-l-name="Name" data-l-mail="E-Mail" data-l-who="Ich bin" novalidate>
       <fieldset class="seg">
         <legend>Ich bin</legend>
         <label><input type="radio" name="who" value="Gast" checked><span>Gast</span></label>
@@ -613,8 +616,120 @@ def build_delete_page() -> None:
 
 
 
+
+# ---------------------------------------------------------------------------
+# Mehrsprachigkeit: /en/, /it/, /fr/ aus den deutschen Seiten erzeugen
+# ---------------------------------------------------------------------------
+SITE = "https://www.mood-up.ch/"
+TRANSLATED = ["index.html", "preise/index.html", "faq/index.html", "ueber-uns/index.html", "kontakt/index.html",
+              "impressum/index.html", "datenschutz/index.html", "agb/index.html"]
+LEGAL = {"impressum/index.html", "datenschutz/index.html", "agb/index.html"}
+ATTR_RE = re.compile(r'\b(alt|aria-label|title|placeholder|content|value|data-subject|data-l-name|data-l-mail|data-l-who|data-open|data-close)="([^"]*)"')
+URL_RE = re.compile(r'\b(href|src)="([^"]+)"')
+
+
+def _norm(t: str) -> str:
+    return " ".join(htmllib.unescape(t).split())
+
+
+def translate_html(src: str, lang: str) -> str:
+    """Ersetzt ganze Textabschnitte und Attributwerte anhand der Tabelle in i18n.py (Rechtstext bleibt Deutsch)."""
+    keep = []
+    def protect(m):
+        keep.append(m.group(0)); return f"<\x00{len(keep) - 1}\x00>"
+    src = re.sub(r'<(script|style)\b.*?</\1>|<svg\b.*?</svg>|<div class="container prose">.*?</section>', protect, src, flags=re.S)
+
+    def seg(m):
+        raw = m.group(1); key = _norm(raw)
+        if key not in T:
+            return m.group(0)
+        lead = raw[:len(raw) - len(raw.lstrip())]; trail = raw[len(raw.rstrip()):]
+        return ">" + lead + htmllib.escape(T[key][lang], quote=False) + trail + "<"
+    src = re.sub(r'>([^<]+)<', seg, src)
+
+    def attr(m):
+        key = htmllib.unescape(m.group(2))
+        if key not in T:
+            return m.group(0)
+        return f'{m.group(1)}="{htmllib.escape(T[key][lang])}"'
+    src = ATTR_RE.sub(attr, src)
+    return re.sub(r"<\x00(\d+)\x00>", lambda m: keep[int(m.group(1))], src)
+
+
+def page_path(lang: str, page: str) -> str:
+    return page if lang == "de" else f"{lang}/{page}"
+
+
+def relocate(src: str, page: str, lang: str) -> str:
+    """Passt relative Links an den neuen Ort /<lang>/... an; übersetzte Seiten zeigen in dieselbe Sprache."""
+    src_dir = posixpath.dirname(page); dst_dir = posixpath.dirname(page_path(lang, page))
+    def fix(m):
+        attr, url = m.group(1), m.group(2)
+        if re.match(r'(https?:|mailto:|tel:|#|data:)', url):
+            return m.group(0)
+        path, _, anchor = url.partition("#")
+        path, _, query = path.partition("?")
+        target = posixpath.normpath(posixpath.join(src_dir, path))
+        if target in TRANSLATED:
+            target = page_path(lang, target)
+        elif target == "konto-loeschen/index.html":
+            query = f"lang={lang}"
+        new = posixpath.relpath(target, dst_dir or ".")
+        return f'{attr}="{new}{"?" + query if query else ""}{"#" + anchor if anchor else ""}"'
+    return URL_RE.sub(fix, src)
+
+
+def public_url(lang: str, page: str) -> str:
+    return SITE + page_path(lang, page).replace("index.html", "")
+
+
+def head_links(page: str) -> str:
+    alt = "".join(f'<link rel="alternate" hreflang="{UI[l]["html_lang"].split("-")[0]}" href="{public_url(l, page)}">\n' for l in ("de",) + LANGS)
+    return alt + f'<link rel="alternate" hreflang="x-default" href="{public_url("de", page)}">\n'
+
+
+def lang_select(page: str, lang: str) -> str:
+    here = posixpath.dirname(page_path(lang, page))
+    opts = "".join(
+        f'<option value="{posixpath.relpath(page_path(l, page), here or ".")}" lang="{l}"{" selected" if l == lang else ""}>{LANG_NAMES[l]}</option>'
+        for l in ("de",) + LANGS)
+    return f"""
+    <label class="lang-select">
+      <span class="sr-only">{UI[lang]["lang_label"]}</span>
+      <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></svg>
+      <select data-lang-nav data-lang-current="{lang}">{opts}</select>
+      <svg class="lang-select__chev" viewBox="0 0 24 24" aria-hidden="true"><path d="m7 10 5 5 5-5"/></svg>
+    </label>"""
+
+
+def finish(src: str, page: str, lang: str) -> str:
+    src = src.replace("<!--LANGSELECT-->", lang_select(page, lang))
+    src = re.sub(r'<link rel="canonical"[^>]*>\n?|<link rel="alternate" hreflang[^>]*>\n?', "", src)
+    src = src.replace("</head>", f'<link rel="canonical" href="{public_url(lang, page)}">\n' + head_links(page) + "</head>", 1)
+    src = re.sub(r'<html lang="[^"]*">', f'<html lang="{UI[lang]["html_lang"]}">', src, count=1)
+    src = re.sub(r'<meta property="og:locale" content="[^"]*">', f'<meta property="og:locale" content="{UI[lang]["og_locale"]}">', src)
+    if lang != "de" and page in LEGAL:
+        src = src.replace('<div class="container prose">', f'<div class="container prose">\n    <p class="legal-note" lang="{lang}">{UI[lang]["legal_note"]}</p>', 1)
+    return src
+
+
+def build_languages() -> None:
+    for page in TRANSLATED:
+        de_src = (ROOT / page).read_text(encoding="utf-8")
+        (ROOT / page).write_text(finish(de_src, page, "de"), encoding="utf-8")
+        for lang in LANGS:
+            out = ROOT / page_path(lang, page)
+            out.parent.mkdir(parents=True, exist_ok=True)
+            html = relocate(translate_html(de_src, lang), page, lang)
+            out.write_text(finish(html, page, lang), encoding="utf-8")
+    # Konto löschen: eigene Sprachwahl auf der Seite, nur die Kopfzeile bekommt kein Navigations-Dropdown
+    k = ROOT / "konto-loeschen/index.html"
+    k.write_text(k.read_text(encoding="utf-8").replace("<!--LANGSELECT-->", ""), encoding="utf-8")
+
+
 if __name__ == "__main__":
     update_home()
     build_pages()
     build_delete_page()
+    build_languages()
     print("ok")

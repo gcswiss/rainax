@@ -93,18 +93,13 @@
   /* Smart Filter: Beispiele wechseln automatisch (nur zur Information) */
   var sentence = document.querySelector("[data-sentence]");
   if (sentence && !reduce) {
-    var examples = [
-      ["Clubs", "Techno", "ab 18", "heute"],
-      ["Bars", "Rock", "ab 18", "am Wochenende"],
-      ["Specials", "80s Hits", "ab 18", "morgen"]
-    ];
+    var examples = Array.prototype.map.call(document.querySelectorAll("template[data-ex]"), function(t){ return t.innerHTML; });
     var dotsEl = document.querySelectorAll(".result__dots i"), ex = 0;
     setInterval(function(){
       ex = (ex + 1) % examples.length;
       sentence.classList.add("swap");
       setTimeout(function(){
-        var e = examples[ex];
-        sentence.innerHTML = "Zeig mir <b>" + e[0] + "</b> mit <b>" + e[1] + "</b>, <b>" + e[2] + "</b>, <span class=\"nw\"><b>" + e[3] + "</b>.</span>";
+        sentence.innerHTML = examples[ex];
         sentence.classList.remove("swap");
         dotsEl.forEach(function(d, i){ d.classList.toggle("is-on", i === ex); });
       }, 350);
@@ -116,7 +111,7 @@
   if (burger && menu) {
     var setMenu = function(open){
       burger.setAttribute("aria-expanded", String(open));
-      burger.setAttribute("aria-label", open ? "Menü schliessen" : "Menü öffnen");
+      burger.setAttribute("aria-label", open ? (burger.dataset.close || "Menü schliessen") : (burger.dataset.open || "Menü öffnen"));
       menu.hidden = !open;
       header.classList.toggle("is-solid", open || scrollY > 10);
     };
@@ -141,8 +136,8 @@
       });
       if (first) { first.focus(); return; }
       var who = form.querySelector("input[name=who]:checked").value;
-      var body = "Name: " + document.getElementById("f-name").value + "\nE-Mail: " + document.getElementById("f-mail").value + "\nIch bin: " + who + "\n\n" + document.getElementById("f-msg").value;
-      location.href = "mailto:" + form.dataset.mailto + "?subject=" + encodeURIComponent("Anfrage über mood-up.ch (" + who + ")") + "&body=" + encodeURIComponent(body);
+      var body = form.dataset.lName + ": " + document.getElementById("f-name").value + "\n" + form.dataset.lMail + ": " + document.getElementById("f-mail").value + "\n" + form.dataset.lWho + ": " + who + "\n\n" + document.getElementById("f-msg").value;
+      location.href = "mailto:" + form.dataset.mailto + "?subject=" + encodeURIComponent(form.dataset.subject + " (" + who + ")") + "&body=" + encodeURIComponent(body);
     });
   }
 
@@ -165,6 +160,14 @@
       s.addEventListener("change", function(){ setLang(s.value); store.set(s.value); });
     });
   }
+
+  /* Sprachwahl auf allen Seiten: wechselt zur gleichen Seite in der anderen Sprache */
+  document.querySelectorAll("[data-lang-nav]").forEach(function(s){
+    s.addEventListener("change", function(){
+      try { localStorage.setItem("mu-lang", s.options[s.selectedIndex].lang); } catch (e) {}
+      location.href = s.value;
+    });
+  });
 
   /* Konto löschen: Formular prüft Felder und öffnet die fertige Lösch-Anfrage */
   document.querySelectorAll("form[data-delete]").forEach(function(f){

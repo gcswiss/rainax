@@ -16,6 +16,14 @@ so dass `index.html` direkt unter https://www.mood-up.ch/ liegt. `robots.txt` un
 Ordner öffnen und `index.html` doppelklicken. Alles läuft ohne Internet und ohne Server: Schriften liegen in
 `assets/fonts/` (keine Verbindung zu Google), alle Links zeigen direkt auf `…/index.html`.
 
+## Sprachen
+
+Die Seite gibt es auf Deutsch (Hauptverzeichnis) sowie auf Englisch, Italienisch und Französisch unter `en/`, `it/`, `fr/`.
+Diese Ordner werden von `tools/build.py` aus den deutschen Seiten erzeugt, die Übersetzungen stehen in `tools/i18n.py`
+(ein Eintrag pro Textabschnitt). Neue oder geänderte deutsche Texte dort ergänzen und den Build neu laufen lassen.
+Rechtstexte (Impressum, Datenschutz, AGB) bleiben in allen Sprachen inhaltlich Deutsch, mit Hinweis in der jeweiligen Sprache.
+Oben rechts wechselt ein Dropdown zur gleichen Seite in einer anderen Sprache.
+
 ## Seiten
 
 Gleiche Struktur wie die bestehende mood-up.ch: Navigation Home, Preise, FAQ, Über uns, Kontakt; im Footer «Links» mit AGB's, Impressum und Datenschutzerklärung.

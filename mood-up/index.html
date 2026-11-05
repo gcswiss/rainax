@@ -12,12 +12,17 @@
 <meta property="og:description" content="Dein Radar für Partys in deiner Nähe: Die Live-Map zeigt dir, wo heute am meisten los ist. Gratis, Swiss made.">
 <meta property="og:locale" content="de_CH">
 <meta property="og:image" content="https://www.mood-up.ch/assets/og-image.png">
-<link rel="canonical" href="https://www.mood-up.ch/">
 <link rel="icon" href="assets/favicon.png" type="image/png">
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
 <link rel="stylesheet" href="assets/fonts.css">
 <link rel="stylesheet" href="assets/site.css">
 <script src="assets/site.js" defer></script>
+<link rel="canonical" href="https://www.mood-up.ch/">
+<link rel="alternate" hreflang="de" href="https://www.mood-up.ch/">
+<link rel="alternate" hreflang="en" href="https://www.mood-up.ch/en/">
+<link rel="alternate" hreflang="it" href="https://www.mood-up.ch/it/">
+<link rel="alternate" hreflang="fr" href="https://www.mood-up.ch/fr/">
+<link rel="alternate" hreflang="x-default" href="https://www.mood-up.ch/">
 </head>
 <body>
 <a class="skip" href="#main">Zum Inhalt springen</a>
@@ -41,8 +46,14 @@
       <a href="ueber-uns/index.html">Über uns</a>
       <a href="kontakt/index.html">Kontakt</a>
     </nav>
+    <label class="lang-select">
+      <span class="sr-only">Sprache</span>
+      <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></svg>
+      <select data-lang-nav data-lang-current="de"><option value="index.html" lang="de" selected>Deutsch</option><option value="en/index.html" lang="en">English</option><option value="it/index.html" lang="it">Italiano</option><option value="fr/index.html" lang="fr">Français</option></select>
+      <svg class="lang-select__chev" viewBox="0 0 24 24" aria-hidden="true"><path d="m7 10 5 5 5-5"/></svg>
+    </label>
     <a class="btn btn--pink btn--sm header__cta" href="#download">App laden</a>
-    <button class="burger" type="button" aria-controls="menu" aria-expanded="false" aria-label="Menü öffnen"><span></span><span></span></button>
+    <button class="burger" type="button" aria-controls="menu" aria-expanded="false" aria-label="Menü öffnen" data-open="Menü öffnen" data-close="Menü schliessen"><span></span><span></span></button>
   </div>
   <nav class="menu" id="menu" aria-label="Menü" hidden>
     <a href="#app">Die App</a>
@@ -147,6 +158,9 @@
         <div class="result reveal" style="--d:120ms" aria-hidden="true">
           <span class="result__label"><i></i>So filtert Mood Up für dich</span>
           <p class="sentence" data-sentence>Zeig mir <b>Clubs</b> mit <b>Techno</b>, <b>ab 18</b>, <span class="nw"><b>heute</b>.</span></p>
+          <template data-ex>Zeig mir <b>Clubs</b> mit <b>Techno</b>, <b>ab 18</b>, <span class="nw"><b>heute</b>.</span></template>
+          <template data-ex>Zeig mir <b>Bars</b> mit <b>Rock</b>, <b>ab 18</b>, <span class="nw"><b>am Wochenende</b>.</span></template>
+          <template data-ex>Zeig mir <b>Specials</b> mit <b>80s Hits</b>, <b>ab 18</b>, <span class="nw"><b>morgen</b>.</span></template>
           <div class="result__dots"><i class="is-on"></i><i></i><i></i></div>
         </div>
       </div>

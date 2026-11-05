@@ -398,6 +398,7 @@ a.ccard:hover{border-color:rgba(247,41,92,.6);transform:translateY(-2px)}
 .prose h3{margin:24px 0 6px;font-size:19px;letter-spacing:-.01em}
 .prose ul{margin:12px 0 0;padding-left:22px;display:grid;gap:6px;font-size:17px;line-height:1.6}
 .prose li::marker{color:var(--pink)}
+.legal-note{margin:0 0 28px!important;padding:14px 18px;border-radius:14px;border:1px solid var(--line);background:var(--ink-2);color:#e6e4ea}
 .prose__copy{margin-top:40px!important;padding-top:20px;border-top:1px solid var(--line);color:#8d8b95}
 .plan__price small{font-size:.32em;letter-spacing:0;font-weight:600;margin-left:.25em}
 
@@ -506,6 +507,14 @@ a.ccard:hover{border-color:rgba(247,41,92,.6);transform:translateY(-2px)}
 .btn--danger{background:#c4103f;color:#fff;justify-self:start}
 .btn--danger:hover{background:#a50d35}
 @media (max-width:900px){.del__grid{grid-template-columns:1fr}}
+
+/* Schmale Handys: Kopfzeile kompakter, lange Wörter in anderen Sprachen */
+@media (max-width:1060px){.header__in{gap:12px}}
+@media (max-width:480px){.brand-band h2{font-size:clamp(32px,10vw,46px)}}
+.clubs__grid > *,.users__grid > *,.filter__grid > *{min-width:0}
+.eyebrow{flex-wrap:wrap}
+.card--sm{min-width:0}.card--sm h3{hyphens:auto;-webkit-hyphens:auto}
+@media (max-width:380px){.cards:has(.card--sm){grid-template-columns:1fr}}
 
 /* Erscheinen */
 .js .reveal{opacity:0;transform:translateY(20px);transition:opacity 400ms var(--ease-out),transform 400ms var(--ease-out);transition-delay:var(--d,0ms)}
