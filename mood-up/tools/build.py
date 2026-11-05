@@ -9,6 +9,8 @@ import html as htmllib
 import pathlib, posixpath, re
 
 from i18n import LANG_NAMES, LANGS, T, UI
+from seo import SEO
+import json
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 
@@ -700,15 +702,79 @@ def lang_select(page: str, lang: str) -> str:
     return lang_menu(UI[lang]["lang_label"], lang, links)
 
 
+def _meta(src: str, attr: str, name: str, value: str) -> str:
+    """Setzt <meta name|property=... content=...>; fügt es vor </head> ein, falls es fehlt."""
+    tag = f'<meta {attr}="{name}" content="{htmllib.escape(value)}">'
+    pat = re.compile(rf'<meta {attr}="{re.escape(name)}" content="[^"]*">')
+    return pat.sub(lambda m: tag, src, count=1) if pat.search(src) else src.replace("</head>", tag + "\n</head>", 1)
+
+
+def _text(fragment: str) -> str:
+    return " ".join(htmllib.unescape(re.sub(r"<[^>]+>", "", fragment)).split())
+
+
+def structured_data(src: str, page: str, lang: str) -> str:
+    """Schema.org-Angaben (JSON-LD): Firma, Website und App auf der Startseite, Fragen & Antworten auf der FAQ-Seite."""
+    url = public_url(lang, page)
+    if page == "index.html":
+        org = {"@type": "Organization", "@id": SITE + "#org", "name": "Rainax AG", "brand": "Mood Up", "url": SITE,
+               "logo": SITE + "assets/apple-touch-icon.png", "email": "info@mood-up.ch", "telephone": "+41 71 523 68 81",
+               "address": {"@type": "PostalAddress", "streetAddress": "Sirnacherstrasse 5", "postalCode": "9500",
+                           "addressLocality": "Wil", "addressRegion": "SG", "addressCountry": "CH"},
+               "sameAs": [u for _, u, _ in SOCIAL]}
+        site = {"@type": "WebSite", "@id": SITE + "#website", "name": "Mood Up", "url": SITE, "publisher": {"@id": SITE + "#org"},
+                "inLanguage": ["de-CH", "en", "it-CH", "fr-CH"]}
+        app = {"@type": "MobileApplication", "name": "Mood Up - Party Radar", "operatingSystem": "iOS, Android",
+               "applicationCategory": "LifestyleApplication", "description": SEO[page][lang][1], "url": url,
+               "image": SITE + "assets/og-image.png", "publisher": {"@id": SITE + "#org"},
+               "installUrl": ["https://apps.apple.com/ch/app/mood-up-party-radar/id6748701886",
+                              "https://play.google.com/store/apps/details?id=com.mycompany.moodup"],
+               "offers": {"@type": "Offer", "price": "0", "priceCurrency": "CHF"}}
+        data = {"@context": "https://schema.org", "@graph": [org, site, app]}
+    elif page == "faq/index.html":
+        qa = re.findall(r"<details[^>]*><summary>(.*?)<i[^>]*></i></summary><p>(.*?)</p></details>", src, re.S)
+        data = {"@context": "https://schema.org", "@type": "FAQPage", "inLanguage": UI[lang]["html_lang"],
+                "mainEntity": [{"@type": "Question", "name": _text(q), "acceptedAnswer": {"@type": "Answer", "text": _text(a)}} for q, a in qa]}
+    else:
+        return src
+    js = json.dumps(data, ensure_ascii=False, separators=(",", ":")).replace("</", "<\\/")
+    return src.replace("</head>", f'<script type="application/ld+json">{js}</script>\n</head>', 1)
+
+
 def finish(src: str, page: str, lang: str) -> str:
     src = src.replace("<!--LANGSELECT-->", lang_select(page, lang))
-    src = re.sub(r'<link rel="canonical"[^>]*>\n?|<link rel="alternate" hreflang[^>]*>\n?', "", src)
-    src = src.replace("</head>", f'<link rel="canonical" href="{public_url(lang, page)}">\n' + head_links(page) + "</head>", 1)
+    src = re.sub(r'<link rel="canonical"[^>]*>\n?|<link rel="alternate" hreflang[^>]*>\n?|<script type="application/ld\+json">.*?</script>\n?', "", src, flags=re.S)
+    src = re.sub(r'<meta name="robots"[^>]*>\n?', "", src)
+    legal_copy = lang != "de" and page in LEGAL
+    canonical = public_url("de", page) if legal_copy else public_url(lang, page)
+    links = f'<link rel="canonical" href="{canonical}">\n'
+    if page not in LEGAL:
+        links += head_links(page)
+    if legal_copy:  # deutscher Rechtstext in vier Ordnern: nur die deutsche Fassung soll gefunden werden
+        links += '<meta name="robots" content="noindex, follow">\n'
+    src = src.replace("</head>", links + "</head>", 1)
+    title, desc = SEO[page][lang]
+    src = re.sub(r"<title>.*?</title>", f"<title>{htmllib.escape(title, quote=False)}</title>", src, count=1, flags=re.S)
+    src = _meta(src, "name", "description", desc)
+    src = _meta(src, "property", "og:title", title)
+    src = _meta(src, "property", "og:description", desc)
+    src = _meta(src, "property", "og:url", canonical)
+    src = _meta(src, "property", "og:image", SITE + "assets/og-image.png")
+    src = _meta(src, "name", "twitter:card", "summary_large_image")
     src = re.sub(r'<html lang="[^"]*">', f'<html lang="{UI[lang]["html_lang"]}">', src, count=1)
     src = re.sub(r'<meta property="og:locale" content="[^"]*">', f'<meta property="og:locale" content="{UI[lang]["og_locale"]}">', src)
-    if lang != "de" and page in LEGAL:
+    if legal_copy:
         src = src.replace('<div class="container prose">', f'<div class="container prose">\n    <p class="legal-note" lang="{lang}">{UI[lang]["legal_note"]}</p>', 1)
-    return src
+    return structured_data(src, page, lang)
+
+
+def write_sitemap() -> None:
+    from datetime import date
+    today = date.today().isoformat()
+    urls = [public_url("de", p) for p in TRANSLATED] + [public_url(l, p) for l in LANGS for p in TRANSLATED if p not in LEGAL]
+    urls.append(SITE + "konto-loeschen/")
+    body = "".join(f"  <url><loc>{u}</loc><lastmod>{today}</lastmod></url>\n" for u in urls)
+    (ROOT / "sitemap.xml").write_text('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' + body + "</urlset>\n", encoding="utf-8")
 
 
 def build_languages() -> None:
@@ -722,7 +788,13 @@ def build_languages() -> None:
             out.write_text(finish(html, page, lang), encoding="utf-8")
     # Konto löschen: eigene Sprachwahl auf der Seite, nur die Kopfzeile bekommt kein Navigations-Dropdown
     k = ROOT / "konto-loeschen/index.html"
-    k.write_text(k.read_text(encoding="utf-8").replace("<!--LANGSELECT-->", ""), encoding="utf-8")
+    ks = k.read_text(encoding="utf-8").replace("<!--LANGSELECT-->", "")
+    ks = re.sub(r'<link rel="canonical"[^>]*>\n?', "", ks)
+    ks = ks.replace("</head>", f'<link rel="canonical" href="{SITE}konto-loeschen/">\n</head>', 1)
+    ks = _meta(ks, "property", "og:url", SITE + "konto-loeschen/")
+    ks = _meta(ks, "name", "twitter:card", "summary_large_image")
+    k.write_text(ks, encoding="utf-8")
+    write_sitemap()
     version_assets()
 
 
