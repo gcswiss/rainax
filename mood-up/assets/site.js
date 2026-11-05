@@ -146,5 +146,44 @@
     });
   }
 
+  /* Konto löschen: Sprache (Umschalter, ?lang=, gespeichert, Browser) */
+  var langBlocks = document.querySelectorAll("[data-lang]");
+  if (langBlocks.length) {
+    var supported = ["de", "en", "it", "fr"];
+    var store = { get: function(){ try { return localStorage.getItem("mu-lang"); } catch (e) { return null; } },
+                  set: function(v){ try { localStorage.setItem("mu-lang", v); } catch (e) {} } };
+    var setLang = function(l){
+      langBlocks.forEach(function(b){ b.hidden = b.dataset.lang !== l; });
+      document.querySelectorAll("[data-lang-btn]").forEach(function(b){ b.setAttribute("aria-pressed", String(b.dataset.langBtn === l)); });
+      document.documentElement.lang = l === "de" ? "de-CH" : l;
+    };
+    var fromUrl = (new URLSearchParams(location.search).get("lang") || "").toLowerCase();
+    var fromNav = ((navigator.languages && navigator.languages[0]) || navigator.language || "de").slice(0, 2).toLowerCase();
+    var start = [fromUrl, store.get(), fromNav].filter(function(l){ return supported.indexOf(l) > -1; })[0] || "de";
+    setLang(start);
+    document.querySelectorAll("[data-lang-btn]").forEach(function(b){
+      b.addEventListener("click", function(){ setLang(b.dataset.langBtn); store.set(b.dataset.langBtn); });
+    });
+  }
+
+  /* Konto löschen: Formular prüft Felder und öffnet die fertige Lösch-Anfrage */
+  document.querySelectorAll("form[data-delete]").forEach(function(f){
+    var cb = f.querySelector("input[type=checkbox]");
+    cb.addEventListener("change", function(){ if (cb.checked) { f.querySelector('[id^="d-e-ok-"]').hidden = true; cb.setAttribute("aria-invalid", "false"); } });
+    f.addEventListener("submit", function(e){
+      e.preventDefault();
+      var mail = f.querySelector("input[type=email]"), ok = f.querySelector("input[type=checkbox]");
+      var eMail = f.querySelector('[id^="d-e-mail-"]'), eOk = f.querySelector('[id^="d-e-ok-"]');
+      var mailOk = /^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(mail.value.trim());
+      mail.setAttribute("aria-invalid", String(!mailOk)); mail.setAttribute("aria-describedby", eMail.id); eMail.hidden = mailOk;
+      ok.setAttribute("aria-invalid", String(!ok.checked)); ok.setAttribute("aria-describedby", eOk.id); eOk.hidden = ok.checked;
+      if (!mailOk) { mail.focus(); return; }
+      if (!ok.checked) { ok.focus(); return; }
+      var name = f.querySelector('[name="name"]').value.trim(), msg = f.querySelector('[name="message"]').value.trim();
+      var body = f.dataset.intro + "\n\n" + f.dataset.lMail + ": " + mail.value.trim() + (name ? "\n" + f.dataset.lName + ": " + name : "") + (msg ? "\n\n" + f.dataset.lMsg + ":\n" + msg : "");
+      (window.muOpenMail || function(u){ location.href = u; })("mailto:info@mood-up.ch?subject=" + encodeURIComponent(f.dataset.subject) + "&body=" + encodeURIComponent(body));
+    });
+  });
+
   document.querySelectorAll("[data-year]").forEach(function(e){ e.textContent = new Date().getFullYear(); });
 })();

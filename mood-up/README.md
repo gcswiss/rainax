@@ -29,6 +29,7 @@ Logo: `assets/logo.webp` (weiss) und `assets/logo-pink.webp` (Footer), Favicon a
 | Über uns | `ueber-uns/index.html` |
 | Kontakt (mit Formular) | `kontakt/index.html` |
 | AGB, Impressum, Datenschutz | `agb/`, `impressum/`, `datenschutz/` |
+| Konto löschen (DE, EN, IT, FR) | `konto-loeschen/index.html` – Sprache per Umschalter, `?lang=en` oder Browsersprache |
 
 Gemeinsames Design und Verhalten: `assets/site.css`, `assets/site.js`. Kopfzeile, Footer und Unterseiten
 werden mit `python3 tools/build.py` erzeugt; Änderungen an Navigation oder Footer dort vornehmen und neu ausführen.

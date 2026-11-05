@@ -468,6 +468,37 @@ a.ccard:hover{border-color:rgba(247,41,92,.6);transform:translateY(-2px)}
 .ccard--social .social{margin-top:14px}
 .ccard .social__a span{display:inline;font:600 14px/1 var(--body);letter-spacing:0;text-transform:none;color:inherit}
 
+/* Konto löschen */
+.langs-wrap{padding-top:96px}
+.langs{display:inline-flex;gap:4px;padding:4px;border-radius:999px;border:1px solid var(--line);background:var(--ink-2)}
+.langs__b{min-width:52px;min-height:40px;padding:0 14px;border:0;border-radius:999px;background:transparent;color:#a9a7b0;font:700 14px/1 var(--display);letter-spacing:.04em;cursor:pointer;transition:background var(--t-fast),color var(--t-fast)}
+.langs__b:hover{color:#fff}
+.langs__b[aria-pressed="true"]{background:var(--pink-btn);color:#fff}
+.page-hero--del{padding-top:clamp(28px,4vw,48px)}
+.del__grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;align-items:start}
+.del__col{display:grid;gap:20px}
+.del__card{position:relative;border-radius:var(--r-lg);background:var(--ink-2);border:1px solid var(--line);padding:clamp(24px,3vw,40px)}
+.del__card h2,.del__form h2{font-size:clamp(26px,2.6vw,34px);letter-spacing:-.03em}
+.del__form h2{color:var(--on-paper)}
+.del__card > p{margin-top:10px}
+.del__card h3{margin-top:22px;font-size:18px}
+.del__card h3 + p{margin-top:6px;font-size:16px}
+.del__num{display:inline-grid;place-items:center;width:36px;height:36px;border-radius:50%;background:var(--pink);color:#fff;font:800 16px/1 var(--display);margin-bottom:16px}
+.del__num--dark{background:var(--ink)}
+.del__steps{margin:18px 0 0;padding:0;list-style:none;counter-reset:s;display:grid;gap:10px}
+.del__steps li{counter-increment:s;display:flex;gap:14px;align-items:flex-start;padding:14px 16px;border-radius:14px;background:rgba(255,255,255,.04);border:1px solid var(--line);color:#e6e4ea;font-size:16.5px;line-height:1.45}
+.del__steps li::before{content:counter(s);flex:none;width:26px;height:26px;border-radius:50%;display:grid;place-items:center;background:rgba(247,41,92,.16);color:var(--pink);font:800 13px/1 var(--display)}
+.del__steps b{color:#fff}
+.del__card--info .ticks{margin:16px 0 0}
+.del__more{margin-top:22px!important;font-size:15px}
+.del__more a{color:var(--pink)}
+.del__form{gap:16px}
+.check{display:flex;gap:12px;align-items:flex-start;cursor:pointer;color:var(--on-paper);font-size:15.5px;line-height:1.45}
+.check input{flex:none;width:22px;height:22px;margin:1px 0 0;accent-color:#c4103f;cursor:pointer}
+.btn--danger{background:#c4103f;color:#fff;justify-self:start}
+.btn--danger:hover{background:#a50d35}
+@media (max-width:900px){.del__grid{grid-template-columns:1fr}.langs-wrap{padding-top:88px}}
+
 /* Erscheinen */
 .js .reveal{opacity:0;transform:translateY(20px);transition:opacity 400ms var(--ease-out),transform 400ms var(--ease-out);transition-delay:var(--d,0ms)}
 .js .reveal.in{opacity:1;transform:none}

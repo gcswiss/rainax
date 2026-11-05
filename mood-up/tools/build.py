@@ -103,7 +103,7 @@ def footer(depth: int) -> str:
       </div>
       <div>
         <h3>Links</h3>
-        <ul><li><a href="{b}agb/">AGB's</a></li><li><a href="{b}impressum/">Impressum</a></li><li><a href="{b}datenschutz/">Datenschutzerklärung</a></li></ul>
+        <ul><li><a href="{b}agb/">AGB's</a></li><li><a href="{b}impressum/">Impressum</a></li><li><a href="{b}datenschutz/">Datenschutzerklärung</a></li><li><a href="{b}konto-loeschen/">Konto löschen</a></li></ul>
       </div>
       <div>
         <h3>Kontakt</h3>
@@ -469,7 +469,148 @@ def update_home() -> None:
     p.write_text(offline_links(s), encoding="utf-8")
 
 
+
+# ---------------------------------------------------------------------------
+# Konto löschen (DE, EN, IT, FR) – eine URL, Sprache per Umschalter oder Browser
+# ---------------------------------------------------------------------------
+DELETE_T = {
+    "de": dict(
+        name="Deutsch", eyebrow="Konto", title="Konto löschen",
+        lead="Du möchtest dein Mood-Up-Konto löschen? Das geht direkt in der App oder über das Formular auf dieser Seite.",
+        app_h="In der App löschen", app_hint="Am schnellsten, wenn die App noch installiert ist:",
+        steps=["Öffne die Mood-Up-App und melde dich an.", "Tippe unten rechts auf <b>Profil</b>.", "Scrolle ganz nach unten und tippe auf <b>Konto löschen</b>.", "Bestätige die Löschung."],
+        form_h="Ohne App löschen", form_hint="Du hast die App nicht mehr? Schick uns eine Lösch-Anfrage. Wir prüfen sie und bestätigen dir die Löschung per E-Mail.",
+        l_mail="E-Mail-Adresse deines Kontos", l_name="Name im Konto (optional)", l_msg="Nachricht (optional)",
+        l_confirm="Ich möchte mein Mood-Up-Konto und die zugehörigen Daten endgültig löschen lassen.",
+        submit="Lösch-Anfrage senden", note="Öffnet dein E-Mail-Programm mit der fertigen Anfrage an info@mood-up.ch. Bitte sende sie von der E-Mail-Adresse deines Kontos.",
+        e_mail="Bitte gib eine gültige E-Mail-Adresse ein.", e_confirm="Bitte bestätige, dass du dein Konto löschen möchtest.",
+        subject="Kontolöschung Mood Up", body_intro="Bitte löscht mein Mood-Up-Konto und die zugehörigen Daten.",
+        data_h="Was wird gelöscht?",
+        data_del=["Dein Konto mit Name, E-Mail-Adresse und Profilangaben", "Gespeicherter Ort bzw. Adresse", "Gefolgte Locations und deine Einstellungen", "Deine Chat-Nachrichten"],
+        data_keep_h="Was bleibt?",
+        data_keep="Daten, die wir aus gesetzlichen Gründen aufbewahren müssen (z. B. Rechnungen von Club-Abos), werden erst nach Ablauf der gesetzlichen Fristen gelöscht.",
+        clubs_h="Für Bars &amp; Clubs", clubs="Ein laufendes Pro-Abo kündigst du über dein Stripe-Konto oder per E-Mail. Die Kündigung gilt auf Ende der laufenden Periode.",
+        more='Mehr dazu in der <a href="../datenschutz/">Datenschutzerklärung</a>. Fragen? <a href="mailto:info@mood-up.ch">info@mood-up.ch</a>',
+        lbl_mail="E-Mail", lbl_name="Name", lbl_msg="Nachricht"),
+    "en": dict(
+        name="English", eyebrow="Account", title="Delete account",
+        lead="Want to delete your Mood Up account? You can do it directly in the app or with the form on this page.",
+        app_h="Delete in the app", app_hint="The quickest way if the app is still installed:",
+        steps=["Open the Mood Up app and sign in.", "Tap <b>Profile</b> at the bottom right.", "Scroll all the way down and tap <b>Delete account</b>.", "Confirm the deletion."],
+        form_h="Delete without the app", form_hint="Don't have the app anymore? Send us a deletion request. We will review it and confirm the deletion by email.",
+        l_mail="Email address of your account", l_name="Name on the account (optional)", l_msg="Message (optional)",
+        l_confirm="I want my Mood Up account and the related data to be deleted permanently.",
+        submit="Send deletion request", note="Opens your email app with the request to info@mood-up.ch ready to send. Please send it from your account's email address.",
+        e_mail="Please enter a valid email address.", e_confirm="Please confirm that you want to delete your account.",
+        subject="Mood Up account deletion", body_intro="Please delete my Mood Up account and the related data.",
+        data_h="What is deleted?",
+        data_del=["Your account with name, email address and profile details", "Saved location or address", "Followed locations and your settings", "Your chat messages"],
+        data_keep_h="What is kept?",
+        data_keep="Data we must keep for legal reasons (e.g. invoices for club subscriptions) is deleted once the statutory retention periods have expired.",
+        clubs_h="For bars &amp; clubs", clubs="Cancel an active Pro subscription via your Stripe account or by email. The cancellation takes effect at the end of the current billing period.",
+        more='More details in our <a href="../datenschutz/">privacy policy</a> (German). Questions? <a href="mailto:info@mood-up.ch">info@mood-up.ch</a>',
+        lbl_mail="Email", lbl_name="Name", lbl_msg="Message"),
+    "it": dict(
+        name="Italiano", eyebrow="Account", title="Eliminare l'account",
+        lead="Vuoi eliminare il tuo account Mood Up? Puoi farlo direttamente nell'app oppure con il modulo su questa pagina.",
+        app_h="Eliminare nell'app", app_hint="Il modo più rapido se l'app è ancora installata:",
+        steps=["Apri l'app Mood Up ed effettua l'accesso.", "Tocca <b>Profilo</b> in basso a destra.", "Scorri fino in fondo e tocca <b>Elimina account</b>.", "Conferma l'eliminazione."],
+        form_h="Eliminare senza l'app", form_hint="Non hai più l'app? Inviaci una richiesta di eliminazione. La verificheremo e ti confermeremo l'eliminazione via e-mail.",
+        l_mail="Indirizzo e-mail del tuo account", l_name="Nome nell'account (facoltativo)", l_msg="Messaggio (facoltativo)",
+        l_confirm="Desidero che il mio account Mood Up e i dati collegati vengano eliminati definitivamente.",
+        submit="Invia richiesta di eliminazione", note="Apre il tuo programma e-mail con la richiesta già pronta per info@mood-up.ch. Inviala dall'indirizzo e-mail del tuo account.",
+        e_mail="Inserisci un indirizzo e-mail valido.", e_confirm="Conferma che desideri eliminare il tuo account.",
+        subject="Eliminazione account Mood Up", body_intro="Vi prego di eliminare il mio account Mood Up e i dati collegati.",
+        data_h="Cosa viene eliminato?",
+        data_del=["Il tuo account con nome, indirizzo e-mail e dati del profilo", "Luogo o indirizzo salvato", "Locali seguiti e le tue impostazioni", "I tuoi messaggi in chat"],
+        data_keep_h="Cosa viene conservato?",
+        data_keep="I dati che dobbiamo conservare per motivi di legge (ad es. le fatture degli abbonamenti dei club) vengono eliminati alla scadenza dei termini di conservazione previsti dalla legge.",
+        clubs_h="Per bar e club", clubs="Disdici un abbonamento Pro attivo tramite il tuo account Stripe o via e-mail. La disdetta ha effetto alla fine del periodo in corso.",
+        more='Maggiori dettagli nell\'<a href="../datenschutz/">informativa sulla privacy</a> (in tedesco). Domande? <a href="mailto:info@mood-up.ch">info@mood-up.ch</a>',
+        lbl_mail="E-mail", lbl_name="Nome", lbl_msg="Messaggio"),
+    "fr": dict(
+        name="Français", eyebrow="Compte", title="Supprimer le compte",
+        lead="Tu souhaites supprimer ton compte Mood Up ? Tu peux le faire directement dans l'app ou avec le formulaire de cette page.",
+        app_h="Supprimer dans l'app", app_hint="Le plus rapide si l'app est encore installée :",
+        steps=["Ouvre l'app Mood Up et connecte-toi.", "Touche <b>Profil</b> en bas à droite.", "Fais défiler tout en bas et touche <b>Supprimer le compte</b>.", "Confirme la suppression."],
+        form_h="Supprimer sans l'app", form_hint="Tu n'as plus l'app ? Envoie-nous une demande de suppression. Nous la vérifions et te confirmons la suppression par e-mail.",
+        l_mail="Adresse e-mail de ton compte", l_name="Nom du compte (facultatif)", l_msg="Message (facultatif)",
+        l_confirm="Je souhaite que mon compte Mood Up et les données associées soient supprimés définitivement.",
+        submit="Envoyer la demande de suppression", note="Ouvre ton programme e-mail avec la demande prête à envoyer à info@mood-up.ch. Envoie-la depuis l'adresse e-mail de ton compte.",
+        e_mail="Merci d'indiquer une adresse e-mail valide.", e_confirm="Merci de confirmer que tu souhaites supprimer ton compte.",
+        subject="Suppression du compte Mood Up", body_intro="Merci de supprimer mon compte Mood Up et les données associées.",
+        data_h="Qu'est-ce qui est supprimé ?",
+        data_del=["Ton compte avec nom, adresse e-mail et informations de profil", "Lieu ou adresse enregistrés", "Lieux suivis et tes réglages", "Tes messages de chat"],
+        data_keep_h="Qu'est-ce qui est conservé ?",
+        data_keep="Les données que nous devons conserver pour des raisons légales (p. ex. les factures des abonnements des clubs) sont supprimées à l'expiration des délais légaux de conservation.",
+        clubs_h="Pour les bars et clubs", clubs="Résilie un abonnement Pro en cours via ton compte Stripe ou par e-mail. La résiliation prend effet à la fin de la période en cours.",
+        more='Plus de détails dans la <a href="../datenschutz/">déclaration de confidentialité</a> (en allemand). Des questions ? <a href="mailto:info@mood-up.ch">info@mood-up.ch</a>',
+        lbl_mail="E-mail", lbl_name="Nom", lbl_msg="Message"),
+}
+
+
+def build_delete_page() -> None:
+    switch = "".join(
+        f'<button type="button" class="langs__b" data-lang-btn="{k}" aria-pressed="{str(k == "de").lower()}" lang="{k}">{k.upper()}<span class="sr-only"> {v["name"]}</span></button>'
+        for k, v in DELETE_T.items())
+    blocks = []
+    for k, t in DELETE_T.items():
+        steps = "".join(f"<li><span>{x}</span></li>" for x in t["steps"])
+        dels = "".join(f"<li>{x}</li>" for x in t["data_del"])
+        hidden = "" if k == "de" else " hidden"
+        blocks.append(f'''<div class="del" lang="{k}" data-lang="{k}"{hidden}>
+  <section class="page-hero page-hero--del">
+    <div class="container">
+      <span class="eyebrow">{t["eyebrow"]}</span>
+      <h1>{t["title"]}</h1>
+      <p class="page-hero__lead">{t["lead"]}</p>
+    </div>
+  </section>
+  <section class="section section--tight">
+    <div class="container del__grid">
+      <div class="del__col">
+        <article class="del__card">
+          <span class="del__num">1</span>
+          <h2>{t["app_h"]}</h2>
+          <p>{t["app_hint"]}</p>
+          <ol class="del__steps">{steps}</ol>
+        </article>
+        <article class="del__card del__card--info">
+          <h2>{t["data_h"]}</h2>
+          <ul class="ticks">{dels}</ul>
+          <h3>{t["data_keep_h"]}</h3>
+          <p>{t["data_keep"]}</p>
+          <h3>{t["clubs_h"]}</h3>
+          <p>{t["clubs"]}</p>
+          <p class="del__more">{t["more"]}</p>
+        </article>
+      </div>
+      <form class="form del__form" data-delete novalidate
+            data-subject="{t["subject"]}" data-intro="{t["body_intro"]}"
+            data-l-mail="{t["lbl_mail"]}" data-l-name="{t["lbl_name"]}" data-l-msg="{t["lbl_msg"]}">
+        <span class="del__num del__num--dark">2</span>
+        <h2>{t["form_h"]}</h2>
+        <p class="form__note">{t["form_hint"]}</p>
+        <div class="field"><label for="d-mail-{k}">{t["l_mail"]}</label><input id="d-mail-{k}" name="email" type="email" autocomplete="email" required><p class="err" id="d-e-mail-{k}" hidden>{t["e_mail"]}</p></div>
+        <div class="field"><label for="d-name-{k}">{t["l_name"]}</label><input id="d-name-{k}" name="name" autocomplete="name"></div>
+        <div class="field"><label for="d-msg-{k}">{t["l_msg"]}</label><textarea id="d-msg-{k}" name="message" rows="3"></textarea></div>
+        <label class="check"><input type="checkbox" id="d-ok-{k}" name="confirm"><span>{t["l_confirm"]}</span></label>
+        <p class="err" id="d-e-ok-{k}" hidden>{t["e_confirm"]}</p>
+        <button class="btn btn--danger" type="submit">{t["submit"]} <svg aria-hidden="true"><use href="#i-arrow"/></svg></button>
+        <p class="form__note">{t["note"]}</p>
+      </form>
+    </div>
+  </section>
+</div>''')
+    body = f'''<div class="container langs-wrap"><div class="langs" role="group" aria-label="Sprache / Language / Lingua / Langue">{switch}</div></div>
+''' + "\n".join(blocks)
+    page("konto-loeschen", "Konto löschen | Mood Up",
+         "Mood-Up-Konto löschen: in der App oder per Lösch-Anfrage. Delete account · Eliminare l'account · Supprimer le compte.", body)
+
+
+
 if __name__ == "__main__":
     update_home()
     build_pages()
+    build_delete_page()
     print("ok")
