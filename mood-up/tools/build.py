@@ -54,7 +54,7 @@ def rel(depth: int, target: str, is_home_anchor: bool) -> str:
     return base + target
 
 
-def header(depth: int, current: str | None) -> str:
+def header(depth: int, current: str | None, extra: str = "") -> str:
     home = ("../" * depth) or "./"
     base = "../" * depth
     items = []
@@ -70,7 +70,7 @@ def header(depth: int, current: str | None) -> str:
     <a class="logo" href="{home}" aria-label="Mood Up – Startseite"><img class="logo__img" src="{base}assets/logo.webp" width="900" height="209" alt="Mood Up"></a>
     <nav class="nav" aria-label="Hauptmenü">
       {nav}
-    </nav>
+    </nav>{extra}
     <a class="btn btn--pink btn--sm header__cta" href="{dl}">App laden</a>
     <button class="burger" type="button" aria-controls="menu" aria-expanded="false" aria-label="Menü öffnen"><span></span><span></span></button>
   </div>
@@ -156,12 +156,12 @@ def offline_links(html: str) -> str:
     return html.replace('href="./"', 'href="index.html"')
 
 
-def page(slug: str, title: str, desc: str, body: str) -> None:
+def page(slug: str, title: str, desc: str, body: str, header_extra: str = "") -> None:
     html = f"""{head(1, title, desc)}
 <body>
 <a class="skip" href="#main">Zum Inhalt springen</a>
 {ICONS}
-{header(1, slug + "/")}
+{header(1, slug + "/", header_extra)}
 <main id="main">
 {body}
 </main>
@@ -550,9 +550,14 @@ DELETE_T = {
 
 
 def build_delete_page() -> None:
-    switch = "".join(
-        f'<button type="button" class="langs__b" data-lang-btn="{k}" aria-pressed="{str(k == "de").lower()}" lang="{k}">{k.upper()}<span class="sr-only"> {v["name"]}</span></button>'
-        for k, v in DELETE_T.items())
+    options = "".join(f'<option value="{k}" lang="{k}">{v["name"]}</option>' for k, v in DELETE_T.items())
+    lang_select = f'''
+    <label class="lang-select">
+      <span class="sr-only">Sprache / Language / Lingua / Langue</span>
+      <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></svg>
+      <select data-lang-select>{options}</select>
+      <svg class="lang-select__chev" viewBox="0 0 24 24" aria-hidden="true"><path d="m7 10 5 5 5-5"/></svg>
+    </label>'''
     blocks = []
     for k, t in DELETE_T.items():
         steps = "".join(f"<li><span>{x}</span></li>" for x in t["steps"])
@@ -602,10 +607,9 @@ def build_delete_page() -> None:
     </div>
   </section>
 </div>''')
-    body = f'''<div class="container langs-wrap"><div class="langs" role="group" aria-label="Sprache / Language / Lingua / Langue">{switch}</div></div>
-''' + "\n".join(blocks)
+    body = "\n".join(blocks)
     page("konto-loeschen", "Konto löschen | Mood Up",
-         "Mood-Up-Konto löschen: in der App oder per Lösch-Anfrage. Delete account · Eliminare l'account · Supprimer le compte.", body)
+         "Mood-Up-Konto löschen: in der App oder per Lösch-Anfrage. Delete account · Eliminare l'account · Supprimer le compte.", body, lang_select)
 
 
 

@@ -154,15 +154,15 @@
                   set: function(v){ try { localStorage.setItem("mu-lang", v); } catch (e) {} } };
     var setLang = function(l){
       langBlocks.forEach(function(b){ b.hidden = b.dataset.lang !== l; });
-      document.querySelectorAll("[data-lang-btn]").forEach(function(b){ b.setAttribute("aria-pressed", String(b.dataset.langBtn === l)); });
+      document.querySelectorAll("[data-lang-select]").forEach(function(s){ s.value = l; });
       document.documentElement.lang = l === "de" ? "de-CH" : l;
     };
     var fromUrl = (new URLSearchParams(location.search).get("lang") || "").toLowerCase();
     var fromNav = ((navigator.languages && navigator.languages[0]) || navigator.language || "de").slice(0, 2).toLowerCase();
     var start = [fromUrl, store.get(), fromNav].filter(function(l){ return supported.indexOf(l) > -1; })[0] || "de";
     setLang(start);
-    document.querySelectorAll("[data-lang-btn]").forEach(function(b){
-      b.addEventListener("click", function(){ setLang(b.dataset.langBtn); store.set(b.dataset.langBtn); });
+    document.querySelectorAll("[data-lang-select]").forEach(function(s){
+      s.addEventListener("change", function(){ setLang(s.value); store.set(s.value); });
     });
   }
 

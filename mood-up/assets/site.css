@@ -296,7 +296,7 @@ img{display:block;max-width:100%;height:auto}
 .menu[hidden]{display:none}
 .menu a:not(.btn){display:flex;align-items:center;min-height:52px;border-bottom:1px solid var(--line);font:700 22px/1 var(--display);letter-spacing:-.02em;color:#fff;text-decoration:none}
 .menu .btn{margin-top:20px}
-@media (max-width:1060px){.nav{display:none}.header__cta{margin-left:auto}.burger{display:flex}}
+@media (max-width:1060px){.nav{display:none}.header__cta{margin-left:auto}.burger{display:flex}.lang-select + .header__cta{margin-left:8px}}
 @media (max-width:420px){.header__cta{display:none}.burger{margin-left:auto}}
 
 /* ===== Unterseiten ===== */
@@ -469,12 +469,20 @@ a.ccard:hover{border-color:rgba(247,41,92,.6);transform:translateY(-2px)}
 .ccard .social__a span{display:inline;font:600 14px/1 var(--body);letter-spacing:0;text-transform:none;color:inherit}
 
 /* Konto löschen */
-.langs-wrap{padding-top:96px}
-.langs{display:inline-flex;gap:4px;padding:4px;border-radius:999px;border:1px solid var(--line);background:var(--ink-2)}
-.langs__b{min-width:52px;min-height:40px;padding:0 14px;border:0;border-radius:999px;background:transparent;color:#a9a7b0;font:700 14px/1 var(--display);letter-spacing:.04em;cursor:pointer;transition:background var(--t-fast),color var(--t-fast)}
-.langs__b:hover{color:#fff}
-.langs__b[aria-pressed="true"]{background:var(--pink-btn);color:#fff}
-.page-hero--del{padding-top:clamp(28px,4vw,48px)}
+.page-hero--del{}
+/* Sprachwahl (Dropdown in der Kopfzeile) */
+.lang-select{position:relative;display:inline-flex;align-items:center;margin-left:auto;margin-right:4px}
+.nav + .lang-select{margin-left:16px}
+.lang-select select{appearance:none;-webkit-appearance:none;min-height:44px;padding:0 34px 0 38px;border-radius:999px;border:1px solid var(--line);background:transparent;color:#fff;font:600 14px/1 var(--body);cursor:pointer;transition:border-color var(--t-fast),background var(--t-fast)}
+.lang-select select:hover{border-color:rgba(255,255,255,.35)}
+.lang-select select:focus-visible{outline:3px solid var(--pink);outline-offset:2px}
+.lang-select select option{background:#121216;color:#fff}
+.lang-select svg{position:absolute;pointer-events:none;width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;color:#d8d6de}
+.lang-select > svg:first-of-type{left:13px}
+.lang-select__chev{right:12px;width:16px!important;height:16px!important}
+.lang-select ~ .burger{margin-left:8px!important}
+.header__in .logo{flex:none}
+@media (max-width:380px){.lang-select > svg:first-of-type{display:none}.lang-select select{padding:0 30px 0 14px}.header__in .logo__img{height:26px}.header__in{gap:12px}}
 .del__grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;align-items:start}
 .del__col{display:grid;gap:20px}
 .del__card{position:relative;border-radius:var(--r-lg);background:var(--ink-2);border:1px solid var(--line);padding:clamp(24px,3vw,40px)}
@@ -497,7 +505,7 @@ a.ccard:hover{border-color:rgba(247,41,92,.6);transform:translateY(-2px)}
 .check input{flex:none;width:22px;height:22px;margin:1px 0 0;accent-color:#c4103f;cursor:pointer}
 .btn--danger{background:#c4103f;color:#fff;justify-self:start}
 .btn--danger:hover{background:#a50d35}
-@media (max-width:900px){.del__grid{grid-template-columns:1fr}.langs-wrap{padding-top:88px}}
+@media (max-width:900px){.del__grid{grid-template-columns:1fr}}
 
 /* Erscheinen */
 .js .reveal{opacity:0;transform:translateY(20px);transition:opacity 400ms var(--ease-out),transform 400ms var(--ease-out);transition-delay:var(--d,0ms)}
