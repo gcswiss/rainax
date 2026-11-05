@@ -149,24 +149,34 @@
                   set: function(v){ try { localStorage.setItem("mu-lang", v); } catch (e) {} } };
     var setLang = function(l){
       langBlocks.forEach(function(b){ b.hidden = b.dataset.lang !== l; });
-      document.querySelectorAll("[data-lang-select]").forEach(function(s){ s.value = l; });
+      document.querySelectorAll("[data-lang-inpage] [data-lang-link]").forEach(function(a){
+        if (a.dataset.langLink === l) a.setAttribute("aria-current", "true"); else a.removeAttribute("aria-current");
+      });
+      document.querySelectorAll("[data-lang-inpage] [data-lang-name]").forEach(function(n){ n.textContent = { de: "Deutsch", en: "English", it: "Italiano", fr: "Français" }[l]; });
       document.documentElement.lang = l === "de" ? "de-CH" : l;
     };
     var fromUrl = (new URLSearchParams(location.search).get("lang") || "").toLowerCase();
     var fromNav = ((navigator.languages && navigator.languages[0]) || navigator.language || "de").slice(0, 2).toLowerCase();
     var start = [fromUrl, store.get(), fromNav].filter(function(l){ return supported.indexOf(l) > -1; })[0] || "de";
     setLang(start);
-    document.querySelectorAll("[data-lang-select]").forEach(function(s){
-      s.addEventListener("change", function(){ setLang(s.value); store.set(s.value); });
+    document.querySelectorAll("[data-lang-inpage] [data-lang-link]").forEach(function(a){
+      a.addEventListener("click", function(e){
+        e.preventDefault(); setLang(a.dataset.langLink); store.set(a.dataset.langLink);
+        a.closest("details").open = false;
+      });
     });
   }
 
-  /* Sprachwahl auf allen Seiten: wechselt zur gleichen Seite in der anderen Sprache */
-  document.querySelectorAll("[data-lang-nav]").forEach(function(s){
-    s.addEventListener("change", function(){
-      try { localStorage.setItem("mu-lang", s.options[s.selectedIndex].lang); } catch (e) {}
-      location.href = s.value;
-    });
+  /* Sprachwahl: Menü schliesst bei Klick ausserhalb oder mit Escape; Wahl wird gemerkt */
+  var langMenus = document.querySelectorAll(".lang-menu");
+  document.addEventListener("click", function(e){
+    langMenus.forEach(function(m){ if (m.open && !m.contains(e.target)) m.open = false; });
+  });
+  document.addEventListener("keydown", function(e){
+    if (e.key === "Escape") langMenus.forEach(function(m){ if (m.open) { m.open = false; m.querySelector("summary").focus(); } });
+  });
+  document.querySelectorAll(".lang-menu:not([data-lang-inpage]) [data-lang-link]").forEach(function(a){
+    a.addEventListener("click", function(){ try { localStorage.setItem("mu-lang", a.dataset.langLink); } catch (e) {} });
   });
 
   /* Konto löschen: Formular prüft Felder und öffnet die fertige Lösch-Anfrage */

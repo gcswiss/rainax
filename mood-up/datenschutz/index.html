@@ -14,9 +14,9 @@
 <meta property="og:image" content="https://www.mood-up.ch/assets/og-image.png">
 <link rel="icon" href="../assets/favicon.png" type="image/png">
 <link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
-<link rel="stylesheet" href="../assets/fonts.css">
-<link rel="stylesheet" href="../assets/site.css">
-<script src="../assets/site.js" defer></script>
+<link rel="stylesheet" href="../assets/fonts.css?v=93d56f0e">
+<link rel="stylesheet" href="../assets/site.css?v=b95a1b20">
+<script src="../assets/site.js?v=4cc1a61c" defer></script>
 <link rel="canonical" href="https://www.mood-up.ch/datenschutz/">
 <link rel="alternate" hreflang="de" href="https://www.mood-up.ch/datenschutz/">
 <link rel="alternate" hreflang="en" href="https://www.mood-up.ch/en/datenschutz/">
@@ -45,12 +45,10 @@
       <a href="../ueber-uns/index.html">Über uns</a>
       <a href="../kontakt/index.html">Kontakt</a>
     </nav>
-    <label class="lang-select">
-      <span class="sr-only">Sprache</span>
-      <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></svg>
-      <select data-lang-nav data-lang-current="de"><option value="index.html" lang="de" selected>Deutsch</option><option value="../en/datenschutz/index.html" lang="en">English</option><option value="../it/datenschutz/index.html" lang="it">Italiano</option><option value="../fr/datenschutz/index.html" lang="fr">Français</option></select>
-      <svg class="lang-select__chev" viewBox="0 0 24 24" aria-hidden="true"><path d="m7 10 5 5 5-5"/></svg>
-    </label>
+    <details class="lang-menu">
+      <summary aria-label="Sprache: Deutsch"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></svg><span data-lang-name>Deutsch</span><svg class="lang-menu__chev" viewBox="0 0 24 24" aria-hidden="true"><path d="m7 10 5 5 5-5"/></svg></summary>
+      <ul class="lang-menu__list"><li><a href="index.html" lang="de" hreflang="de" data-lang-link="de" aria-current="true">Deutsch</a></li><li><a href="../en/datenschutz/index.html" lang="en" hreflang="en" data-lang-link="en">English</a></li><li><a href="../it/datenschutz/index.html" lang="it" hreflang="it" data-lang-link="it">Italiano</a></li><li><a href="../fr/datenschutz/index.html" lang="fr" hreflang="fr" data-lang-link="fr">Français</a></li></ul>
+    </details>
     <a class="btn btn--pink btn--sm header__cta" href="../index.html#download">App laden</a>
     <button class="burger" type="button" aria-controls="menu" aria-expanded="false" aria-label="Menü öffnen" data-open="Menü öffnen" data-close="Menü schliessen"><span></span><span></span></button>
   </div>

@@ -296,7 +296,7 @@ img{display:block;max-width:100%;height:auto}
 .menu[hidden]{display:none}
 .menu a:not(.btn){display:flex;align-items:center;min-height:52px;border-bottom:1px solid var(--line);font:700 22px/1 var(--display);letter-spacing:-.02em;color:#fff;text-decoration:none}
 .menu .btn{margin-top:20px}
-@media (max-width:1060px){.nav{display:none}.header__cta{margin-left:auto}.burger{display:flex}.lang-select + .header__cta{margin-left:8px}}
+@media (max-width:1060px){.nav{display:none}.header__cta{margin-left:auto}.burger{display:flex}.lang-menu + .header__cta{margin-left:8px}}
 @media (max-width:420px){.header__cta{display:none}.burger{margin-left:auto}}
 
 /* ===== Unterseiten ===== */
@@ -471,19 +471,23 @@ a.ccard:hover{border-color:rgba(247,41,92,.6);transform:translateY(-2px)}
 
 /* Konto löschen */
 .page-hero--del{}
-/* Sprachwahl (Dropdown in der Kopfzeile) */
-.lang-select{position:relative;display:inline-flex;align-items:center;margin-left:auto;margin-right:4px}
-.nav + .lang-select{margin-left:16px}
-.lang-select select{appearance:none;-webkit-appearance:none;min-height:44px;padding:0 34px 0 38px;border-radius:999px;border:1px solid var(--line);background:transparent;color:#fff;font:600 14px/1 var(--body);cursor:pointer;transition:border-color var(--t-fast),background var(--t-fast)}
-.lang-select select:hover{border-color:rgba(255,255,255,.35)}
-.lang-select select:focus-visible{outline:3px solid var(--pink);outline-offset:2px}
-.lang-select select option{background:#121216;color:#fff}
-.lang-select svg{position:absolute;pointer-events:none;width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;color:#d8d6de}
-.lang-select > svg:first-of-type{left:13px}
-.lang-select__chev{right:12px;width:16px!important;height:16px!important}
-.lang-select ~ .burger{margin-left:8px!important}
+/* Sprachwahl (Aufklapp-Menü in der Kopfzeile) */
+.lang-menu{position:relative;margin-left:auto;margin-right:4px}
+.nav + .lang-menu{margin-left:16px}
+.lang-menu summary{list-style:none;display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:0 12px 0 13px;border-radius:999px;border:1px solid var(--line);color:#fff;font:600 14px/1 var(--body);cursor:pointer;user-select:none;transition:border-color var(--t-fast),background var(--t-fast)}
+.lang-menu summary::-webkit-details-marker{display:none}
+.lang-menu summary:hover,.lang-menu[open] summary{border-color:rgba(255,255,255,.35);background:rgba(255,255,255,.06)}
+.lang-menu summary svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;color:#d8d6de;flex:none}
+.lang-menu__chev{width:16px!important;height:16px!important;transition:transform var(--t-fast)}
+.lang-menu[open] .lang-menu__chev{transform:rotate(180deg)}
+.lang-menu__list{position:absolute;right:0;top:calc(100% + 8px);z-index:60;min-width:170px;margin:0;padding:6px;list-style:none;border-radius:16px;background:#16161b;border:1px solid var(--line);box-shadow:0 20px 50px -12px rgba(0,0,0,.7)}
+.lang-menu__list a{display:flex;align-items:center;justify-content:space-between;min-height:44px;padding:0 14px;border-radius:10px;color:#e6e4ea;text-decoration:none;font:600 15px/1 var(--body)}
+.lang-menu__list a:hover{background:rgba(255,255,255,.07);color:#fff}
+.lang-menu__list a[aria-current]{color:#fff;background:rgba(247,41,92,.16)}
+.lang-menu__list a[aria-current]::after{content:"";width:8px;height:8px;border-radius:50%;background:var(--pink)}
+.lang-menu ~ .burger{margin-left:8px!important}
 .header__in .logo{flex:none}
-@media (max-width:380px){.lang-select > svg:first-of-type{display:none}.lang-select select{padding:0 30px 0 14px}.header__in .logo__img{height:26px}.header__in{gap:12px}}
+@media (max-width:380px){.lang-menu summary > svg:first-child{display:none}.header__in .logo__img{height:26px}.header__in{gap:12px}}
 .del__grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;align-items:start}
 .del__col{display:grid;gap:20px}
 .del__card{position:relative;border-radius:var(--r-lg);background:var(--ink-2);border:1px solid var(--line);padding:clamp(24px,3vw,40px)}

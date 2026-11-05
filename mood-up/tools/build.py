@@ -553,14 +553,8 @@ DELETE_T = {
 
 
 def build_delete_page() -> None:
-    options = "".join(f'<option value="{k}" lang="{k}">{v["name"]}</option>' for k, v in DELETE_T.items())
-    lang_select = f'''
-    <label class="lang-select">
-      <span class="sr-only">Sprache / Language / Lingua / Langue</span>
-      <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></svg>
-      <select data-lang-select>{options}</select>
-      <svg class="lang-select__chev" viewBox="0 0 24 24" aria-hidden="true"><path d="m7 10 5 5 5-5"/></svg>
-    </label>'''
+    lang_select = lang_menu("Sprache / Language / Lingua / Langue", "de",
+                            [(k, f"index.html?lang={k}") for k in DELETE_T], " data-lang-inpage")
     blocks = []
     for k, t in DELETE_T.items():
         steps = "".join(f"<li><span>{x}</span></li>" for x in t["steps"])
@@ -688,18 +682,22 @@ def head_links(page: str) -> str:
     return alt + f'<link rel="alternate" hreflang="x-default" href="{public_url("de", page)}">\n'
 
 
+def lang_menu(label: str, current: str, links: list[tuple[str, str]], extra_attr: str = "") -> str:
+    """Sprachwahl als Aufklapp-Menü mit echten Links: funktioniert auch ohne JavaScript."""
+    items = "".join(
+        f'<li><a href="{href}" lang="{l}" hreflang="{l}" data-lang-link="{l}"{' aria-current="true"' if l == current else ''}>{LANG_NAMES[l]}</a></li>'
+        for l, href in links)
+    return f"""
+    <details class="lang-menu"{extra_attr}>
+      <summary aria-label="{label}: {LANG_NAMES[current]}"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></svg><span data-lang-name>{LANG_NAMES[current]}</span><svg class="lang-menu__chev" viewBox="0 0 24 24" aria-hidden="true"><path d="m7 10 5 5 5-5"/></svg></summary>
+      <ul class="lang-menu__list">{items}</ul>
+    </details>"""
+
+
 def lang_select(page: str, lang: str) -> str:
     here = posixpath.dirname(page_path(lang, page))
-    opts = "".join(
-        f'<option value="{posixpath.relpath(page_path(l, page), here or ".")}" lang="{l}"{" selected" if l == lang else ""}>{LANG_NAMES[l]}</option>'
-        for l in ("de",) + LANGS)
-    return f"""
-    <label class="lang-select">
-      <span class="sr-only">{UI[lang]["lang_label"]}</span>
-      <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></svg>
-      <select data-lang-nav data-lang-current="{lang}">{opts}</select>
-      <svg class="lang-select__chev" viewBox="0 0 24 24" aria-hidden="true"><path d="m7 10 5 5 5-5"/></svg>
-    </label>"""
+    links = [(l, posixpath.relpath(page_path(l, page), here or ".")) for l in ("de",) + LANGS]
+    return lang_menu(UI[lang]["lang_label"], lang, links)
 
 
 def finish(src: str, page: str, lang: str) -> str:
@@ -725,6 +723,20 @@ def build_languages() -> None:
     # Konto löschen: eigene Sprachwahl auf der Seite, nur die Kopfzeile bekommt kein Navigations-Dropdown
     k = ROOT / "konto-loeschen/index.html"
     k.write_text(k.read_text(encoding="utf-8").replace("<!--LANGSELECT-->", ""), encoding="utf-8")
+    version_assets()
+
+
+def version_assets() -> None:
+    """Hängt an CSS/JS eine Versionsnummer an, damit Browser nach einem Upload sicher die neuen Dateien laden."""
+    import hashlib
+    ver = {n: hashlib.sha1((ROOT / "assets" / n).read_bytes()).hexdigest()[:8] for n in ("site.css", "site.js", "fonts.css")}
+    for f in ROOT.rglob("index.html"):
+        if "tools" in f.parts:
+            continue
+        src = f.read_text(encoding="utf-8")
+        for n, v in ver.items():
+            src = re.sub(rf'assets/{re.escape(n)}(\?v=[0-9a-f]+)?"', f'assets/{n}?v={v}"', src)
+        f.write_text(src, encoding="utf-8")
 
 
 if __name__ == "__main__":

@@ -14,9 +14,9 @@
 <meta property="og:image" content="https://www.mood-up.ch/assets/og-image.png">
 <link rel="icon" href="../../assets/favicon.png" type="image/png">
 <link rel="apple-touch-icon" href="../../assets/apple-touch-icon.png">
-<link rel="stylesheet" href="../../assets/fonts.css">
-<link rel="stylesheet" href="../../assets/site.css">
-<script src="../../assets/site.js" defer></script>
+<link rel="stylesheet" href="../../assets/fonts.css?v=93d56f0e">
+<link rel="stylesheet" href="../../assets/site.css?v=b95a1b20">
+<script src="../../assets/site.js?v=4cc1a61c" defer></script>
 <link rel="canonical" href="https://www.mood-up.ch/fr/ueber-uns/">
 <link rel="alternate" hreflang="de" href="https://www.mood-up.ch/ueber-uns/">
 <link rel="alternate" hreflang="en" href="https://www.mood-up.ch/en/ueber-uns/">
@@ -45,12 +45,10 @@
       <a href="index.html" aria-current="page">À propos</a>
       <a href="../kontakt/index.html">Contact</a>
     </nav>
-    <label class="lang-select">
-      <span class="sr-only">Langue</span>
-      <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></svg>
-      <select data-lang-nav data-lang-current="fr"><option value="../../ueber-uns/index.html" lang="de">Deutsch</option><option value="../../en/ueber-uns/index.html" lang="en">English</option><option value="../../it/ueber-uns/index.html" lang="it">Italiano</option><option value="index.html" lang="fr" selected>Français</option></select>
-      <svg class="lang-select__chev" viewBox="0 0 24 24" aria-hidden="true"><path d="m7 10 5 5 5-5"/></svg>
-    </label>
+    <details class="lang-menu">
+      <summary aria-label="Langue: Français"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></svg><span data-lang-name>Français</span><svg class="lang-menu__chev" viewBox="0 0 24 24" aria-hidden="true"><path d="m7 10 5 5 5-5"/></svg></summary>
+      <ul class="lang-menu__list"><li><a href="../../ueber-uns/index.html" lang="de" hreflang="de" data-lang-link="de">Deutsch</a></li><li><a href="../../en/ueber-uns/index.html" lang="en" hreflang="en" data-lang-link="en">English</a></li><li><a href="../../it/ueber-uns/index.html" lang="it" hreflang="it" data-lang-link="it">Italiano</a></li><li><a href="index.html" lang="fr" hreflang="fr" data-lang-link="fr" aria-current="true">Français</a></li></ul>
+    </details>
     <a class="btn btn--pink btn--sm header__cta" href="../index.html#download">Télécharger l'app</a>
     <button class="burger" type="button" aria-controls="menu" aria-expanded="false" aria-label="Ouvrir le menu" data-open="Ouvrir le menu" data-close="Fermer le menu"><span></span><span></span></button>
   </div>
