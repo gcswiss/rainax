@@ -139,7 +139,7 @@
         const seg = clip(bl.start, bl.end, c.date, lo, hi); if (!seg) return;
         const who = bl.staff_id ? (staffById(bl.staff_id)?.name || '') : 'Ganze Filiale';
         const e = document.createElement('div');
-        e.className = 'ev block';
+        e.className = 'ev block' + (S.mode === 'week' && !c.staff && bl.staff_id ? ' bg' : '');
         e.style.cssText = `top:${(seg[0] - lo) * ppm}px;height:${Math.max(18, (seg[1] - seg[0]) * ppm - 2)}px;left:3px;right:3px`;
         e.innerHTML = `<b>${esc(bl.note || 'Abwesend')}</b><span class="t">${esc(S.mode === 'week' && !c.staff ? who : '')}</span>`;
         e.addEventListener('click', (ev) => { ev.stopPropagation(); blockDialog(bl); });

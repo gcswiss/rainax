@@ -82,6 +82,8 @@ input.sm, select.sm { height: 36px; border: 1px solid var(--line); border-radius
 .ev .t { color: var(--muted); font-size: .72rem; }
 .ev .tag { display: inline-block; font-size: .65rem; font-weight: 600; text-transform: uppercase; letter-spacing: .05em; background: var(--navy); color: #fff; border-radius: 4px; padding: 0 4px; margin-left: 4px; vertical-align: 1px; }
 .ev.block { background: repeating-linear-gradient(135deg, #e7e5f0 0 6px, #dcd9e8 6px 12px); border-left-color: #6b6b85; color: #3b3b52; }
+.ev.block.bg { z-index: 1; opacity: .55; }
+.ev.block.bg:hover { opacity: 1; z-index: 4; }
 .ev.noshow { opacity: .55; text-decoration: line-through; }
 
 .legend { color: var(--muted); font-size: .85rem; display: flex; flex-wrap: wrap; gap: 6px 14px; align-items: center; }
