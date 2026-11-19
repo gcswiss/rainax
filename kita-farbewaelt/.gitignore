@@ -1,0 +1,4 @@
+data/backups/*.json
+data/login-attempts.json
+data/anfragen-rate.json
+data/content.json.tmp

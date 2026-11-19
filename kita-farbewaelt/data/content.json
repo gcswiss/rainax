@@ -1,0 +1,172 @@
+{
+  "allgemein": {
+    "name": "Kita Farbewält",
+    "firma": "Kita Farbewält GmbH",
+    "strasse": "Löwenstrasse 21",
+    "ort": "8953 Dietikon",
+    "telefon": "078 315 99 49",
+    "whatsapp": "41783159949",
+    "email": "info@kita-farbewaelt.ch",
+    "instagram": "https://www.instagram.com/kita.farbewaelt/",
+    "oeffnungszeiten_tage": "Montag bis Freitag",
+    "oeffnungszeiten_zeit": "06.45 – 18.15 Uhr",
+    "parkieren": "Parkmöglichkeiten im Parkhaus Kirchplatz",
+    "maps_link": "https://www.google.com/maps/search/?api=1&query=L%C3%B6wenstrasse+21%2C+8953+Dietikon",
+    "uid": "CHE-160.422.196",
+    "meta_beschreibung": "Kita Farbewält in Dietikon: familiäre Kinderkrippe mit zwei Gruppen für Kinder von 3 Monaten bis zum Kindergarten. Montag bis Freitag, 06.45 – 18.15 Uhr."
+  },
+  "start": {
+    "hero_kicker": "Für Vereinbarkeit von Familie und Beruf",
+    "hero_titel": "Für euer Kind. Mit Herz. Mit euch gemeinsam.",
+    "hero_text": "Eine familiäre Kita mit zwei Gruppen mitten in Dietikon – für Kinder ab 3 Monaten bis zum Kindergarten.",
+    "hero_video": "",
+    "hero_bild": "uploads/spielen-abakus.jpg",
+    "fakten": [
+      { "zahl": "24", "text": "Plätze pro Tag" },
+      { "zahl": "2", "text": "familiäre Gruppen" },
+      { "zahl": "3 Mt.", "text": "bis zum Kindergarten" },
+      { "zahl": "06.45", "text": "bis 18.15 Uhr geöffnet" }
+    ],
+    "werte_titel": "Was uns ausmacht",
+    "werte": [
+      { "titel": "familiär", "text": "Wir nehmen uns Zeit und Raum für Begegnungen. Wir machen Fehler, sagen Entschuldigung, vergeben – wir lernen, lachen und leben zusammen. Wir sind eine zweite Familie." },
+      { "titel": "Menschenbild", "text": "Wir nehmen jeden Menschen in seiner Einzigartigkeit an, schätzen unterschiedliche Kulturen und Religionen und heissen alle herzlich willkommen." },
+      { "titel": "Pädagogik", "text": "Das Wohl des Kindes hat erste Priorität. Wir fördern jedes Kind individuell und nehmen seine Bedürfnisse und Interessen ernst." },
+      { "titel": "professionell", "text": "Wir reflektieren unsere Arbeit, begegnen uns auf Augenhöhe und entwickeln unsere pädagogische Haltung durch Austausch und Weiterbildung." }
+    ],
+    "alltag_titel": "Einblicke in unseren Alltag",
+    "alltag_text": "Spielen, entdecken, ausruhen, gemeinsam essen – so sieht ein Tag in der Farbewält aus.",
+    "alltag": [
+      { "titel": "Spielen & Entdecken", "bild": "uploads/raum-gruppenraum.jpg", "video": "" },
+      { "titel": "Ausruhen", "bild": "uploads/raum-schlafraum.jpg", "video": "" },
+      { "titel": "Frisch gekocht", "bild": "uploads/ernaehrung-aepfel.jpg", "video": "" },
+      { "titel": "Unsere Räume", "bild": "uploads/raum-gang.jpg", "video": "" }
+    ],
+    "cta_titel": "Lernt uns kennen!",
+    "cta_text": "Kommt vorbei und schaut euch unsere Kita an – wir freuen uns auf euch."
+  },
+  "ueber": {
+    "titel": "Herzlich willkommen in der Kita Farbewält",
+    "intro": "Wir freuen uns, in der Stadt Dietikon eine familiäre Kita mit zwei Gruppen als familienergänzende Betreuung anbieten zu können. Unser Konzept ist so gestaltet, wie wir uns selbst eine ausserfamiliäre Betreuung wünschen würden.",
+    "text": "Bei uns werden Kinder im Alter von 3 Monaten bis zum Eintritt in den Kindergarten liebevoll betreut – insgesamt 24 Kinder pro Tag.\n\nDa wir direkt im Zentrum von Dietikon sind, haben wir Parks, Spielplätze und Wälder ganz in der Nähe. Dort spielen wir an der frischen Luft, erkunden die Natur und entwickeln unsere motorischen Fähigkeiten – so wird uns nie langweilig.",
+    "raeume_titel": "Unsere Räume",
+    "raeume_text": "Mit viel Liebe zum Detail eingerichtet – sicher, anregend und mit viel Platz zum Spielen, Lernen und Entdecken.",
+    "raeume": [
+      { "titel": "Spielen", "text": "Unsere Gruppenräume sind der zentrale Ort für das soziale Miteinander. Sie fördern ein positives Lernklima, damit sich die Kinder wohl und glücklich fühlen.", "bild": "uploads/raum-gruppenraum.jpg" },
+      { "titel": "Schlafen", "text": "Unser Schlaf- und Erholungsraum ist ein sicherer, ruhiger Ort zum Ausruhen. Erholung stärkt die Kinder für neue Aktivitäten und Lernprozesse.", "bild": "uploads/raum-schlafraum.jpg" },
+      { "titel": "Rollenspiel", "text": "Im Rollenspielzimmer entwickeln die Kinder ihre sprachlichen, sozialen und emotionalen Fähigkeiten – kreativ und im Spiel miteinander.", "bild": "uploads/raum-gang.jpg" },
+      { "titel": "Basteln", "text": "Im Bastelzimmer entfalten die Kinder ihre Fantasie und drücken sich frei aus. Das fördert Kreativität, Motorik und soziales Lernen.", "bild": "uploads/spielen-abakus.jpg" }
+    ],
+    "galerie_titel": "Galerie",
+    "galerie_hinweis": "Neue Bilder folgen bald – aktuell wird unsere Fassade renoviert.",
+    "galerie": [
+      { "bild": "uploads/raum-gruppenraum.jpg", "text": "Gruppenraum" },
+      { "bild": "uploads/raum-schlafraum.jpg", "text": "Schlafraum" },
+      { "bild": "uploads/raum-gang.jpg", "text": "Gang" },
+      { "bild": "uploads/spielen-abakus.jpg", "text": "Spielen" }
+    ],
+    "partner_titel": "Gemeinsam sind wir besser",
+    "partner_text": "Wir können zwar viel, aber nicht alles. Deshalb setzen wir auf starke Partnerschaft – und sind stolz, mit der Kita Witzchistli zusammenzuarbeiten.",
+    "partner_name": "Kita Witzchistli GmbH",
+    "partner_adresse": "Begonienstrasse 10, 8057 Zürich",
+    "partner_link": "https://kita-witzchistli.ch/",
+    "partner_logo": "uploads/partner-witzchistli.png"
+  },
+  "angebot": {
+    "titel": "Unser Angebot",
+    "intro": "Vom ersten Kita-Tag bis zum Kindergarten begleiten wir euer Kind – Schritt für Schritt und in seinem eigenen Tempo.",
+    "eingewoehnung_titel": "Die Eingewöhnung",
+    "eingewoehnung_text": "Für viele Kinder ist der Kita-Eintritt die erste Trennung von den Eltern – und auch Eltern müssen sich ans Loslassen gewöhnen. Darum nehmen wir uns genug Zeit.",
+    "phasen": [
+      { "titel": "Kennenlerngespräch", "text": "Wir lernen euch und euer Kind kennen, besprechen Gewohnheiten, Fragen und Erwartungen und planen die Eingewöhnung gemeinsam." },
+      { "titel": "Kontaktphase", "text": "Ein Elternteil begleitet das Kind in die Kita und ist sein «sicherer Hafen», während es das neue Umfeld kennenlernt." },
+      { "titel": "Trennungsphase", "text": "Der erste kurze Trennungsversuch: Der Elternteil verlässt den Raum, bleibt aber in der Nähe." },
+      { "titel": "Stabilisierung", "text": "Je nach Reaktion des Kindes verlängern wir die Zeit Schritt für Schritt – jedes Kind in seinem Tempo." },
+      { "titel": "Angekommen!", "text": "Das Kind bewegt sich ohne Angst in der Gruppe und lässt sich von seiner Bezugsperson trösten." }
+    ],
+    "extras": [
+      { "titel": "Portfolio", "text": "Die Geschichte eures Kindes in Bildern: Der Portfolio-Ordner zeigt, wie es wächst, lernt und die Welt entdeckt – und gehört beim Austritt ganz ihm." },
+      { "titel": "Entwicklungsgespräche", "text": "Einmal jährlich teilen wir in einem persönlichen Gespräch unsere Beobachtungen und schauen gemeinsam nach vorne." },
+      { "titel": "Fit für den Kindergarten", "text": "Unser Vorbereitungsprojekt stärkt Grobmotorik, Feinmotorik, Konzentration, Selbständigkeit und Regelverständnis – damit der Kindergarten der natürliche nächste Schritt wird." }
+    ],
+    "zeiten_titel": "Öffnungszeiten & Ferien",
+    "zeiten_text": "An gesetzlichen Feiertagen, im Sommer sowie über Weihnachten und Neujahr bleibt die Kita geschlossen. An Tagen vor gesetzlichen Feiertagen schliessen wir früher.",
+    "ferien_pdf": "uploads/feiertage-betriebsferien-2026.pdf",
+    "ferien_pdf_titel": "Feiertage und Betriebsferien 2026"
+  },
+  "paedagogik": {
+    "titel": "Pädagogisches Konzept",
+    "intro": "Kurz und bündig – mehr erzählen wir euch gerne bei einer Besichtigung.",
+    "grundsaetze": [
+      { "titel": "Unser Bild von eurem Kind", "text": "Jedes Kind ist einzigartig. Es erfährt bei uns Akzeptanz, Wärme und Wertschätzung und darf Freude wie Trauer jederzeit zeigen. Verlässliche Bezugspersonen geben Sicherheit und Geborgenheit." },
+      { "titel": "Unser Ziel für euer Kind", "text": "Wir sind Vorbilder, lassen die Kinder mitbestimmen, geben Raum und Zeit für Selbständigkeit, hören aktiv zu und respektieren ihre Gefühle." },
+      { "titel": "Zusammenleben unter Kindern", "text": "Wir begleiten Gruppenprozesse, damit Unterschiede und Konflikte zur Chance werden und niemand ausgegrenzt wird." }
+    ],
+    "themen": [
+      { "titel": "Ernährung", "text": "Bei uns wird täglich frisch und ausgewogen gekocht. Für die Kleinsten gibt es frische Breie aus Gemüse und Früchten und abwechslungsreiches Fingerfood.", "bild": "uploads/konzept-ernaehrung.jpg" },
+      { "titel": "Natur & Umwelt", "text": "Täglich frische Luft gehört dazu. In der Natur lernen die Kinder Pflanzen, Tiere und das Wetter kennen – und das richtige Verhalten im Strassenverkehr.", "bild": "uploads/ernaehrung-aepfel.jpg" },
+      { "titel": "Bewegung & Ruhe", "text": "Ohne Bewegung keine Ruhe – und ohne Ruhe keine Bewegung. Im Schlaf verarbeiten Kinder Erlebnisse und wachsen.", "bild": "uploads/ruhe-schlaf.jpg" }
+    ]
+  },
+  "tarife": {
+    "titel": "Unsere Tarife",
+    "intro": "Wir bieten Halb- und Ganztagesbetreuung an. Im Preis inbegriffen sind Frühstück, Früchterunden, Mittagessen, Zvieri sowie die normalerweise anfallenden Kosten aus dem Tagesprogramm.",
+    "preis_saeugling": "132",
+    "preis_kleinkind": "120",
+    "label_saeugling": "Säuglinge bis und mit 18 Monate",
+    "label_kleinkind": "Kleinkinder ab 19 Monate",
+    "faktor": "4.2",
+    "empfehlung": "Empfehlung: 2 ganze Tage pro Woche – das gibt eurem Kind Stabilität.",
+    "halbtage": [
+      { "titel": "Halbtag mit Mittagessen", "zeit": "bis 14.00 Uhr oder ab 11.00 Uhr", "saeugling": "93", "kleinkind": "84" },
+      { "titel": "Halbtag ohne Mittagessen", "zeit": "bis 11.00 Uhr oder ab 14.00 Uhr", "saeugling": "66", "kleinkind": "60" }
+    ],
+    "mindestbetreuung": "Mindestbetreuung: 3 halbe Tage pro Woche",
+    "vorteile": [
+      { "titel": "Date Night", "text": "1× im Monat schenken wir euch einen Date-Night-Abend – eure Kinder sind bei uns, ihr habt Zeit zu zweit." },
+      { "titel": "Geschwisterrabatt", "text": "10 % auf den Monatstarif des älteren Kindes." },
+      { "titel": "Abwesenheit ab 1 Monat", "text": "20 % Rabatt auf den Monatstarif." }
+    ],
+    "subvention_titel": "Subventionierte Plätze (EBV)",
+    "subvention_text": "Die Stadt Dietikon unterstützt Familien mit Betreuungsgutscheinen. Den Antrag stellt ihr über die Fachstelle Frühe Kindheit der Stadt Dietikon. Mit dem Kitarechner seht ihr in wenigen Minuten, mit wie viel Unterstützung ihr rechnen könnt.",
+    "subvention_link": "https://www.kitarechner.ch/Dietikon/",
+    "subvention_button": "Zum Kitarechner Dietikon"
+  },
+  "team": {
+    "titel": "Das Herz unserer Kita",
+    "intro": "Unser Teamgeist macht den Unterschied – gemeinsam gestalten wir eine starke Zukunft für unsere Kinder.",
+    "mitglieder": [
+      { "name": "Lamija Ljutfija", "rolle": "Geschäftsführerin / Kitaleiterin", "details": "Teamleiterin in sozialen und sozialmedizinischen Institutionen\nFachfrau Betreuung Kind EFZ\nBerufsbildnerin", "foto": "uploads/team-lamija.jpg" },
+      { "name": "Fidana Kreho", "rolle": "Stellvertretung der Geschäftsführung", "details": "Sachbearbeiterin Administration", "foto": "uploads/team-fidana.jpg" },
+      { "name": "Gamze", "rolle": "Miterzieherin / Gruppenleiterin", "details": "Fachfrau Betreuung EFZ\nBerufsbildnerin", "foto": "uploads/team-gamze.jpg" },
+      { "name": "Adilie", "rolle": "Miterzieherin", "details": "Fachfrau Betreuung EFZ", "foto": "" },
+      { "name": "Elmedina", "rolle": "Fachfrau Betreuung Kind EFZ", "details": "In Ausbildung", "foto": "" },
+      { "name": "Agnesa", "rolle": "Fachfrau Betreuung Kind EFZ", "details": "In Ausbildung", "foto": "" },
+      { "name": "Ejona", "rolle": "Praktikantin", "details": "Berufsvorbereitungsjahr", "foto": "" },
+      { "name": "Chiara", "rolle": "Praktikantin", "details": "Berufsvorbereitungsjahr", "foto": "" }
+    ]
+  },
+  "jobs": {
+    "titel": "Werde Teil unseres Teams",
+    "intro": "Unsere Kita wächst mit viel Liebe. Wir suchen Menschen, die mit Herz und Leidenschaft eine besondere Umgebung für Kinder schaffen möchten.",
+    "stellen": [],
+    "keine_stellen": "Zurzeit sind alle unsere Stellen besetzt. Eine Spontanbewerbung freut uns trotzdem!",
+    "bewerbung_email": "info@kita-farbewaelt.ch"
+  },
+  "kontakt": {
+    "titel": "Platzanfrage & Besichtigung",
+    "intro": "Einfach, klar und persönlich – in wenigen Schritten zu eurem Kita-Platz.",
+    "schritte": [
+      { "titel": "Kontaktaufnahme" },
+      { "titel": "Besichtigung" },
+      { "titel": "Anmeldung" },
+      { "titel": "Vertrag & Start" }
+    ],
+    "formular_empfaenger": "info@kita-farbewaelt.ch",
+    "danke": "Herzlichen Dank! Wir haben eure Anfrage erhalten und melden uns so bald wie möglich."
+  },
+  "rechtliches": {
+    "impressum": "**Kita Farbewält GmbH**\nLöwenstrasse 21\n8953 Dietikon\nSchweiz\n\nTelefon: 078 315 99 49\nE-Mail: info@kita-farbewaelt.ch\n\nGeschäftsführung: Lamija Ljutfija\nUnternehmens-Identifikationsnummer (UID): CHE-160.422.196\n\n**Haftungsausschluss**\nWir prüfen die Inhalte dieser Webseite sorgfältig. Für Richtigkeit, Vollständigkeit und Aktualität übernehmen wir jedoch keine Gewähr. Für Inhalte verlinkter Webseiten sind ausschliesslich deren Betreiber verantwortlich.\n\n**Bilder**\nAlle Bilder dürfen ohne unsere Zustimmung nicht weiterverwendet werden.",
+    "datenschutz": "**Verantwortliche Stelle**\nKita Farbewält GmbH, Löwenstrasse 21, 8953 Dietikon, info@kita-farbewaelt.ch\n\n**Grundsatz**\nWir behandeln eure Personendaten vertraulich und gemäss dem Schweizer Datenschutzgesetz (DSG).\n\n**Besuch der Webseite**\nBeim Aufruf der Webseite speichert unser Hosting-Anbieter technisch notwendige Daten (z. B. IP-Adresse, Datum, Uhrzeit, aufgerufene Seite) in Server-Logdateien. Diese Daten dienen der Sicherheit und dem Betrieb und werden nach kurzer Zeit gelöscht.\n\n**Keine Cookies, kein Tracking**\nDiese Webseite verwendet keine Analyse- oder Werbe-Cookies. Schriften werden lokal geladen, es werden keine Daten an Google oder andere Dritte übermittelt.\n\n**Kontakt- und Anfrageformular**\nWenn ihr uns über das Formular oder per E-Mail kontaktiert, verwenden wir eure Angaben ausschliesslich, um eure Anfrage zu bearbeiten. Die Daten werden nicht an Dritte weitergegeben.\n\n**Externe Links**\nBeim Klick auf Links zu Instagram, WhatsApp, Google Maps oder dem Kitarechner verlasst ihr unsere Webseite. Dort gelten die Datenschutzbestimmungen der jeweiligen Anbieter.\n\n**Eure Rechte**\nIhr könnt jederzeit Auskunft über eure gespeicherten Daten verlangen sowie deren Berichtigung oder Löschung beantragen. Schreibt uns dazu an info@kita-farbewaelt.ch."
+  }
+}
