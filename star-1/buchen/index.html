@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="de-CH">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Online Termin buchen – Star 1 Coiffeur Wil</title>
+  <meta name="description" content="Buchen Sie Ihren Termin bei Star 1 Coiffeur in Wil SG online: Datum, Uhrzeit, Coiffeur und Dienstleistung wählen – fertig.">
+  <meta name="theme-color" content="#0b0b0c">
+  <link rel="icon" href="../assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="stylesheet" href="../assets/css/booking.css">
+</head>
+<body class="booking-page">
+
+<header class="header header--solid">
+  <div class="wrap header__in">
+    <a class="header__logo" href="../" aria-label="Zur Startseite"><img src="../assets/img/logo-weiss.webp" alt="Star 1 Coiffeur" width="800" height="253"></a>
+    <nav class="nav" id="nav" aria-label="Hauptnavigation">
+      <a href="../#leistungen">Leistungen</a>
+      <a href="../#preise">Preise</a>
+      <a href="../#kontakt">Kontakt</a>
+      <a href="tel:+41712451919">071 245 19 19</a>
+    </nav>
+    <button class="burger" aria-label="Menü öffnen" aria-expanded="false" aria-controls="nav"><span></span></button>
+  </div>
+</header>
+
+<main class="bk">
+  <div class="wrap">
+    <div class="bk__head">
+      <span class="eyebrow">Online-Buchung</span>
+      <h1>Termin buchen</h1>
+      <p class="lead">In vier Schritten zu Ihrem Termin. Jeder Termin dauert 30 Minuten.</p>
+    </div>
+
+    <ol class="steps" id="steps" aria-label="Fortschritt">
+      <li data-step="1"><button type="button"><span class="steps__n">1</span><span class="steps__l">Datum</span></button></li>
+      <li data-step="2"><button type="button"><span class="steps__n">2</span><span class="steps__l">Uhrzeit</span></button></li>
+      <li data-step="3"><button type="button"><span class="steps__n">3</span><span class="steps__l">Coiffeur</span></button></li>
+      <li data-step="4"><button type="button"><span class="steps__n">4</span><span class="steps__l">Leistung</span></button></li>
+      <li data-step="5"><button type="button"><span class="steps__n">5</span><span class="steps__l">Angaben</span></button></li>
+    </ol>
+
+    <div class="bk__grid">
+      <section class="bk__panel" aria-live="polite">
+
+        <!-- 1 Datum -->
+        <div class="pane" data-pane="1">
+          <h2 class="pane__title">Wählen Sie ein Datum</h2>
+          <div class="cal">
+            <div class="cal__nav">
+              <button type="button" class="icon-btn" id="cal-prev" aria-label="Vorheriger Monat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="m15 18-6-6 6-6"/></svg></button>
+              <strong id="cal-title"></strong>
+              <button type="button" class="icon-btn" id="cal-next" aria-label="Nächster Monat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="m9 18 6-6-6-6"/></svg></button>
+            </div>
+            <div class="cal__dow"><span>Mo</span><span>Di</span><span>Mi</span><span>Do</span><span>Fr</span><span>Sa</span><span>So</span></div>
+            <div class="cal__grid" id="cal-grid"></div>
+            <div class="cal__legend"><span><i class="lg lg--free"></i>freie Termine</span><span><i class="lg lg--few"></i>nur noch wenige</span><span><i class="lg lg--none"></i>ausgebucht / geschlossen</span></div>
+          </div>
+        </div>
+
+        <!-- 2 Uhrzeit -->
+        <div class="pane" data-pane="2" hidden>
+          <h2 class="pane__title">Wählen Sie eine Uhrzeit</h2>
+          <p class="pane__sub" id="time-sub"></p>
+          <div id="times"></div>
+        </div>
+
+        <!-- 3 Mitarbeiter -->
+        <div class="pane" data-pane="3" hidden>
+          <h2 class="pane__title">Bei wem möchten Sie Ihren Termin?</h2>
+          <p class="pane__sub" id="staff-sub"></p>
+          <div class="people" id="people"></div>
+        </div>
+
+        <!-- 4 Dienstleistung -->
+        <div class="pane" data-pane="4" hidden>
+          <h2 class="pane__title">Welche Dienstleistung wünschen Sie?</h2>
+          <div class="tabs" id="svc-tabs" role="tablist"></div>
+          <div class="svc" id="svc-list"></div>
+        </div>
+
+        <!-- 5 Angaben -->
+        <div class="pane" data-pane="5" hidden>
+          <h2 class="pane__title">Ihre Angaben</h2>
+          <form class="form" id="book-form" novalidate>
+            <div class="form__row">
+              <div class="field"><label for="b-name">Vor- und Nachname *</label><input id="b-name" name="name" autocomplete="name" required minlength="2"></div>
+              <div class="field"><label for="b-phone">Telefon *</label><input id="b-phone" name="phone" type="tel" autocomplete="tel" required placeholder="079 123 45 67"></div>
+            </div>
+            <div class="field"><label for="b-email">E-Mail (für die Bestätigung)</label><input id="b-email" name="email" type="email" autocomplete="email"></div>
+            <div class="field"><label for="b-note">Bemerkung</label><textarea id="b-note" name="note" placeholder="z. B. Wünsche zum Schnitt"></textarea></div>
+            <input class="hp" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
+            <label class="check"><input type="checkbox" id="b-consent" required> <span>Ich bin einverstanden, dass meine Angaben zur Terminverwaltung gespeichert werden (<a href="../datenschutz/" target="_blank">Datenschutz</a>).</span></label>
+            <div class="form__msg" aria-live="assertive"></div>
+            <button class="btn bk__submit" type="submit">
+              Termin verbindlich buchen
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </button>
+          </form>
+        </div>
+
+        <!-- Fertig -->
+        <div class="pane done" data-pane="6" hidden>
+          <div class="done__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5L20 7"/></svg></div>
+          <h2 class="pane__title">Vielen Dank – Ihr Termin ist gebucht!</h2>
+          <p class="pane__sub" id="done-sub"></p>
+          <dl class="done__list" id="done-list"></dl>
+          <div class="done__actions">
+            <button class="btn btn--ghost" type="button" id="ics">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18M12 14v4M10 16h4"/></svg>
+              In Kalender eintragen
+            </button>
+            <a class="btn" href="../">Zur Startseite</a>
+          </div>
+          <p class="done__hint">Termin verschieben oder absagen? Rufen Sie uns an: <a href="tel:+41712451919">071 245 19 19</a></p>
+        </div>
+
+        <div class="pane__foot" id="pane-foot">
+          <button type="button" class="btn btn--ghost btn--sm" id="back">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M19 12H5M11 18l-6-6 6-6"/></svg>
+            Zurück
+          </button>
+        </div>
+      </section>
+
+      <aside class="bk__summary" id="summary">
+        <h3>Ihr Termin</h3>
+        <dl>
+          <div data-s="date"><dt>Datum</dt><dd>–</dd></div>
+          <div data-s="time"><dt>Uhrzeit</dt><dd>–</dd></div>
+          <div data-s="staff"><dt>Coiffeur</dt><dd>–</dd></div>
+          <div data-s="service"><dt>Leistung</dt><dd>–</dd></div>
+          <div data-s="price"><dt>Preis</dt><dd>–</dd></div>
+        </dl>
+        <div class="bk__info">
+          <p><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>Dauer: 30 Minuten</p>
+          <p><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s7-6.2 7-12a7 7 0 1 0-14 0c0 5.8 7 12 7 12z"/><circle cx="12" cy="10" r="2.5"/></svg>Untere Bahnhofstrasse 19, 9500 Wil</p>
+          <p><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="6" width="20" height="12" rx="2"/><circle cx="12" cy="12" r="2"/></svg>Bezahlung im Salon</p>
+        </div>
+      </aside>
+    </div>
+  </div>
+</main>
+
+<footer class="footer">
+  <div class="wrap footer__bottom" style="padding-top:0">
+    <span>© <span data-year>2026</span> Star 1 Coiffeur · Untere Bahnhofstrasse 19, 9500 Wil</span>
+    <span><a href="../datenschutz/">Datenschutz</a> · <a href="../admin/">Verwaltung</a></span>
+  </div>
+</footer>
+
+<script src="../assets/js/site.js" defer></script>
+<script src="../assets/js/booking.js" defer></script>
+</body>
+</html>
