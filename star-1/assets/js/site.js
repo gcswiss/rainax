@@ -138,6 +138,30 @@
     }).catch(() => {});
   }
 
+  // Hero-Video: automatisch abspielen (stumm, Endlosschleife)
+  const hero = $('#hero-video');
+  if (hero) {
+    hero.muted = true;
+    hero.defaultMuted = true;
+    hero.setAttribute('muted', '');
+    hero.playsInline = true;
+    const tryPlay = () => {
+      if (!hero.paused) return;
+      const p = hero.play();
+      if (p && p.catch) p.catch(() => {});
+    };
+    tryPlay();
+    hero.addEventListener('canplay', tryPlay, { once: true });
+    document.addEventListener('visibilitychange', () => { if (!document.hidden) tryPlay(); });
+    // Falls der Browser Autoplay blockiert (z. B. Stromsparmodus): beim ersten Antippen/Scrollen starten
+    ['touchstart', 'pointerdown', 'scroll', 'keydown'].forEach((ev) =>
+      window.addEventListener(ev, tryPlay, { once: true, passive: true }));
+    // Video pausieren, wenn es nicht sichtbar ist (spart Akku), und wieder starten
+    if ('IntersectionObserver' in window) {
+      new IntersectionObserver(([e]) => (e.isIntersecting ? tryPlay() : hero.pause())).observe(hero);
+    }
+  }
+
   // Promo-Video
   const promoBtn = $('.promo__play');
   if (promoBtn) {
