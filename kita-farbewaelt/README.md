@@ -53,7 +53,10 @@ und das Ferien-PDF selbst bearbeiten, ohne Datenbank und ohne Programmierkenntni
 Für Videos muss der Hoster grosse Uploads erlauben. `.htaccess` und `.user.ini` setzen 256 MB,
 falls der Hoster das zulässt. Sonst Videos vorher verkleinern (z. B. mit HandBrake, 720p).
 
-Ohne `mod_rewrite` funktionieren die Seiten auch über `index.php?seite=tarife`.
+Jede Unterseite hat einen eigenen Ordner (`tarife/index.php` usw.). Die Seiten funktionieren deshalb auch
+ohne `.htaccess` oder `mod_rewrite`, z. B. auf nginx-Hosting oder wenn die versteckte `.htaccess` beim Upload fehlt.
+Die `.htaccess` sollte trotzdem mit hochgeladen werden (HTTPS-Umleitung, Schutz von `data/`). Im FTP-Programm
+versteckte Dateien einblenden, damit sie mitkommt.
 
 ### Lokal testen
 

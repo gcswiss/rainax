@@ -47,10 +47,7 @@ $base = base_url();
 if (str_starts_with($path, $base)) {
     $path = substr($path, strlen($base));
 }
-$slug = trim($path, '/');
-if ($slug === 'index.php') {
-    $slug = '';
-}
+$slug = trim((string) preg_replace('~(^|/)index\.php$~', '', trim($path, '/')), '/');
 // Fallback ohne mod_rewrite: index.php?seite=tarife
 if ($slug === '' && isset($_GET['seite']) && is_string($_GET['seite'])) {
     $slug = trim($_GET['seite'], '/');
