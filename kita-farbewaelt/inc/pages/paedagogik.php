@@ -3,15 +3,16 @@ declare(strict_types=1);
 
 $p = $c['paedagogik'] ?? [];
 $themeIcons = ['spoon', 'leaf', 'moon'];
+$grundIcons = ['heart', 'star', 'kids'];
 page_hero('Pädagogik', $p['titel'] ?? '', $p['intro'] ?? '', 'yellow');
 ?>
 <section class="section">
     <div class="wrap">
-        <div class="principles">
+        <div class="cards3">
             <?php foreach (($p['grundsaetze'] ?? []) as $i => $g): ?>
-                <article class="principle reveal" style="--d:<?= $i * 100 ?>ms">
-                    <span class="principle__num">0<?= $i + 1 ?></span>
-                    <h2><?= e($g['titel'] ?? '') ?></h2>
+                <article class="value tone-<?= $i % 4 ?> reveal" style="--d:<?= $i * 100 ?>ms">
+                    <span class="value__icon"><?= icon($grundIcons[$i % 3]) ?></span>
+                    <h2 class="value__title"><?= e($g['titel'] ?? '') ?></h2>
                     <?= paragraphs($g['text'] ?? '') ?>
                 </article>
             <?php endforeach; ?>

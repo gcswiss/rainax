@@ -11,9 +11,13 @@ page_hero('Über uns', $u['titel'] ?? '', $u['intro'] ?? '', 'green');
             <a class="btn btn--green" href="<?= e(url('kontakt/')) ?>">Zur Platzanfrage <?= icon('arrow') ?></a>
         </div>
         <div class="split__media reveal">
-            <?php $first = $u['raeume'][0]['bild'] ?? ($u['galerie'][0]['bild'] ?? ''); ?>
-            <?php if ($first !== ''): ?><div class="arch arch--tilt"><img src="<?= e(asset($first)) ?>" alt="" loading="lazy"></div><?php endif; ?>
-            <?= dots('split__dots') ?>
+            <?php $bild = $u['titelbild'] ?? ''; ?>
+            <?php if (!empty($u['titelvideo'])): ?>
+                <div class="arch arch--tilt"><video autoplay muted loop playsinline preload="metadata"<?= $bild !== '' ? ' poster="' . e(asset($bild)) . '"' : '' ?>><source src="<?= e(asset($u['titelvideo'])) ?>" type="video/mp4"></video></div>
+            <?php elseif ($bild !== ''): ?>
+                <div class="arch arch--tilt"><img src="<?= e(asset($bild)) ?>" alt="" loading="lazy"></div>
+            <?php endif; ?>
+            <?= dots('split__dots dots--bounce') ?>
         </div>
     </div>
 </section>
@@ -33,23 +37,6 @@ page_hero('Über uns', $u['titel'] ?? '', $u['intro'] ?? '', 'green');
                         <?= paragraphs($r['text'] ?? '') ?>
                     </div>
                 </article>
-            <?php endforeach; ?>
-        </div>
-    </div>
-</section>
-<?php endif; ?>
-
-<?php if (!empty($u['galerie'])): ?>
-<section class="section" id="galerie">
-    <div class="wrap">
-        <?= section_head('Einblicke', $u['galerie_titel'] ?? '', $u['galerie_hinweis'] ?? '') ?>
-        <div class="gallery" data-gallery>
-            <?php foreach ($u['galerie'] as $i => $g): ?>
-                <?php if (empty($g['bild'])) { continue; } ?>
-                <a class="gallery__item reveal" href="<?= e(asset($g['bild'])) ?>" data-caption="<?= e($g['text'] ?? '') ?>" style="--d:<?= ($i % 4) * 70 ?>ms">
-                    <img src="<?= e(asset($g['bild'])) ?>" alt="<?= e($g['text'] ?? '') ?>" loading="lazy">
-                    <?php if (!empty($g['text'])): ?><span><?= e($g['text']) ?></span><?php endif; ?>
-                </a>
             <?php endforeach; ?>
         </div>
     </div>

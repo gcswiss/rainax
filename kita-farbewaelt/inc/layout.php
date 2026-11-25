@@ -40,6 +40,9 @@ function icon(string $name, string $class = 'icon'): string
         'check'   => '<path d="m5 12 4.5 4.5L19 7"/>',
         'star'    => '<path d="m12 3 2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1L3.2 9.5l6.1-.9z"/>',
     ];
+    if ($name === 'heart-fill') {
+        return '<svg class="' . e($class) . '" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 21.2c-.3 0-.6-.1-.8-.3C7.6 18 2.5 14 2.5 8.9 2.5 6 4.7 3.8 7.4 3.8c1.9 0 3.6 1 4.6 2.6 1-1.6 2.7-2.6 4.6-2.6 2.7 0 4.9 2.2 4.9 5.1 0 5.1-5.1 9.1-8.7 12-.2.2-.5.3-.8.3z"/></svg>';
+    }
     $p = $paths[$name] ?? '';
     return '<svg class="' . e($class) . '" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' . $p . '</svg>';
 }
@@ -59,12 +62,6 @@ function rainbow(string $class = ''): string
 function dots(string $class = ''): string
 {
     return '<span class="dots ' . e($class) . '" aria-hidden="true"><i></i><i></i><i></i><i></i></span>';
-}
-
-/** Handgezeichnete Unterstreichung. */
-function squiggle(): string
-{
-    return '<svg class="squiggle" viewBox="0 0 200 14" preserveAspectRatio="none" aria-hidden="true"><path d="M2 9c20-6 38 4 58-1s38-6 58 0 38 4 58-2 18-2 22 0" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round"/></svg>';
 }
 
 function section_head(string $kicker, string $title, string $text = '', string $align = ''): string
@@ -91,7 +88,7 @@ function page_hero(string $kicker, string $title, string $intro = '', string $to
             <?php if ($intro !== ''): ?><div class="lead reveal"><?= paragraphs($intro) ?></div><?php endif; ?>
         </div>
         <?= rainbow('page-hero__rainbow') ?>
-        <?= dots('page-hero__dots') ?>
+        <?= dots('page-hero__dots dots--bounce') ?>
     </section>
     <?php
 }

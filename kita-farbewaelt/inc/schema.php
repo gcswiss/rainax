@@ -13,7 +13,7 @@ $TEXTHILFE = 'Leerzeile = neuer Absatz. **Wort** = fett.';
 
 return [
     'allgemein' => [
-        'label' => 'Kontakt & Allgemein',
+        'label' => 'Kontakt und Allgemein',
         'icon'  => '☎',
         'hint'  => 'Diese Angaben erscheinen in der Fusszeile, im Kopf und auf der Kontaktseite.',
         'fields' => [
@@ -52,35 +52,31 @@ return [
                 'text'  => ['type' => 'textarea', 'label' => 'Text'],
             ]],
             'alltag_titel' => ['type' => 'text', 'label' => 'Titel «Alltag»'],
-            'alltag_text'  => ['type' => 'textarea', 'label' => 'Text «Alltag»'],
-            'alltag' => ['type' => 'list', 'label' => 'Alltags-Videos & Bilder', 'item' => 'Clip', 'help' => 'Hochformat-Videos (wie Instagram Reels) wirken hier am schönsten. Das Bild wird gezeigt, bis das Video lädt.', 'fields' => [
-                'titel' => ['type' => 'text', 'label' => 'Titel'],
-                'video' => ['type' => 'video', 'label' => 'Video (optional)'],
-                'bild'  => ['type' => 'image', 'label' => 'Bild / Vorschaubild'],
+            'alltag_text'  => ['type' => 'textarea', 'label' => 'Text «Alltag»', 'help' => 'Darunter erscheint der Knopf zu Instagram.'],
+            'stimmen_titel' => ['type' => 'text', 'label' => 'Titel «Rezensionen»'],
+            'stimmen' => ['type' => 'list', 'label' => 'Rezensionen von Eltern', 'item' => 'Rezension', 'help' => 'Der Bereich erscheint auf der Startseite, sobald mindestens eine Rezension eingetragen ist.', 'fields' => [
+                'text' => ['type' => 'textarea', 'label' => 'Text der Rezension'],
+                'name' => ['type' => 'text', 'label' => 'Name', 'help' => 'z. B. «Sara, Mutter von Lina»'],
             ]],
             'cta_titel' => ['type' => 'text', 'label' => 'Titel «Besichtigung»'],
             'cta_text'  => ['type' => 'textarea', 'label' => 'Text «Besichtigung»'],
         ],
     ],
     'ueber' => [
-        'label' => 'Über uns & Räume',
+        'label' => 'Über uns und Räume',
         'icon'  => '♥',
         'fields' => [
             'titel' => ['type' => 'text', 'label' => 'Titel'],
             'intro' => ['type' => 'textarea', 'label' => 'Einleitung'],
             'text'  => ['type' => 'textarea', 'label' => 'Text', 'help' => $TEXTHILFE],
+            'titelvideo' => ['type' => 'video', 'label' => 'Video neben dem Text', 'help' => 'Kurzes Video (MP4, ohne Ton, 10–30 Sek.), z. B. aus dem Rollenspielzimmer. Ohne Video wird das Bild gezeigt.'],
+            'titelbild'  => ['type' => 'image', 'label' => 'Bild neben dem Text'],
             'raeume_titel' => ['type' => 'text', 'label' => 'Titel «Räume»'],
             'raeume_text'  => ['type' => 'textarea', 'label' => 'Text «Räume»'],
             'raeume' => ['type' => 'list', 'label' => 'Räume', 'item' => 'Raum', 'fields' => [
                 'titel' => ['type' => 'text', 'label' => 'Titel'],
                 'text'  => ['type' => 'textarea', 'label' => 'Text'],
                 'bild'  => ['type' => 'image', 'label' => 'Bild'],
-            ]],
-            'galerie_titel'   => ['type' => 'text', 'label' => 'Titel «Galerie»'],
-            'galerie_hinweis' => ['type' => 'text', 'label' => 'Hinweis unter dem Galerie-Titel', 'help' => 'Leer lassen, wenn kein Hinweis nötig ist.'],
-            'galerie' => ['type' => 'list', 'label' => 'Galerie-Bilder', 'item' => 'Bild', 'fields' => [
-                'bild' => ['type' => 'image', 'label' => 'Bild'],
-                'text' => ['type' => 'text', 'label' => 'Bildunterschrift'],
             ]],
             'partner_titel'   => ['type' => 'text', 'label' => 'Titel «Partnerschaft»'],
             'partner_text'    => ['type' => 'textarea', 'label' => 'Text «Partnerschaft»'],
@@ -106,7 +102,7 @@ return [
         ],
     ],
     'angebot' => [
-        'label' => 'Angebot & Ferien',
+        'label' => 'Angebot und Ferien',
         'icon'  => '✿',
         'fields' => [
             'titel' => ['type' => 'text', 'label' => 'Titel'],
@@ -121,10 +117,12 @@ return [
                 'titel' => ['type' => 'text', 'label' => 'Titel'],
                 'text'  => ['type' => 'textarea', 'label' => 'Text'],
             ]],
-            'zeiten_titel'     => ['type' => 'text', 'label' => 'Titel «Öffnungszeiten»'],
-            'zeiten_text'      => ['type' => 'textarea', 'label' => 'Text «Öffnungszeiten & Ferien»'],
-            'ferien_pdf'       => ['type' => 'file', 'label' => 'PDF Feiertage & Betriebsferien', 'help' => 'Jedes Jahr das neue PDF hochladen.'],
-            'ferien_pdf_titel' => ['type' => 'text', 'label' => 'Name des PDF-Links'],
+            'zeiten_titel'     => ['type' => 'text', 'label' => 'Titel «Öffnungszeiten und Ferien»'],
+            'zeiten_text'      => ['type' => 'textarea', 'label' => 'Text «Öffnungszeiten und Ferien»'],
+            'ferien_pdfs' => ['type' => 'list', 'label' => 'PDFs Feiertage und Betriebsferien', 'item' => 'PDF', 'help' => 'Jedes Jahr ein neues PDF hinzufügen, alte Jahre mit ✕ entfernen.', 'fields' => [
+                'titel' => ['type' => 'text', 'label' => 'Name des Knopfs', 'help' => 'z. B. «Feiertage und Betriebsferien 2027/2028»'],
+                'pdf'   => ['type' => 'file', 'label' => 'PDF'],
+            ]],
         ],
     ],
     'paedagogik' => [
@@ -164,7 +162,8 @@ return [
                 'kleinkind' => ['type' => 'number', 'label' => 'Preis Kleinkinder (CHF)'],
             ]],
             'mindestbetreuung' => ['type' => 'text', 'label' => 'Hinweis Mindestbetreuung'],
-            'vorteile' => ['type' => 'list', 'label' => 'Vorteile & Rabatte', 'item' => 'Vorteil', 'fields' => [
+            'vorteile_titel' => ['type' => 'text', 'label' => 'Titel «Vorteile»'],
+            'vorteile' => ['type' => 'list', 'label' => 'Vorteile und Rabatte', 'item' => 'Vorteil', 'fields' => [
                 'titel' => ['type' => 'text', 'label' => 'Titel'],
                 'text'  => ['type' => 'textarea', 'label' => 'Text'],
             ]],
@@ -192,7 +191,7 @@ return [
         ],
     ],
     'kontakt' => [
-        'label' => 'Kontakt & Anfrage',
+        'label' => 'Kontakt und Anfrage',
         'icon'  => '✉',
         'fields' => [
             'titel' => ['type' => 'text', 'label' => 'Titel'],
@@ -205,7 +204,7 @@ return [
         ],
     ],
     'rechtliches' => [
-        'label' => 'Impressum & Datenschutz',
+        'label' => 'Impressum und Datenschutz',
         'icon'  => '§',
         'fields' => [
             'impressum'   => ['type' => 'textarea', 'label' => 'Impressum', 'rows' => 14, 'help' => $TEXTHILFE],

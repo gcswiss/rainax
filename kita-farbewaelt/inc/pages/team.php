@@ -29,7 +29,7 @@ page_hero('Team', $tm['titel'] ?? '', $tm['intro'] ?? '', 'ochre');
 
 <section class="section section--cream">
     <div class="wrap join reveal">
-        <?= icon('heart', 'join__icon') ?>
+        <?= icon('heart-fill', 'join__icon') ?>
         <h2>Möchtest du Teil unseres Teams werden?</h2>
         <a class="btn btn--green" href="<?= e(url('jobs/')) ?>">Offene Stellen <?= icon('arrow') ?></a>
     </div>

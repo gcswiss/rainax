@@ -8,10 +8,10 @@ und das Ferien-PDF selbst bearbeiten, ohne Datenbank und ohne Programmierkenntni
 
 | Adresse | Inhalt |
 |---|---|
-| `/` | Startseite: Hero (Video oder Bild), Zahlen, Werte, Alltags-Reels, Teaser, Besichtigung |
-| `/ueber-uns/` | Willkommen, Räume, Galerie, Partnerschaft Kita Witzchistli |
+| `/` | Startseite: Hero (Video oder Bild), hochzählende Zahlen, Werte, Rezensionen, Instagram, Teaser, Besichtigung |
+| `/ueber-uns/` | Willkommen (Video oder Bild), Räume, Partnerschaft Kita Witzchistli |
 | `/team/` | Teammitglieder (ohne Foto: farbiger Kreis mit Initialen) |
-| `/angebot/` | Eingewöhnung in 5 Phasen, Portfolio, Entwicklungsgespräche, Kindergarten-Vorbereitung, Öffnungszeiten & Ferien-PDF |
+| `/angebot/` | Eingewöhnung in 5 Phasen, Portfolio, Entwicklungsgespräche, Kindergarten-Vorbereitung, Öffnungszeiten und Ferien-PDFs |
 | `/paedagogik/` | Pädagogisches Konzept, kurz und bündig |
 | `/tarife/` | Tarifrechner, Monatstarife (automatisch berechnet), Halbtage, Date Night, Geschwisterrabatt, Abwesenheit, subventionierte Plätze mit Link zum Kitarechner Dietikon |
 | `/jobs/` | Offene Stellen oder «keine offenen Stellen» mit Spontanbewerbung |
@@ -23,10 +23,10 @@ und das Ferien-PDF selbst bearbeiten, ohne Datenbank und ohne Programmierkenntni
 
 1. `https://www.kita-farbewaelt.ch/admin/` öffnen und mit dem Passwort anmelden.
 2. Links den Bereich wählen (z. B. «Team»), Texte ändern, Bilder mit «Bild hochladen» ersetzen.
-3. Listen (Team, Galerie, Räume, Jobs …): «+ hinzufügen», mit ↑ ↓ umsortieren, mit ✕ entfernen.
+3. Listen (Team, Räume, Rezensionen, Ferien-PDFs, Jobs …): «+ hinzufügen», mit ↑ ↓ umsortieren, mit ✕ entfernen.
 4. Unten rechts **Speichern**: die Änderungen sind sofort online.
 
-- Vor jedem Speichern wird automatisch eine Sicherung angelegt. Unter «Passwort & Sicherungen»
+- Vor jedem Speichern wird automatisch eine Sicherung angelegt. Unter «Passwort und Sicherungen»
   kann ein früherer Stand mit einem Klick zurückgeholt werden.
 - Hochgeladene Fotos werden automatisch verkleinert (max. 2000 px). Handy-Metadaten wie der GPS-Standort werden dabei entfernt.
 - Videos: MP4, kurz (10–30 Sek.), ohne Ton, für die Alltags-Reels am besten im Hochformat.
@@ -48,7 +48,7 @@ und das Ferien-PDF selbst bearbeiten, ohne Datenbank und ohne Programmierkenntni
 3. In `anfrage.php` die Konstante `ABSENDER` auf eine existierende Adresse der Domain setzen
    (z. B. `webseite@kita-farbewaelt.ch`), sonst landen Anfragen im Spam.
 4. SSL beim Hoster aktivieren. Die `.htaccess` leitet automatisch auf HTTPS um.
-5. Beim ersten Login das Passwort unter «Passwort & Sicherungen» ändern.
+5. Beim ersten Login das Passwort unter «Passwort und Sicherungen» ändern.
 
 Für Videos muss der Hoster grosse Uploads erlauben. `.htaccess` und `.user.ini` setzen 256 MB,
 falls der Hoster das zulässt. Sonst Videos vorher verkleinern (z. B. mit HandBrake, 720p).
@@ -57,6 +57,12 @@ Jede Unterseite hat einen eigenen Ordner (`tarife/index.php` usw.). Die Seiten f
 ohne `.htaccess` oder `mod_rewrite`, z. B. auf nginx-Hosting oder wenn die versteckte `.htaccess` beim Upload fehlt.
 Die `.htaccess` sollte trotzdem mit hochgeladen werden (HTTPS-Umleitung, Schutz von `data/`). Im FTP-Programm
 versteckte Dateien einblenden, damit sie mitkommt.
+
+### Update einer bestehenden Installation
+
+Für Updates das **Update-ZIP** verwenden: Es enthält den Ordner `data/` mit Inhalten und Passwort nicht,
+damit Änderungen aus dem Admin erhalten bleiben. Inhaltliche Anpassungen (z. B. neue Felder) macht
+`inc/migrate.php` beim ersten Seitenaufruf automatisch; vorher wird eine Sicherung angelegt.
 
 ### Lokal testen
 

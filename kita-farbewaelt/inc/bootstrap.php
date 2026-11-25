@@ -14,6 +14,8 @@ const CONTENT     = DATA_DIR . '/content.json';
 const UPLOAD_DIR  = ROOT . '/uploads';
 const MAX_BACKUPS = 40;
 
+require_once __DIR__ . '/migrate.php';
+
 /** Basis-URL der Webseite (funktioniert im Hauptverzeichnis und in Unterordnern). */
 function base_url(): string
 {
@@ -52,7 +54,14 @@ function load_content(): array
 {
     $json = is_file(CONTENT) ? file_get_contents(CONTENT) : '{}';
     $data = json_decode((string) $json, true);
-    return is_array($data) ? $data : [];
+    if (!is_array($data)) {
+        return [];
+    }
+    if ((int) ($data['_version'] ?? 1) < CONTENT_VERSION) {
+        $data = migrate_content($data);
+        save_content($data);
+    }
+    return $data;
 }
 
 function save_content(array $data): bool

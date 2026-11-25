@@ -49,8 +49,13 @@ page_hero('Angebot', $an['titel'] ?? '', $an['intro'] ?? '', 'sky');
             <p class="kicker">Ferien</p>
             <h2><?= line($an['zeiten_titel'] ?? '') ?></h2>
             <?= paragraphs($an['zeiten_text'] ?? '', 'lead') ?>
-            <?php if (!empty($an['ferien_pdf'])): ?>
-                <a class="btn btn--ghost" href="<?= e(asset($an['ferien_pdf'])) ?>" target="_blank" rel="noopener"><?= icon('file') ?> <?= e($an['ferien_pdf_titel'] ?: 'Ferienplan (PDF)') ?></a>
+            <?php $pdfs = array_filter($an['ferien_pdfs'] ?? [], static fn ($p) => !empty($p['pdf'])); ?>
+            <?php if ($pdfs): ?>
+                <div class="pdf-list">
+                    <?php foreach ($pdfs as $p): ?>
+                        <a class="btn btn--ghost" href="<?= e(asset($p['pdf'])) ?>" target="_blank" rel="noopener"><?= icon('file') ?> <?= e(($p['titel'] ?? '') ?: 'Ferienplan (PDF)') ?></a>
+                    <?php endforeach; ?>
+                </div>
             <?php endif; ?>
         </div>
     </div>

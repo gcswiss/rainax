@@ -473,7 +473,7 @@ $previewLinks = ['allgemein' => 'kontakt/', 'start' => '', 'ueber' => 'ueber-uns
             <?php if ($view === 'setup'): ?>
                 <label>Passwort wiederholen<input type="password" name="password2" required autocomplete="new-password"></label>
             <?php endif; ?>
-            <button class="btn" type="submit"><?= $view === 'setup' ? 'Speichern & loslegen' : 'Anmelden' ?></button>
+            <button class="btn" type="submit"><?= $view === 'setup' ? 'Speichern und loslegen' : 'Anmelden' ?></button>
             <a class="login__back" href="<?= e(url()) ?>">← zur Webseite</a>
         </form>
     </main>
@@ -485,7 +485,7 @@ $previewLinks = ['allgemein' => 'kontakt/', 'start' => '', 'ueber' => 'ueber-uns
                 <?php foreach ($schema as $k => $sec): ?>
                     <a href="<?= e(admin_url(['s' => $k])) ?>"<?= $k === $current ? ' aria-current="page"' : '' ?>><span class="ico"><?= e($sec['icon']) ?></span><?= e($sec['label']) ?></a>
                 <?php endforeach; ?>
-                <a href="<?= e(admin_url(['s' => '_konto'])) ?>"<?= $current === '_konto' ? ' aria-current="page"' : '' ?>><span class="ico">⚙</span>Passwort & Sicherungen</a>
+                <a href="<?= e(admin_url(['s' => '_konto'])) ?>"<?= $current === '_konto' ? ' aria-current="page"' : '' ?>><span class="ico">⚙</span>Passwort und Sicherungen</a>
             </nav>
             <div class="sidebar__foot">
                 <a href="<?= e(url()) ?>" target="_blank" rel="noopener">Webseite ansehen ↗</a>
@@ -501,7 +501,7 @@ $previewLinks = ['allgemein' => 'kontakt/', 'start' => '', 'ueber' => 'ueber-uns
             <?php if ($flash): ?><p class="flash flash--<?= e($flash[1]) ?>" data-flash><?= e($flash[0]) ?></p><?php endif; ?>
 
             <?php if ($current === '_konto'): ?>
-                <header class="main__head"><h1>Passwort & Sicherungen</h1></header>
+                <header class="main__head"><h1>Passwort und Sicherungen</h1></header>
                 <section class="panel">
                     <h2>Passwort ändern</h2>
                     <form method="post" action="<?= e(admin_url()) ?>" class="stack">

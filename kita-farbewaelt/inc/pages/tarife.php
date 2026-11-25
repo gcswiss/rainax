@@ -67,24 +67,7 @@ page_hero('Tarife', $t['titel'] ?? '', $t['intro'] ?? '', 'green');
     </div>
 </section>
 
-<?php if (!empty($t['vorteile'])): ?>
-<section class="section section--cream">
-    <div class="wrap">
-        <?= section_head('Extras', 'Das gibt’s bei uns dazu') ?>
-        <div class="cards3">
-            <?php foreach ($t['vorteile'] as $i => $v): ?>
-                <article class="card perk tone-<?= $i % 4 ?> reveal" style="--d:<?= $i * 90 ?>ms">
-                    <span class="value__icon"><?= icon($vIcons[$i % 4]) ?></span>
-                    <h3><?= e($v['titel'] ?? '') ?></h3>
-                    <?= paragraphs($v['text'] ?? '') ?>
-                </article>
-            <?php endforeach; ?>
-        </div>
-    </div>
-</section>
-<?php endif; ?>
-
-<section class="section">
+<section class="section section--tight">
     <div class="wrap">
         <div class="subsidy reveal">
             <div class="subsidy__icon"><?= icon('percent') ?></div>
@@ -99,5 +82,22 @@ page_hero('Tarife', $t['titel'] ?? '', $t['intro'] ?? '', 'green');
         </div>
     </div>
 </section>
+
+<?php if (!empty($t['vorteile'])): ?>
+<section class="section section--cream">
+    <div class="wrap">
+        <?= section_head('Extras', $t['vorteile_titel'] ?? 'Das Plus für unsere Familien') ?>
+        <div class="cards3">
+            <?php foreach ($t['vorteile'] as $i => $v): ?>
+                <article class="card perk tone-<?= $i % 4 ?> reveal" style="--d:<?= $i * 90 ?>ms">
+                    <span class="value__icon"><?= icon($vIcons[$i % 4]) ?></span>
+                    <h3><?= e($v['titel'] ?? '') ?></h3>
+                    <?= paragraphs($v['text'] ?? '') ?>
+                </article>
+            <?php endforeach; ?>
+        </div>
+    </div>
+</section>
+<?php endif; ?>
 
 <?php require __DIR__ . '/_cta.php'; ?>

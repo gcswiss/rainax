@@ -1,4 +1,4 @@
-/* Kita Farbewält — Menü, Einblenden, Reels, Galerie, Tarifrechner, Formular */
+/* Kita Farbewält — Menü, Einblenden, Zahlen, Tarifrechner, Formular */
 (function () {
     'use strict';
     document.documentElement.classList.add('js');
@@ -36,71 +36,27 @@
         items.forEach(function (el) { el.classList.add('is-visible'); });
     }
 
-    // Alltags-Videos: spielen, wenn sichtbar
-    var vids = document.querySelectorAll('video[data-autoplay]');
-    if (vids.length && 'IntersectionObserver' in window && !reduce) {
-        var vo = new IntersectionObserver(function (entries) {
+    // Zahlen hochzählen, sobald sie sichtbar werden
+    var counters = document.querySelectorAll('[data-count]');
+    if (counters.length && 'IntersectionObserver' in window && !reduce) {
+        var run = function (el) {
+            var end = parseInt(el.dataset.count, 10), pre = el.dataset.prefix || '', suf = el.dataset.suffix || '';
+            var start = null, dur = 1600;
+            var step = function (ts) {
+                if (!start) start = ts;
+                var p = Math.min((ts - start) / dur, 1);
+                var eased = 1 - Math.pow(1 - p, 3);
+                el.textContent = pre + Math.round(end * eased) + suf;
+                if (p < 1) requestAnimationFrame(step);
+            };
+            requestAnimationFrame(step);
+        };
+        var co = new IntersectionObserver(function (entries) {
             entries.forEach(function (en) {
-                var v = en.target, fig = v.closest('.reel');
-                if (en.isIntersecting) {
-                    if (v.preload === 'none') { v.preload = 'auto'; v.load(); }
-                    var p = v.play();
-                    if (p && p.then) p.then(function () { fig && fig.classList.add('is-playing'); }).catch(function () {});
-                } else {
-                    v.pause();
-                    fig && fig.classList.remove('is-playing');
-                }
+                if (en.isIntersecting) { run(en.target); co.unobserve(en.target); }
             });
-        }, { threshold: 0.5 });
-        vids.forEach(function (v) { vo.observe(v); });
-    }
-
-    // Galerie mit Lightbox
-    var gallery = document.querySelector('[data-gallery]');
-    if (gallery) {
-        var links = Array.prototype.slice.call(gallery.querySelectorAll('a'));
-        var box, img, cap, idx = 0;
-        var show = function (i) {
-            idx = (i + links.length) % links.length;
-            img.src = links[idx].getAttribute('href');
-            img.alt = links[idx].dataset.caption || '';
-            cap.textContent = links[idx].dataset.caption || '';
-        };
-        var close = function () {
-            box.classList.remove('is-open');
-            setTimeout(function () { box.remove(); box = null; }, 250);
-            document.removeEventListener('keydown', keys);
-        };
-        var keys = function (e) {
-            if (e.key === 'Escape') close();
-            if (e.key === 'ArrowRight') show(idx + 1);
-            if (e.key === 'ArrowLeft') show(idx - 1);
-        };
-        links.forEach(function (a, i) {
-            a.addEventListener('click', function (e) {
-                e.preventDefault();
-                box = document.createElement('div');
-                box.className = 'lightbox';
-                box.setAttribute('role', 'dialog');
-                box.setAttribute('aria-modal', 'true');
-                box.innerHTML = '<figure><img alt=""><p></p></figure>' +
-                    '<button class="lb-close" aria-label="Schliessen">×</button>' +
-                    (links.length > 1 ? '<button class="lb-prev" aria-label="Vorheriges Bild">➜</button><button class="lb-next" aria-label="Nächstes Bild">➜</button>' : '');
-                document.body.appendChild(box);
-                img = box.querySelector('img');
-                cap = box.querySelector('p');
-                show(i);
-                requestAnimationFrame(function () { box.classList.add('is-open'); });
-                box.addEventListener('click', function (ev) {
-                    if (ev.target === box) close();
-                    if (ev.target.closest('.lb-close')) close();
-                    if (ev.target.closest('.lb-next')) show(idx + 1);
-                    if (ev.target.closest('.lb-prev')) show(idx - 1);
-                });
-                document.addEventListener('keydown', keys);
-                box.querySelector('.lb-close').focus();
-            });
-        });
+        }, { threshold: 0.6 });
+        counters.forEach(function (el) { co.observe(el); });
     }
 
     // Tarifrechner

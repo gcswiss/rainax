@@ -3,7 +3,7 @@
  * Kita Farbewält — Platzanfrage / Besichtigung
  *
  * Prüft das Formular von /kontakt/ und sendet es per E-Mail an die
- * Adresse, die im Admin unter «Kontakt & Anfrage» eingetragen ist.
+ * Adresse, die im Admin unter «Kontakt und Anfrage» eingetragen ist.
  * Antwortet mit JSON (Aufruf per JavaScript) oder leitet zurück.
  *
  * Voraussetzung beim Hoster: funktionierende mail()-Funktion.

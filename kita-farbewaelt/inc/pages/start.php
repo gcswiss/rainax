@@ -8,6 +8,7 @@ $teamMembers = $c['team']['mitglieder'] ?? [];
 $titleLines = preg_split('/(?<=[.!?])\s+/u', trim($s['hero_titel'] ?? '')) ?: [];
 $werteIcons = ['heart', 'kids', 'leaf', 'star'];
 $minPreis = min(num($t['preis_kleinkind'] ?? '0'), num($t['preis_saeugling'] ?? '0'));
+$stimmen = array_values(array_filter($s['stimmen'] ?? [], static fn ($st) => trim($st['text'] ?? '') !== ''));
 ?>
 <section class="hero">
     <div class="wrap hero__grid">
@@ -15,7 +16,7 @@ $minPreis = min(num($t['preis_kleinkind'] ?? '0'), num($t['preis_saeugling'] ?? 
             <p class="kicker reveal"><?= e($s['hero_kicker'] ?? '') ?></p>
             <h1 class="hero__title">
                 <?php foreach ($titleLines as $i => $l): ?>
-                    <span class="hero__line reveal" style="--d:<?= $i * 120 ?>ms"><?php if ($i === 1): ?><em><?= e($l) ?><?= squiggle() ?></em><?php else: ?><?= e($l) ?><?php endif; ?></span>
+                    <span class="hero__line reveal" style="--d:<?= $i * 120 ?>ms"><?php if ($i === 1): ?><em><?= e($l) ?></em><?php else: ?><?= e($l) ?><?php endif; ?></span>
                 <?php endforeach; ?>
             </h1>
             <div class="hero__lead reveal"><?= paragraphs($s['hero_text'] ?? '') ?></div>
@@ -37,13 +38,13 @@ $minPreis = min(num($t['preis_kleinkind'] ?? '0'), num($t['preis_saeugling'] ?? 
             </div>
             <div class="badge" aria-hidden="true">
                 <svg viewBox="0 0 120 120"><defs><path id="kreis" d="M60 60m-44 0a44 44 0 1 1 88 0a44 44 0 1 1-88 0"/></defs><text><textPath href="#kreis" textLength="272" lengthAdjust="spacing">Kita Farbewält · Dietikon · mit Herz ·</textPath></text></svg>
-                <?= icon('heart', 'badge__heart') ?>
+                <?= icon('heart-fill', 'badge__heart') ?>
             </div>
             <div class="sticker">
                 <?= icon('clock') ?>
                 <span><small><?= e($a['oeffnungszeiten_tage'] ?? '') ?></small><strong><?= e($a['oeffnungszeiten_zeit'] ?? '') ?></strong></span>
             </div>
-            <?= dots('hero__dots') ?>
+            <?= dots('hero__dots dots--bounce') ?>
         </div>
     </div>
 </section>
@@ -52,8 +53,17 @@ $minPreis = min(num($t['preis_kleinkind'] ?? '0'), num($t['preis_saeugling'] ?? 
 <section class="facts" aria-label="Kurz und knapp">
     <div class="wrap facts__row">
         <?php foreach ($s['fakten'] as $i => $f): ?>
+            <?php
+            // Zahl zum Hochzählen erkennen, z. B. «15+» oder «100 %»
+            $zahl = (string) ($f['zahl'] ?? '');
+            $count = preg_match('/^(\D*)(\d+)(.*)$/u', $zahl, $m) ? $m : null;
+            ?>
             <div class="fact reveal" style="--d:<?= $i * 80 ?>ms">
-                <span class="fact__num"><?= e($f['zahl'] ?? '') ?></span>
+                <?php if ($count): ?>
+                    <span class="fact__num" data-count="<?= (int) $count[2] ?>" data-prefix="<?= e($count[1]) ?>" data-suffix="<?= e($count[3]) ?>"><?= e($zahl) ?></span>
+                <?php else: ?>
+                    <span class="fact__num"><?= e($zahl) ?></span>
+                <?php endif; ?>
                 <span class="fact__text"><?= e($f['text'] ?? '') ?></span>
             </div>
         <?php endforeach; ?>
@@ -76,35 +86,41 @@ $minPreis = min(num($t['preis_kleinkind'] ?? '0'), num($t['preis_saeugling'] ?? 
     </div>
 </section>
 
-<?php if (!empty($s['alltag'])): ?>
-<section class="section section--sky alltag">
+<?php if ($stimmen): ?>
+<section class="section section--cream">
     <div class="wrap">
-        <?= section_head('Kita-Alltag', $s['alltag_titel'] ?? '', $s['alltag_text'] ?? '') ?>
+        <?= section_head('Rezensionen', $s['stimmen_titel'] ?? 'Das sagen unsere Eltern') ?>
+        <div class="quotes">
+            <?php foreach ($stimmen as $i => $st): ?>
+                <figure class="quote tone-<?= $i % 4 ?> reveal" style="--d:<?= ($i % 3) * 90 ?>ms">
+                    <span class="quote__mark" aria-hidden="true">“</span>
+                    <blockquote><?= paragraphs($st['text'] ?? '') ?></blockquote>
+                    <?php if (!empty($st['name'])): ?><figcaption><?= icon('heart-fill', 'quote__heart') ?> <?= e($st['name']) ?></figcaption><?php endif; ?>
+                </figure>
+            <?php endforeach; ?>
+        </div>
     </div>
-    <div class="reels" data-reels>
-        <?php foreach ($s['alltag'] as $i => $r): ?>
-            <figure class="reel reveal" style="--d:<?= $i * 90 ?>ms">
-                <div class="reel__media">
-                    <?php if (!empty($r['video'])): ?>
-                        <video muted loop playsinline preload="none" poster="<?= e(asset($r['bild'] ?? '')) ?>" data-autoplay>
-                            <source src="<?= e(asset($r['video'])) ?>" type="video/mp4">
-                        </video>
-                        <span class="reel__play"><?= icon('play') ?></span>
-                    <?php elseif (!empty($r['bild'])): ?>
-                        <img src="<?= e(asset($r['bild'])) ?>" alt="<?= e($r['titel'] ?? '') ?>" loading="lazy">
-                    <?php endif; ?>
-                </div>
-                <figcaption><?= e($r['titel'] ?? '') ?></figcaption>
-            </figure>
-        <?php endforeach; ?>
-    </div>
-    <?php if (!empty($a['instagram'])): ?>
-        <p class="center reveal"><a class="btn btn--ghost" href="<?= e($a['instagram']) ?>" target="_blank" rel="noopener"><?= icon('insta') ?> Mehr auf Instagram</a></p>
-    <?php endif; ?>
 </section>
 <?php endif; ?>
 
+<?php if (!empty($a['instagram'])): ?>
 <section class="section">
+    <div class="wrap">
+        <div class="insta reveal">
+            <span class="insta__icon"><?= icon('insta') ?></span>
+            <div class="insta__text">
+                <p class="kicker">Kita-Alltag</p>
+                <h2><?= line($s['alltag_titel'] ?? '') ?></h2>
+                <?= paragraphs($s['alltag_text'] ?? '', 'lead') ?>
+            </div>
+            <a class="btn btn--green" href="<?= e($a['instagram']) ?>" target="_blank" rel="noopener"><?= icon('insta') ?> Mehr auf Instagram</a>
+            <?= dots('insta__dots') ?>
+        </div>
+    </div>
+</section>
+<?php endif; ?>
+
+<section class="section section--tight">
     <div class="wrap teasers">
         <a class="teaser teaser--price reveal" href="<?= e(url('tarife/')) ?>">
             <p class="kicker">Tarife</p>
@@ -113,7 +129,7 @@ $minPreis = min(num($t['preis_kleinkind'] ?? '0'), num($t['preis_saeugling'] ?? 
                 <?php foreach (($t['vorteile'] ?? []) as $v): ?><li><?= e($v['titel'] ?? '') ?></li><?php endforeach; ?>
                 <li>Subventionierte Plätze</li>
             </ul>
-            <span class="teaser__more">Tarife & Rechner <?= icon('arrow') ?></span>
+            <span class="teaser__more">Tarife und Rechner <?= icon('arrow') ?></span>
         </a>
         <a class="teaser teaser--concept reveal" href="<?= e(url('paedagogik/')) ?>" style="--d:100ms">
             <p class="kicker">Pädagogik</p>
