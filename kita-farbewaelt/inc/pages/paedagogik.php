@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 $p = $c['paedagogik'] ?? [];
 $themeIcons = ['spoon', 'leaf', 'moon'];
-$grundIcons = ['heart', 'star', 'kids'];
+$grundIcons = ['heart', 'target', 'kids'];
 page_hero('Pädagogik', $p['titel'] ?? '', $p['intro'] ?? '', 'yellow');
 ?>
 <section class="section">

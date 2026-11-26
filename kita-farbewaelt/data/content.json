@@ -176,17 +176,17 @@
         "themen": [
             {
                 "titel": "Ernährung",
-                "text": "Bei uns wird täglich frisch und ausgewogen gekocht. Für die Kleinsten gibt es frische Breie aus Gemüse und Früchten und abwechslungsreiches Fingerfood.",
+                "text": "Eine gesunde Ernährung ist entscheidend für das Wachstum, die Entwicklung und das Wohlbefinden.\n\nBei uns wird täglich frisch gekocht – mit viel Liebe und Sorgfalt bereiten wir ausgewogene Mahlzeiten zu. Wir legen grossen Wert auf eine gesunde Ernährung, die die Entwicklung der Kinder unterstützt und gleichzeitig Freude am Essen vermittelt.\n\nFür unsere Kleinsten bereiten wir liebevoll frische, pürierte Breie aus Gemüse und Früchten zu. Dazu gibt es abwechslungsreiches Fingerfood, das spielerisch die Selbständigkeit und den Entdeckerdrang der Kleinen unterstützt – so wird jede Mahlzeit zu einem kleinen Genuss- und Lernmoment.",
                 "bild": "uploads/konzept-ernaehrung.jpg"
             },
             {
                 "titel": "Natur und Umwelt",
-                "text": "Täglich frische Luft gehört dazu. In der Natur lernen die Kinder Pflanzen, Tiere und das Wetter kennen – und das richtige Verhalten im Strassenverkehr.",
+                "text": "In der Natur finden Kinder viele wertvolle Entdeckungs- und Erfahrungsräume, die mit ihren vielfältigen Reizen die Sinne, die Körperwahrnehmung und den Verstand anregen.\n\nDas Entdecken und Erforschen der Natur fördert die kognitive Entwicklung. Kinder lernen über Pflanzen, Tiere, das Wetter bis hin zum richtigen Verhalten im Strassenverkehr.\n\nTägliche frische Luft ist fester Bestandteil unseres Alltags.",
                 "bild": "uploads/ernaehrung-aepfel.jpg"
             },
             {
                 "titel": "Bewegung und Ruhe",
-                "text": "Ohne Bewegung keine Ruhe – und ohne Ruhe keine Bewegung. Im Schlaf verarbeiten Kinder Erlebnisse und wachsen.",
+                "text": "**Ohne Bewegung keine Ruhe und ohne Ruhe keine Bewegung.**\n\nDer Schlaf ist eine der wichtigsten Ruhephasen. Im und während des Schlafs werden Erlebnisse der Wachphase verarbeitet und Wachstumshormone produziert, die für das körperliche Wachstum und die Entwicklung unerlässlich sind.",
                 "bild": "uploads/ruhe-schlaf.jpg"
             }
         ]
@@ -286,7 +286,14 @@
     "jobs": {
         "titel": "Werde Teil unseres Teams",
         "intro": "Unsere Kita wächst mit viel Liebe. Wir suchen Menschen, die mit Herz und Leidenschaft eine besondere Umgebung für Kinder schaffen möchten.",
-        "stellen": [],
+        "stellen": [
+            {
+                "titel": "FaBe Kind – Schwangerschaftsvertretung",
+                "pensum": "100 % · ab Februar/März 2027",
+                "text": "Wir suchen eine Fachfrau / einen Fachmann Betreuung Kind EFZ als Schwangerschaftsvertretung zu 100 %.\n\n**Mit Option auf eine Festanstellung zu 40–60 %** im Anschluss.\n\nStellenantritt ab Februar/März 2027.",
+                "pdf": ""
+            }
+        ],
         "keine_stellen": "Zurzeit sind alle unsere Stellen besetzt. Eine Spontanbewerbung freut uns trotzdem!",
         "bewerbung_email": "info@kita-farbewaelt.ch"
     },
@@ -314,5 +321,5 @@
         "impressum": "**Kita Farbewält GmbH**\nLöwenstrasse 21\n8953 Dietikon\nSchweiz\n\nTelefon: 078 315 19 49\nE-Mail: info@kita-farbewaelt.ch\n\nGeschäftsführung: Lamija Ljutfija\nUnternehmens-Identifikationsnummer (UID): CHE-160.422.196\n\n**Haftungsausschluss**\nWir prüfen die Inhalte dieser Webseite sorgfältig. Für Richtigkeit, Vollständigkeit und Aktualität übernehmen wir jedoch keine Gewähr. Für Inhalte verlinkter Webseiten sind ausschliesslich deren Betreiber verantwortlich.\n\n**Bilder**\nAlle Bilder dürfen ohne unsere Zustimmung nicht weiterverwendet werden.",
         "datenschutz": "**Verantwortliche Stelle**\nKita Farbewält GmbH, Löwenstrasse 21, 8953 Dietikon, info@kita-farbewaelt.ch\n\n**Grundsatz**\nWir behandeln eure Personendaten vertraulich und gemäss dem Schweizer Datenschutzgesetz (DSG).\n\n**Besuch der Webseite**\nBeim Aufruf der Webseite speichert unser Hosting-Anbieter technisch notwendige Daten (z. B. IP-Adresse, Datum, Uhrzeit, aufgerufene Seite) in Server-Logdateien. Diese Daten dienen der Sicherheit und dem Betrieb und werden nach kurzer Zeit gelöscht.\n\n**Keine Cookies, kein Tracking**\nDiese Webseite verwendet keine Analyse- oder Werbe-Cookies. Schriften werden lokal geladen, es werden keine Daten an Google oder andere Dritte übermittelt.\n\n**Kontakt- und Anfrageformular**\nWenn ihr uns über das Formular oder per E-Mail kontaktiert, verwenden wir eure Angaben ausschliesslich, um eure Anfrage zu bearbeiten. Die Daten werden nicht an Dritte weitergegeben.\n\n**Externe Links**\nBeim Klick auf Links zu Instagram, WhatsApp, Google Maps oder dem Kitarechner verlasst ihr unsere Webseite. Dort gelten die Datenschutzbestimmungen der jeweiligen Anbieter.\n\n**Eure Rechte**\nIhr könnt jederzeit Auskunft über eure gespeicherten Daten verlangen sowie deren Berichtigung oder Löschung beantragen. Schreibt uns dazu an info@kita-farbewaelt.ch."
     },
-    "_version": 2
+    "_version": 3
 }

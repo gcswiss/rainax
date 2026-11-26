@@ -38,6 +38,7 @@ function icon(string $name, string $class = 'icon'): string
         'play'    => '<path d="M8 5v14l11-7z"/>',
         'close'   => '<path d="M6 6l12 12M18 6 6 18"/>',
         'check'   => '<path d="m5 12 4.5 4.5L19 7"/>',
+        'target'  => '<circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1.2" fill="currentColor"/>',
         'star'    => '<path d="m12 3 2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1L3.2 9.5l6.1-.9z"/>',
     ];
     if ($name === 'heart-fill') {
@@ -112,7 +113,7 @@ function render_header(array $c, string $page, string $title): void
     <meta property="og:image" content="<?= e(url('assets/img/logo.png')) ?>">
     <link rel="icon" href="<?= e(url('assets/img/favicon.svg')) ?>" type="image/svg+xml">
     <link rel="apple-touch-icon" href="<?= e(url('assets/img/apple-touch-icon.png')) ?>">
-    <link rel="preload" href="<?= e(url('assets/fonts/fraunces.woff2')) ?>" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="<?= e(url('assets/fonts/fredoka.woff2')) ?>" as="font" type="font/woff2" crossorigin>
     <link rel="preload" href="<?= e(url('assets/fonts/nunito.woff2')) ?>" as="font" type="font/woff2" crossorigin>
     <link rel="stylesheet" href="<?= e(asset('assets/css/style.css')) ?>">
     <script type="application/ld+json"><?= json_encode([

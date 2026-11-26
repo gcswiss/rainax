@@ -9,7 +9,7 @@
 
 declare(strict_types=1);
 
-const CONTENT_VERSION = 2;
+const CONTENT_VERSION = 3;
 
 function migrate_content(array $c): array
 {
@@ -17,6 +17,9 @@ function migrate_content(array $c): array
 
     if ($v < 2) {
         $c = migrate_to_2($c);
+    }
+    if ($v < 3) {
+        $c = migrate_to_3($c);
     }
 
     $c['_version'] = CONTENT_VERSION;
@@ -105,5 +108,32 @@ function migrate_to_2(array $c): array
     $t['subvention_text'] = str_replace('unterstützt Familien mit Betreuungsgutscheinen.', 'unterstützt Familien.', $t['subvention_text'] ?? '');
     $c['tarife'] = $t;
 
+    return $c;
+}
+
+/** Feedback-Runde 2: Texte «Was uns wichtig ist» von der bisherigen Webseite. */
+function migrate_to_3(array $c): array
+{
+    $texte = [
+        'Ernährung' => "Eine gesunde Ernährung ist entscheidend für das Wachstum, die Entwicklung und das Wohlbefinden.\n\nBei uns wird täglich frisch gekocht – mit viel Liebe und Sorgfalt bereiten wir ausgewogene Mahlzeiten zu. Wir legen grossen Wert auf eine gesunde Ernährung, die die Entwicklung der Kinder unterstützt und gleichzeitig Freude am Essen vermittelt.\n\nFür unsere Kleinsten bereiten wir liebevoll frische, pürierte Breie aus Gemüse und Früchten zu. Dazu gibt es abwechslungsreiches Fingerfood, das spielerisch die Selbständigkeit und den Entdeckerdrang der Kleinen unterstützt – so wird jede Mahlzeit zu einem kleinen Genuss- und Lernmoment.",
+        'Natur und Umwelt' => "In der Natur finden Kinder viele wertvolle Entdeckungs- und Erfahrungsräume, die mit ihren vielfältigen Reizen die Sinne, die Körperwahrnehmung und den Verstand anregen.\n\nDas Entdecken und Erforschen der Natur fördert die kognitive Entwicklung. Kinder lernen über Pflanzen, Tiere, das Wetter bis hin zum richtigen Verhalten im Strassenverkehr.\n\nTägliche frische Luft ist fester Bestandteil unseres Alltags.",
+        'Bewegung und Ruhe' => "**Ohne Bewegung keine Ruhe und ohne Ruhe keine Bewegung.**\n\nDer Schlaf ist eine der wichtigsten Ruhephasen. Im und während des Schlafs werden Erlebnisse der Wachphase verarbeitet und Wachstumshormone produziert, die für das körperliche Wachstum und die Entwicklung unerlässlich sind.",
+    ];
+    // Offene Stelle
+    $stelle = 'FaBe Kind – Schwangerschaftsvertretung';
+    if (!in_array($stelle, array_column($c['jobs']['stellen'] ?? [], 'titel'), true)) {
+        $c['jobs']['stellen'][] = [
+            'titel'  => $stelle,
+            'pensum' => '100 % · ab Februar/März 2027',
+            'text'   => "Wir suchen eine Fachfrau / einen Fachmann Betreuung Kind EFZ als Schwangerschaftsvertretung zu 100 %.\n\n**Mit Option auf eine Festanstellung zu 40–60 %** im Anschluss.\n\nStellenantritt ab Februar/März 2027.",
+            'pdf'    => '',
+        ];
+    }
+
+    foreach (($c['paedagogik']['themen'] ?? []) as $i => $th) {
+        if (isset($texte[$th['titel'] ?? ''])) {
+            $c['paedagogik']['themen'][$i]['text'] = $texte[$th['titel']];
+        }
+    }
     return $c;
 }

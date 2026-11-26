@@ -1,5 +1,5 @@
 @font-face { font-family: "Nunito"; src: url("../assets/fonts/nunito.woff2") format("woff2"); font-weight: 200 1000; font-display: swap; }
-@font-face { font-family: "Fraunces"; src: url("../assets/fonts/fraunces.woff2") format("woff2"); font-weight: 100 900; font-display: swap; }
+@font-face { font-family: "Fredoka"; src: url("../assets/fonts/fredoka.woff2") format("woff2"); font-weight: 300 700; font-display: swap; }
 
 :root {
     --green: #518739; --green-dark: #3a6528; --green-soft: #dfe9d3;
@@ -9,7 +9,7 @@
 }
 * { box-sizing: border-box; }
 body { margin: 0; background: var(--paper); color: var(--ink); font: 400 16px/1.55 "Nunito", system-ui, sans-serif; }
-h1, h2, h3 { font-family: "Fraunces", Georgia, serif; font-weight: 560; line-height: 1.15; margin: 0 0 .4em; }
+h1, h2, h3 { font-family: "Fredoka", "Nunito", sans-serif; font-weight: 600; line-height: 1.15; margin: 0 0 .4em; }
 h1 { font-size: 2rem; }
 h2 { font-size: 1.35rem; }
 h3 { font-size: 1.1rem; }
